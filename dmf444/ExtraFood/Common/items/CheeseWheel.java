@@ -1,5 +1,6 @@
 package dmf444.ExtraFood.Common.items;
 
+import dmf444.ExtraFood.Core.EFTabs;
 import dmf444.ExtraFood.Core.lib.ModInfo;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -12,7 +13,7 @@ public class CheeseWheel extends ItemFood {
 	public CheeseWheel(int par1, int par2, float f, boolean b) {
 		super(par1, 8, 0.6F, false);
 		this.setMaxStackSize(1);
-		this.setCreativeTab(CreativeTabs.tabFood);
+		this.setCreativeTab(EFTabs.INSTANCE);
 		this.setTextureName("extrafood:cheese_wheel");
 		// TODO Auto-generated constructor stub
 	}
