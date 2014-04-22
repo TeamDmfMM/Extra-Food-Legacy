@@ -33,6 +33,15 @@ public class CheesePressGUI extends GuiContainer {
     		int x = (width - xSize) / 2;
     		int y = (height - ySize) / 2;
     		this.drawTexturedModalRect(x, y, 0, 0, xSize, ySize);
+    		// This is where you can draw the arrow-thingy
+    		// this.drawTexturedModalRect(renderx, rendery, positionx, positiony, sizetodraww, sizetodrawh)
+    		/*
+    		so:
+    		renderx and y : where to draw
+    		positionx and y : where in the image to start drawing
+    		sizetodraww and h : how large to draw
+    		*/
+    		// Example: this.drawTexturedModalRect(100, 100, 256, 0, 50, 10, 50, this.tileentity.charge)
 
     }
     
