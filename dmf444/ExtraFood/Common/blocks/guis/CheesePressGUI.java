@@ -1,5 +1,7 @@
 package dmf444.ExtraFood.Common.blocks.guis;
 
+import org.lwjgl.opengl.GL11;
+
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
@@ -8,11 +10,12 @@ import dmf444.ExtraFood.Common.blocks.container.CheesePressContainer;
 import dmf444.ExtraFood.Common.blocks.tileentity.CheesePressTileEntity;
 
 public class CheesePressGUI extends GuiContainer {
-
+CheesePressTileEntity te;
     public CheesePressGUI (InventoryPlayer inventoryPlayer,
                     CheesePressTileEntity tileEntity) {
             //the container is instanciated and passed to the superclass for handling
             super(new CheesePressContainer(inventoryPlayer, tileEntity));
+            te = tileEntity;
     }
 
     @Override
@@ -29,6 +32,7 @@ public class CheesePressGUI extends GuiContainer {
                     int par3) {
             //draw your Gui here, only thing you need to change is the path
     	ResourceLocation r = new ResourceLocation("extrafood", "textures/gui/cheese_press.png");
+    	GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
     		this.mc.renderEngine.bindTexture(r);            
     		int x = (width - xSize) / 2;
     		int y = (height - ySize) / 2;
@@ -42,6 +46,9 @@ public class CheesePressGUI extends GuiContainer {
     		sizetodraww and h : how large to draw
     		*/
     		// Example: this.drawTexturedModalRect(100, 100, 256, 0, 50, 10, 50, this.tileentity.charge)
+    		if (te.complete > 0){
+    			this.drawTexturedModalRect(x + 133, y + 31, 176, 1, 3, this.te.complete);
+    		}
 
     }
     

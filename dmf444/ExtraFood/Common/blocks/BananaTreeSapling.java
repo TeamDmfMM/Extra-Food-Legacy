@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Random;
 
 import net.minecraft.block.BlockFlower;
+import net.minecraft.block.BlockSapling;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
@@ -14,7 +15,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 import dmf444.ExtraFood.Core.BananaWorldGenTrees;
 import dmf444.ExtraFood.Core.EFTabs;
 
-public class BananaTreeSapling extends BlockFlower
+public class BananaTreeSapling extends BlockSapling
 {
     public static final String[] WOOD_TYPES = new String[] {"banana"};
     @SideOnly(Side.CLIENT)

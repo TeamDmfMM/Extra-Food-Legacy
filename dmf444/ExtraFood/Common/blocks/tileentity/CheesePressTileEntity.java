@@ -1,7 +1,9 @@
 package dmf444.ExtraFood.Common.blocks.tileentity;
 
+import dmf444.ExtraFood.Common.items.ItemLoader;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
@@ -10,9 +12,11 @@ import net.minecraft.tileentity.TileEntity;
 public class CheesePressTileEntity extends TileEntity implements IInventory {
 
     private ItemStack[] inv;
-
+    public int complete = -1;
+	private int ttime;
+    
     public CheesePressTileEntity(){
-            inv = new ItemStack[9];
+            inv = new ItemStack[4];
     }
     
     @Override
@@ -22,11 +26,13 @@ public class CheesePressTileEntity extends TileEntity implements IInventory {
 
     @Override
     public ItemStack getStackInSlot(int slot) {
+    		
             return inv[slot];
     }
     
     @Override
     public void setInventorySlotContents(int slot, ItemStack stack) {
+    	
             inv[slot] = stack;
             if (stack != null && stack.stackSize > getInventoryStackLimit()) {
                     stack.stackSize = getInventoryStackLimit();
@@ -122,4 +128,51 @@ public class CheesePressTileEntity extends TileEntity implements IInventory {
 				// TODO Auto-generated method stub
 				return false;
 			}
+			public boolean areItemsCorrect(){
+					for (int i = 0; i < 3; i++){
+						if (this.getStackInSlot(i) != null){
+						if (this.getStackInSlot(i).itemID != Item.bucketMilk.itemID){
+							return false;
+						}
+						}
+						else {
+							return false;
+						}
+					}
+					if (this.getStackInSlot(3) != null){
+					if (this.getStackInSlot(3).stackSize == 64 || this.getStackInSlot(3).itemID != ItemLoader.cheeseWheel.itemID){
+						return false;
+					}}
+					return true;
+			}
+			public void makeCheese(){
+				this.decrStackSize(0, 1);
+				this.decrStackSize(1, 1);
+				this.decrStackSize(2, 1);
+				if (this.getStackInSlot(3) != null){
+					this.getStackInSlot(3).stackSize += 1;
+				}
+				else {
+					ItemStack is = new ItemStack(ItemLoader.cheeseWheel, 1);
+					this.setInventorySlotContents(3, is);
+				}
+			}
+			
+			@Override
+			public void updateEntity(){
+				if (this.areItemsCorrect() == true){
+					this.ttime += 1;
+					if (this.ttime == 10){
+						this.ttime = 0;
+						this.complete += 1;
+						if (this.complete == 24){
+							makeCheese();
+						}
+					}
+				}
+				else {
+					this.complete = -1;
+				}
+			}
+			
 }

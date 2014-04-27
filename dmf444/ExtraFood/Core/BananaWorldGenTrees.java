@@ -7,6 +7,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockSapling;
 import net.minecraft.util.Direction;
 import net.minecraft.world.World;
+import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.common.ForgeDirection;
 
@@ -40,6 +41,9 @@ public class BananaWorldGenTrees extends WorldGenerator {
 
     public boolean generate(World par1World, Random par2Random, int par3, int par4, int par5)
     {
+    	if (par1World.getBiomeGenForCoords(par3, par5) != BiomeGenBase.jungle){
+    		return false;
+    	}
         int l = par2Random.nextInt(3) + this.minTreeHeight;
         boolean flag = true;
 

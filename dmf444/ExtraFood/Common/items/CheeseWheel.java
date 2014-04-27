@@ -12,7 +12,7 @@ public class CheeseWheel extends ItemFood {
 
 	public CheeseWheel(int par1, int par2, float f, boolean b) {
 		super(par1, 8, 0.6F, false);
-		this.setMaxStackSize(1);
+		this.setMaxStackSize(64);
 		this.setCreativeTab(EFTabs.INSTANCE);
 		this.setTextureName("extrafood:cheese_wheel");
 		// TODO Auto-generated constructor stub

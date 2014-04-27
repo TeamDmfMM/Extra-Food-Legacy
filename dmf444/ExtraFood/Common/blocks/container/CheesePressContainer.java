@@ -4,8 +4,10 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import dmf444.ExtraFood.Common.blocks.tileentity.CheesePressTileEntity;
+import dmf444.ExtraFood.Common.items.ItemLoader;
 
 public class CheesePressContainer extends Container {
 
@@ -16,11 +18,10 @@ public class CheesePressContainer extends Container {
 
             //the Slot constructor takes the IInventory and the slot number in that it binds to
             //and the x-y coordinates it resides on-screen
-            for (int i = 0; i < 3; i++) {
-                    for (int j = 0; j < 3; j++) {
-                            addSlotToContainer(new Slot(tileEntity, j + i * 3, 62 + j * 18, 17 + i * 18));
-                    }
-            }
+            this.addSlotToContainer(new SlotFilter(te, 0, 54, 20, Item.bucketMilk.itemID));
+            this.addSlotToContainer(new SlotFilter(te, 1, 78, 20, Item.bucketMilk.itemID));
+            this.addSlotToContainer(new SlotFilter(te, 2, 102, 20, Item.bucketMilk.itemID));
+            this.addSlotToContainer(new Slot(te, 3, 78, 54));
 
             //commonly used vanilla code that adds the player's inventory
             bindPlayerInventory(inventoryPlayer);

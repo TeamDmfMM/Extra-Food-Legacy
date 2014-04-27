@@ -27,7 +27,7 @@ private void generateEnd(World world, Random random, int x, int z) {
 private void generateSurface(World world, Random random, int x, int z) {
 	for (int i = 0; i < 3; i++){
 		int Xcoord1 = x + random.nextInt(16); //where in chuck it generates
-		int Ycoord1 = random.nextInt(65); //how high it generates
+		int Ycoord1 = random.nextInt(89) + 49; //arg = randge + = min
 		int Zcoord1 = z + random.nextInt(16); //where in chunk it generates
 		
 		new BananaWorldGenTrees(false, 6, 3, 3, true).generate(world, random, Xcoord1, Ycoord1, Zcoord1);
