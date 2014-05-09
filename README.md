@@ -3,7 +3,7 @@ Extra Food
 Is a mod by dmf444 and mincrmatt12 that adds extra world gen, machines and most importantly: food.
 This entire mod is designed so that a player can have more food option instead of just steak, pork and carrots/potatos.
 
-This mod is also designed to work with Stavation Ahoy (working title) for our other mod that completely changes minecrafts hunger system, adding in calories, allergies and fitness.
+This mod is also designed to work with Starvation Ahoy (working title) for our other mod that completely changes minecrafts hunger system, adding in calories, allergies and fitness.
 
 
 Licence
