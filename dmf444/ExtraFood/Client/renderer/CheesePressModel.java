@@ -5,6 +5,7 @@
 // - ZeuX
 package dmf444.ExtraFood.Client.renderer;
 
+import dmf444.ExtraFood.Common.blocks.tileentity.CheesePressTileEntity;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
@@ -97,8 +98,8 @@ public class CheesePressModel extends ModelBase
       setRotation(Shape4dot1, 0F, 0F, 0F);
   }
   
-  public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5)
-  {
+    public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5){
+
     super.render(entity, f, f1, f2, f3, f4, f5);
     setRotationAngles(f, f1, f2, f3, f4, f5, entity);
     Shape1.render(f5);
@@ -125,5 +126,37 @@ public class CheesePressModel extends ModelBase
   {
     super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
   }
+  
+  public void renderEnt(CheesePressTileEntity entity, float f, float f1, float f2, float f3, float f4, float f5){
+	  	if (entity.complete > 0){
+	  		int ticks = entity.complete * 10 + entity.ttime;
+	  		if (ticks % 2 == 0){
+	  		int degrees = (int) (ticks * 1.5);
+	  		float trans = (float) ((float) Math.sin(degrees) * 0.25);
+	  		if (trans < 0){trans = -trans;}
+	  		this.Shape4.offsetY = trans;
+	  		this.Shape4dot1.offsetY =trans;
+	  		
+	  		}
+	  		
+	  	}
+	  	else {
+	  		this.Shape4.offsetY = 0;
+	  		this.Shape4dot1.offsetY = 0;
+	  	}
+	    super.render(null, f, f1, f2, f3, f4, f5);
+	    setRotationAngles(f, f1, f2, f3, f4, f5, null);
+	    Shape1.render(f5);
+	    Base.render(f5);
+	    Piece1.render(f5);
+	    Shape2dot2.render(f5);
+	    Shape2.render(f5);
+	    Shape2dot3.render(f5);
+	    Shape2dot4.render(f5);
+	    Shape3.render(f5);
+	    Shape3dot1.render(f5);
+	    Shape4.render(f5);
+	    Shape4dot1.render(f5);
+	  }
 
 }

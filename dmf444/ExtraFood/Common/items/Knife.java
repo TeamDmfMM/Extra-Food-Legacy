@@ -1,9 +1,9 @@
 package dmf444.ExtraFood.Common.items;
 
-import net.minecraft.item.EnumToolMaterial;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Icon;
 import dmf444.ExtraFood.Core.EFTabs;
 
 public class Knife extends Item {
@@ -21,25 +21,28 @@ public class Knife extends Item {
 	public boolean isRepariable() {
 		return false;
 	}
-	
-	@Override
-	public ItemStack getContainerItemStack(ItemStack itemstack) {
-		itemstack.setItemDamage(itemstack.getItemDamage() + 1);
-		return itemstack;
-	}
 
-    public int getMetadata(int par1)
-    {
-        return 1;
-    }
     
     public boolean doesContainerItemLeaveCraftingGrid(ItemStack par1ItemStack) {
-    	return true;
+    	return false;
     }
     public boolean getShareTag()
     {
         return true;
     }
+    @Override
+    public ItemStack getContainerItemStack(ItemStack itemStack)
+    {
+        ItemStack copiedStack = itemStack.copy();
+
+        copiedStack.setItemDamage(copiedStack.getItemDamage() + 1);
+
+        // TODO Is this still necessary?
+        copiedStack.stackSize = 1;
+
+        return copiedStack;
+    }
+    
     
 }
 

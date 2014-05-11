@@ -1,5 +1,8 @@
 package dmf444.ExtraFood.Core;
 
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler; // used in 1.6.2
@@ -12,6 +15,7 @@ import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import dmf444.ExtraFood.Common.CommonProxy;
+import dmf444.ExtraFood.Common.EventHandler.ExtraFood_EventBonemeal;
 import dmf444.ExtraFood.Common.blocks.BlockLoader;
 import dmf444.ExtraFood.Common.items.ItemLoader;
 import dmf444.ExtraFood.Core.lib.ModInfo;
@@ -61,4 +65,5 @@ public class ExtraFood {
 	public void postInit(FMLPostInitializationEvent event){
 		
 	}
+	
 }

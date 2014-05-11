@@ -12,6 +12,8 @@ import net.minecraft.world.World;
 
 import org.lwjgl.opengl.GL11;
 
+import dmf444.ExtraFood.Common.blocks.tileentity.CheesePressTileEntity;
+
 
 public class CheesePressRenderer extends TileEntitySpecialRenderer {
     
@@ -31,24 +33,7 @@ public class CheesePressRenderer extends TileEntitySpecialRenderer {
     
     @Override
     public void renderTileEntityAt(TileEntity te, double x, double y, double z, float scale) {
-    //The PushMatrix tells the renderer to "start" doing something.
-            GL11.glPushMatrix();
-    //This is setting the initial location.
-            GL11.glTranslatef((float) x + 0.5F, (float) y + 1.5F, (float) z + 0.5F);
-   //Use in 1.6.2  this
-            ResourceLocation textures = (new ResourceLocation("extrafood:textures/blocks/CheesePress.png")); 
-    //the ':' is very important
-    //binding the textures
-            Minecraft.getMinecraft().renderEngine.bindTexture(textures);
-
-    //This rotation part is very important! Without it, your model will render upside-down! And for some reason you DO need PushMatrix again!                       
-            GL11.glPushMatrix();
-            GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
-    //A reference to your Model file. Again, very important.
-            this.model.render((Entity)null, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
-    //Tell it to stop rendering for both the PushMatrix's
-            GL11.glPopMatrix();
-            GL11.glPopMatrix();
+    	this.renderCheesePress((CheesePressTileEntity)te, x, y, z, scale);
     }
 
     //Set the lighting stuff, so it changes it's brightness properly.       
@@ -61,4 +46,23 @@ public class CheesePressRenderer extends TileEntitySpecialRenderer {
             tess.setColorOpaque_F(brightness, brightness, brightness);
             OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit,  (float) modulousModifier,  divModifier);
     }
-}
+    private void renderCheesePress(CheesePressTileEntity te, double x, double y, double z, float scale){
+        GL11.glPushMatrix();
+    //This is setting the initial location.
+            GL11.glTranslatef((float) x + 0.5F, (float) y + 1.5F, (float) z + 0.5F);
+   //Use in 1.6.2  this
+            ResourceLocation textures = (new ResourceLocation("extrafood:textures/blocks/CheesePress.png")); 
+    //the ':' is very important
+    //binding the textures
+            Minecraft.getMinecraft().renderEngine.bindTexture(textures);
+
+    //This rotation part is very important! Without it, your model will render upside-down! And for some reason you DO need PushMatrix again!                       
+            GL11.glPushMatrix();
+            GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
+    //A reference to your Model file. Again, very important.
+            this.model.renderEnt(te, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
+    //Tell it to stop rendering for both the PushMatrix's
+            GL11.glPopMatrix();
+            GL11.glPopMatrix();
+    }
+    }

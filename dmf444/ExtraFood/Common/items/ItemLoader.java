@@ -15,11 +15,11 @@ public class ItemLoader {
 	
 	public static boolean Register=false;
 	public static void initiateItems() {
-		cheeseWheel = new CheeseWheel(ItemLib.idCheeseWheel, 8, 0.6F, false).setUnlocalizedName(ItemLib.iCW);
-		banana = new Banana(ItemLib.idBanana, 1, 0.8F, false).setUnlocalizedName(ItemLib.iBan);
-		knife = new Knife(ItemLib.idKnife).setUnlocalizedName(ItemLib.iK);	
-		cheeseSlice = new CheeseSlice(ItemLib.idCS).setUnlocalizedName(ItemLib.iCS);
-		
+		cheeseWheel = new CheeseWheel(ItemLib.idCheeseWheel, 8, 0.6F, false).setUnlocalizedName(ItemLib.iCW).setContainerItem(knife);
+		banana = new Banana(ItemLib.idBanana, 1, 0.8F, false).setUnlocalizedName(ItemLib.iBan).setContainerItem(knife);
+		knife = new Knife(ItemLib.idKnife).setUnlocalizedName(ItemLib.iK).setContainerItem(knife);	
+		cheeseSlice = new CheeseSlice(ItemLib.idCS).setUnlocalizedName(ItemLib.iCS).setContainerItem(knife);
+		knife.setContainerItem(knife);
 		
 		registerItems();
 	}
