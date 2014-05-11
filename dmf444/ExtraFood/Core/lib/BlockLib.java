@@ -10,5 +10,8 @@ public class BlockLib {
 	
 	public static int idCheesePress = 446;
 	public static String bCP = "CheesePress";
+	
+	public static int idAutoCutter = 447;
+	public static String bAC = "Auto_Cutter";
 
 }

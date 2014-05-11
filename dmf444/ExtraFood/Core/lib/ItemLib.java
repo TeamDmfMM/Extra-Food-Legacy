@@ -8,5 +8,11 @@ public class ItemLib {
 	
 	public static int idBanana = 22190;
 	public static String iBan = "Banana";
+	
+	public static int idKnife = 22191;
+	public static String iK = "Knife";
+	
+	public static int idCS = 22192;
+	public static String iCS = "Cheese_Slice";
 
 }

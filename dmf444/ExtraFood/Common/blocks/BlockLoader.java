@@ -1,6 +1,7 @@
 package dmf444.ExtraFood.Common.blocks;
 
 import cpw.mods.fml.common.registry.GameRegistry;
+import dmf444.ExtraFood.Common.blocks.tileentity.AutoCutterTileEntity;
 import dmf444.ExtraFood.Common.blocks.tileentity.CheesePressTileEntity;
 import dmf444.ExtraFood.Core.lib.BlockLib;
 import net.minecraft.block.Block;
@@ -11,12 +12,15 @@ public class BlockLoader {
 	public static Block bananaBunch;
 	public static Block saplingBanana;
 	public static Block cheesePress;
+	public static Block autoCutter;
 	
 	public static boolean Register=false;
 	public static void initiateBlocks() {
 		bananaBunch = new BananaBlock(BlockLib.idBanana, Material.cactus).setUnlocalizedName(BlockLib.bBB).setTextureName("extrafood:BananaTree");
 		saplingBanana = new BananaTreeSapling(BlockLib.idBananaSap).setUnlocalizedName(BlockLib.bBS);
 		cheesePress = new CheesePress(BlockLib.idCheesePress).setUnlocalizedName(BlockLib.bCP);
+		autoCutter = new AutoCutter(BlockLib.idAutoCutter).setUnlocalizedName(BlockLib.bAC);
+		
 		
 		registerBlocks();
 	}
@@ -25,6 +29,7 @@ public class BlockLoader {
 			GameRegistry.registerBlock(bananaBunch, BlockLib.bBB);
 			GameRegistry.registerBlock(saplingBanana, BlockLib.bBS);
 			GameRegistry.registerBlock(cheesePress, BlockLib.bCP);
+			GameRegistry.registerBlock(autoCutter, BlockLib.bAC);
 			
 		}
 		Register=true;
@@ -32,6 +37,7 @@ public class BlockLoader {
 	
 	public static void initTileEntity() {
 		GameRegistry.registerTileEntity(CheesePressTileEntity.class, BlockLib.bCP);
+		GameRegistry.registerTileEntity(AutoCutterTileEntity.class, BlockLib.bAC);
 	}
 	
 }

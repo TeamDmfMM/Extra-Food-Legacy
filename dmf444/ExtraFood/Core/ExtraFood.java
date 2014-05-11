@@ -52,6 +52,8 @@ public class ExtraFood {
 		BlockLoader.initTileEntity();
 		
 		proxy.registerRenderers();
+		
+		CraftingRecipies.craftering();
 
 		
 	}
