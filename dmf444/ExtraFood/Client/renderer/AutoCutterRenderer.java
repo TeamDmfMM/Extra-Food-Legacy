@@ -34,6 +34,30 @@ public class AutoCutterRenderer extends TileEntitySpecialRenderer {
             GL11.glPushMatrix();
     //This is setting the initial location.
             GL11.glTranslatef((float) x + 0.5F, (float) y + 1.5F, (float) z + 0.5F);
+            int i = te.getBlockMetadata();
+    		
+    		short short1 = 0;
+    		
+    		if (i == 2)
+            {
+                short1 = 360;
+            }
+
+            if (i == 3)
+            {
+                short1 = 180;
+            }
+
+            if (i == 4)
+            {
+                short1 = 90; //-90
+            }
+
+            if (i == 5)
+            {
+                short1 = -90; //90
+            }
+            GL11.glRotatef((float)short1, 0.0F, 1.0F, 0.0F);
    //Use in 1.6.2  this
             ResourceLocation textures = (new ResourceLocation("extrafood:textures/blocks/BlockAutoCutter.png")); 
     //the ':' is very important

@@ -4,6 +4,7 @@ itemGroup.ExtraFood=Extra Food
 #Item Names
 item.Cheese_Wheel.name=Cheese Wheel
 item.Banana.name=Banana
+item.Knife.name=Cooking Knife
 
 #Block Names
 tile.Banana_Bunch.name=Banana Bunch

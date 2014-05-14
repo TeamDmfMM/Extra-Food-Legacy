@@ -14,7 +14,7 @@ public class CraftingRecipies {
 	public static void craftering()
 	{
 	GameRegistry.addRecipe(new ItemStack(BlockLoader.cheesePress, 1), new Object[] {"ipi", "ibi", "sss", 'i', Item.ingotIron, 'p', Block.planks, 'b', Item.bucketEmpty, 's', Block.stoneSingleSlab});
-	//GameRegistry.addRecipe(new ItemStack(ItemLoader.cheeseSlice, 8),  new Object[] {" a ", " b ", "   ", 'a', ItemLoader.cheeseWheel, 'b', new ItemStack(ItemLoader.knife, 1, -1)});
+	GameRegistry.addRecipe(new ItemStack(ItemLoader.knife, 1), new Object[] {"ii ", "ii ", " j ", 'i', Item.ingotIron, 'j', Item.stick});
 	GameRegistry.addShapelessRecipe(new ItemStack(ItemLoader.cheeseSlice, 8), new ItemStack(ItemLoader.knife, 1, 32767), new ItemStack(ItemLoader.cheeseWheel, 1) );
 	}
 	

@@ -1,8 +1,8 @@
 package dmf444.ExtraFood.Common.items;
 
-import dmf444.ExtraFood.Core.EFTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import dmf444.ExtraFood.Core.EFTabs;
 
 public class CheeseSlice extends Item {
 
@@ -11,17 +11,6 @@ public class CheeseSlice extends Item {
 		this.setCreativeTab(EFTabs.INSTANCE);
 		this.setTextureName("extrafood:Bad_Cheeseslice");
 	}
-	public ItemStack getContainerItemStack(ItemStack itemStack)
-    {
-        ItemStack copiedStack = itemStack.copy();
-
-        copiedStack.setItemDamage(copiedStack.getItemDamage() + 1);
-
-        // TODO Is this still necessary?
-        copiedStack.stackSize = 1;
-
-        return copiedStack;
-    }
 
 	
 }

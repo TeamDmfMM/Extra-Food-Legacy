@@ -13,13 +13,14 @@ import net.minecraft.world.World;
 import org.lwjgl.opengl.GL11;
 
 
-public class CheesePressRenderer extends TileEntitySpecialRenderer {
+
+public class RenderOven extends TileEntitySpecialRenderer {
     
     //The model of your block
-    private final CheesePressModel model;
+    private final ModelOven model;
     
-    public CheesePressRenderer() {
-            this.model = new CheesePressModel();
+    public RenderOven() {
+            this.model = new ModelOven();
     }
     
     private void adjustRotatePivotViaMeta(World world, int x, int y, int z) {
@@ -36,7 +37,7 @@ public class CheesePressRenderer extends TileEntitySpecialRenderer {
     //This is setting the initial location.
             GL11.glTranslatef((float) x + 0.5F, (float) y + 1.5F, (float) z + 0.5F);
    //Use in 1.6.2  this
-            ResourceLocation textures = (new ResourceLocation("extrafood:textures/blocks/CheesePress.png")); 
+            ResourceLocation textures = (new ResourceLocation("extrafood:textures/blocks/Oven1.png")); 
     //the ':' is very important
     //binding the textures
             Minecraft.getMinecraft().renderEngine.bindTexture(textures);

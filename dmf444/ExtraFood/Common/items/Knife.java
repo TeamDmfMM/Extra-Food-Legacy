@@ -1,9 +1,11 @@
 package dmf444.ExtraFood.Common.items;
 
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.IInventory;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.item.EnumToolMaterial;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.Icon;
 import dmf444.ExtraFood.Core.EFTabs;
 
 public class Knife extends Item {
@@ -15,34 +17,40 @@ public class Knife extends Item {
         //this.maxStackSize = 1;
         this.setMaxDamage(10);
         this.setCreativeTab(EFTabs.INSTANCE);
-        this.setTextureName("extrafood:fork");
+        this.setTextureName("extrafood:knife");
     }
 	
 	public boolean isRepariable() {
 		return false;
 	}
+	
+	@Override
+	public ItemStack getContainerItemStack(ItemStack itemstack) {
+		 ItemStack copiedStack = itemstack.copy();
+
+	        copiedStack.setItemDamage(copiedStack.getItemDamage() + 1);
+	        copiedStack.stackSize = 1;
+	        return copiedStack;
+	}
 
     
-    public boolean doesContainerItemLeaveCraftingGrid(ItemStack par1ItemStack) {
+    public boolean doesContainerItemLeaveCraftingGrid(ItemStack itemstack) 
+    {
     	return false;
     }
+    
     public boolean getShareTag()
     {
         return true;
     }
-    @Override
-    public ItemStack getContainerItemStack(ItemStack itemStack)
+    @SideOnly(Side.CLIENT)
+
+    /**
+     * Returns True is the item is renderer in full 3D when hold.
+     */
+    public boolean isFull3D()
     {
-        ItemStack copiedStack = itemStack.copy();
-
-        copiedStack.setItemDamage(copiedStack.getItemDamage() + 1);
-
-        // TODO Is this still necessary?
-        copiedStack.stackSize = 1;
-
-        return copiedStack;
+        return true;
     }
-    
-    
 }
 

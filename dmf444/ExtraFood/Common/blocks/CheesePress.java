@@ -23,7 +23,8 @@ public class CheesePress extends BlockContainer {
     public CheesePress(int id) {
             super(id, Material.wood);
             this.setCreativeTab(EFTabs.INSTANCE);
-            //this.setBlockBounds(0.4F, 0.0F, 0.4F, 0.6F, 3.0F, 0.6F);
+            this.setHardness(2.0F);
+            
     }
 
     //Make sure you set this as your TileEntity class relevant for the block!

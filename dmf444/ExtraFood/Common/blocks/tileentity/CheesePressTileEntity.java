@@ -13,7 +13,7 @@ public class CheesePressTileEntity extends TileEntity implements IInventory {
 
     private ItemStack[] inv;
     public int complete = -1;
-	public int ttime;
+	private int ttime;
     
     public CheesePressTileEntity(){
             inv = new ItemStack[4];
@@ -149,10 +149,6 @@ public class CheesePressTileEntity extends TileEntity implements IInventory {
 				this.decrStackSize(0, 1);
 				this.decrStackSize(1, 1);
 				this.decrStackSize(2, 1);
-				ItemStack iss = new ItemStack(Item.bucketEmpty, 1);
-				for (int i = 0; i < 3; i++){
-					this.setInventorySlotContents(i, iss);
-				}
 				if (this.getStackInSlot(3) != null){
 					this.getStackInSlot(3).stackSize += 1;
 				}

@@ -1,8 +1,5 @@
 package dmf444.ExtraFood.Core;
 
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.IInventory;
-import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler; // used in 1.6.2
@@ -65,5 +62,4 @@ public class ExtraFood {
 	public void postInit(FMLPostInitializationEvent event){
 		
 	}
-	
 }
