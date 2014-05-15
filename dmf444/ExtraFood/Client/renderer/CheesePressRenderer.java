@@ -12,6 +12,8 @@ import net.minecraft.world.World;
 
 import org.lwjgl.opengl.GL11;
 
+import dmf444.ExtraFood.Common.blocks.tileentity.CheesePressTileEntity;
+
 
 public class CheesePressRenderer extends TileEntitySpecialRenderer {
     
@@ -45,7 +47,7 @@ public class CheesePressRenderer extends TileEntitySpecialRenderer {
             GL11.glPushMatrix();
             GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
     //A reference to your Model file. Again, very important.
-            this.model.render((Entity)null, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
+            this.model.renderEnt((CheesePressTileEntity) te, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
     //Tell it to stop rendering for both the PushMatrix's
             GL11.glPopMatrix();
             GL11.glPopMatrix();

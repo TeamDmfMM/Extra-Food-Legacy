@@ -13,7 +13,7 @@ public class CheesePressTileEntity extends TileEntity implements IInventory {
 
     private ItemStack[] inv;
     public int complete = -1;
-	private int ttime;
+	public int ttime;
     
     public CheesePressTileEntity(){
             inv = new ItemStack[4];

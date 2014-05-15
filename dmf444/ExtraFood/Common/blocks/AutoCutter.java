@@ -135,6 +135,9 @@ public class AutoCutter extends BlockContainer  {
                             item.stackSize = 0;
                     }
             }
+            EntityItem e = new EntityItem(world, x, y, z, new ItemStack(BlockLoader.autoCutter));
+            world.spawnEntityInWorld(e);
+            
     } 
    
 }
