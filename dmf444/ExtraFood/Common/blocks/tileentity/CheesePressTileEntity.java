@@ -149,6 +149,10 @@ public class CheesePressTileEntity extends TileEntity implements IInventory {
 				this.decrStackSize(0, 1);
 				this.decrStackSize(1, 1);
 				this.decrStackSize(2, 1);
+				ItemStack ist = new ItemStack(Item.bucketEmpty, 1);
+				for (int i = 0; i< 3; i++){
+					this.setInventorySlotContents(i, ist);
+				}
 				if (this.getStackInSlot(3) != null){
 					this.getStackInSlot(3).stackSize += 1;
 				}
