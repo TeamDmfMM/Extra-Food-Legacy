@@ -146,6 +146,7 @@ public class CheesePressTileEntity extends TileEntity implements IInventory {
 					return true;
 			}
 			public void makeCheese(){
+				if (!this.worldObj.isRemote){
 				this.decrStackSize(0, 1);
 				this.decrStackSize(1, 1);
 				this.decrStackSize(2, 1);
@@ -160,7 +161,9 @@ public class CheesePressTileEntity extends TileEntity implements IInventory {
 					ItemStack is = new ItemStack(ItemLoader.cheeseWheel, 1);
 					this.setInventorySlotContents(3, is);
 				}
-			}
+				
+				
+			}}
 			
 			@Override
 			public void updateEntity(){
