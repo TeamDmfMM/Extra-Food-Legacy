@@ -7,6 +7,7 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import dmf444.ExtraFood.Common.blocks.tileentity.AutoCutterTileEntity;
+import dmf444.ExtraFood.Common.items.ItemLoader;
 
 
 public class AutoCutterContainer extends Container {
@@ -18,10 +19,9 @@ public class AutoCutterContainer extends Container {
 
             //the Slot constructor takes the IInventory and the slot number in that it binds to
             //and the x-y coordinates it resides on-screen
-            this.addSlotToContainer(new SlotFilter(te, 0, 54, 20, Item.bucketMilk.itemID));
-            this.addSlotToContainer(new SlotFilter(te, 1, 78, 20, Item.bucketMilk.itemID));
-            this.addSlotToContainer(new SlotFilter(te, 2, 102, 20, Item.bucketMilk.itemID));
-            this.addSlotToContainer(new Slot(te, 3, 78, 54));
+            this.addSlotToContainer(new Slot(te, 0, 80, 24));
+            this.addSlotToContainer(new Slot(te, 1, 80, 56));
+            this.addSlotToContainer(new SlotFilter(te, 2, 174, 27, ItemLoader.knife.itemID));
 			
             //commonly used vanilla code that adds the player's inventory
             bindPlayerInventory(inventoryPlayer);

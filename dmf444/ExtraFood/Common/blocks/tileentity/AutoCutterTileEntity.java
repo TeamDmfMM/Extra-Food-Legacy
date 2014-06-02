@@ -1,5 +1,6 @@
 package dmf444.ExtraFood.Common.blocks.tileentity;
 
+import dmf444.ExtraFood.Core.ExtraFood;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
@@ -12,7 +13,7 @@ public class AutoCutterTileEntity extends TileEntity implements IInventory {
     private ItemStack[] inv;
 
     public AutoCutterTileEntity(){
-            inv = new ItemStack[9];
+            inv = new ItemStack[3];
     }
     
     @Override
@@ -126,4 +127,63 @@ public class AutoCutterTileEntity extends TileEntity implements IInventory {
 		// TODO Auto-generated method stub
 		return false;
 	}
-}
+	public boolean ok(){
+	
+		if (this.inv[0] != null){
+			System.out.println("1");
+			if (ExtraFood.registryCutter.getItemOutput(this.inv[0]) != null){
+				System.out.println("2");
+				ItemStack l = ExtraFood.registryCutter.getItemOutput(this.inv[0]);
+				if (this.inv[1] != null){
+					if (this.inv[1].itemID != l.itemID){
+						return false;
+					}
+					if (this.inv[1].stackSize >= 64 - l.stackSize + 1){
+						return false;
+					}
+					
+				}
+				System.out.println("3");
+				return true;
+				
+				
+			}
+			else {
+				return false;
+			}
+		}
+		else {
+			return false;
+			
+		}
+	}	
+	public void updateEntity(){
+		if (this.ok()){
+			this.ttime += 1;
+			if (this.ttime == 20){
+				this.ttime = 0;
+				this.complete += 1;
+				if (this.complete == 5){
+					System.out.println("ko");
+					this.do_();
+					this.complete = 0;
+					this.ttime = 0;
+				}
+			}
+		}
+	}
+
+	private void do_() {
+		ItemStack l = ExtraFood.registryCutter.getItemOutput(this.inv[0]);
+		if (this.inv[1] == null){
+			this.inv[1] = l;
+		}
+		else {
+			this.inv[1].stackSize += l.stackSize;
+		}
+		this.inv[0] = this.decrStackSize(0, 1);
+		// TODO Auto-generated method stub
+		
+	}
+	}
+

@@ -21,7 +21,7 @@ public class CheesePressContainer extends Container {
             this.addSlotToContainer(new SlotFilter(te, 0, 54, 20, Item.bucketMilk.itemID));
             this.addSlotToContainer(new SlotFilter(te, 1, 78, 20, Item.bucketMilk.itemID));
             this.addSlotToContainer(new SlotFilter(te, 2, 102, 20, Item.bucketMilk.itemID));
-            this.addSlotToContainer(new Slot(te, 3, 78, 54));
+            this.addSlotToContainer(new SlotCheesePressOutput(te, 3, 78, 54));
 
             //commonly used vanilla code that adds the player's inventory
             bindPlayerInventory(inventoryPlayer);

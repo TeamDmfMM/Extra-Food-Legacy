@@ -50,7 +50,7 @@ AutoCutterTileEntity te;
     		*/
     		// Example: this.drawTexturedModalRect(100, 100, 256, 0, 50, 10, 50, this.tileentity.charge)
     		if (te.complete > 0){
-    			this.drawTexturedModalRect(x + 133, y + 31, 176, 1, 3, this.te.complete);
+    			this.drawTexturedModalRect(x + 116, y + 34, 176, 0, 10, (int) (this.te.complete * 5.6));
     		}
 
     }
