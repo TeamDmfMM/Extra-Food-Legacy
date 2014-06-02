@@ -9,10 +9,10 @@ import net.minecraft.entity.Entity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
-import dmf444.ExtraFood.Common.blocks.BlockLoader;
-import dmf444.ExtraFood.Common.blocks.tileentity.AutoCutterTileEntity;
 
 import org.lwjgl.opengl.GL11;
+
+import dmf444.ExtraFood.Common.blocks.tileentity.AutoCutterTileEntity;
 
 public class AutoCutterRenderer extends TileEntitySpecialRenderer {
     
@@ -72,9 +72,9 @@ public class AutoCutterRenderer extends TileEntitySpecialRenderer {
     //A reference to your Model file. Again, very important.
             this.model.renderEnt((AutoCutterTileEntity)te, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
     //Tell it to stop rendering for both the PushMatrix's
-            
-            // Begin Tesselator !!!!!
-            // maybe?
+        
+            			// Begin Tesselator !!!!!
+            			// maybe?
             
             GL11.glPopMatrix();
             GL11.glPopMatrix();

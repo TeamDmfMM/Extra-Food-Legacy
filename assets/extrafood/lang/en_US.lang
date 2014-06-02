@@ -9,3 +9,7 @@ item.Knife.name=Cooking Knife
 #Block Names
 tile.Banana_Bunch.name=Banana Bunch
 tile.CheesePress.name=Cheese Press
+
+#--Cook Book Names
+cookbook.Title=Cookbook
+cookbook.pizza=BKBK

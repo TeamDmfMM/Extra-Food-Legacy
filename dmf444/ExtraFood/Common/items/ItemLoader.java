@@ -11,6 +11,7 @@ public class ItemLoader {
 	public static Item banana;
 	public static Item knife;
 	public static Item cheeseSlice;
+	public static Item cookBook;
 	
 	
 	public static boolean Register=false;
@@ -19,6 +20,9 @@ public class ItemLoader {
 		banana = new Banana(ItemLib.idBanana, 1, 0.8F, false).setUnlocalizedName(ItemLib.iBan);
 		knife = new Knife(ItemLib.idKnife).setUnlocalizedName(ItemLib.iK);	
 		cheeseSlice = new CheeseSlice(ItemLib.idCS).setUnlocalizedName(ItemLib.iCS);
+		cookBook = new Cookbook(ItemLib.idCB).setUnlocalizedName(ItemLib.iCB);
+		
+		
 		knife.setContainerItem(knife);
 		
 		
@@ -30,6 +34,7 @@ public class ItemLoader {
 			GameRegistry.registerItem(banana, ItemLib.iBan);
 			GameRegistry.registerItem(knife, ItemLib.iK);
 			GameRegistry.registerItem(cheeseSlice, ItemLib.iCS);
+			GameRegistry.registerItem(cookBook, ItemLib.iCB);
 		}
 		Register=true;
 	}

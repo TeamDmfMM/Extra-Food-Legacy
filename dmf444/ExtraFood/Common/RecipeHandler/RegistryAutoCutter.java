@@ -1,13 +1,14 @@
 package dmf444.ExtraFood.Common.RecipeHandler;
 
 import java.util.ArrayList;
-
 import net.minecraft.item.ItemStack;
 import dmf444.ExtraFood.Common.items.ItemLoader;
 
+
 public class RegistryAutoCutter {
 	ArrayList<RecipeAutoCutter> recipes = new ArrayList<RecipeAutoCutter>();
-	
+
+
 	public RegistryAutoCutter(){
 		this.registerRecipe(new RecipeAutoCutter(new ItemStack(ItemLoader.cheeseWheel, 1), new ItemStack(ItemLoader.cheeseSlice, 8)));
 	}
@@ -22,5 +23,6 @@ public class RegistryAutoCutter {
 		}
 		return null;
 	}
+
 
 }

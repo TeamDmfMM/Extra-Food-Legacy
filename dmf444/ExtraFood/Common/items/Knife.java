@@ -8,15 +8,14 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
 import dmf444.ExtraFood.Core.EFTabs;
 
-public class Knife extends Item {
+public class Knife extends StanItem {
 
 	
 	public Knife(int id)
 	{
         super(id);
-        //this.maxStackSize = 1;
+        this.maxStackSize = 1;
         this.setMaxDamage(10);
-        this.setCreativeTab(EFTabs.INSTANCE);
         this.setTextureName("extrafood:knife");
     }
 	

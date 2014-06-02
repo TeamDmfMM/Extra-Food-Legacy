@@ -6,7 +6,9 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 
+
 public class SlotCheesePressOutput extends Slot {
+
 
 	public SlotCheesePressOutput(IInventory par1iInventory, int par2, int par3,
 			int par4) {
@@ -21,5 +23,6 @@ public class SlotCheesePressOutput extends Slot {
 	public boolean isItemValid(ItemStack i){
 		return false;
 	}
+
 
 }

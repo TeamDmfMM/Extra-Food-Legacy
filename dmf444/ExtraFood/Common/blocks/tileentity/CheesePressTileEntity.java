@@ -160,11 +160,9 @@ public class CheesePressTileEntity extends TileEntity implements IInventory {
 				else {
 					ItemStack is = new ItemStack(ItemLoader.cheeseWheel, 1);
 					this.setInventorySlotContents(3, is);
+					}
 				}
-				
-				
-			}}
-			
+			}
 			@Override
 			public void updateEntity(){
 				if (this.areItemsCorrect() == true){

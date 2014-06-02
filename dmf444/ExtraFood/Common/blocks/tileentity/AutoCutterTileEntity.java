@@ -1,5 +1,6 @@
 package dmf444.ExtraFood.Common.blocks.tileentity;
 
+
 import dmf444.ExtraFood.Core.ExtraFood;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
@@ -8,9 +9,12 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 
+
 public class AutoCutterTileEntity extends TileEntity implements IInventory {
 
+
     private ItemStack[] inv;
+
 
     public AutoCutterTileEntity(){
             inv = new ItemStack[3];
@@ -20,6 +24,7 @@ public class AutoCutterTileEntity extends TileEntity implements IInventory {
     public int getSizeInventory() {
             return inv.length;
     }
+
 
     @Override
     public ItemStack getStackInSlot(int slot) {
@@ -33,6 +38,7 @@ public class AutoCutterTileEntity extends TileEntity implements IInventory {
                     stack.stackSize = getInventoryStackLimit();
             }               
     }
+
 
     @Override
     public ItemStack decrStackSize(int slot, int amt) {
@@ -50,6 +56,7 @@ public class AutoCutterTileEntity extends TileEntity implements IInventory {
             return stack;
     }
 
+
     @Override
     public ItemStack getStackInSlotOnClosing(int slot) {
             ItemStack stack = getStackInSlot(slot);
@@ -64,14 +71,17 @@ public class AutoCutterTileEntity extends TileEntity implements IInventory {
             return 64;
     }
 
+
     @Override
     public boolean isUseableByPlayer(EntityPlayer player) {
             return worldObj.getBlockTileEntity(xCoord, yCoord, zCoord) == this &&
             player.getDistanceSq(xCoord + 0.5, yCoord + 0.5, zCoord + 0.5) < 64;
     }
 
+
     @Override
     public void openChest() {}
+
 
     @Override
     public void closeChest() {}
@@ -90,6 +100,7 @@ public class AutoCutterTileEntity extends TileEntity implements IInventory {
             }
     }
 
+
     @Override
     public void writeToNBT(NBTTagCompound tagCompound) {
             super.writeToNBT(tagCompound);
@@ -107,14 +118,16 @@ public class AutoCutterTileEntity extends TileEntity implements IInventory {
             tagCompound.setTag("Inventory", itemList);
     }
 
+
             @Override
             public String getInvName() {
-                    return "tco.tileentitytiny";
+                    return "extrafood.autocutter";
             }
 	public boolean work;
 	//TODO constructors
 	public int complete;
 	public int ttime;
+
 
 	@Override
 	public boolean isInvNameLocalized() {
@@ -122,13 +135,15 @@ public class AutoCutterTileEntity extends TileEntity implements IInventory {
 		return false;
 	}
 
+
 	@Override
 	public boolean isItemValidForSlot(int i, ItemStack itemstack) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 	public boolean ok(){
-	
+
+
 		if (this.inv[0] != null){
 			System.out.println("1");
 			if (ExtraFood.registryCutter.getItemOutput(this.inv[0]) != null){
@@ -141,12 +156,15 @@ public class AutoCutterTileEntity extends TileEntity implements IInventory {
 					if (this.inv[1].stackSize >= 64 - l.stackSize + 1){
 						return false;
 					}
-					
+
+
 				}
 				System.out.println("3");
 				return true;
-				
-				
+
+
+
+
 			}
 			else {
 				return false;
@@ -154,7 +172,8 @@ public class AutoCutterTileEntity extends TileEntity implements IInventory {
 		}
 		else {
 			return false;
-			
+
+
 		}
 	}	
 	public void updateEntity(){
@@ -173,6 +192,7 @@ public class AutoCutterTileEntity extends TileEntity implements IInventory {
 		}
 	}
 
+
 	private void do_() {
 		ItemStack l = ExtraFood.registryCutter.getItemOutput(this.inv[0]);
 		if (this.inv[1] == null){
@@ -183,7 +203,7 @@ public class AutoCutterTileEntity extends TileEntity implements IInventory {
 		}
 		this.inv[0] = this.decrStackSize(0, 1);
 		// TODO Auto-generated method stub
-		
-	}
-	}
 
+
+	}
+	}

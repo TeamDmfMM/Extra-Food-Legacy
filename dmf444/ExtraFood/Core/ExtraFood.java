@@ -19,6 +19,7 @@ import dmf444.ExtraFood.Common.blocks.BlockLoader;
 import dmf444.ExtraFood.Common.items.ItemLoader;
 import dmf444.ExtraFood.Core.lib.ModInfo;
 
+
 @Mod(modid = ModInfo.MId,name = ModInfo.Mname, version = ModInfo.Vers)
 @NetworkMod(clientSideRequired = true)
 public class ExtraFood {
@@ -29,8 +30,6 @@ public class ExtraFood {
 	public static CommonProxy proxy;
 	
 	public static RegistryAutoCutter registryCutter;
-	
-
 	TreeManager treeManager = new TreeManager();
 	
 	
@@ -44,8 +43,9 @@ public class ExtraFood {
 		GameRegistry.registerWorldGenerator(treeManager);
 		MinecraftForge.EVENT_BUS.register(new ExtraFood_EventBonemeal());
 		NetworkRegistry.instance().registerGuiHandler(this, new GuiHandler());
-		AchieveLoad.loadAc();
 		GameRegistry.registerCraftingHandler(new TestHandle());
+		AchieveLoad.loadAc();
+		
 		
 			System.out.println("Cleared EF's Registry");
 		
@@ -60,11 +60,14 @@ public class ExtraFood {
 		proxy.registerRenderers();
 		
 		CraftingRecipies.craftering();
+		
+		proxy.registerKeybinds();
 
 		
 	}
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event){
+		
 		this.registryCutter = new RegistryAutoCutter();
 	}
 }

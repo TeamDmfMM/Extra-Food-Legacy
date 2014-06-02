@@ -1,0 +1,228 @@
+package dmf444.ExtraFood.Common.blocks.guis;
+
+import java.util.List;
+import java.util.Random;
+
+import net.minecraft.block.Block;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.client.renderer.RenderHelper;
+import net.minecraft.client.renderer.entity.RenderItem;
+import net.minecraft.client.renderer.texture.TextureMap;
+import net.minecraft.client.resources.I18n;
+import net.minecraft.stats.Achievement;
+import net.minecraft.stats.AchievementList;
+import net.minecraft.stats.StatFileWriter;
+import net.minecraft.util.Icon;
+import net.minecraft.util.MathHelper;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.StatCollector;
+import net.minecraftforge.common.AchievementPage;
+
+import org.lwjgl.input.Mouse;
+import org.lwjgl.opengl.GL11;
+import org.lwjgl.opengl.GL12;
+
+public class CookBookGUI extends GuiScreen {
+	   private static int minDisplayColumn;
+	    private static int minDisplayRow;
+	    private static int maxDisplayColumn;
+	    private static int maxDisplayRow;
+	    
+    /** The top x coordinate of the achievement map */
+    private static final int guiMapTop = minDisplayColumn * 24 - 112;
+
+    /** The left y coordinate of the achievement map */
+    private static final int guiMapLeft = minDisplayRow * 24 - 112;
+
+    /** The bottom x coordinate of the achievement map */
+    private static final int guiMapBottom = maxDisplayColumn * 24 - 77;
+
+    /** The right y coordinate of the achievement map */
+    private static final int guiMapRight = maxDisplayRow * 24 - 77;
+    ResourceLocation r = new ResourceLocation("extrafood", "textures/gui/cookbookgui.png");
+    ResourceLocation back = new ResourceLocation("extrafood", "textures/gui/cookbook_background.png");
+    protected static int achievementsPaneWidth = 256;
+    protected static int achievementsPaneHeight = 202;
+    
+    private int isMouseButtonDown;
+    /** The x position of the achievement map */
+    protected double guiMapX;
+
+    /** The y position of the achievement map */
+    protected double guiMapY;
+    protected double field_74124_q;
+    protected double field_74123_r;
+    
+    /** The current mouse x coordinate */
+    protected int mouseX;
+
+    /** The current mouse y coordinate */
+    protected int mouseY;
+    protected double field_74117_m;
+    protected double field_74115_n;
+    
+    public static final int GUI_ID = 10;
+    
+   public static CookBookGUI currentOpenBook = new CookBookGUI();
+
+   public CookBookGUI() {
+	   System.out.println("HERE");
+   }
+
+	
+
+    @Override
+    public void drawScreen(int par1, int par2, float par3)
+    {
+    	{
+            if (Mouse.isButtonDown(0))
+            {
+                int k = (this.width - this.achievementsPaneWidth) / 2;
+                int l = (this.height - this.achievementsPaneHeight) / 2;
+                int i1 = k + 8;
+                int j1 = l + 17;
+
+                if ((this.isMouseButtonDown == 0 || this.isMouseButtonDown == 1) && par1 >= i1 && par1 < i1 + 224 && par2 >= j1 && par2 < j1 + 155)
+                {
+                    if (this.isMouseButtonDown == 0)
+                    {
+                        this.isMouseButtonDown = 1;
+                    }
+                    else
+                    {
+                        this.guiMapX -= (double)(par1 - this.mouseX);
+                        this.guiMapY -= (double)(par2 - this.mouseY);
+                        this.field_74124_q = this.field_74117_m = this.guiMapX;
+                        this.field_74123_r = this.field_74115_n = this.guiMapY;
+                    }
+
+                    this.mouseX = par1;
+                    this.mouseY = par2;
+                }
+
+                if (this.field_74124_q < (double)guiMapTop)
+                {
+                    this.field_74124_q = (double)guiMapTop;
+                }
+
+                if (this.field_74123_r < (double)guiMapLeft)
+                {
+                    this.field_74123_r = (double)guiMapLeft;
+                }
+
+                if (this.field_74124_q >= (double)guiMapBottom)
+                {
+                    this.field_74124_q = (double)(guiMapBottom - 1);
+                }
+
+                if (this.field_74123_r >= (double)guiMapRight)
+                {
+                    this.field_74123_r = (double)(guiMapRight - 1);
+                }
+            }
+            else
+            {
+                this.isMouseButtonDown = 0;
+            }
+            
+            this.drawDefaultBackground();
+            this.genDasBookBackground(par1, par2, par3);            
+            this.drawTitle();
+            GL11.glDisable(GL11.GL_LIGHTING);
+            GL11.glDisable(GL11.GL_DEPTH_TEST);
+            GL11.glEnable(GL11.GL_LIGHTING);
+            GL11.glEnable(GL11.GL_DEPTH_TEST);
+    	}
+
+
+    }
+    protected void drawTitle()
+    {
+		String mainGUI = StatCollector.translateToLocal("cookbook.Title");
+        int i = (this.width - this.achievementsPaneWidth) / 2;
+        int j = (this.height - this.achievementsPaneHeight) / 2;
+        this.fontRenderer.drawString(mainGUI, i + 6, j + 5, 0xFFFFFFFF); //i + 15 original
+    }
+    
+    
+    protected void genDasBookBackground(int par1, int par2, float par3)
+    {
+        int k = MathHelper.floor_double(this.field_74117_m + (this.guiMapX - this.field_74117_m) * (double)par3);
+        int l = MathHelper.floor_double(this.field_74115_n + (this.guiMapY - this.field_74115_n) * (double)par3);
+
+        if (k < guiMapTop)
+        {
+            k = guiMapTop;
+        }
+
+        if (l < guiMapLeft)
+        {
+            l = guiMapLeft;
+        }
+
+        if (k >= guiMapBottom)
+        {
+            k = guiMapBottom - 1;
+        }
+
+        if (l >= guiMapRight)
+        {
+            l = guiMapRight - 1;
+        }
+
+        int i1 = (this.width - this.achievementsPaneWidth) / 2;
+        int j1 = (this.height - this.achievementsPaneHeight) / 2;
+        int k1 = i1 + 16;
+        int l1 = j1 + 17;
+        this.zLevel = 0.0F;
+        GL11.glDepthFunc(GL11.GL_GEQUAL);
+        GL11.glPushMatrix();
+        GL11.glTranslatef(0.0F, 0.0F, -200.0F);
+        GL11.glEnable(GL11.GL_TEXTURE_2D);
+        GL11.glDisable(GL11.GL_LIGHTING);
+        GL11.glEnable(GL12.GL_RESCALE_NORMAL);
+        GL11.glEnable(GL11.GL_COLOR_MATERIAL);
+        int i2 = k + 288 >> 4;
+        int j2 = l + 288 >> 4;
+        int k2 = (k + 288) % 16;
+        int l2 = (l + 288) % 16;
+        Random random = new Random();
+        int i3 = 0;
+        int j3;
+        int k3 = 0;
+
+
+        float f1 = 0.6F - (float)(j2 + i3) / 25.0F * 0.3F;
+        GL11.glColor4f(f1, f1, f1, 1.0F);
+
+
+        this.mc.getTextureManager().bindTexture(back);
+        this.drawTexturedModalRect(i1 + 2, j1 + 2, 0, 0, this.achievementsPaneWidth - 2, this.achievementsPaneHeight - 4);
+       // GL11.glEnable(GL11.GL_DEPTH_TEST);
+        GL11.glDepthFunc(GL11.GL_LEQUAL);
+      
+        GL11.glDisable(GL11.GL_DEPTH_TEST);
+        GL11.glEnable(GL11.GL_BLEND);
+        GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
+        this.mc.getTextureManager().bindTexture(r);
+        this.drawTexturedModalRect(i1, j1, 0, 0, this.achievementsPaneWidth, this.achievementsPaneHeight);
+        GL11.glPopMatrix();
+        this.zLevel = 0.0F;
+        GL11.glDepthFunc(GL11.GL_LEQUAL);
+        GL11.glDisable(GL11.GL_DEPTH_TEST);
+        GL11.glEnable(GL11.GL_TEXTURE_2D);
+        super.drawScreen(par1, par2, par3);
+    }
+    
+    public boolean doesGuiPauseGame()
+    {
+        return false;
+    }
+
+
+	
+	
+   
+
+}
