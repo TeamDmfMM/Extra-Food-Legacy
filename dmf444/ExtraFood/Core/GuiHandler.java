@@ -1,6 +1,8 @@
 package dmf444.ExtraFood.Core;
 
+import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import cpw.mods.fml.common.network.IGuiHandler;
@@ -12,6 +14,7 @@ import dmf444.ExtraFood.Common.blocks.guis.CheesePressGUI;
 import dmf444.ExtraFood.Common.blocks.guis.CookBookGUI;
 import dmf444.ExtraFood.Common.blocks.tileentity.AutoCutterTileEntity;
 import dmf444.ExtraFood.Common.blocks.tileentity.CheesePressTileEntity;
+import dmf444.ExtraFood.Common.items.ItemLoader;
 
 public class GuiHandler implements IGuiHandler {
     //returns an instance of the Container you made earlier
@@ -46,7 +49,12 @@ public class GuiHandler implements IGuiHandler {
             if(id == CookBookGUI.GUI_ID){
             	System.out.println("CALLED");
             	//return CookBookGUI.currentOpenBook;
-            	return new CRPageGUI("pizza", 0, 0, 0, 0, 0, 0, 0, 0, 0);
+            	ItemStack[] items = new ItemStack[9];
+            	items[0] = new ItemStack(ItemLoader.cheeseWheel, 1);
+            	items[2] = new ItemStack(ItemLoader.cheeseSlice, 2);
+            	items[4] = new ItemStack(Block.glowStone, 1);
+            	
+            	return new CRPageGUI("pizza", items);
             	} else {
             if(tileEntity instanceof CheesePressTileEntity){
                     return new CheesePressGUI(player.inventory, (CheesePressTileEntity) tileEntity);
