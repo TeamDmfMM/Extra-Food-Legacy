@@ -1,17 +1,18 @@
 package dmf444.ExtraFood.Common.blocks.guis;
 
-import org.lwjgl.opengl.GL11;
-
+import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.entity.RenderItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
 
+import org.lwjgl.opengl.GL11;
+
 public class CRPageGUI extends GuiScreen {
 
 ResourceLocation bookopen = new ResourceLocation("extrafood", "textures/gui/book_texture.png");
-ResourceLocation Cinterface = new ResourceLocation("extrafood", "textures/gui/craftingbookGUI.png");
+ResourceLocation Cinterface = new ResourceLocation("extrafood", "textures/gui/craftingbookGUI1.png");
 String pageTextFrom;
 private ItemStack[] items;
 RenderItem irender;
@@ -39,81 +40,68 @@ RenderItem irender;
  }
 
  protected void drawTextSide() {
+     int i = (this.width - CookBookGUI.achievementsPaneWidth) / 2;
+     int j = (this.height - CookBookGUI.achievementsPaneHeight - 50) / 2;
+	 this.fontRenderer.drawSplitString(pageTextFrom, i + 26, j + 19, 93, 0x0000000);
+	 
 	 //parts = string.split("-")
+	 /*if (pageTextFrom.contains("%s")){
 	 String[] parts = pageTextFrom.split("%s");
-	 String part1 = parts[0];
-	 String part2 = parts[1];
-	 String part3 = parts[2];
-	 String part4 = parts[3];
-        int i = (this.width - CookBookGUI.achievementsPaneWidth) / 2;
-        int j = (this.height - CookBookGUI.achievementsPaneHeight) / 2;
-        int C = 0x00000000;
-		 int q;
-		 int pg = 0;
-		 int loc = j + 19;
-		 
-	 if(pageTextFrom.contains("%s")){
+     int i = (this.width - CookBookGUI.achievementsPaneWidth) / 2;
+     int j = (this.height - CookBookGUI.achievementsPaneHeight) / 2;
+	 int q = 0;
+	 int loc = j + 19;
+	 int C = 0x00000000;
 
-		 for(q = 0; q < 4; q++) {
-		 this.fontRenderer.drawString(parts[q], i + 26, loc, C);
-		 pg += 1;
+	 for (String part : parts){
+		
+		this.fontRenderer.drawString(part, i + 26, loc, C);
+		 
 		 loc += 9;
-		/* this.fontRenderer.drawString(part2, i + 25, j + 27, C);
-		 this.fontRenderer.drawString(part3, i + 25, j + 35, C); 
-		 this.fontRenderer.drawString(part4, i + 25, j + 43, C); 
-		 */
-		 }
-	 }else{ 
-        this.fontRenderer.drawString(pageTextFrom, i + 25, j + 19, C);
 	 }
+	 }
+	 else {
+	     int i = (this.width - CookBookGUI.achievementsPaneWidth) / 2;
+	     int j = (this.height - CookBookGUI.achievementsPaneHeight) / 2;
+		 int C = 0x00000000;
+		 this.fontRenderer.drawString(pageTextFrom, i + 26, j + 19, C);
+	 }*/
 }
 
 protected void drawBookBackground() {
 	//I decided to use the achivement size, because it kinda just worked!
 	int i1 = (this.width - CookBookGUI.achievementsPaneWidth) / 2;
-    int j1 = (this.height - CookBookGUI.achievementsPaneHeight) / 2;
+    int j1 = (this.height - CookBookGUI.achievementsPaneHeight - 50) / 2;
     
     int k1 = j1 - 32;
 	
     GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
 	this.mc.getTextureManager().bindTexture(bookopen);
-    this.drawTexturedModalRect(i1, j1, 0, 0, CookBookGUI.achievementsPaneWidth, CookBookGUI.achievementsPaneHeight);
+    this.drawTexturedModalRect(i1, j1, 0, 0, CookBookGUI.achievementsPaneWidth, CookBookGUI.achievementsPaneHeight + 50);
 
 
     this.mc.getTextureManager().bindTexture(Cinterface);
     GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
     GL11.glEnable(GL11.GL_BLEND);
-    this.drawTexturedModalRect(i1 + 155, j1 + 35, 0, 0, CookBookGUI.achievementsPaneWidth, CookBookGUI.achievementsPaneHeight);
+    this.drawTexturedModalRect(i1 + 145, j1 + 26, 0, 0, CookBookGUI.achievementsPaneWidth, CookBookGUI.achievementsPaneHeight);
     GL11.glDisable(GL11.GL_BLEND);
  }
 
 public void renderItems() {
 	// Render code: this.irender.renderItemAndEffectIntoGUI(fontRenderer, this.mc.getTextureManager(), items[0], 100, 100);
 	int x = ((this.width - CookBookGUI.achievementsPaneWidth) / 2) + 155 + 4;
-    int y = ((this.height - CookBookGUI.achievementsPaneHeight) / 2) + 35 + 42;
+    int y = ((this.height - CookBookGUI.achievementsPaneHeight - 50) / 2) + 35 + 42;
     
     int xo = 38;
     int yo = 38;
     
+    int tillrow = 3;
     int iid = 0;
-	for (ItemStack i : this.items){
-		if (i != null){
+	for (iid = 0; iid < 9; iid++){
+		
+		if (items[iid] != null){
 
-			int xie = 0;
-			int yie;
-			if (iid > 0){
-				int row = iid / 3;
-
-
-			xie = (((iid - (Math.max((int)row, 0) * 3))) - 1) * xo;
-			yie = row * yo;
-			}
-			else {
-				xie = xo;
-				yie = yo;
-			}
-			xie += x; 
-			yie += y;
+			
 
 
 			//System.out.println(iid);
@@ -121,15 +109,23 @@ public void renderItems() {
 			GL11.glDisable(GL11.GL_LIGHTING);
 			int a;
 			for(a = 0; a < 1; a++){
-			this.irender.renderItemIntoGUI(this.fontRenderer, this.mc.getTextureManager(), i, x, y);
-			x += 19;
+			this.irender.renderItemIntoGUI(this.fontRenderer, this.mc.getTextureManager(), items[iid], x - 3, y);
+			
 			}
 			
 			GL11.glEnable(GL11.GL_LIGHTING);
-
+			
+			
 
 		}
-		iid += 1;
+		tillrow -= 1;
+		x += 22;
+		System.out.println(iid + " X assumed : " + x + " Y assumed : " + y);
+		if (tillrow == 0){
+			tillrow = 3;
+			y += 22;
+			x = ((this.width - CookBookGUI.achievementsPaneWidth) / 2) + 155 + 4;
+		}
 	}
 
 }

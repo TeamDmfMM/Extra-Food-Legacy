@@ -51,8 +51,8 @@ public class GuiHandler implements IGuiHandler {
             	//return CookBookGUI.currentOpenBook;
             	ItemStack[] items = new ItemStack[9];
             	items[0] = new ItemStack(ItemLoader.cheeseWheel, 1);
-            	items[2] = new ItemStack(ItemLoader.cheeseSlice, 2);
-            	items[4] = new ItemStack(Block.glowStone, 1);
+            	items[1] = new ItemStack(ItemLoader.cheeseSlice, 2);
+            	items[8] = new ItemStack(Block.glowStone, 1);
             	
             	return new CRPageGUI("pizza", items);
             	} else {
