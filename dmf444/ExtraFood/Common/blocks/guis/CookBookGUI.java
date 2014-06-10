@@ -1,34 +1,26 @@
 package dmf444.ExtraFood.Common.blocks.guis;
 
-import java.util.List;
+import java.util.ArrayList;
 import java.util.Random;
 
-import net.minecraft.block.Block;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.renderer.RenderHelper;
-import net.minecraft.client.renderer.entity.RenderItem;
-import net.minecraft.client.renderer.texture.TextureMap;
-import net.minecraft.client.resources.I18n;
-import net.minecraft.stats.Achievement;
-import net.minecraft.stats.AchievementList;
-import net.minecraft.stats.StatFileWriter;
-import net.minecraft.util.Icon;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
-import net.minecraftforge.common.AchievementPage;
 
 import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
+
+import dmf444.ExtraFood.Common.items.ItemLoader;
 
 public class CookBookGUI extends GuiScreen {
 	   private static int minDisplayColumn;
 	    private static int minDisplayRow;
 	    private static int maxDisplayColumn;
 	    private static int maxDisplayRow;
-	    
+	    // mincrmatt12 moving vars
 	    private int px;
 	    private int py;
 	    private int x;
@@ -36,6 +28,8 @@ public class CookBookGUI extends GuiScreen {
 	    
 	    private int iox;
 	    private int yox;
+	    //mincrmatt12 button vars
+	    private ArrayList<ClickTab> buttons;
 	    
     /** The top x coordinate of the achievement map */
     private static final int guiMapTop = minDisplayColumn * 24 - 112;
@@ -76,6 +70,10 @@ public class CookBookGUI extends GuiScreen {
 
    public CookBookGUI() {
 	   System.out.println("HERE");
+	   this.buttons = new ArrayList<ClickTab>();
+	   buttons.add(new ClickTab(0, 0, 0, 22, 22, "", 1, 1, new ItemStack(ItemLoader.cookBook), "cheesepress"));
+	   buttons.add(new ClickTab(0, 0, 0, 22, 22, "", 6, 5, new ItemStack(ItemLoader.cheeseSlice), "cheesepress"));
+	   buttons.add(new ClickTab(0, 0, 0, 22, 22, "", 10, 23, new ItemStack(ItemLoader.knife), "cheesepress"));
    }
 
 	
@@ -86,48 +84,14 @@ public class CookBookGUI extends GuiScreen {
     	{
             if (Mouse.isButtonDown(0))
             {
-                int k = (this.width - this.achievementsPaneWidth) / 2;
-                int l = (this.height - this.achievementsPaneHeight) / 2;
-                int i1 = k + 8;
-                int j1 = l + 17;
-
-                if ((this.isMouseButtonDown == 0 || this.isMouseButtonDown == 1) && par1 >= i1 && par1 < i1 + 224 && par2 >= j1 && par2 < j1 + 155)
-                {
-                    if (this.isMouseButtonDown == 0)
-                    {
-                        this.isMouseButtonDown = 1;
-                    }
-                    else
-                    {
-                        this.guiMapX -= (double)(par1 - this.mouseX);
-                        this.guiMapY -= (double)(par2 - this.mouseY);
-                        this.field_74124_q = this.field_74117_m = this.guiMapX;
-                        this.field_74123_r = this.field_74115_n = this.guiMapY;
-                    }
-
-                    this.mouseX = par1;
-                    this.mouseY = par2;
-                }
-
-                if (this.field_74124_q < (double)guiMapTop)
-                {
-                    this.field_74124_q = (double)guiMapTop;
-                }
-
-                if (this.field_74123_r < (double)guiMapLeft)
-                {
-                    this.field_74123_r = (double)guiMapLeft;
-                }
-
-                if (this.field_74124_q >= (double)guiMapBottom)
-                {
-                    this.field_74124_q = (double)(guiMapBottom - 1);
-                }
-
-                if (this.field_74123_r >= (double)guiMapRight)
-                {
-                    this.field_74123_r = (double)(guiMapRight - 1);
-                }
+            	
+    			
+    			
+    			
+    			
+    			iox += -Mouse.getDX();
+    			yox += Mouse.getDY();
+    			System.out.println(iox + " " + yox);
             }
             else
             {
@@ -156,7 +120,7 @@ public class CookBookGUI extends GuiScreen {
     
     protected void genDasBookBackground(int par1, int par2, float par3)
     {
-        /*int k = MathHelper.floor_double(this.field_74117_m + (this.guiMapX - this.field_74117_m) * (double)par3);
+        int k = MathHelper.floor_double(this.field_74117_m + (this.guiMapX - this.field_74117_m) * (double)par3);
         int l = MathHelper.floor_double(this.field_74115_n + (this.guiMapY - this.field_74115_n) * (double)par3);
 
         if (k < guiMapTop)
@@ -203,12 +167,9 @@ public class CookBookGUI extends GuiScreen {
 
         float f1 = 0.6F - (float)(j2 + i3) / 25.0F * 0.3F;
         GL11.glColor4f(f1, f1, f1, 1.0F);
-        */
-    	int i1 = (this.width - this.achievementsPaneWidth) / 2;
-        int j1 = (this.height - this.achievementsPaneHeight) / 2;
 
         this.mc.getTextureManager().bindTexture(back);
-        this.drawTexturedModalRect(i1 + 2, j1 + 2, 0, 0, this.achievementsPaneWidth - 2, this.achievementsPaneHeight - 4);
+        this.drawTexturedModalRect(i1 + 2, j1 + 2, iox,yox, this.achievementsPaneWidth - 2, this.achievementsPaneHeight - 4);
        // GL11.glEnable(GL11.GL_DEPTH_TEST);
         GL11.glDepthFunc(GL11.GL_LEQUAL);
       
@@ -216,12 +177,21 @@ public class CookBookGUI extends GuiScreen {
         GL11.glEnable(GL11.GL_BLEND);
         GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
         this.mc.getTextureManager().bindTexture(r);
-        this.drawTexturedModalRect(i1, j1, 0, 0, this.achievementsPaneWidth, this.achievementsPaneHeight);
+        this.drawTexturedModalRect(i1, j1, 0,0, this.achievementsPaneWidth, this.achievementsPaneHeight);
         GL11.glPopMatrix();
         this.zLevel = 0.0F;
         GL11.glDepthFunc(GL11.GL_LEQUAL);
         GL11.glDisable(GL11.GL_DEPTH_TEST);
         GL11.glEnable(GL11.GL_TEXTURE_2D);
+        for (ClickTab tab : buttons){
+        	if (tab.x * 22 > iox && tab.x * 22 < this.achievementsPaneWidth - 2 + iox){
+        		if (tab.y * 22 > yox && tab.y * 22 < this.achievementsPaneHeight - 2 + yox){
+        			tab.xPosition = i1 + 2 + (tab.x * 22) + -iox;
+        			tab.yPosition = j1 + 2 + (tab.y * 22) + -yox;
+        			tab.drawButton(mc, 0, 0);
+        		}
+        	}
+        }
         super.drawScreen(par1, par2, par3);
     }
     
@@ -247,8 +217,20 @@ public class CookBookGUI extends GuiScreen {
     			if (yox < 0){
     				yox = 0;
     			}
+    			System.out.println(iox + " " + yox);
     					
     		}
+    	}
+    }
+    protected void mouseClicked(int par1, int par2, int par3){
+    	for (ClickTab tab : buttons){
+        	if (tab.x * 22 > iox && tab.x * 22 < this.achievementsPaneWidth - 2 + iox){
+        		if (tab.y * 22 > yox && tab.y * 22 < this.achievementsPaneHeight - 2 + yox){
+        			if (tab.mousePressed(mc, par1, par2)){
+        				this.mc.displayGuiScreen(new CRPageGUI(tab.pagename));
+        			}
+        		}
+        	}	
     	}
     }
 
