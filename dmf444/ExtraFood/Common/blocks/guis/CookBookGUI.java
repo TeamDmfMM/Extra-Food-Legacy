@@ -29,6 +29,14 @@ public class CookBookGUI extends GuiScreen {
 	    private static int maxDisplayColumn;
 	    private static int maxDisplayRow;
 	    
+	    private int px;
+	    private int py;
+	    private int x;
+	    private int y;
+	    
+	    private int iox;
+	    private int yox;
+	    
     /** The top x coordinate of the achievement map */
     private static final int guiMapTop = minDisplayColumn * 24 - 112;
 
@@ -148,7 +156,7 @@ public class CookBookGUI extends GuiScreen {
     
     protected void genDasBookBackground(int par1, int par2, float par3)
     {
-        int k = MathHelper.floor_double(this.field_74117_m + (this.guiMapX - this.field_74117_m) * (double)par3);
+        /*int k = MathHelper.floor_double(this.field_74117_m + (this.guiMapX - this.field_74117_m) * (double)par3);
         int l = MathHelper.floor_double(this.field_74115_n + (this.guiMapY - this.field_74115_n) * (double)par3);
 
         if (k < guiMapTop)
@@ -195,7 +203,9 @@ public class CookBookGUI extends GuiScreen {
 
         float f1 = 0.6F - (float)(j2 + i3) / 25.0F * 0.3F;
         GL11.glColor4f(f1, f1, f1, 1.0F);
-
+        */
+    	int i1 = (this.width - this.achievementsPaneWidth) / 2;
+        int j1 = (this.height - this.achievementsPaneHeight) / 2;
 
         this.mc.getTextureManager().bindTexture(back);
         this.drawTexturedModalRect(i1 + 2, j1 + 2, 0, 0, this.achievementsPaneWidth - 2, this.achievementsPaneHeight - 4);
@@ -218,6 +228,28 @@ public class CookBookGUI extends GuiScreen {
     public boolean doesGuiPauseGame()
     {
         return false;
+    }
+    protected void mouseMovedOrUp(int par1, int par2, int par3){
+    	super.mouseMovedOrUp(par1, par2, par3);
+    	if (par3 == -1){
+    		if (Mouse.isButtonDown(0)){
+    			int dx = par1 - x;
+    			int dy = par2 - y;
+    			px = x;
+    			py = y;
+    			x = par1;
+    			y = par2;
+    			iox += dx;
+    			yox += dy;
+    			if (iox < 0){
+    				iox = 0;
+    			}
+    			if (yox < 0){
+    				yox = 0;
+    			}
+    					
+    		}
+    	}
     }
 
 

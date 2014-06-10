@@ -49,12 +49,8 @@ public class GuiHandler implements IGuiHandler {
             if(id == CookBookGUI.GUI_ID){
             	System.out.println("CALLED");
             	//return CookBookGUI.currentOpenBook;
-            	ItemStack[] items = new ItemStack[9];
-            	items[0] = new ItemStack(ItemLoader.cheeseWheel, 1);
-            	items[1] = new ItemStack(ItemLoader.cheeseSlice, 2);
-            	items[8] = new ItemStack(Block.glowStone, 1);
             	
-            	return new CRPageGUI("pizza", items);
+            	return new CookBookGUI();
             	} else {
             if(tileEntity instanceof CheesePressTileEntity){
                     return new CheesePressGUI(player.inventory, (CheesePressTileEntity) tileEntity);
