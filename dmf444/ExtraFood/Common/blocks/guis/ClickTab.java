@@ -33,8 +33,9 @@ public class ClickTab extends GuiButton{
 	}
 	
 	public void drawButton(Minecraft m, int p1, int p2){
-		m.getTextureManager().bindTexture(new ResourceLocation("extrafood", "textures/gui/oline.png"));
-		this.drawTexturedModalRect(xPosition, yPosition, 0, 0, 22, 22);
+		
+		m.getTextureManager().bindTexture(new ResourceLocation("extrafood", "textures/gui/cookbookgui.png"));
+		this.drawTexturedModalRect(xPosition, yPosition, 2, 204,22, 22);
 		this.rinder.renderItemIntoGUI(m.fontRenderer, m.getTextureManager(), this.item, xPosition + 2, yPosition + 2);
 		
 		

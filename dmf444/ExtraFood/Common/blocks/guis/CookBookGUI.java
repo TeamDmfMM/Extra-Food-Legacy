@@ -91,6 +91,20 @@ public class CookBookGUI extends GuiScreen {
     			
     			iox += -Mouse.getDX();
     			yox += Mouse.getDY();
+    			if (iox < 0){
+    				iox = 0;
+    			}
+    			if (yox < 0){
+    				yox = 0;
+    			}
+    			if (iox > 250){
+    				iox = 350;
+    			}
+    			if (yox > 250){
+    				yox = 550;
+    			}
+    			
+    			
     			System.out.println(iox + " " + yox);
             }
             else
@@ -227,6 +241,7 @@ public class CookBookGUI extends GuiScreen {
         	if (tab.x * 22 > iox && tab.x * 22 < this.achievementsPaneWidth - 2 + iox){
         		if (tab.y * 22 > yox && tab.y * 22 < this.achievementsPaneHeight - 2 + yox){
         			if (tab.mousePressed(mc, par1, par2)){
+        				
         				this.mc.displayGuiScreen(new CRPageGUI(tab.pagename));
         			}
         		}
