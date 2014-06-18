@@ -46,6 +46,7 @@ mcp/src/minecraft/forge_logo.png
 mcp/src/minecraft/mcmod.info
 mcp/src/minecraft/mcpmod.info
 !/mcp/src/minecraft/dmf444/ExtraFood/Client
+!/mcp/src/minecraft/dmf444/ExtraFood/Common
 *.lzma
 *.cfg
 
