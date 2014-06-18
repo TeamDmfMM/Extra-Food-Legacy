@@ -23,6 +23,7 @@ local.properties
 *.bat
 *.cmd
 
+forge/
 forge/client/
 forge/common/
 forge/fml/
