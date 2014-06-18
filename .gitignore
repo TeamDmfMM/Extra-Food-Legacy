@@ -1,36 +1,62 @@
-# Windows image file caches
-Thumbs.db
-ehthumbs.db
+#################
+## Eclipse
+#################
 
-# Folder config file
-Desktop.ini
+*.pydevproject
+.project
+.metadata
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.classpath
+.settings/
+.loadpath
+*.py
+*.pyc
+*.txt
+*.sh
+*.properties
+*.bat
+*.cmd
 
-# Recycle Bin used on file shares
-$RECYCLE.BIN/
+client/
+common/
+fml/
+patches/
+mcp/bin
+mcp/conf
+mcp/docs
+mcp/eclipse
+mcp/jars
+mcp/lib
+mcp/logs
+mcp/reobf
+mcp/runtime
+mcp/temp
+mcp/src/minecraft/Start.java
+mcp/CHANGELOG
+mcp/src/minecraft/net
+mcp/src/minecraft/paulscode
+mcp/src/minecraft/ibxm
+mcp/src/minecraft/forge_logo.png
+mcp/src/minecraft/mcmod.info
+mcp/src/minecraft/mcpmod.info
+*.lzma
+*.cfg
 
-# Windows Installer files
-*.cab
-*.msi
-*.msm
-*.msp
+# External tool builders
+.externalToolBuilders/
 
-# =========================
-# Operating System Files
-# =========================
+# Locally stored "Eclipse launch configurations"
+*.launch
 
-# OSX
-# =========================
+# CDT-specific
+.cproject
 
-.DS_Store
-.AppleDouble
-.LSOverride
+# PDT-specific
+.buildpath
 
-# Icon must ends with two \r.
-Icon
-
-# Thumbnails
-._*
-
-# Files that might appear on external disk
-.Spotlight-V100
-.Trashes
