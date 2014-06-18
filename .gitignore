@@ -45,7 +45,7 @@ mcp/src/minecraft/ibxm
 mcp/src/minecraft/forge_logo.png
 mcp/src/minecraft/mcmod.info
 mcp/src/minecraft/mcpmod.info
-mcp/
+
 !/mcp/src/minecraft/dmf444
 !/mcp/src/minecraft/dmf444/ExtraFood/Client
 !/mcp/src/minecraft/dmf444/ExtraFood/Common
