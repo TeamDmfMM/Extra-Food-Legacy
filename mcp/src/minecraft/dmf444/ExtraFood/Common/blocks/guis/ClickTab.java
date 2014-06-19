@@ -40,7 +40,7 @@ public class ClickTab extends GuiButton{
 			m.getTextureManager().bindTexture(new ResourceLocation("extrafood", "textures/gui/cookbookgui.png"));
 			GL11.glDisable(GL11.GL_LIGHTING);
 			this.drawTexturedModalRect(xPosition, yPosition, 2, 204,22, 22);
-			this.rinder.renderItemIntoGUI(m.fontRenderer, m.getTextureManager(), this.item, xPosition + 4, yPosition + 4);
+			this.rinder.renderItemIntoGUI(m.fontRenderer, m.getTextureManager(), this.item, xPosition + 2, yPosition + 2);
 			GL11.glEnable(GL11.GL_LIGHTING);
 
 

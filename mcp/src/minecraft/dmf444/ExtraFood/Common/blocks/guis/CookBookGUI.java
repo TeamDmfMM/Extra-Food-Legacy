@@ -139,7 +139,9 @@ public class CookBookGUI extends GuiScreen {
 		String mainGUI = StatCollector.translateToLocal("cookbook.Title");
         int i = (this.width - this.achievementsPaneWidth) / 2;
         int j = (this.height - this.achievementsPaneHeight) / 2;
+        GL11.glDisable(GL11.GL_LIGHTING);
         this.fontRenderer.drawString(mainGUI, i + 6, j + 5, 0xFFFFFFFF); //i + 15 original
+        GL11.glEnable(GL11.GL_LIGHTING);
     }
     
     
