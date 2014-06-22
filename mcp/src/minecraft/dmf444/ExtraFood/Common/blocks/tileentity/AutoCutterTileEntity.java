@@ -3,6 +3,8 @@ package dmf444.ExtraFood.Common.blocks.tileentity;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.ISidedInventory;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
@@ -10,6 +12,7 @@ import net.minecraft.network.INetworkManager;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.Packet132TileEntityData;
 import net.minecraft.tileentity.TileEntity;
+import dmf444.ExtraFood.Common.items.ItemLoader;
 import dmf444.ExtraFood.Core.ExtraFood;
 import dmf444.ExtraFood.Core.lib.ItemLib;
 
@@ -18,6 +21,9 @@ public class AutoCutterTileEntity extends TileEntity implements ISidedInventory 
 
 
     private ItemStack[] inv;
+    private static final int[] slots_top = new int[] {0};
+    private static final int[] slots_bottom = new int[] {2, 1};
+    private static final int[] slots_sides = new int[] {1};
 
 
     public AutoCutterTileEntity(){
@@ -143,15 +149,18 @@ public class AutoCutterTileEntity extends TileEntity implements ISidedInventory 
 
 
 
-	public boolean isItemValidForSlot(int i, ItemStack itemstack) {
-		if (this.inv[i] != null){
-			if (ExtraFood.registryCutter.getItemOutput(this.inv[i]) != null){
+	public boolean isItemValidForSlot(int slot, ItemStack itemstack) {
+		/*if (this.inv[slot] != null){
+			if (ExtraFood.registryCutter.getItemOutput(this.inv[slot]) != null){
 				return true;
 			}
-			return false;
+			return true;
 		}
 		return false;
+		*/
+       return slot == 2 ? false : (slot == 1 ? itemstack == new ItemStack(ItemLoader.cheeseWheel, 1) : true);
 	}
+		
 	
 	public boolean ok(){
 
@@ -234,5 +243,18 @@ public class AutoCutterTileEntity extends TileEntity implements ISidedInventory 
 
 		this.readFromNBT(pkt.data);
 	}
+	
+    public boolean canInsertItem(int slot, ItemStack item, int side)
+    {
+        return this.isItemValidForSlot(slot, item);
+    }
+    public boolean canExtractItem(int slot, ItemStack item, int side)
+    {
+        return side != 0 || slot != 2 || item.itemID == Item.bucketEmpty.itemID;
+    }
+    public int[] getAccessibleSlotsFromSide(int par1)
+    {
+        return par1 == 0 ? slots_bottom : (par1 == 1 ? slots_top : slots_sides);
+    }
 
 }
