@@ -13,6 +13,7 @@ import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
+import dmf444.ExtraFood.Common.blocks.BlockLoader;
 import dmf444.ExtraFood.Common.items.ItemLoader;
 
 public class CookBookGUI extends GuiScreen {
@@ -71,9 +72,7 @@ public class CookBookGUI extends GuiScreen {
    public CookBookGUI() {
 	   System.out.println("HERE");
 	   this.buttons = new ArrayList<ClickTab>();
-	   buttons.add(new ClickTab(0, 0, 0, 22, 22, "", 1, 1, new ItemStack(ItemLoader.cookBook), "cheesepress"));
-	   buttons.add(new ClickTab(0, 0, 0, 22, 22, "", 6, 5, new ItemStack(ItemLoader.cheeseSlice), "cheesepress"));
-	   buttons.add(new ClickTab(0, 0, 0, 22, 22, "", 10, 23, new ItemStack(ItemLoader.knife), "cheesepress"));
+	   
    }
 
 	
@@ -97,10 +96,10 @@ public class CookBookGUI extends GuiScreen {
     			if (yox < 0){
     				yox = 0;
     			}
-    			if (iox > 250){
+    			if (iox > 350){
     				iox = 350;
     			}
-    			if (yox > 250){
+    			if (yox > 550){
     				yox = 550;
     			}
     			
@@ -247,6 +246,23 @@ public class CookBookGUI extends GuiScreen {
         		}
         	}	
     	}
+    }
+    private void plotCurve(double startX, double startY, int bezierX, int bezierY, double endX, double endY){
+    	for(double t=0.0;t<=1;t+=0.01)  
+    	{  
+    	    int x = (int) (  (1-t)*(1-t)*startX + 2*(1-t)*t*bezierX+t*t*endX);  
+    	    int y = (int) (  (1-t)*(1-t)*startY + 2*(1-t)*t*bezierY+t*t*endY);  
+    	  
+    	    //plot something @  x,y coordinate here...  
+    	    this.drawRect(x, y, x + 1, y + 1, 0xFFFFFFF);
+    	}
+    }
+    
+    
+    private int cosineint(int x, int y, int z){
+    	double w = (1-Math.cos(z*Math.PI))/2;
+    	return (int) (x*(1-w)+y*w);
+    	
     }
 
 

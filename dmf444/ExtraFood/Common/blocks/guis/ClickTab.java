@@ -15,6 +15,7 @@ public class ClickTab extends GuiButton{
 	public int y;
 	
 	public String pagename;
+	public String[] pre;
 	
 	
 	
@@ -26,12 +27,23 @@ public class ClickTab extends GuiButton{
 		item = is;
 		this.rinder = new RenderItem();
 		this.pagename = name;
+		this.pre = null;
 		
 		
 	
 		// TODO Auto-generated constructor stub
 	}
-	
+	public ClickTab(int par1, int par2, int par3, int par4, int par5,
+			String par6Str, int par7, int par8, ItemStack is, String name, String... pre){
+		super(par1, par2, par3, par4, par5, par6Str);
+		x = par7;
+		y = par8;
+		item = is;
+		this.rinder = new RenderItem();
+		this.pagename = name;
+		this.pre = pre;
+		
+	}
 	public void drawButton(Minecraft m, int p1, int p2){
 		
 		m.getTextureManager().bindTexture(new ResourceLocation("extrafood", "textures/gui/cookbookgui.png"));

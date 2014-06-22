@@ -87,6 +87,10 @@ public void renderItems() {
     
     int tillrow = 3;
     int iid = 0;
+    if (items == null){
+    	System.err.println("The page " + this.pagen + " is missing a item mapping. This is a bug!");
+    	return;
+    }
 	for (iid = 0; iid < 9; iid++){
 		
 		if (items[iid] != null){
