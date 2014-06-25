@@ -190,9 +190,9 @@ public void renderItems() {
 		}
 	}	
 	if (button.id == 2){
-		System.out.println("Made it");
+
 		this.mc.displayGuiScreen(new CookBookGUI());
-		//System.out.println("Execuded it");
+
 	}
 
 	}

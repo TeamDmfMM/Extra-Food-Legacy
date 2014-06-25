@@ -107,8 +107,8 @@ public class CookBookGUI extends GuiScreen {
     			if (yox < 0){
     				yox = 0;
     			}
-    			if (iox > 350){
-    				iox = 350;
+    			if (iox > 150){
+    				iox = 150; //350
     			}
     			if (yox > 550){
     				yox = 550;
