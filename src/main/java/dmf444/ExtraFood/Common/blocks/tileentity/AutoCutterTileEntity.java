@@ -9,6 +9,8 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 import dmf444.ExtraFood.ExtraFood;
+import dmf444.ExtraFood.Client.renderer.AutoCutterModel;
+import dmf444.ExtraFood.Client.renderer.AutoCutterRenderer;
 import dmf444.ExtraFood.Common.items.ItemLoader;
 
 
@@ -83,13 +85,6 @@ public class AutoCutterTileEntity extends TileEntity implements ISidedInventory 
     }
 
 
-
-    public void openChest() {}
-
-
-
-    public void closeChest() {}
-    
     @Override
     public void readFromNBT(NBTTagCompound tagCompound) {
             super.readFromNBT(tagCompound);
@@ -160,59 +155,62 @@ public class AutoCutterTileEntity extends TileEntity implements ISidedInventory 
 	public boolean ok(){
 
 
-		if (this.inv[0] != null){
+		if (this.inv[0] != null){//1
 			System.out.println("1");					
-			if (this.inv[2] != null){
-			if(this.inv[2].getItem() == ItemLoader.knife){
-				System.out.println("2.5");		
-			if (ExtraFood.registryCutter.getItemOutput(this.inv[0]) != null){
-				System.out.println("2");		
-				ItemStack l = ExtraFood.registryCutter.getItemOutput(this.inv[0]);
-				if (this.inv[1] != null){
-					if (this.inv[1].getItem() != l.getItem()){
-						return false;
+			if (this.inv[2] != null){//2
+				if(this.inv[2].getItem() == ItemLoader.knife){//3
+					System.out.println("2.5");		
+					if (ExtraFood.registryCutter.getItemOutput(this.inv[0]) != null){//4
+						System.out.println("2");		
+						ItemStack l = ExtraFood.registryCutter.getItemOutput(this.inv[0]);
+						if (this.inv[1] != null){//5
+							if (this.inv[1].getItem() != l.getItem()){//6
+								return true;//6
+							}					
+							if (this.inv[1].stackSize >= 64 - l.stackSize + 1){
+								System.out.println("Why am I tracking");
+								return false;//5
+							}
+							System.out.println("Why am I tracking2");
+							return true;//4
+						}
+						System.out.println("Why am I tracking3");
+						return true;//3
 					}
-					if (this.inv[1].stackSize >= 64 - l.stackSize + 1){
-						return false;
-					}
-					return false;
-				}
-				}
+					System.out.println("Why am I tracking4");
+					return true;//2
 				}
 				System.out.println("3");
-				return true;
-
-
-
-
-			}
-			else {
+				return true;//1
+			} else {
 				return false;
 			}
-		}
-		else {
+		} else {
 			return false;
-
-
 		}
 	}	
+	
 	public void updateEntity(){
 
 		if (this.ok()){
+			if (!this.worldObj.isRemote){
 			this.ttime += 1;
 			if (this.ttime == 20){
 				this.ttime = 0;
 				this.complete += 1;
 				if (this.complete == 5){
 					System.out.println("ko");
-					this.worldObj.markBlockForUpdate(xCoord, yCoord, zCoord);
+					
 					this.do_();
 					this.complete = 0;
 					this.ttime = 0;
+					//markDirty();
+					//updateContainingBlockInfo();
 					
 				}
 			}
 		}
+	  }
 	}
 
 
