@@ -12,6 +12,7 @@ import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import dmf444.ExtraFood.Common.CommonProxy;
 import dmf444.ExtraFood.Common.EventHandler.ExtraFood_EventBonemeal;
+import dmf444.ExtraFood.Common.EventHandler.TestHandle;
 import dmf444.ExtraFood.Common.RecipeHandler.CRPageCraftGet;
 import dmf444.ExtraFood.Common.RecipeHandler.RegistryAutoCutter;
 import dmf444.ExtraFood.Common.blocks.BlockLoader;
@@ -47,7 +48,6 @@ public class ExtraFood {
 		GameRegistry.registerWorldGenerator(treeManager, 0);
 		MinecraftForge.EVENT_BUS.register(new ExtraFood_EventBonemeal());
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
-		//GameRegistry(new TestHandle());
 		AchieveLoad.loadAc();
 		
 		

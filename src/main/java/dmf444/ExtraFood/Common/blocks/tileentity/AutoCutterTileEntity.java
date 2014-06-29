@@ -5,6 +5,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
@@ -192,8 +193,8 @@ public class AutoCutterTileEntity extends TileEntity implements ISidedInventory 
 	
 	public void updateEntity(){
 
-		if (this.ok()){
-			if (!this.worldObj.isRemote){
+	if (this.ok()){
+		//if (!this.worldObj.isRemote){
 			this.ttime += 1;
 			if (this.ttime == 20){
 				this.ttime = 0;
@@ -210,20 +211,29 @@ public class AutoCutterTileEntity extends TileEntity implements ISidedInventory 
 				}
 			}
 		}
-	  }
+	  //}
 	}
 
 
 	private void do_() {
 		ItemStack l = ExtraFood.registryCutter.getItemOutput(this.inv[0]);
 		if (this.inv[1] == null){
-			this.inv[1] = l;
+			System.out.println("followin' 1");
+			this.inv[1] = l.copy();
 		}
-		else {
+		else if(this.inv[1].getItem() == l.getItem()) {
+			System.out.println("followin' 2");
 			this.inv[1].stackSize += l.stackSize;
+			//this.inv[1].stackSize += l.stackSize;
 		}
-		this.decrStackSize(0, 1);
+		--this.inv[0].stackSize;
+		//this.decrStackSize(0, 1);
+		 if (this.inv[0].stackSize <= 0)
+         {
+             this.inv[0] = null;
+         }
 	}
+	
 	/*
 	public Packet getDescriptionPacket(){
 		NBTTagCompound tags = new NBTTagCompound();

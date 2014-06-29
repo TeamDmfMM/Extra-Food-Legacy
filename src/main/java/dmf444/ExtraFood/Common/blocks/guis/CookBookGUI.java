@@ -42,8 +42,8 @@ public class CookBookGUI extends GuiScreen {
 	    
 	    private int y;
 
-	    private int iox;
-	    private int yox;
+	    private int iox = 15;
+	    private int yox = 50;
 	    
 	    //mincrmatt12 button vars
 	    private ArrayList<ClickTab> buttons;
