@@ -31,7 +31,7 @@ public class GuiHandler implements IGuiHandler {
             {
             		return new AutoCutterContainer(player.inventory, (AutoCutterTileEntity) tileEntity);
             } else {
-            	if(id == 2)
+            	if(id == CookBookGUI.GUI_ID)
             	{
             		return null;
             	}

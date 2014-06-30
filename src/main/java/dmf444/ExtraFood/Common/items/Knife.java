@@ -1,5 +1,6 @@
 package dmf444.ExtraFood.Common.items;
 
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -14,8 +15,14 @@ public class Knife extends StanItem {
         this.setMaxDamage(10);
         this.setTextureName("extrafood:knife");
     }
+
+	public Item setNoRepair() {
+		boolean canRepairng = false;
+		return this;
+	}
 	
-	public boolean isRepariable() {
+	@Override
+	public boolean isRepairable() {
 		return false;
 	}
 	

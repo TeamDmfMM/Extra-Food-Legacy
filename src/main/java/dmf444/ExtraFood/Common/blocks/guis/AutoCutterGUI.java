@@ -38,7 +38,6 @@ AutoCutterTileEntity te;
     protected void drawGuiContainerBackgroundLayer(float par1, int par2,
                     int par3) {
             //draw your Gui here, only thing you need to change is the path
-    	ResourceLocation r = new ResourceLocation("extrafood", "textures/gui/Auto_Cutter.png");
     	GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
     		this.mc.renderEngine.bindTexture(GuiLib.ACgui);            
     		int x = (width - xSize) / 2;
