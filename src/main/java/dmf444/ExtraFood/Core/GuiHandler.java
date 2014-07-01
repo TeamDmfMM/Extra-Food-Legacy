@@ -1,20 +1,19 @@
 package dmf444.ExtraFood.Core;
 
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import cpw.mods.fml.common.network.IGuiHandler;
 import dmf444.ExtraFood.Common.blocks.container.AutoCutterContainer;
 import dmf444.ExtraFood.Common.blocks.container.CheesePressContainer;
+import dmf444.ExtraFood.Common.blocks.container.ContainerJuiceBlender;
 import dmf444.ExtraFood.Common.blocks.guis.AutoCutterGUI;
-import dmf444.ExtraFood.Common.blocks.guis.CRPageGUI;
 import dmf444.ExtraFood.Common.blocks.guis.CheesePressGUI;
 import dmf444.ExtraFood.Common.blocks.guis.CookBookGUI;
+import dmf444.ExtraFood.Common.blocks.guis.GuiJuiceBlender;
 import dmf444.ExtraFood.Common.blocks.tileentity.AutoCutterTileEntity;
 import dmf444.ExtraFood.Common.blocks.tileentity.CheesePressTileEntity;
-import dmf444.ExtraFood.Common.items.ItemLoader;
+import dmf444.ExtraFood.Common.blocks.tileentity.TileEntityJuiceBlender;
 
 public class GuiHandler implements IGuiHandler {
     //returns an instance of the Container you made earlier
@@ -26,20 +25,24 @@ public class GuiHandler implements IGuiHandler {
             TileEntity tileEntity = world.getTileEntity(x, y, z);
             if(tileEntity instanceof CheesePressTileEntity){
                     return new CheesePressContainer(player.inventory, (CheesePressTileEntity) tileEntity);
-            } else {
-            if(tileEntity instanceof AutoCutterTileEntity)
+            }
+            else if (tileEntity instanceof TileEntityJuiceBlender){
+            	System.out.println("srvr fgknhsngts nlgts dhtrbtsrvtsrhnlvtrhtdrl");
+            	return new ContainerJuiceBlender((TileEntityJuiceBlender) tileEntity, player.inventory);
+            }
+            else if(tileEntity instanceof AutoCutterTileEntity)
             {
             		return new AutoCutterContainer(player.inventory, (AutoCutterTileEntity) tileEntity);
-            } else {
-            	if(id == CookBookGUI.GUI_ID)
+            } else if(id == CookBookGUI.GUI_ID)
             	{
             		return null;
             	}
-            }
+          
+            
             
             return null;
-            }
-    }
+}
+    
 
     //returns an instance of the Gui you made earlier
     @Override
@@ -52,17 +55,18 @@ public class GuiHandler implements IGuiHandler {
             	
             	return new CookBookGUI();
             	
-            	} else {
-            if(tileEntity instanceof CheesePressTileEntity){
+            	} else if(tileEntity instanceof CheesePressTileEntity){
                     return new CheesePressGUI(player.inventory, (CheesePressTileEntity) tileEntity);
-            } else {
-            if(tileEntity instanceof AutoCutterTileEntity)
+            } else if(tileEntity instanceof AutoCutterTileEntity)
             	{
             	System.out.println("Cutter- This works!");
                 return new AutoCutterGUI(player.inventory, (AutoCutterTileEntity) tileEntity);
             	} 
+            else if (tileEntity instanceof TileEntityJuiceBlender){
+            	System.out.println(" gjksfcckcgrjkgshkdvr");
+            	return new GuiJuiceBlender(player.inventory, (TileEntityJuiceBlender) tileEntity);
             }
+            
             return null;
       	}
     }
-}
