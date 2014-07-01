@@ -14,8 +14,12 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.eventhandler.EventBus;
 
 public class ExtraFoodCModDummyContainer extends DummyModContainer {
+<<<<<<< HEAD
 
 
+=======
+	
+>>>>>>> origin/master
 	public ExtraFoodCModDummyContainer() {
 		super (new ModMetadata());
 		ModMetadata meta = getMetadata();
@@ -30,8 +34,12 @@ public class ExtraFoodCModDummyContainer extends DummyModContainer {
 		meta.screenshots = new String[0];
 		meta.logoFile = "";
 	}
+<<<<<<< HEAD
 
 
+=======
+	
+>>>>>>> origin/master
 	public boolean registerBus(EventBus bus, LoadController controller) {
 		bus.register(this);
 		return true;
@@ -41,28 +49,42 @@ public class ExtraFoodCModDummyContainer extends DummyModContainer {
 	@Subscribe
 	public void modConstruction(FMLConstructionEvent evt){
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
 	}
 
 	@Subscribe
 	public void init(FMLInitializationEvent evt) {
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
 	}
 
 	@Subscribe
 	public void preInit(FMLPreInitializationEvent evt) {
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
 	}
 
 	@Subscribe
 	public void postInit(FMLPostInitializationEvent evt) {
 
+<<<<<<< HEAD
 
 	}
 
 
 
+=======
+	}
+	
+>>>>>>> origin/master
 
 }

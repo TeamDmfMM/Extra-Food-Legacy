@@ -9,7 +9,10 @@ import net.minecraft.launchwrapper.IClassTransformer;
 
 public class EFClassTransformer implements IClassTransformer {
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
 	@Override
 	public byte[] transform(String arg0, String arg1, byte[] arg2) {
 		// TODO Auto-generated method stub
@@ -42,5 +45,8 @@ public class EFClassTransformer implements IClassTransformer {
         return bytes;
     }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
 }
