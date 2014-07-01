@@ -16,6 +16,7 @@ import dmf444.ExtraFood.Common.EventHandler.TestHandle;
 import dmf444.ExtraFood.Common.RecipeHandler.CRPageCraftGet;
 import dmf444.ExtraFood.Common.RecipeHandler.RegistryAutoCutter;
 import dmf444.ExtraFood.Common.blocks.BlockLoader;
+import dmf444.ExtraFood.Common.fluids.FluidLoader;
 import dmf444.ExtraFood.Common.items.ItemLoader;
 import dmf444.ExtraFood.Core.AchieveLoad;
 import dmf444.ExtraFood.Core.CraftingRecipies;
@@ -43,8 +44,10 @@ public class ExtraFood {
 			
 			System.out.println("Extra Food has been activated, loading blocks,items and Events");
 			
+		FluidLoader.initiateFluids();	
 		ItemLoader.initiateItems();
 		BlockLoader.initiateBlocks();
+
 		GameRegistry.registerWorldGenerator(treeManager, 0);
 		MinecraftForge.EVENT_BUS.register(new ExtraFood_EventBonemeal());
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());

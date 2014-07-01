@@ -5,7 +5,10 @@ import dmf444.ExtraFood.Common.blocks.tileentity.AutoCutterTileEntity;
 import dmf444.ExtraFood.Common.blocks.tileentity.CheesePressTileEntity;
 import dmf444.ExtraFood.Common.blocks.tileentity.TileEntityJuiceBlender;
 import dmf444.ExtraFood.Common.blocks.tileentity.TileEntityOven;
+import dmf444.ExtraFood.Common.fluids.BananaJuice;
+import dmf444.ExtraFood.Common.fluids.FluidLoader;
 import dmf444.ExtraFood.Core.lib.BlockLib;
+import dmf444.ExtraFood.Core.lib.ModInfo;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 
@@ -18,6 +21,7 @@ public class BlockLoader {
 	public static Block juiceBlender;
 	public static Block oven;
 	public static Block whiteout;
+	public static Block Bbananajuice;
 	
 	public static boolean Register=false;
 	public static void initiateBlocks() {
@@ -27,7 +31,8 @@ public class BlockLoader {
 		autoCutter = new AutoCutter().setBlockName(BlockLib.bAC);
 		juiceBlender = new BlockJuiceBlender(Material.anvil).setBlockName(BlockLib.bJB);
 		oven = new Oven().setBlockName(BlockLib.bO);
-		whiteout = new Whiteout().setBlockName("TheWhiteBlock").setBlockTextureName("extrafood:The whiteout");
+		whiteout = new Whiteout().setBlockName("TheWhiteBlock").setBlockTextureName("extrafood:BananaJuice");
+		Bbananajuice = new BananaJuice(FluidLoader.Fbananajuice, Material.water).setBlockName("Fbananajuice");
 		
 		
 		registerBlocks();
@@ -41,6 +46,7 @@ public class BlockLoader {
 			GameRegistry.registerBlock(juiceBlender, BlockLib.bJB);
 			GameRegistry.registerBlock(oven, BlockLib.bO);
 			GameRegistry.registerBlock(whiteout, "TheWhiteBlock");
+			GameRegistry.registerBlock(Bbananajuice, ModInfo.MId + "_" + Bbananajuice.getUnlocalizedName().substring(5));
 			
 		}
 		Register=true;
