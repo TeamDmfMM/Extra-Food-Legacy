@@ -23,6 +23,7 @@ import dmf444.ExtraFood.Core.CraftingRecipies;
 import dmf444.ExtraFood.Core.GuiHandler;
 import dmf444.ExtraFood.Core.TreeManager;
 import dmf444.ExtraFood.Core.lib.ModInfo;
+import dmf444.ExtraFood.util.ConfigHandler;
 
 
 @Mod(modid = ModInfo.MId,name = ModInfo.Mname, version = ModInfo.Vers)
@@ -43,13 +44,17 @@ public class ExtraFood {
 	public void preInit(FMLPreInitializationEvent event) {
 			
 			System.out.println("Extra Food has been activated, loading blocks,items and Events");
+		ConfigHandler.init(event.getSuggestedConfigurationFile());
 			
 		FluidLoader.initiateFluids();	
 		ItemLoader.initiateItems();
+		ItemLoader.initiateFoods();
 		BlockLoader.initiateBlocks();
-
+		
+		if (ConfigHandler.GenBananaTrees){
 		GameRegistry.registerWorldGenerator(treeManager, 0);
 		MinecraftForge.EVENT_BUS.register(new ExtraFood_EventBonemeal());
+		}
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
 		AchieveLoad.loadAc();
 		

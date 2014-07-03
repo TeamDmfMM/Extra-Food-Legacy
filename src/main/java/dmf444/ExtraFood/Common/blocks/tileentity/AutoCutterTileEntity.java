@@ -155,41 +155,47 @@ public class AutoCutterTileEntity extends TileEntity implements ISidedInventory 
 	
 	public boolean ok(){
 
+		/*
+		 * With seven checks, this function returns true if the autocutter is in an ok state to continue/start cutting!
+		 */
+
 
 		if (this.inv[0] != null){//1
-			System.out.println("1");					
+			System.out.println("1-out");					
 			if (this.inv[2] != null){//2
 				if(this.inv[2].getItem() == ItemLoader.knife){//3
-					System.out.println("2.5");		
+					System.out.println("2.5-out");		
 					if (ExtraFood.registryCutter.getItemOutput(this.inv[0]) != null){//4
-						System.out.println("2");		
+						System.out.println("2-out");		
 						ItemStack l = ExtraFood.registryCutter.getItemOutput(this.inv[0]);
 						if (this.inv[1] != null){//5
-							if (this.inv[1].getItem() != l.getItem()){//6
-								return true;//6
-							}					
-							if (this.inv[1].stackSize >= 64 - l.stackSize + 1){
-								System.out.println("Why am I tracking");
-								return false;//5
+							System.out.println("3-in");
+							if (this.inv[1].getItem() == l.getItem()){//6
+								System.out.println("4-donein");
+
+
+								return true;//6}
 							}
-							System.out.println("Why am I tracking2");
-							return true;//4
+								else {
+									return false;
+								}
 						}
-						System.out.println("Why am I tracking3");
+						System.out.println("3-doneout");
 						return true;//3
 					}
 					System.out.println("Why am I tracking4");
-					return true;//2
+					return false;//2
 				}
 				System.out.println("3");
-				return true;//1
+				return false;//1
 			} else {
 				return false;
 			}
 		} else {
 			return false;
 		}
-	}	
+	}
+
 	
 	public void updateEntity(){
 

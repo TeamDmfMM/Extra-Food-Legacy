@@ -16,12 +16,14 @@ public class FluidLoader {
 	 */
 	
 	public static Fluid Fbananajuice;
+	public static Fluid Fstrawberryjuice;
 
 	
 	public static boolean Registate=false;
 	
 	public static void initiateFluids() {
-		Fbananajuice = new Fluid("bananajuice");
+		Fbananajuice = new Fluid("bananajuice").setViscosity(3000);
+		Fstrawberryjuice = new Fluid("strawberryjuice");
 		
 		
 		
@@ -30,6 +32,7 @@ public class FluidLoader {
 	private static void registerFluid(){
 		if(!Registate){
 		FluidRegistry.registerFluid(Fbananajuice);
+		FluidRegistry.registerFluid(Fstrawberryjuice);
 
 		}
 		Registate = true;

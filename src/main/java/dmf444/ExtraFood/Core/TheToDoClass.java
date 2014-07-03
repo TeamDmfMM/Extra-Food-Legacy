@@ -1,7 +1,7 @@
 package dmf444.ExtraFood.Core;
 
 /*
-[] Fix Book Background
+[x] Fix Book Background
 [] Finish Crafting Page
 [] Create "Normal Page"
 [] Fix Shift out of Slot

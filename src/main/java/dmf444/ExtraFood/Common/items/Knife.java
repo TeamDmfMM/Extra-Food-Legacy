@@ -14,6 +14,7 @@ public class Knife extends StanItem {
         this.maxStackSize = 1;
         this.setMaxDamage(10);
         this.setTextureName("extrafood:knife");
+        this.setContainerItem(this);
     }
 
 	public Item setNoRepair() {
