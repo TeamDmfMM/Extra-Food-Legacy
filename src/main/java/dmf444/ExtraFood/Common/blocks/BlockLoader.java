@@ -24,6 +24,7 @@ public class BlockLoader {
 	public static Block whiteout;
 	public static Block Bbananajuice;
 	public static Block Bstrawberryjuice;
+	public static Block strawberryBush;
 	
 	public static boolean Register=false;
 	public static void initiateBlocks() {
@@ -36,6 +37,7 @@ public class BlockLoader {
 		whiteout = new Whiteout().setBlockName("TheWhiteBlock").setBlockTextureName("extrafood:The whiteout");
 		Bbananajuice = new BananaJuice(FluidLoader.Fbananajuice, Material.water).setBlockName("Fbananajuice");
 		Bstrawberryjuice = new StrawberryJuice(FluidLoader.Fstrawberryjuice, Material.water).setBlockName("StrawberryJuice");
+		strawberryBush = new StrawberryBush(Material.plants).setBlockName(BlockLib.bSB);
 		
 		
 		registerBlocks();
@@ -51,6 +53,7 @@ public class BlockLoader {
 			GameRegistry.registerBlock(whiteout, "TheWhiteBlock");
 			GameRegistry.registerBlock(Bbananajuice, ModInfo.MId + "_" + Bbananajuice.getUnlocalizedName().substring(5));
 			GameRegistry.registerBlock(Bstrawberryjuice, ModInfo.MId + "_" + Bstrawberryjuice.getUnlocalizedName().substring(5));
+			GameRegistry.registerBlock(strawberryBush, BlockLib.bSB);
 			
 		}
 		Register=true;

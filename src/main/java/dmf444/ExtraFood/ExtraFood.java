@@ -24,6 +24,7 @@ import dmf444.ExtraFood.Core.GuiHandler;
 import dmf444.ExtraFood.Core.TreeManager;
 import dmf444.ExtraFood.Core.lib.ModInfo;
 import dmf444.ExtraFood.util.ConfigHandler;
+import dmf444.ExtraFood.util.EFLog;
 
 
 @Mod(modid = ModInfo.MId,name = ModInfo.Mname, version = ModInfo.Vers)
@@ -43,7 +44,7 @@ public class ExtraFood {
 		@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 			
-			System.out.println("Extra Food has been activated, loading blocks,items and Events");
+			EFLog.info("Extra Food has been activated, loading blocks,items and Events");
 		ConfigHandler.init(event.getSuggestedConfigurationFile());
 			
 		FluidLoader.initiateFluids();	
@@ -59,7 +60,7 @@ public class ExtraFood {
 		AchieveLoad.loadAc();
 		
 		
-			System.out.println("Cleared EF's Registry");
+			EFLog.info("Cleared EF's Registry");
 		
 	}
 		
