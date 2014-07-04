@@ -5,19 +5,22 @@ import java.util.Random;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
+import net.minecraft.block.IGrowable;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.IIcon;
+import net.minecraft.util.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
-import net.minecraftforge.common.IPlantable;
 import dmf444.ExtraFood.Common.items.ItemLoader;
 import dmf444.ExtraFood.Core.EFTabs;
+import dmf444.ExtraFood.util.EFLog;
 
-public class StrawberryBush extends Block {
+public class StrawberryBush extends Block implements IGrowable {
 	
 	private static IIcon[] growingTextures;
 
@@ -33,14 +36,14 @@ public class StrawberryBush extends Block {
 	}
 	@Override
 	  public IIcon getIcon(int side, int meta){
-		  if (meta == 0)
+		  if (meta  < 7)
 	        {
-	            if (meta == 1)
+	            if (meta == 6)
 	            {
-	                meta = 2;
+	                meta = 5;
 	            }
 
-	            return this.growingTextures[meta >> 1];
+	            return this.growingTextures[0];
 	        }
 	        else
 	        {
@@ -50,28 +53,36 @@ public class StrawberryBush extends Block {
 
 	@Override
 	public void updateTick(World world, int x, int y, int z, Random random) {
-	    if (world.getBlockMetadata(x, y, z) == 1) {
-	        return;
-	    }
+		  if (world.getBlockLightValue(x, y + 1, z) >= 9)
+	        {
+	            int l = world.getBlockMetadata(x, y, z);
 
-	    if (world.getBlockLightValue(x, y + 1, z) < 9) {
-	        return;
-	    }
+	            if (l < 7)
+	            {
+	                float f = 2; //= this.func_149864_n(world, x, y, z);
+	            	
 
-
-	    world.setBlockMetadataWithNotify(x, y, z, 1, 2);
+	                if (random.nextInt((int)(25.0F / f) + 1) == 0)
+	                {
+	                    ++l;
+	                    world.setBlockMetadataWithNotify(x, y, z, l, 2);
+	                }
+	            }
+	        }
 	}
 	
     @Override
-    public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int metadata, float what, float these, float are) {
-    	switch (metadata) {
-    	case 0:
+    public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float what, float these, float are) {
+    	int meta = world.getBlockMetadata(x, y, z);
+    	EFLog.info("Current Meta:" + meta);
+    	switch (meta) {
+    	case -1:
     			return false;
-    	case 1: 
+    	case 5: 
 			this.placeDuoInInv(player);
 			world.setBlockMetadataWithNotify(x, y, z, 0, 2);   		
     			return true;
-    	case 2:
+    	case 7:
     			this.placeInInv(player);
     			world.setBlockMetadataWithNotify(x, y, z, 0, 2);
     			return true;
@@ -109,6 +120,35 @@ public class StrawberryBush extends Block {
 	    public boolean renderAsNormalBlock()
 	    {
 	        return false;
+	    }
+		@Override
+		public boolean func_149851_a(World world, int x, int y, int z, boolean bool) {
+			return world.getBlockMetadata(x, y, z) != 7;
+		}
+		@Override
+		public boolean func_149852_a(World p_149852_1_, Random p_149852_2_, int p_149852_3_, int p_149852_4_, int p_149852_5_) {
+			//Copy of BlockCrops
+			return true;
+		}
+		@Override
+		public void func_149853_b(World p_149853_1_, Random p_149853_2_, int p_149853_3_, int p_149853_4_, int p_149853_5_) {
+			this.onBonemealEvent(p_149853_1_, p_149853_3_, p_149853_4_, p_149853_5_);			
+		}
+		
+	    public void onBonemealEvent(World world, int x, int y, int z)
+	    {
+	        int l = world.getBlockMetadata(x, y, z) + MathHelper.getRandomIntegerInRange(world.rand, 2, 5);
+
+	        if (l > 7)
+	        {
+	            l = 7;
+	        }
+
+	        world.setBlockMetadataWithNotify(x, y, z, l++, 2);
+	    }
+	    public AxisAlignedBB getCollisionBoundingBoxFromPool(World p_149668_1_, int p_149668_2_, int p_149668_3_, int p_149668_4_)
+	    {
+	        return null;
 	    }
 
 }
