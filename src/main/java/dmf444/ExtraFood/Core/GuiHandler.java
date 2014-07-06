@@ -28,7 +28,7 @@ public class GuiHandler implements IGuiHandler {
             }
             else if (tileEntity instanceof TileEntityJuiceBlender){
             	System.out.println("srvr fgknhsngts nlgts dhtrbtsrvtsrhnlvtrhtdrl");
-            	return new ContainerJuiceBlender((TileEntityJuiceBlender) tileEntity, player.inventory);
+            	return new ContainerJuiceBlender(player.inventory, (TileEntityJuiceBlender) tileEntity);
             }
             else if(tileEntity instanceof AutoCutterTileEntity)
             {

@@ -155,10 +155,10 @@ public class AutoCutterTileEntity extends TileEntity implements ISidedInventory 
 	
 	public boolean ok(){
 
-		
 		/*
 		 * With seven checks, this function returns true if the autocutter is in an ok state to continue/start cutting!
 		 */
+
 
 		if (this.inv[0] != null){//1
 			System.out.println("1-out");					
@@ -172,7 +172,8 @@ public class AutoCutterTileEntity extends TileEntity implements ISidedInventory 
 							System.out.println("3-in");
 							if (this.inv[1].getItem() == l.getItem()){//6
 								System.out.println("4-donein");
-								
+
+
 								return true;//6}
 							}
 								else {
@@ -192,8 +193,9 @@ public class AutoCutterTileEntity extends TileEntity implements ISidedInventory 
 			}
 		} else {
 			return false;
-		}}
-	
+		}
+	}
+
 	
 	public void updateEntity(){
 
@@ -220,9 +222,9 @@ public class AutoCutterTileEntity extends TileEntity implements ISidedInventory 
 
 
 	private void do_() {
-		try {
 		ItemStack l = ExtraFood.registryCutter.getItemOutput(this.inv[0]);
 		if (this.inv[1] == null){
+			System.out.println("followin' 1");
 			this.inv[1] = l.copy();
 		}
 		else if(this.inv[1].getItem() == l.getItem()) {
@@ -235,12 +237,7 @@ public class AutoCutterTileEntity extends TileEntity implements ISidedInventory 
 		 if (this.inv[0].stackSize <= 0)
          {
              this.inv[0] = null;
-         }}
-		catch (Exception e){
-			System.out.println("Error caught in do_. This usually happens when the autocutter is in an invalid state! Now resetting values...");
-			this.complete = 0;
-			this.ttime = 0;
-		}
+         }
 	}
 	
 	/*
