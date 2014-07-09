@@ -17,3 +17,7 @@ cookbook.pizza=Pizza is a extremely yummy meal, and it can provide, when eaten w
 cookbook.cheesepress=The Cheese Press is used to convert buckets of milk to cheese wheels. Cheese is a base for most foods in this mod. Cheese wheels can be split into slices with a cooking knife.
 cookbook.cheesepress1=This is testing the multi-page functionality of the cookbook.
 cookbook.cheeseslice=Cheese slices are used in many recipes throughout ExtraFood. They are mainly used in pizza, and they are also used in sandwiches (notably, the grilled cheese ones.) Their other use is to be a lighter meal than an entire cheese wheel.
+
+#Fluids
+fluid.strawberryjuice=Strawberry Juice
+fluid.bananajuice=Banana Juice

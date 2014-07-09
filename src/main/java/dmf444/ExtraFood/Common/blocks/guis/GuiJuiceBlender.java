@@ -4,11 +4,10 @@ import java.awt.Rectangle;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.inventory.GuiContainer;
-import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fluids.FluidRegistry;
 
 import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.GL11;
@@ -23,7 +22,9 @@ public class GuiJuiceBlender extends GuiContainer {
 	private TileEntityJuiceBlender te;
 	private ResourceLocation btext = GuiLib.JBgui;
 
-
+	private int mousex;
+	private int mousey;
+	
 
 	public GuiJuiceBlender(InventoryPlayer player, TileEntityJuiceBlender te) {
 		super(new ContainerJuiceBlender(player, te));
@@ -40,8 +41,8 @@ public class GuiJuiceBlender extends GuiContainer {
 		System.out.println("drawing rebbryrbtwckut");
 		GL11.glDisable(GL11.GL_LIGHTING);
 		GL11.glEnable(GL11.GL_BLEND);
-		this.mc.renderEngine.bindTexture(new ResourceLocation(JuiceRegistry.instance.getTextureFromJuice(this.te.juice.getFluid())));
-		this.drawTexturedModalRect(x + 147, (int)(y + 11 + (61 - (this.te.juice.amount * 0.012))), 0, 0, 16, (int)(this.te.juice.amount * 0.012));
+		this.mc.renderEngine.bindTexture(new ResourceLocation(JuiceRegistry.instance.getTextureFromJuice(this.te.i.getFluid().getFluid())));
+		this.drawTexturedModalRect(x + 147, (int)(y + 11 + (62 - (this.te.i.getFluid().amount * 0.012))), 0, 0, 16, (int)(this.te.i.getFluid().amount * 0.012));
 		GL11.glEnable(GL11.GL_LIGHTING);
 		GL11.glDisable(GL11.GL_BLEND);
 	}
@@ -58,15 +59,15 @@ public class GuiJuiceBlender extends GuiContainer {
 			int bar = (int) (1.85 * this.te.complete);
 			this.drawTexturedModalRect(x + 104, y + 65, 176, 0, bar, 4);
 		}
-		if (this.te.juice != null){
+		if (this.te.i.getFluid() != null){
 			this.drawFluid();
 			
 		}
 		if (this.shouldShowToolTip()){
 			List<String> list = new ArrayList<String>();
-			list.add("Fluid: " + this.te.getFluid().getFluid().getName());
-			list.add("Amount: " + this.te.getFluidAmount());
-			this.drawHoveringText(list, Mouse.getX(), Mouse.getY(), fontRendererObj);
+			list.add("Fluid: " + this.te.i.getFluid().getFluid().getLocalizedName());
+			list.add("Amount: " + this.te.i.getFluidAmount() + "mB");
+			this.drawHoveringText(list, x + this.mousex, y + this.mousey, fontRendererObj);
 		}
 		
 		// TODO Auto-generated method stub
@@ -75,8 +76,10 @@ public class GuiJuiceBlender extends GuiContainer {
 private boolean shouldShowToolTip(){
 	int x = (width - xSize) / 2;
 	int y = (height - ySize) / 2;
-	Rectangle rect = new Rectangle(x + 146, y + 11, x + 164, y + 73);
-	if (rect.contains(Mouse.getX(), Mouse.getY()) && this.te.juice != null){
+	System.out.println("X: " + this.mousex + " X:X: " + x + 146 + " Y: " + this.mousey + " Y:Y: " + y + 11);
+	Rectangle rect = new Rectangle(146, 11, 16, 61);
+
+	if (rect.contains(this.mousex, this.mousey) && this.te.i.getFluid() != null){
 		return true;
 	}
 	return false;
@@ -85,4 +88,19 @@ private boolean shouldShowToolTip(){
 public void updateScreen(){
 	
 }
+protected void mouseMovedOrUp(int par1, int par2, int par3){
+	super.mouseMovedOrUp(par1, par2, par3);
+	if (par3 == 0){
+		this.mousex = par1;
+		this.mousey = par2;
+	}
 }
+public void handleMouseInput(){
+	int x = Mouse.getEventX() * width / mc.displayWidth;
+	int y = height - (Mouse.getEventY() * height) / mc.displayHeight - 1;
+	this.mousex = x - guiLeft;
+	this.mousey = y - guiTop;
+	super.handleMouseInput();
+}
+}
+

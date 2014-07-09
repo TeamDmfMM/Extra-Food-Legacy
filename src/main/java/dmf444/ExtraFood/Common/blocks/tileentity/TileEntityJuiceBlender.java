@@ -1,21 +1,24 @@
 package dmf444.ExtraFood.Common.blocks.tileentity;
 
-import dmf444.ExtraFood.Common.RecipeHandler.JuiceRegistry;
-import dmf444.ExtraFood.Common.fluids.FluidLoader;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraftforge.fluids.FluidEvent;
+import net.minecraftforge.common.util.ForgeDirection;
+import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.FluidTank;
 import net.minecraftforge.fluids.FluidTankInfo;
-import net.minecraftforge.fluids.IFluidTank;
+import net.minecraftforge.fluids.IFluidHandler;
+import dmf444.ExtraFood.Common.RecipeHandler.JuiceRegistry;
 
 
-public class TileEntityJuiceBlender extends TileEntity implements IFluidTank, IInventory{
+public class TileEntityJuiceBlender extends TileEntity implements IInventory {
 
 
-
+	public FluidTank i;
 
 	public ItemStack[] items;
 	public FluidStack juice;
@@ -26,6 +29,7 @@ public class TileEntityJuiceBlender extends TileEntity implements IFluidTank, II
 	
     public TileEntityJuiceBlender(){
         items = new ItemStack[3];
+        i = new FluidTank(5000);
 
 }
 
@@ -40,6 +44,7 @@ public class TileEntityJuiceBlender extends TileEntity implements IFluidTank, II
 	public ItemStack getStackInSlot(int p_70301_1_) {
 
 		return items[p_70301_1_];
+		
 	}
 
 
@@ -85,7 +90,7 @@ public class TileEntityJuiceBlender extends TileEntity implements IFluidTank, II
 		return false;
 	}
 
-
+	
 	@Override
 	public int getInventoryStackLimit() {
 
@@ -115,68 +120,7 @@ public class TileEntityJuiceBlender extends TileEntity implements IFluidTank, II
 	}
 
 
-	@Override
-	public FluidStack getFluid() {
-		return juice;
-	}
 
-
-	@Override
-	public int getFluidAmount() {
-		return juice.amount;
-	}
-
-
-	@Override
-	public int getCapacity() {
-		return 5000;
-	}
-
-
-	@Override
-	public FluidTankInfo getInfo() {
-		return new FluidTankInfo(this);
-	}
-
-
-	@Override
-	public int fill(FluidStack resource, boolean doFill) {
-		return 0;
-	}
-
-
-	@Override
-	public FluidStack drain(int maxDrain, boolean doDrain) {
-		if (juice == null)
-        {
-            return null;
-        }
-
-
-        int drained = maxDrain;
-        if (juice.amount < drained)
-        {
-            drained = juice.amount;
-        }
-
-
-        FluidStack stack = new FluidStack(juice, drained);
-        if (doDrain)
-        {
-            juice.amount -= drained;
-            if (juice.amount <= 0)
-            {
-                juice = null;
-            }
-
-
-            if (this != null)
-            {
-                FluidEvent.fireEvent(new FluidEvent.FluidDrainingEvent(juice, this.getWorldObj(), xCoord, yCoord, zCoord, this, drained));
-            }
-        }
-        return stack;
-	}
 
 
 	  @Override
@@ -191,7 +135,7 @@ public class TileEntityJuiceBlender extends TileEntity implements IFluidTank, II
 	  public boolean ok(){
 		  if (JuiceRegistry.instance.getJuiceFromItemStack(this.items[0]) != null){
 			  if (this.juice != null){
-				  if (this.juice.getFluid() == JuiceRegistry.instance.getJuiceFromItemStack(this.items[0])){
+				  if (this.i.getFluid().getFluid() == JuiceRegistry.instance.getJuiceFromItemStack(this.items[0])){
 					  return true;
 				  }
 			  }
@@ -219,11 +163,12 @@ public class TileEntityJuiceBlender extends TileEntity implements IFluidTank, II
 
 	private void do_thingy() {
 		// TODO Auto-generated method stub
-		if (this.juice == null){
-			this.juice = new FluidStack(JuiceRegistry.instance.getJuiceFromItemStack(this.items[0]), 100);
+		if (this.i.getFluid() == null){
+			FluidStack juice = new FluidStack(JuiceRegistry.instance.getJuiceFromItemStack(this.items[0]), 100);
+			this.i.setFluid(juice);
 		}
 		else {
-			this.juice.amount += 100;
+			this.i.getFluid().amount += 100;
 		}
 		if (this.items[0].stackSize == 1){
 			this.items[0] = null;
@@ -233,4 +178,87 @@ public class TileEntityJuiceBlender extends TileEntity implements IFluidTank, II
 		}
 		
 	}
+	public void writeToNBT(NBTTagCompound tag){
+		NBTTagList t = new NBTTagList();
+		int s = 0;
+		for (ItemStack i : items){
+			if (i != null){
+				NBTTagCompound item = new NBTTagCompound();
+				i.writeToNBT(item);
+				item.setInteger("Slot", s);
+				t.appendTag(item);
+				
+			}
+			s += 1;
+		}
+		tag.setTag("Items", t);
+		if (i.getFluid() != null){
+		this.i.writeToNBT(tag);
+		}
+		super.writeToNBT(tag);
+	}
+	public void readFromNBT(NBTTagCompound tag){
+		int s = 0;
+		NBTTagList itl = tag.getTagList("Items", 10);
+		
+		for (s = 0; s < itl.tagCount(); s ++){
+			NBTTagCompound t = itl.getCompoundTagAt(s);
+			if (t != null){
+				items[t.getInteger("Slot")] = ItemStack.loadItemStackFromNBT(t);
+			}
+		}
+	    this.i.setFluid(FluidStack.loadFluidStackFromNBT(tag));
+		super.readFromNBT(tag);
+			
+		
+	}
+
+
+
+
+
+	/*@Override
+	public FluidStack drain(ForgeDirection from, FluidStack resource,
+			boolean doDrain) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public FluidStack drain(ForgeDirection from, int maxDrain, boolean doDrain) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public boolean canFill(ForgeDirection from, Fluid fluid) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+
+	@Override
+	public boolean canDrain(ForgeDirection from, Fluid fluid) {
+		// TODO Auto-generated method stub
+		if (from != ForgeDirection.UP){
+			return true;
+		}
+		return false;
+	}
+
+
+	@Override
+	public FluidTankInfo[] getTankInfo(ForgeDirection from) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public int fill(ForgeDirection from, FluidStack resource, boolean doFill) {
+		// TODO Auto-generated method stub
+		return 0;
+	}*/
 }

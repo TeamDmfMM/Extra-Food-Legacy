@@ -22,7 +22,7 @@ public class JuiceRegistry {
 		juices = new Hashtable<Item, Fluid>();
 		juicenames = new Hashtable<Fluid, String>();
 		System.out.println(FluidLoader.Fstrawberryjuice == null);
-		registerJuice(FluidLoader.Fstrawberryjuice, ItemLoader.strawberry, "extrafood:textures/blocks/StrawberryJuice_flowing.png");
+		registerJuice(FluidLoader.Fstrawberryjuice, ItemLoader.strawberry, "extrafood:textures/blocks/StrawberryJuice_flow.png");
 		registerJuice(FluidLoader.Fbananajuice, ItemLoader.banana, "extrafood:textures/blocks/BananaJuice_flow.png");
 		
 		
