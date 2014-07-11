@@ -64,7 +64,7 @@ public class GuiHandler implements IGuiHandler {
             	} else {
             	if (tileEntity instanceof TileEntityJuiceBlender){
             	
-            	System.out.println(" gjksfcckcgrjkgshkdvr");
+            	//System.out.println(" gjksfcckcgrjkgshkdvr");
             	return new GuiJuiceBlender(player.inventory, (TileEntityJuiceBlender) tileEntity);
             	}
             }

@@ -14,6 +14,7 @@ import dmf444.ExtraFood.Common.CommonProxy;
 import dmf444.ExtraFood.Common.EventHandler.ExtraFood_EventBonemeal;
 import dmf444.ExtraFood.Common.EventHandler.TestHandle;
 import dmf444.ExtraFood.Common.RecipeHandler.CRPageCraftGet;
+import dmf444.ExtraFood.Common.RecipeHandler.JuiceRegistry;
 import dmf444.ExtraFood.Common.RecipeHandler.RegistryAutoCutter;
 import dmf444.ExtraFood.Common.blocks.BlockLoader;
 import dmf444.ExtraFood.Common.fluids.FluidLoader;
@@ -83,5 +84,6 @@ public class ExtraFood {
 		
 		this.registryCutter = new RegistryAutoCutter();
 		crafterPage = new CRPageCraftGet();
+		JuiceRegistry.instance = new JuiceRegistry();
 	}
 }
