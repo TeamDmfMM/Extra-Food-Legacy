@@ -10,6 +10,7 @@ item.Knife.name=Cooking Knife
 tile.Banana_Bunch.name=Banana Bunch
 tile.CheesePress.name=Cheese Press
 tile.Bannana_Sapling.name=Banana Sapling
+fluid.strawberryjuice.name=Strawberry Juice
 
 #--Cook Book Names
 cookbook.Title=Cookbook

@@ -9,6 +9,7 @@ import net.minecraft.block.IGrowable;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.IIcon;
@@ -16,6 +17,7 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
+import net.minecraftforge.common.util.ForgeDirection;
 import dmf444.ExtraFood.Common.items.ItemLoader;
 import dmf444.ExtraFood.Core.EFTabs;
 import dmf444.ExtraFood.util.EFLog;
@@ -53,14 +55,16 @@ public class StrawberryBush extends Block implements IGrowable {
 
 	@Override
 	public void updateTick(World world, int x, int y, int z, Random random) {
-		  if (world.getBlockLightValue(x, y + 1, z) >= 9)
+	    {
+	        super.updateTick(world, x, y, z, random);
+
+	        if (world.getBlockLightValue(x, y + 1, z) >= 9)
 	        {
-	            int l = world.getBlockMetadata(x, y, z);
+	            int l = world.getBlockMetadata( x, y, z);
 
 	            if (l < 7)
 	            {
-	                float f = 2; //= this.func_149864_n(world, x, y, z);
-	            	
+	                float f = this.magicStuff(world,  x, y, z);
 
 	                if (random.nextInt((int)(25.0F / f) + 1) == 0)
 	                {
@@ -69,6 +73,7 @@ public class StrawberryBush extends Block implements IGrowable {
 	                }
 	            }
 	        }
+	    }
 	}
 	
     @Override
@@ -150,5 +155,52 @@ public class StrawberryBush extends Block implements IGrowable {
 	    {
 	        return null;
 	    }
+	    
+	    private float magicStuff(World world, int x, int y, int z)
+	    {
+	        float f = 1.0F;
+	        Block block = world.getBlock(x, y, z - 1);
+	        Block block1 = world.getBlock(x, y, z + 1);
+	        Block block2 = world.getBlock(x - 1, y, z);
+	        Block block3 = world.getBlock(x + 1, y, z);
+	        Block block4 = world.getBlock(x - 1, y, z - 1);
+	        Block block5 = world.getBlock(x + 1, y, z - 1);
+	        Block block6 = world.getBlock(x + 1, y, z + 1);
+	        Block block7 = world.getBlock(x - 1, y, z + 1);
+	        boolean flag = block2 == this || block3 == this;
+	        boolean flag1 = block == this || block1 == this;
+	        boolean flag2 = block4 == this || block5 == this || block6 == this || block7 == this;
 
+	        for (int l = x - 1; l <= x + 1; ++l)
+	        {
+	            for (int i1 = z - 1; i1 <= z + 1; ++i1)
+	            {
+	                float f1 = 0.0F;
+
+	                if (world.getBlock(l, y - 1, i1) == Blocks.dirt || world.getBlock(l, y - 1, i1) == Blocks.grass)
+	                {
+	                    f1 = 1.0F;
+
+	                    if (world.getBlock(l, y - 1, i1).isFertile(world, l, y - 1, i1))
+	                    {
+	                        f1 = 3.0F;
+	                    }
+	                }
+
+	                if (l != x || i1 != z)
+	                {
+	                    f1 /= 4.0F;
+	                }
+
+	                f += f1;
+	            }
+	        }
+
+	        if (flag2 || flag && flag1)
+	        {
+	            f /= 2.0F;
+	        }
+
+	        return f;
+	    }
 }

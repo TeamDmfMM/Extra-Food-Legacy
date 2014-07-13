@@ -59,8 +59,8 @@ public class ExtraFoodCModDummyContainer extends DummyModContainer {
 	}
 
 
-	}
+}
 	
 
 
-}
+

@@ -9,6 +9,7 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fluids.FluidContainerRegistry;
 import net.minecraftforge.fluids.FluidEvent;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTank;
@@ -24,19 +25,20 @@ import dmf444.ExtraFood.util.EFLog;
 public class TileEntityJuiceBlender extends TileEntity implements IInventory, IFluidHandler {
 
 
-	public FluidTank tank;
+	public FluidTank tank = new FluidTank(FluidContainerRegistry.BUCKET_VOLUME * 5);
 
 
 	public ItemStack[] items;
 	public FluidStack juice;
-	int outputint;
 
 	public int ttime;
 	public int complete;
+	
+	public int amountin;
+	public FluidStack myjuice;
 
     public TileEntityJuiceBlender(){
-        items = new ItemStack[3];
-        tank = new FluidTank(5000);
+        items = new ItemStack[3]; 
     }
 
 
@@ -235,8 +237,8 @@ public class TileEntityJuiceBlender extends TileEntity implements IInventory, IF
 		tag.setTag("Items", t);
 		
 		if (tank.getFluid() != null){
-		this.tank.writeToNBT(tag);
-		EFLog.fatal(tag);
+		 this.tank.writeToNBT(tag);
+		 EFLog.fatal(tag);
 		}
 		super.writeToNBT(tag);
 
@@ -268,8 +270,10 @@ public class TileEntityJuiceBlender extends TileEntity implements IInventory, IF
 			}
 		}
         super.readFromNBT(tag);
-        tank.readFromNBT(tag);
-	    EFLog.error(tank.readFromNBT(tag));
+        this.tank.readFromNBT(tag);
+        this.amountin = tank.getFluidAmount();
+        this.myjuice = tank.getFluid();
+	    EFLog.error(tank.getFluidAmount());
 	}
 
 	

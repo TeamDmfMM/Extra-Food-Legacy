@@ -17,13 +17,12 @@ buildscript {
 
 apply plugin: 'forge'
 
-version = "1.7.2-0.5b"
+version = "1.7.10-0.6b"
 group= "dmf444.ExtraFood" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "ExtraFood"
 
 minecraft {
-    version = "1.7.10_pre4-10.12.2.1143-prerelease"
-    assetDir = "eclipse/assets"
+    version = "1.7.10-10.13.0.1180"
 }
 
 dependencies {
