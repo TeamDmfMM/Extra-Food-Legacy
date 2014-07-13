@@ -14,6 +14,9 @@ import net.minecraft.nbt.NBTTagCompound;
 	private NBTTagCompound tag;
 	private int FluidID;
 	
+	public PacketJBTank(){ 
+		//DO NOTHING.....
+	}
 	
 	public PacketJBTank(int liquidA, NBTTagCompound nbt, int fluidid){
 		this.liquidamount = liquidA;
@@ -37,7 +40,7 @@ import net.minecraft.nbt.NBTTagCompound;
 		
 	}
 	
-	public class Handler implements IMessageHandler<PacketJBTank, IMessage> {
+	public static class Handler implements IMessageHandler<PacketJBTank, IMessage> {
 
 		@Override
 		public IMessage onMessage(PacketJBTank message, MessageContext ctx) {

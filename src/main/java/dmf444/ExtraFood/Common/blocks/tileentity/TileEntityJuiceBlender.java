@@ -16,7 +16,9 @@ import net.minecraftforge.fluids.FluidTank;
 import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidHandler;
 import net.minecraftforge.fluids.IFluidTank;
+import dmf444.ExtraFood.ExtraFood;
 import dmf444.ExtraFood.Common.RecipeHandler.JuiceRegistry;
+import dmf444.ExtraFood.Core.PacketJBTank;
 import dmf444.ExtraFood.util.EFLog;
 
 
@@ -190,7 +192,8 @@ public class TileEntityJuiceBlender extends TileEntity implements IInventory, IF
 	  }
 	  public void updateEntity(){
 
-		  EFLog.error(tank.getFluidAmount());
+		 // EFLog.error(tank.getFluidAmount());
+		  ExtraFood.JBTanknet.sendToAll(new PacketJBTank(tank.getFluidAmount(), juice.tag, tank.getFluid().getFluid().getID()));
 		  if (this.ok()){
 			  this.ttime += 1;
 			  if (this.ttime == 20){
