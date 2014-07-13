@@ -189,6 +189,8 @@ public class TileEntityJuiceBlender extends TileEntity implements IInventory, IF
 		  return false;
 	  }
 	  public void updateEntity(){
+
+		  EFLog.error(tank.getFluidAmount());
 		  if (this.ok()){
 			  this.ttime += 1;
 			  if (this.ttime == 20){
@@ -273,7 +275,7 @@ public class TileEntityJuiceBlender extends TileEntity implements IInventory, IF
         this.tank.readFromNBT(tag);
         this.amountin = tank.getFluidAmount();
         this.myjuice = tank.getFluid();
-	    EFLog.error(tank.getFluidAmount());
+	    //EFLog.error(tank.getFluidAmount());
 	}
 
 	

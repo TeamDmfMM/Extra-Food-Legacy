@@ -36,9 +36,9 @@ public class GuiJuiceBlender extends GuiContainer {
 	private int mousey;
 
 
-	public GuiJuiceBlender(InventoryPlayer player, TileEntityJuiceBlender te) {
-		super(new ContainerJuiceBlender(player, te));
-		this.te = te;
+	public GuiJuiceBlender(InventoryPlayer player, TileEntityJuiceBlender tilentity) {
+		super(new ContainerJuiceBlender(player, tilentity));
+		te = tilentity;
 
 
 		// TODO Auto-generated constructor stub
@@ -54,8 +54,8 @@ public class GuiJuiceBlender extends GuiContainer {
 		//System.out.println("drawing rebbryrbtwckut");
 		GL11.glDisable(GL11.GL_LIGHTING);
 		GL11.glEnable(GL11.GL_BLEND);
-		this.mc.renderEngine.bindTexture(new ResourceLocation(JuiceRegistry.instance.getTextureFromJuice(this.te.tank.getFluid().getFluid())));
-		this.drawTexturedModalRect(x + 147, (int)(y + 11 + (62 - (this.te.amountin * 0.012))), 0, 0, 16, (int)(this.te.amountin * 0.012));
+		this.mc.renderEngine.bindTexture(new ResourceLocation(JuiceRegistry.instance.getTextureFromJuice(te.tank.getFluid().getFluid())));
+		this.drawTexturedModalRect(x + 147, (int)(y + 11 + (62 - (te.tank.getFluidAmount() * 0.012))), 0, 0, 16, (int)(te.tank.getFluidAmount() * 0.012));
 		GL11.glEnable(GL11.GL_LIGHTING);
 		GL11.glDisable(GL11.GL_BLEND);
 	}
@@ -80,18 +80,18 @@ public class GuiJuiceBlender extends GuiContainer {
 		int y = (height - ySize) / 2;
 		this.drawTexturedModalRect(x, y, 0, 0, xSize, ySize);
 		if (this.te.complete > 0){
-			int bar = (int) (1.85 * this.te.complete);
+			int bar = (int) (1.85 * te.complete);
 			this.drawTexturedModalRect(x + 104, y + 65, 176, 0, bar, 4);
 		}
-		if (te.myjuice != null){
+		if (te.tank.getFluid() != null){
 			this.drawFluid();
 
 
 		}
 		if (this.shouldShowToolTip()){
 			List<String> list = new ArrayList<String>();
-			list.add("Fluid: " + this.te.myjuice.getFluid().getName());
-			list.add("Amount: " + this.te.amountin + "mB");
+			list.add("Fluid: " + this.te.tank.getFluid().getFluid().getName());
+			list.add("Amount: " + te.tank.getFluidAmount() + "mB");
 			this.drawHoveringText(list, x + this.mousex, y + this.mousey, fontRendererObj);
 		}
 
@@ -107,7 +107,7 @@ private boolean shouldShowToolTip(){
 	Rectangle rect = new Rectangle(146, 11, 16, 61);
 
 
-	if (rect.contains(this.mousex, this.mousey) && this.te.myjuice != null){
+	if (rect.contains(this.mousex, this.mousey) && te.tank.getFluid() != null){
 		return true;
 	}
 	return false;

@@ -9,7 +9,9 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
+import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.relauncher.Side;
 import dmf444.ExtraFood.Common.CommonProxy;
 import dmf444.ExtraFood.Common.EventHandler.ExtraFood_EventBonemeal;
 import dmf444.ExtraFood.Common.EventHandler.TestHandle;
@@ -22,6 +24,7 @@ import dmf444.ExtraFood.Common.items.ItemLoader;
 import dmf444.ExtraFood.Core.AchieveLoad;
 import dmf444.ExtraFood.Core.CraftingRecipies;
 import dmf444.ExtraFood.Core.GuiHandler;
+import dmf444.ExtraFood.Core.PacketJBTank;
 import dmf444.ExtraFood.Core.TreeManager;
 import dmf444.ExtraFood.Core.lib.ModInfo;
 import dmf444.ExtraFood.util.ConfigHandler;
@@ -37,10 +40,14 @@ public class ExtraFood {
 	@SidedProxy(clientSide= ModInfo.Clientproxy, serverSide= ModInfo.Serverproxy)
 	public static CommonProxy proxy;
 	
+	
+	public static CRPageCraftGet crafterPage;
 	public static RegistryAutoCutter registryCutter;
 	TreeManager treeManager = new TreeManager();
 	
-	public static CRPageCraftGet crafterPage;
+	public static SimpleNetworkWrapper JBTanknet;
+
+	
 	
 		@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
@@ -59,6 +66,10 @@ public class ExtraFood {
 		}
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
 		AchieveLoad.loadAc();
+		
+		JBTanknet = NetworkRegistry.INSTANCE.newSimpleChannel(ModInfo.MId);
+		JBTanknet.registerMessage(PacketJBTank.Handler.class, PacketJBTank.class, 1,Side.CLIENT);
+
 		
 		
 			EFLog.info("Cleared EF's Registry");
