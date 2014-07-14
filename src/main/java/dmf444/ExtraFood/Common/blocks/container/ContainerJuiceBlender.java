@@ -4,16 +4,22 @@ package dmf444.ExtraFood.Common.blocks.container;
 import dmf444.ExtraFood.ExtraFood;
 import dmf444.ExtraFood.Common.blocks.tileentity.TileEntityJuiceBlender;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
+import net.minecraft.inventory.ICrafting;
 import net.minecraft.inventory.Slot;
 import dmf444.ExtraFood.Common.blocks.tileentity.TileEntityJuiceBlender;
 import dmf444.ExtraFood.Core.PacketJBTank;
+import dmf444.ExtraFood.util.EFLog;
 
 public class ContainerJuiceBlender extends Container{
 
 
 	TileEntityJuiceBlender tileEntity;
+	EntityPlayerMP player;
+	
+	
 	public static int INPUT_1 = 0, INPUT_2 = 1, OUTPUT_1 = 2;
 
 
@@ -47,9 +53,12 @@ public class ContainerJuiceBlender extends Container{
 	
 	@Override
 	public void detectAndSendChanges(){
-		super.detectAndSendChanges();
+		super.detectAndSendChanges();		
 		for (int i = 0; i < this.crafters.size(); ++i){
-		ExtraFood.JBTanknet.sendToAll(new PacketJBTank(tileEntity.tank.getFluidAmount(), tileEntity.tank.getFluid().tag, tileEntity.tank.getFluid().getFluid().getID()));
+			ICrafting icrafting = (ICrafting)this.crafters.get(i);
+			if (tileEntity.tank.getFluid() != null){
+		ExtraFood.JBTanknet.sendTo(new PacketJBTank(tileEntity.tank.getFluidAmount(), tileEntity.tank.getFluid().tag, tileEntity.tank.getFluid().getFluid().getID()), player);
+			}			
 		}
 	}
 
