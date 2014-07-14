@@ -10,6 +10,7 @@ item.Knife.name=Cooking Knife
 tile.Banana_Bunch.name=Banana Bunch
 tile.CheesePress.name=Cheese Press
 tile.Bannana_Sapling.name=Banana Sapling
+fluid.strawberryjuice.name=Strawberry Juice
 
 #--Cook Book Names
 cookbook.Title=Cookbook
@@ -18,6 +19,6 @@ cookbook.cheesepress=The Cheese Press is used to convert buckets of milk to chee
 cookbook.cheesepress1=This is testing the multi-page functionality of the cookbook.
 cookbook.cheeseslice=Cheese slices are used in many recipes throughout ExtraFood. They are mainly used in pizza, and they are also used in sandwiches (notably, the grilled cheese ones.) Their other use is to be a lighter meal than an entire cheese wheel.
 
-#Fluids
-fluid.strawberryjuice=Strawberry Juice
-fluid.bananajuice=Banana Juice
+
+#--GUI's
+gui.JB=Juice Blender

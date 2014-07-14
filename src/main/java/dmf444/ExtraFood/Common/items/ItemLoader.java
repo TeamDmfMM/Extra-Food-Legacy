@@ -20,12 +20,10 @@ public class ItemLoader {
 	private static boolean FRegister=false;
 	
 	public static void initiateItems() {
-		//cheeseWheel = new CheeseWheel(8, 0.6F, false).setUnlocalizedName(ItemLib.iCW);
-		//banana = new Banana(1, 0.8F, false).setUnlocalizedName(ItemLib.iBan);
+
 		knife = new Knife().setUnlocalizedName(ItemLib.iK);	
-		//cheeseSlice = new CheeseSlice().setUnlocalizedName(ItemLib.iCS);
 		cookBook = new Cookbook().setUnlocalizedName(ItemLib.iCB);
-		//sausage = new Sausage().setUnlocalizedName(ItemLib.iS);
+
 		
 		
 		

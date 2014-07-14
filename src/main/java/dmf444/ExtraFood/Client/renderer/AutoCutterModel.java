@@ -161,14 +161,14 @@ public class AutoCutterModel extends ModelBase
     setRotationAngles(f, f1, f2, f3, f4, f5, null);
     if (entity.complete > 0){
     	int ticks = entity.complete * 20 + entity.ttime;
-    	
+    	if (ticks % 2 == 0){
     	float degrees = (float) (ticks * 3.6);
     	
     	float rotation = (float) ((float) Math.sin(degrees) * 10);
     	if (rotation < 0){rotation = -rotation;}
-    	this.knifeANIMATE.rotateAngleX = rotation;
-    	this.KnifehandleANIMATE.rotateAngleX = rotation;
-    	
+    	this.knifeANIMATE.rotateAngleX = -rotation;
+    	this.KnifehandleANIMATE.rotateAngleX = -rotation;
+    	}
     	
     }
     Back_base.render(f5);

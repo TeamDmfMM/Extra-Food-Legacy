@@ -8,7 +8,7 @@ import cpw.mods.fml.relauncher.IFMLLoadingPlugin;
 public class EFFMLLoadingPlugin implements IFMLLoadingPlugin {
 	// The location of the coremod.
 	public static File location;
-	
+
 	@Override
 	public String[] getASMTransformerClass() {
 		// TODO Auto-generated method stub
@@ -27,12 +27,15 @@ public class EFFMLLoadingPlugin implements IFMLLoadingPlugin {
 		return null;
 	}
 
+
 	@Override
 	public void injectData(Map<String, Object> data) {
 		// TODO Auto-generated method stub
 		location = (File) data.get("coremodLocation");
 
 	}
+
+
 
 	@Override
 	public String getAccessTransformerClass() {

@@ -9,7 +9,9 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
+import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.relauncher.Side;
 import dmf444.ExtraFood.Common.CommonProxy;
 import dmf444.ExtraFood.Common.EventHandler.ExtraFood_EventBonemeal;
 import dmf444.ExtraFood.Common.EventHandler.TestHandle;
@@ -22,8 +24,11 @@ import dmf444.ExtraFood.Common.items.ItemLoader;
 import dmf444.ExtraFood.Core.AchieveLoad;
 import dmf444.ExtraFood.Core.CraftingRecipies;
 import dmf444.ExtraFood.Core.GuiHandler;
+import dmf444.ExtraFood.Core.PacketJBTank;
 import dmf444.ExtraFood.Core.TreeManager;
 import dmf444.ExtraFood.Core.lib.ModInfo;
+import dmf444.ExtraFood.util.ConfigHandler;
+import dmf444.ExtraFood.util.EFLog;
 
 
 @Mod(modid = ModInfo.MId,name = ModInfo.Mname, version = ModInfo.Vers)
@@ -35,27 +40,39 @@ public class ExtraFood {
 	@SidedProxy(clientSide= ModInfo.Clientproxy, serverSide= ModInfo.Serverproxy)
 	public static CommonProxy proxy;
 	
+	
+	public static CRPageCraftGet crafterPage;
 	public static RegistryAutoCutter registryCutter;
 	TreeManager treeManager = new TreeManager();
 	
-	public static CRPageCraftGet crafterPage;
+	public static SimpleNetworkWrapper JBTanknet;
+
+	
 	
 		@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 			
-			System.out.println("Extra Food has been activated, loading blocks,items,fluids and Events");
-			FluidLoader.initiateFluids();
+			EFLog.info("Extra Food has been activated, loading blocks,items and Events");
+		ConfigHandler.init(event.getSuggestedConfigurationFile());
+			
+		FluidLoader.initiateFluids();	
 		ItemLoader.initiateItems();
 		ItemLoader.initiateFoods();
 		BlockLoader.initiateBlocks();
+		
+		if (ConfigHandler.GenBananaTrees){
 		GameRegistry.registerWorldGenerator(treeManager, 0);
 		MinecraftForge.EVENT_BUS.register(new ExtraFood_EventBonemeal());
+		}
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
-
 		AchieveLoad.loadAc();
 		
+		JBTanknet = NetworkRegistry.INSTANCE.newSimpleChannel(ModInfo.MId);
+		JBTanknet.registerMessage(PacketJBTank.Handler.class, PacketJBTank.class, 1,Side.CLIENT);
+
 		
-			System.out.println("Cleared EF's Registry");
+		
+			EFLog.info("Cleared EF's Registry");
 		
 	}
 		

@@ -1,37 +1,46 @@
 package dmf444.ExtraFood.Common.blocks.tileentity;
 
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
+import net.minecraft.network.NetworkManager;
+import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fluids.FluidContainerRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTank;
 import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidHandler;
 import dmf444.ExtraFood.Common.RecipeHandler.JuiceRegistry;
+import dmf444.ExtraFood.util.EFLog;
 
 
-public class TileEntityJuiceBlender extends TileEntity implements IInventory {
 
 
-	public FluidTank i;
+public class TileEntityJuiceBlender extends TileEntity implements IInventory, IFluidHandler {
+
+
+	public FluidTank tank = new FluidTank(FluidContainerRegistry.BUCKET_VOLUME * 5);
+
 
 	public ItemStack[] items;
 	public FluidStack juice;
-	
+
 	public int ttime;
 	public int complete;
 	
-	
-    public TileEntityJuiceBlender(){
-        items = new ItemStack[3];
-        i = new FluidTank(5000);
+	public int amountin;
+	public FluidStack myjuice;
 
-}
+    public TileEntityJuiceBlender(){
+        items = new ItemStack[3]; 
+    }
+
 
 
 	@Override
@@ -40,12 +49,18 @@ public class TileEntityJuiceBlender extends TileEntity implements IInventory {
 	}
 
 
+
+
 	@Override
 	public ItemStack getStackInSlot(int p_70301_1_) {
 
+
 		return items[p_70301_1_];
-		
+
+
 	}
+
+
 
 
 	@Override
@@ -62,7 +77,15 @@ public class TileEntityJuiceBlender extends TileEntity implements IInventory {
                 }
         }
         return stack;
-}
+	}
+	@Override
+     public void onDataPacket(NetworkManager netty, S35PacketUpdateTileEntity packet){
+    	 this.readFromNBT(packet.func_148857_g());
+     }
+
+
+
+
 
 
 
@@ -77,25 +100,36 @@ public class TileEntityJuiceBlender extends TileEntity implements IInventory {
 	    }
 
 
+
+
 	@Override
 	public String getInventoryName() {
+
 
 		return "Juice Blender";
 	}
 
 
+
+
 	@Override
 	public boolean hasCustomInventoryName() {
+
 
 		return false;
 	}
 
-	
+
+
+
 	@Override
 	public int getInventoryStackLimit() {
 
+
 		return 64;
 	}
+
+
 
 
 	@Override
@@ -105,19 +139,30 @@ public class TileEntityJuiceBlender extends TileEntity implements IInventory {
 	}
 
 
+
+
 	@Override
 	public void openInventory() {}
+
+
 
 
 	@Override
 	public void closeInventory() {}
 
 
+
+
 	@Override
 	public boolean isItemValidForSlot(int par1_, ItemStack par2_) {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
+
+
+
+
+
 
 
 
@@ -125,6 +170,8 @@ public class TileEntityJuiceBlender extends TileEntity implements IInventory {
 
 	  @Override
 	    public void setInventorySlotContents(int slot, ItemStack stack) {
+
+
 
 
 	            items[slot] = stack;
@@ -135,7 +182,7 @@ public class TileEntityJuiceBlender extends TileEntity implements IInventory {
 	  public boolean ok(){
 		  if (JuiceRegistry.instance.getJuiceFromItemStack(this.items[0]) != null){
 			  if (this.juice != null){
-				  if (this.i.getFluid().getFluid() == JuiceRegistry.instance.getJuiceFromItemStack(this.items[0])){
+				  if (this.tank.getFluid().getFluid() == JuiceRegistry.instance.getJuiceFromItemStack(this.items[0])){
 					  return true;
 				  }
 			  }
@@ -146,6 +193,9 @@ public class TileEntityJuiceBlender extends TileEntity implements IInventory {
 		  return false;
 	  }
 	  public void updateEntity(){
+
+		 // EFLog.error(tank.getFluidAmount());
+		  
 		  if (this.ok()){
 			  this.ttime += 1;
 			  if (this.ttime == 20){
@@ -163,12 +213,12 @@ public class TileEntityJuiceBlender extends TileEntity implements IInventory {
 
 	private void do_thingy() {
 		// TODO Auto-generated method stub
-		if (this.i.getFluid() == null){
+		if (this.tank.getFluid() == null){
 			FluidStack juice = new FluidStack(JuiceRegistry.instance.getJuiceFromItemStack(this.items[0]), 100);
-			this.i.setFluid(juice);
+			this.tank.setFluid(juice);
 		}
 		else {
-			this.i.getFluid().amount += 100;
+			this.tank.getFluid().amount += 100;
 		}
 		if (this.items[0].stackSize == 1){
 			this.items[0] = null;
@@ -176,9 +226,10 @@ public class TileEntityJuiceBlender extends TileEntity implements IInventory {
 		else {
 			this.items[0].stackSize -= 1;
 		}
-		
+
+
 	}
-	public void writeToNBT(NBTTagCompound tag){
+	 public void writeToNBT(NBTTagCompound tag){
 		NBTTagList t = new NBTTagList();
 		int s = 0;
 		for (ItemStack i : items){
@@ -187,49 +238,78 @@ public class TileEntityJuiceBlender extends TileEntity implements IInventory {
 				i.writeToNBT(item);
 				item.setInteger("Slot", s);
 				t.appendTag(item);
-				
 			}
 			s += 1;
 		}
 		tag.setTag("Items", t);
-		if (i.getFluid() != null){
-		this.i.writeToNBT(tag);
+		
+		if (tank.getFluid() != null){
+		 this.tank.writeToNBT(tag);
+		 EFLog.fatal(tag);
 		}
 		super.writeToNBT(tag);
+
+
+		/* if (this.tank != null)
+	        {
+			 this.tank.writeToNBT(tag);
+	        }
+	        else
+	        {
+	        	tag.setString("Fluid", "");
+	        }
+		 super.writeToNBT(tag);*/
+		/*super.writeToNBT(tag);
+			tag.setInteger("Tracker", outputint);
+			tank.writeToNBT(tag);
+		 	*/
 	}
+	
 	public void readFromNBT(NBTTagCompound tag){
+		super.readFromNBT(tag);
+        this.tank.readFromNBT(tag);
 		int s = 0;
 		NBTTagList itl = tag.getTagList("Items", 10);
-		
+
+
 		for (s = 0; s < itl.tagCount(); s ++){
 			NBTTagCompound t = itl.getCompoundTagAt(s);
 			if (t != null){
 				items[t.getInteger("Slot")] = ItemStack.loadItemStackFromNBT(t);
 			}
 		}
-	    this.i.setFluid(FluidStack.loadFluidStackFromNBT(tag));
-		super.readFromNBT(tag);
-			
-		
+        
+        this.amountin = tank.getFluidAmount();
+        this.myjuice = tank.getFluid();
+	    //EFLog.error(tank.getFluidAmount());
 	}
 
+	
 
-
-
-
-	/*@Override
-	public FluidStack drain(ForgeDirection from, FluidStack resource,
-			boolean doDrain) {
+	@Override
+	public int fill(ForgeDirection from, FluidStack resource, boolean doFill) {
 		// TODO Auto-generated method stub
-		return null;
+		return 0;
 	}
+
+
+
+	@Override
+	public FluidStack drain(ForgeDirection from, FluidStack resource, boolean doDrain) {
+        if (resource == null || !resource.isFluidEqual(tank.getFluid()))
+        {
+            return null;
+        }
+        return tank.drain(resource.amount, doDrain);
+	}
+
 
 
 	@Override
 	public FluidStack drain(ForgeDirection from, int maxDrain, boolean doDrain) {
-		// TODO Auto-generated method stub
-		return null;
+        return tank.drain(maxDrain, doDrain);
 	}
+
 
 
 	@Override
@@ -239,26 +319,21 @@ public class TileEntityJuiceBlender extends TileEntity implements IInventory {
 	}
 
 
+
 	@Override
 	public boolean canDrain(ForgeDirection from, Fluid fluid) {
 		// TODO Auto-generated method stub
-		if (from != ForgeDirection.UP){
-			return true;
-		}
-		return false;
+		return true;
 	}
+
 
 
 	@Override
 	public FluidTankInfo[] getTankInfo(ForgeDirection from) {
-		// TODO Auto-generated method stub
-		return null;
+        return new FluidTankInfo[] { tank.getInfo() };
 	}
+	
 
 
-	@Override
-	public int fill(ForgeDirection from, FluidStack resource, boolean doFill) {
-		// TODO Auto-generated method stub
-		return 0;
-	}*/
+
 }

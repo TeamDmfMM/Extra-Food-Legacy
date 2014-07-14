@@ -19,29 +19,30 @@ public class GuiHandler implements IGuiHandler {
     //returns an instance of the Container you made earlier
 	public void registerKeyBindings () {}
     @Override
-    public Object getServerGuiElement(int id, EntityPlayer player, World world,
-                    int x, int y, int z) 
+    public Object getServerGuiElement(int id, EntityPlayer player, World world, int x, int y, int z) 
     {
             TileEntity tileEntity = world.getTileEntity(x, y, z);
             if(tileEntity instanceof CheesePressTileEntity){
-                    return new CheesePressContainer(player.inventory, (CheesePressTileEntity) tileEntity);
-            }
-            else if (tileEntity instanceof TileEntityJuiceBlender){
-            	System.out.println("srvr fgknhsngts nlgts dhtrbtsrvtsrhnlvtrhtdrl");
-            	return new ContainerJuiceBlender(player.inventory, (TileEntityJuiceBlender) tileEntity);
-            }
-            else if(tileEntity instanceof AutoCutterTileEntity)
+            	
+                 return new CheesePressContainer(player.inventory, (CheesePressTileEntity) tileEntity);
+            } else {
+            if(tileEntity instanceof AutoCutterTileEntity)
             {
-            		return new AutoCutterContainer(player.inventory, (AutoCutterTileEntity) tileEntity);
-            } else if(id == CookBookGUI.GUI_ID)
+            	return new AutoCutterContainer(player.inventory, (AutoCutterTileEntity) tileEntity);
+            } else {
+            if (tileEntity instanceof TileEntityJuiceBlender){                	
+                return new ContainerJuiceBlender( player.inventory, (TileEntityJuiceBlender) tileEntity);
+            } else {
+            if(id == CookBookGUI.GUI_ID)
             	{
             		return null;
+            	}                            
+            	return null;
             	}
-          
-            
-            
-            return null;
-}
+            	}
+            	}
+
+    }
     
 
     //returns an instance of the Gui you made earlier
@@ -49,24 +50,30 @@ public class GuiHandler implements IGuiHandler {
     public Object getClientGuiElement(int id, EntityPlayer player, World world,
                     int x, int y, int z) {
             TileEntity tileEntity = world.getTileEntity(x, y, z);
+            
             if(id == CookBookGUI.GUI_ID){
-            	System.out.println("CALLED");
-            	//return CookBookGUI.currentOpenBook;
-            	
-            	return new CookBookGUI();
-            	
-            	} else if(tileEntity instanceof CheesePressTileEntity){
-                    return new CheesePressGUI(player.inventory, (CheesePressTileEntity) tileEntity);
-            } else if(tileEntity instanceof AutoCutterTileEntity)
-            	{
-            	System.out.println("Cutter- This works!");
+            	//System.out.println("CALLED");       	
+            	return new CookBookGUI();           	
+            } else{
+            if(tileEntity instanceof CheesePressTileEntity){
+            	return new CheesePressGUI(player.inventory, (CheesePressTileEntity) tileEntity);
+            } else {
+            if(tileEntity instanceof AutoCutterTileEntity){            
+            	//System.out.println("Cutter- This works!");
                 return new AutoCutterGUI(player.inventory, (AutoCutterTileEntity) tileEntity);
-            	} 
-            else if (tileEntity instanceof TileEntityJuiceBlender){
-            	System.out.println(" gjksfcckcgrjkgshkdvr");
+            	} else {
+            	if (tileEntity instanceof TileEntityJuiceBlender){
+            	
+            	//System.out.println(" gjksfcckcgrjkgshkdvr");
             	return new GuiJuiceBlender(player.inventory, (TileEntityJuiceBlender) tileEntity);
+            	}
+            }
+
+
+
             }
             
             return null;
       	}
     }
+}

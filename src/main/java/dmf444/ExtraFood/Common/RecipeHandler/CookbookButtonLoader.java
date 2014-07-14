@@ -24,6 +24,7 @@ public class CookbookButtonLoader {
 
 
 	}
+	
 	public ArrayList<ArrayList<int[]>> getXYCoordsOfLineForButton(String name){
 		try {
 		ArrayList<ArrayList<int[]>> xys = new ArrayList<ArrayList<int[]>>();
@@ -43,7 +44,8 @@ public class CookbookButtonLoader {
 		catch (Exception e){
 			return null;
 		}
-		
+
+
 	}
 	private ClickTab find(String name){
 		for (ClickTab tab : this.buttons){
@@ -53,6 +55,9 @@ public class CookbookButtonLoader {
 		}
 		return null;
 	}
+
+
+
 
 
 
