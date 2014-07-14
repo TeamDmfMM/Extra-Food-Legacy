@@ -193,7 +193,7 @@ public class TileEntityJuiceBlender extends TileEntity implements IInventory, IF
 	  public void updateEntity(){
 
 		 // EFLog.error(tank.getFluidAmount());
-		  ExtraFood.JBTanknet.sendToAll(new PacketJBTank(tank.getFluidAmount(), juice.tag, tank.getFluid().getFluid().getID()));
+		  
 		  if (this.ok()){
 			  this.ttime += 1;
 			  if (this.ttime == 20){

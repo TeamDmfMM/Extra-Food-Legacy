@@ -26,9 +26,9 @@ import net.minecraft.nbt.NBTTagCompound;
 
 	@Override
 	public void fromBytes(ByteBuf buf) {
-		liquidamount = ByteBufUtils.readVarInt(buf, 128);
+		liquidamount = ByteBufUtils.readVarInt(buf, 5);
 		tag = ByteBufUtils.readTag(buf);
-		FluidID = ByteBufUtils.readVarInt(buf, 127);
+		FluidID = ByteBufUtils.readVarInt(buf, 5);
 		
 	}
 

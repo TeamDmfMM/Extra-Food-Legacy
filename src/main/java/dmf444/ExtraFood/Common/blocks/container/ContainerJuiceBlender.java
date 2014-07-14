@@ -1,12 +1,14 @@
 package dmf444.ExtraFood.Common.blocks.container;
 
 
+import dmf444.ExtraFood.ExtraFood;
 import dmf444.ExtraFood.Common.blocks.tileentity.TileEntityJuiceBlender;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
 import dmf444.ExtraFood.Common.blocks.tileentity.TileEntityJuiceBlender;
+import dmf444.ExtraFood.Core.PacketJBTank;
 
 public class ContainerJuiceBlender extends Container{
 
@@ -41,6 +43,14 @@ public class ContainerJuiceBlender extends Container{
 	@Override
 	public boolean canInteractWith(EntityPlayer theplayer) {
 		return true;
+	}
+	
+	@Override
+	public void detectAndSendChanges(){
+		super.detectAndSendChanges();
+		for (int i = 0; i < this.crafters.size(); ++i){
+		ExtraFood.JBTanknet.sendToAll(new PacketJBTank(tileEntity.tank.getFluidAmount(), tileEntity.tank.getFluid().tag, tileEntity.tank.getFluid().getFluid().getID()));
+		}
 	}
 
 }
