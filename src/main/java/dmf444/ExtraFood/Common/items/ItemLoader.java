@@ -14,6 +14,8 @@ public class ItemLoader {
 	public static Item cookBook;
 	public static Item sausage;
 	public static Item strawberry;
+	public static Item bucketstrawberry;
+	public static Item bucketbanana;
 	
 	
 	private static boolean IRegister=false;
@@ -23,7 +25,8 @@ public class ItemLoader {
 
 		knife = new Knife().setUnlocalizedName(ItemLib.iK);	
 		cookBook = new Cookbook().setUnlocalizedName(ItemLib.iCB);
-
+		bucketstrawberry = new BucketStrawberry();
+		bucketbanana = new BucketBanana();
 		
 		
 		
@@ -38,6 +41,7 @@ public class ItemLoader {
 		
 		
 		
+		
 		registerFood();
 	}
 	private static void registerItems() {
@@ -45,6 +49,8 @@ public class ItemLoader {
 			
 			GameRegistry.registerItem(knife, ItemLib.iK);
 			GameRegistry.registerItem(cookBook, ItemLib.iCB);
+			GameRegistry.registerItem(bucketstrawberry, "sbucket");
+			GameRegistry.registerItem(bucketbanana, "bbucket");
 
 		}
 		IRegister=true;

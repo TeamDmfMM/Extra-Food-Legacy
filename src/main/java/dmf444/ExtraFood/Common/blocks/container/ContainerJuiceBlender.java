@@ -62,9 +62,9 @@ public class ContainerJuiceBlender extends Container{
 		for (int i = 0; i < this.crafters.size(); ++i){
 			if (crafters.get(i) instanceof EntityPlayerMP){
 			
-				
+				if (tileEntity.tank.getFluid() != null){
 					ExtraFood.JBTanknet.sendTo(new PacketJBTank(tileEntity.tank.getFluidAmount(), tileEntity.tank.getFluid().tag, tileEntity.tank.getFluid().getFluid().getID(), tileEntity.xCoord, tileEntity.yCoord, tileEntity.zCoord), (EntityPlayerMP) crafters.get(i));
-				
+				}
 		}
 	}
 	}
