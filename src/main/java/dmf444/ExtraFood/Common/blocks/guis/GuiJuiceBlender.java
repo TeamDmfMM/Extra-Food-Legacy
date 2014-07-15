@@ -72,8 +72,7 @@ public class GuiJuiceBlender extends GuiContainer {
 
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float p_146976_1_, int p_146976_2_, int p_146976_3_) {
-		EFLog.error(te.amountin);
-		
+
 		GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
 		this.mc.renderEngine.bindTexture(GuiLib.JBgui);
 		int x = (width - xSize) / 2;
@@ -81,13 +80,17 @@ public class GuiJuiceBlender extends GuiContainer {
 		this.drawTexturedModalRect(x, y, 0, 0, xSize, ySize);
 		if (this.te.complete > 0){
 			int bar = (int) (1.85 * te.complete);
-			this.drawTexturedModalRect(x + 104, y + 65, 176, 0, bar, 4);
+			this.drawTexturedModalRect(x + 103, y + 64, 176, 0, bar, 4);
 		}
 		if (te.tank.getFluid() != null){
 			this.drawFluid();
 
 
 		}
+		GL11.glDisable(GL11.GL_LIGHTING);
+		this.mc.renderEngine.bindTexture(GuiLib.JBgui);
+		this.drawTexturedModalRect(x + 147, y + 18, 217, 0, 16, 49);
+		GL11.glEnable(GL11.GL_LIGHTING);
 		if (this.shouldShowToolTip()){
 			List<String> list = new ArrayList<String>();
 			list.add("Fluid: " + this.te.tank.getFluid().getFluid().getName());

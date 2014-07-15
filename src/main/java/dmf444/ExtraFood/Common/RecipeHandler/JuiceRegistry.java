@@ -5,8 +5,10 @@ import java.util.Dictionary;
 import java.util.Hashtable;
 
 
+
 import dmf444.ExtraFood.Common.fluids.FluidLoader;
 import dmf444.ExtraFood.Common.items.ItemLoader;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.Fluid;
@@ -31,6 +33,7 @@ public class JuiceRegistry {
 		//System.out.println(FluidLoader.Fstrawberryjuice == null);
 		registerJuice(FluidLoader.Fstrawberryjuice, ItemLoader.strawberry, "extrafood:textures/blocks/StrawberryJuice_flow.png");
 		registerJuice(FluidLoader.Fbananajuice, ItemLoader.banana, "extrafood:textures/blocks/BananaJuice_flow.png");
+		registerJuice(FluidLoader.Fcarrotjuice, Items.carrot, "extrafood:textures/blocks/CarrotJuice_flow.png");
 
 
 

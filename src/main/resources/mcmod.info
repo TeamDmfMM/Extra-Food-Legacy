@@ -3,12 +3,12 @@
   "modid": "extrafood",
   "name": "Extra Food",
   "description": "Extra Food by mincrmatt12 and dmf444.",
-  "version": "0.1-alpha",
-  "mcversion": "1.7.2",
+  "version": "${mod_version}",
+  "mcversion": "${minecraft_version}",
   "url": "",
   "updateUrl": "",
   "authorList": ["mincrmatt12","dmf444"],
-  "credits": ""
+  "credits": "Dmf444, Mincrmatt12 and thanks to all those who helped on IRC and MCForge Forums"
   "screenshots": [],
   "dependencies": []
 }

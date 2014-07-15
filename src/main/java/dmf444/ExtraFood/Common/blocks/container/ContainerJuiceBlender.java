@@ -27,7 +27,7 @@ public class ContainerJuiceBlender extends Container{
 		this.addSlotToContainer(new Slot(te, INPUT_1, 80, 20));
 		this.addSlotToContainer(new Slot(te, INPUT_2, 126, 12));
 		this.addSlotToContainer(new Slot(te, OUTPUT_1, 126, 34));
-
+		this.tileEntity = te;
 
 		this.bindPlayerInventory(inventoryPlayer);
 
@@ -55,11 +55,12 @@ public class ContainerJuiceBlender extends Container{
 	public void detectAndSendChanges(){
 		super.detectAndSendChanges();		
 		for (int i = 0; i < this.crafters.size(); ++i){
-			ICrafting icrafting = (ICrafting)this.crafters.get(i);
-			if (tileEntity.tank.getFluid() != null){
-		ExtraFood.JBTanknet.sendTo(new PacketJBTank(tileEntity.tank.getFluidAmount(), tileEntity.tank.getFluid().tag, tileEntity.tank.getFluid().getFluid().getID()), player);
-			}			
+			if (crafters.get(i) instanceof EntityPlayerMP){
+				if (tileEntity.tank.getFluid() != null){
+					ExtraFood.JBTanknet.sendTo(new PacketJBTank(tileEntity.tank.getFluidAmount(), tileEntity.tank.getFluid().tag, tileEntity.tank.getFluid().getFluid().getID(), tileEntity.xCoord, tileEntity.yCoord, tileEntity.zCoord), (EntityPlayerMP) crafters.get(i));
+				}
 		}
+	}
 	}
 
 }
