@@ -2,7 +2,6 @@ package dmf444.ExtraFood.Common.fluids;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -10,18 +9,18 @@ import net.minecraftforge.fluids.BlockFluidClassic;
 import net.minecraftforge.fluids.Fluid;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import dmf444.ExtraFood.ExtraFood;
 import dmf444.ExtraFood.Core.EFTabs;
 
-public class BananaJuice extends BlockFluidClassic {
+public class CarrotJuice extends BlockFluidClassic {
 
     @SideOnly(Side.CLIENT)
     protected IIcon stillIcon;
     @SideOnly(Side.CLIENT)
     protected IIcon flowingIcon;
     
-    public BananaJuice(Fluid fluid, Material material) {
+    public CarrotJuice(Fluid fluid, Material material) {
             super(fluid, material);
+            this.setCreativeTab(EFTabs.INSTANCE);
             
     }
     
@@ -33,8 +32,8 @@ public class BananaJuice extends BlockFluidClassic {
     @SideOnly(Side.CLIENT)
     @Override
     public void registerBlockIcons(IIconRegister register) {
-            stillIcon = register.registerIcon("extrafood:BananaJuice_still");
-            flowingIcon = register.registerIcon("extrafood:BananaJuice_flow");
+            stillIcon = register.registerIcon("extrafood:CarrotJuice_still");
+            flowingIcon = register.registerIcon("extrafood:CarrotJuice_flow");
     }
     
     @Override

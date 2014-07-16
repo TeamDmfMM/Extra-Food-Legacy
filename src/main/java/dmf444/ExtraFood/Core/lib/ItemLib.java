@@ -10,5 +10,9 @@ public class ItemLib {
 	public static String iCB = "Cookbook";
 	public static String iS = "Sausage";
 	public static String iST = "Strawberry";
+	public static String iBS = "BucketStrawberry";
+	public static String iBB = "BucketBanana";
+	public static String iBac = "Bacon";
+	public static String iBC = "BucketCarrot";
 
 }

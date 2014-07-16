@@ -2,7 +2,6 @@ package dmf444.ExtraFood.Common.items;
 
 import dmf444.ExtraFood.Common.blocks.BlockLoader;
 import dmf444.ExtraFood.Core.EFTabs;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemBucket;
 
 public class BucketBanana extends ItemBucket {
@@ -13,5 +12,6 @@ public class BucketBanana extends ItemBucket {
 		this.setUnlocalizedName("bucketbanana");
 		this.setTextureName("extrafood:bucket_banana");
 	}
-	
+
+
 }

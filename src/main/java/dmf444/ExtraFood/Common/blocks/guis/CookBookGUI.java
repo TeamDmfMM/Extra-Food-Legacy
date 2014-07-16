@@ -259,7 +259,7 @@ public class CookBookGUI extends GuiScreen {
         	if (tab.x * 22 > iox && tab.x * 22 < this.achievementsPaneWidth - 2 + iox){
         		if (tab.y * 22 > yox && tab.y * 22 < this.achievementsPaneHeight - 2 + yox){
         			if (tab.mousePressed(mc, par1, par2)){
-        				this.mc.displayGuiScreen(new CRPageGUI(tab.pagename));
+        				this.mc.displayGuiScreen(new CRPageGUI(tab.pagename, CookbookButtonLoader.bookButton.DoesHaveMultiPage(tab.pagename), CookbookButtonLoader.bookButton.NumOfPages(tab.pagename)));
         			}
         		}
         	}	

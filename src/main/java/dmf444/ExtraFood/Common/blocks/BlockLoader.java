@@ -6,6 +6,7 @@ import dmf444.ExtraFood.Common.blocks.tileentity.CheesePressTileEntity;
 import dmf444.ExtraFood.Common.blocks.tileentity.TileEntityJuiceBlender;
 import dmf444.ExtraFood.Common.blocks.tileentity.TileEntityOven;
 import dmf444.ExtraFood.Common.fluids.BananaJuice;
+import dmf444.ExtraFood.Common.fluids.CarrotJuice;
 import dmf444.ExtraFood.Common.fluids.FluidLoader;
 import dmf444.ExtraFood.Common.fluids.StrawberryJuice;
 import dmf444.ExtraFood.Core.lib.BlockLib;
@@ -25,6 +26,7 @@ public class BlockLoader {
 	public static Block Bbananajuice;
 	public static Block Bstrawberryjuice;
 	public static Block strawberryBush;
+	public static Block Bcarrotjuice;
 	
 	public static boolean Register=false;
 	public static void initiateBlocks() {
@@ -38,6 +40,7 @@ public class BlockLoader {
 		Bbananajuice = new BananaJuice(FluidLoader.Fbananajuice, Material.water).setBlockName("Fbananajuice");
 		Bstrawberryjuice = new StrawberryJuice(FluidLoader.Fstrawberryjuice, Material.water).setBlockName("StrawberryJuice");
 		strawberryBush = new StrawberryBush(Material.plants).setBlockName(BlockLib.bSB);
+		Bcarrotjuice = new CarrotJuice(FluidLoader.Fcarrotjuice, Material.water).setBlockName("Fcarrotjuice");
 		
 		
 		registerBlocks();
@@ -54,7 +57,7 @@ public class BlockLoader {
 			GameRegistry.registerBlock(Bbananajuice, ModInfo.MId + "_" + Bbananajuice.getUnlocalizedName().substring(5));
 			GameRegistry.registerBlock(Bstrawberryjuice, ModInfo.MId + "_" + Bstrawberryjuice.getUnlocalizedName().substring(5));
 			GameRegistry.registerBlock(strawberryBush, BlockLib.bSB);
-			
+			GameRegistry.registerBlock(Bcarrotjuice, ModInfo.MId + "_" + Bcarrotjuice.getUnlocalizedName().substring(5));
 		}
 		Register=true;
 	}
