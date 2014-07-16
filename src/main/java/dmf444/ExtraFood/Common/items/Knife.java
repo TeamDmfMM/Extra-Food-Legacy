@@ -1,12 +1,24 @@
 package dmf444.ExtraFood.Common.items;
 
+import net.minecraft.client.Minecraft;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.monster.EntityCreeper;
+import net.minecraft.entity.passive.EntityCow;
+import net.minecraft.entity.passive.EntityPig;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.DamageSource;
+import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import dmf444.ExtraFood.util.EFLog;
 
 public class Knife extends StanItem {
 
+	public World world;
 	
 	public Knife()
 	{
@@ -55,5 +67,42 @@ public class Knife extends StanItem {
     {
         return true;
     }
+    /*
+	@Override
+	public boolean itemInteractionForEntity(ItemStack itemstack, EntityPlayer player, EntityLivingBase target){
+		EFLog.debug("BACON SPAWN0");
+		if(!target.worldObj.isRemote){
+			EFLog.debug("BACON SPAWN1");
+			if(target instanceof EntityPig){
+				
+				ItemStack item = new ItemStack(ItemLoader.bacon, 1);
+				EFLog.debug("BACON SPAWN2");
+				Entity Ientity = new EntityItem(target.worldObj, target.posX, target.posY, target.posZ, item);
+				target.worldObj.spawnEntityInWorld(Ientity);
+				return true;
+			} else if (target instanceof EntityCow){
+								
+			} else {
+				return super.itemInteractionForEntity(itemstack, player, target);
+			}
+			EFLog.debug("BACON SPAWN4");
+		}
+		return false;
+	}*/
+    
+	@Override
+	 public boolean onLeftClickEntity(ItemStack stack, EntityPlayer player, Entity entity){
+		if(!entity.worldObj.isRemote){
+			if(entity instanceof EntityPig){
+				ItemStack item = new ItemStack(ItemLoader.bacon, 1);
+				EFLog.debug("BACON SPAWN2");
+				Entity Ientity = new EntityItem(entity.worldObj, entity.posX, entity.posY, entity.posZ, item);
+				entity.worldObj.spawnEntityInWorld(Ientity);
+				this.setDamage(stack, stack.getItemDamage() + 2);
+				return false;
+			}
+		}
+		return false;
+	}
 }
 

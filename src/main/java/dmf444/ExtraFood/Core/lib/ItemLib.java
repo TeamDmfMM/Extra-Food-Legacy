@@ -12,5 +12,6 @@ public class ItemLib {
 	public static String iST = "Strawberry";
 	public static String iBS = "BucketStrawberry";
 	public static String iBB = "BucketBanana";
+	public static String iBac = "Bacon";
 
 }

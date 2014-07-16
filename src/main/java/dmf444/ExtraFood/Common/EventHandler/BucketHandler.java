@@ -14,6 +14,14 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import dmf444.ExtraFood.Common.blocks.BlockLoader;
 import dmf444.ExtraFood.Common.items.ItemLoader;
 
+/*
+ * @authour SpaceToad
+ * 
+ * Modified version of the bucket handler publicly available from BuildCraft's Repositories on Github
+ * 
+ * If you own this an would like it removed, please ask!
+ */
+
 public class BucketHandler {
 
 
