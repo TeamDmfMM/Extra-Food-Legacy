@@ -20,7 +20,6 @@ public class StrawberryJuice extends BlockFluidClassic {
     
     public StrawberryJuice(Fluid fluid, Material material) {
             super(fluid, material);
-            this.setCreativeTab(EFTabs.INSTANCE);
             
     }
     

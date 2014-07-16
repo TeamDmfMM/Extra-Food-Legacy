@@ -22,7 +22,6 @@ public class BananaJuice extends BlockFluidClassic {
     
     public BananaJuice(Fluid fluid, Material material) {
             super(fluid, material);
-            this.setCreativeTab(EFTabs.INSTANCE);
             
     }
     

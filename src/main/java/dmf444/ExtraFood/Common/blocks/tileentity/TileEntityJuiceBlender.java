@@ -2,6 +2,7 @@ package dmf444.ExtraFood.Common.blocks.tileentity;
 
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -10,15 +11,13 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidContainerRegistry;
-import net.minecraftforge.fluids.FluidEvent;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTank;
 import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidHandler;
-import net.minecraftforge.fluids.IFluidTank;
-import dmf444.ExtraFood.ExtraFood;
 import dmf444.ExtraFood.Common.RecipeHandler.JuiceRegistry;
-import dmf444.ExtraFood.Core.PacketJBTank;
+import dmf444.ExtraFood.Common.fluids.FluidLoader;
+import dmf444.ExtraFood.Common.items.ItemLoader;
 import dmf444.ExtraFood.util.EFLog;
 
 
@@ -183,6 +182,9 @@ public class TileEntityJuiceBlender extends TileEntity implements IInventory, IF
 				  if (this.tank.getFluid().getFluid() == JuiceRegistry.instance.getJuiceFromItemStack(this.items[0])){
 					  return true;
 				  }
+				  else {
+					  return false;
+				  }
 			  }
 			  else {
 				  return true;
@@ -190,6 +192,7 @@ public class TileEntityJuiceBlender extends TileEntity implements IInventory, IF
 		  }
 		  return false;
 	  }
+
 	  public void updateEntity(){
 
 		 // EFLog.error(tank.getFluidAmount());
@@ -206,7 +209,29 @@ public class TileEntityJuiceBlender extends TileEntity implements IInventory, IF
 				  }
 			  }
 		  }
+		  if (this.items[1] != null){
+			  // FILL THE BUCKET
+			  if (this.items[1].getItem() == Items.bucket && this.tank.getFluid() != null){
+				  if (this.tank.getFluidAmount() >= 1000){
+					  if (this.tank.getFluid().fluidID == FluidLoader.Fstrawberryjuice.getID()){
+						  this.items[1] = null;
+						  this.items[2] = new ItemStack(ItemLoader.bucketstrawberry, 1);
+						  this.tank.drain(1000, true);
+
+
+					  }
+					  else if (this.tank.getFluid().fluidID == FluidLoader.Fbananajuice.getID()){
+						  this.items[1] = null;
+						  this.items[2] = new ItemStack(ItemLoader.bucketbanana, 1);
+						  this.tank.drain(1000, true);
+
+
+					  }
+				  }
+			  }
+		  }
 	  }
+
 
 
 	private void do_thingy() {
