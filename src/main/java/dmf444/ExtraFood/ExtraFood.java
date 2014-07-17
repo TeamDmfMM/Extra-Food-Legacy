@@ -89,6 +89,7 @@ public class ExtraFood {
 		proxy.registerRenderers();
 		
 		CraftingRecipies.craftering();
+		CraftingRecipies.furnacing();
 		
 		proxy.registerKeybinds();
 

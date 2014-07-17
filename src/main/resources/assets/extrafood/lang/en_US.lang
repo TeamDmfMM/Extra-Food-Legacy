@@ -11,7 +11,8 @@ item.Sausage.name=Sausage
 item.Strawberry.name=Strawberry
 item.bucketstrawberry.name=Strawberry Bucket
 item.bucketbanana.name=Banana Bucket
-
+item.Bacon.name=Bacon
+item.CookedBacon.name=Cooked Bacon
 
 #Block Names
 tile.Banana_Bunch.name=Banana Bunch
@@ -21,11 +22,13 @@ fluid.strawberryjuice.name=Strawberry Juice
 
 #--Cook Book Names
 cookbook.Title=Cookbook
+
 cookbook.pizza=Pizza is a extremely yummy meal, and it can provide, when eaten whole, up to 5 hunger points. To make pizza, you need to make pizza dough. Pizza dough can be made with two type of bread, whole wheat and regular.
 cookbook.cheesepress=The Cheese Press is used to convert buckets of milk to cheese wheels. Cheese is a base for most foods in this mod. Cheese wheels can be split into slices with a cooking knife.
-cookbook.cheesepress1=This is testing the multi-page functionality of the cookbook.
-cookbook.cheeseslice=Cheese slices are used in many recipes throughout ExtraFood. They are mainly used in pizza, and they are also used in sandwiches (notably, the grilled cheese ones.) Their other use is to be a lighter meal than an entire cheese wheel.
+cookbook.cheeseslice=Cheese slices are used in many recipes throughout Extra Food. They are mainly used in pizza, and they are also used in sandwiches (notably, the grilled cheese ones.) Their other use is to be a snack, healthier than an entire cheese wheel.
 cookbook.knife=The cutting knife, a staple of any good kitchen, is used for many cutting tasks. These range from cutting meats, fruits and other foods. When killing entities, such as the pig, rare drops may occur, such as bacon or in the case of young cows, veal.
 
 #--GUI's
 gui.JB=Juice Blender
+gui.AC=Auto Cutter
+gui.CP=Cheese Press

@@ -195,8 +195,10 @@ public class TileEntityJuiceBlender extends TileEntity implements IInventory, IF
 
 	  public void updateEntity(){
 
+
 		 // EFLog.error(tank.getFluidAmount());
-		  
+
+
 		  if (this.ok()){
 			  this.ttime += 1;
 			  if (this.ttime == 20){
@@ -211,26 +213,39 @@ public class TileEntityJuiceBlender extends TileEntity implements IInventory, IF
 		  }
 		  if (this.items[1] != null){
 			  // FILL THE BUCKET
-			  if (this.items[1].getItem() == Items.bucket && this.tank.getFluid() != null){
+			  if (this.items[1].getItem() == Items.bucket && this.tank.getFluid() != null && this.items[2] == null){
 				  if (this.tank.getFluidAmount() >= 1000){
 					  if (this.tank.getFluid().fluidID == FluidLoader.Fstrawberryjuice.getID()){
-						  this.items[1] = null;
+						  this.items[1].stackSize -= 1;
 						  this.items[2] = new ItemStack(ItemLoader.bucketstrawberry, 1);
 						  this.tank.drain(1000, true);
 
 
+
+
 					  }
 					  else if (this.tank.getFluid().fluidID == FluidLoader.Fbananajuice.getID()){
-						  this.items[1] = null;
+						  this.items[1].stackSize -= 1;
 						  this.items[2] = new ItemStack(ItemLoader.bucketbanana, 1);
 						  this.tank.drain(1000, true);
 
 
+
+
+					  }
+					  else if (this.tank.getFluid().fluidID == FluidLoader.Fcarrotjuice.getID()){
+						  this.items[1].stackSize -= 1;
+						  this.items[2] = new ItemStack(ItemLoader.bucketcarrot, 1);
+						  this.tank.drain(1000, true);
 					  }
 				  }
 			  }
 		  }
 	  }
+
+
+
+
 
 
 

@@ -16,7 +16,10 @@ public class ItemLoader {
 	public static Item strawberry;
 	public static Item bucketstrawberry;
 	public static Item bucketbanana;
+	public static Item bucketcarrot;
 	public static Item bacon;
+	public static Item cookedBacon;
+	public static Item veal;
 	
 	
 	private static boolean IRegister=false;
@@ -29,6 +32,7 @@ public class ItemLoader {
 		cookBook = new Cookbook().setUnlocalizedName(ItemLib.iCB);
 		bucketstrawberry = new BucketStrawberry();
 		bucketbanana = new BucketBanana();
+		bucketcarrot = new BucketCarrot();
 
 
 		
@@ -43,6 +47,8 @@ public class ItemLoader {
 		banana = new Banana(1, 0.8F, false).setUnlocalizedName(ItemLib.iBan);
 		strawberry = new Strawberry(1, 0.6F, false).setUnlocalizedName(ItemLib.iST);
 		bacon = new StanFood(1, 0.6F, false).setUnlocalizedName(ItemLib.iBac);
+		veal = new StanFood(1, 0.6F, true).setUnlocalizedName(ItemLib.iV);
+		cookedBacon = new StanFood(1, 0.6F, false).setUnlocalizedName(ItemLib.iCBac);
 		
 		
 		
@@ -55,6 +61,7 @@ public class ItemLoader {
 			GameRegistry.registerItem(cookBook, ItemLib.iCB);
 			GameRegistry.registerItem(bucketstrawberry, ItemLib.iBS);
 			GameRegistry.registerItem(bucketbanana, ItemLib.iBB);
+			GameRegistry.registerItem(bucketcarrot, ItemLib.iBC);
 
 
 		}
@@ -69,6 +76,8 @@ public class ItemLoader {
 			GameRegistry.registerItem(sausage, ItemLib.iS);
 			GameRegistry.registerItem(strawberry, ItemLib.iST);
 			GameRegistry.registerItem(bacon, ItemLib.iBac);
+			GameRegistry.registerItem(cookedBacon, ItemLib.iCBac);
+			GameRegistry.registerItem(veal, ItemLib.iV);
 		}
 		FRegister=true;
 	}

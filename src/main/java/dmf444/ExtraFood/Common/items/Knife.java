@@ -11,6 +11,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -18,7 +19,7 @@ import dmf444.ExtraFood.util.EFLog;
 
 public class Knife extends StanItem {
 
-	public World world;
+
 	
 	public Knife()
 	{
@@ -94,15 +95,29 @@ public class Knife extends StanItem {
 	 public boolean onLeftClickEntity(ItemStack stack, EntityPlayer player, Entity entity){
 		if(!entity.worldObj.isRemote){
 			if(entity instanceof EntityPig){
-				ItemStack item = new ItemStack(ItemLoader.bacon, 1);
+				int PigDropA = MathHelper.getRandomIntegerInRange(itemRand, 3, 6);
+				ItemStack item = new ItemStack(ItemLoader.bacon, PigDropA);
 				EFLog.debug("BACON SPAWN2");
 				Entity Ientity = new EntityItem(entity.worldObj, entity.posX, entity.posY, entity.posZ, item);
 				entity.worldObj.spawnEntityInWorld(Ientity);
-				this.setDamage(stack, stack.getItemDamage() + 2);
+				((EntityPig) entity).setHealth(0);
+				stack.damageItem(2, player);
 				return false;
+			} else if (entity instanceof EntityCow){
+				if(((EntityCow) entity).isChild()){
+					int BabyCowDropA = MathHelper.getRandomIntegerInRange(itemRand, 1, 3);
+					ItemStack item = new ItemStack(ItemLoader.veal, BabyCowDropA);
+					EFLog.debug("BACON SPAWN2");
+					Entity Ientity = new EntityItem(entity.worldObj, entity.posX, entity.posY, entity.posZ, item);
+					entity.worldObj.spawnEntityInWorld(Ientity);
+					((EntityCow) entity).setHealth(0);
+					stack.damageItem(2, player);
+					return false;
+				}
 			}
 		}
 		return false;
 	}
+
 }
 

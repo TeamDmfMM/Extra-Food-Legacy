@@ -19,5 +19,8 @@ public class CraftingRecipies {
 	GameRegistry.addRecipe(new ItemStack(ItemLoader.knife, 1), new Object[] {"ii ", "ii ", " j ", 'i', Items.iron_ingot, 'j', Items.stick});
 	GameRegistry.addShapelessRecipe(new ItemStack(ItemLoader.cheeseSlice, 8), new ItemStack(ItemLoader.knife, 1, 32767), new ItemStack(ItemLoader.cheeseWheel, 1) );
 	}
-	
+	public static void furnacing()
+	{
+		GameRegistry.addSmelting(ItemLoader.bacon, new ItemStack(ItemLoader.cookedBacon, 1), 0.2F);
+	}
 }
