@@ -261,7 +261,6 @@ public class CookBookGUI extends GuiScreen {
         				}
         				else {
         					bx = (int) (i1 + 2 + (x1 * 22) + -iox + - 30);
-        					x2 += 1;
         					y2 -= 0.6;
         				}
         				if (y1 < y2){
@@ -337,14 +336,36 @@ public class CookBookGUI extends GuiScreen {
     }
     
     private void plotCurve(double startX, double startY, int bezierX, int bezierY, double endX, double endY){
-    	for(double t=0.0;t<=1;t+=0.001)  
+    	Tessellator tess = Tessellator.instance;
+    	GL11.glPushMatrix();
+        GL11.glAlphaFunc(516, 0.003921569F);
+        GL11.glDisable(3553);
+        GL11.glEnable(3042);
+        GL11.glBlendFunc(770, 771);
+        GL11.glLineWidth(2F);
+        GL11.glEnable(2848);
+        GL11.glHint(3154, 4354);
+        tess.startDrawing(3);
+    	for(double t=0.0;t<=1;t+=0.01)  
     	{  
     	    int x = (int) (  (1-t)*(1-t)*startX + 2*(1-t)*t*bezierX+t*t*endX);  
     	    int y = (int) (  (1-t)*(1-t)*startY + 2*(1-t)*t*bezierY+t*t*endY);  
     	  
-    	    //plot something @  x,y coordinate here...  
-    	    this.drawRect(x, y, x + 1, y + 1, -1);
+    	    //plot something @  x,y coordinate here...
+    	    tess.setColorRGBA_F(1.0f, 1.0f, 1.0f, 1.0f);
+    	    tess.addVertex(x, y, 0.0d + t * 10);
+    	    tess.setBrightness(100);
+    	    
+    	    
     	}
+    	tess.draw();
+    	GL11.glBlendFunc(770, 771);
+        GL11.glDisable(2848);
+        GL11.glDisable(3042);
+        GL11.glDisable(32826);
+        GL11.glEnable(3553);
+        GL11.glAlphaFunc(516, 0.1F);
+        GL11.glPopMatrix();
     }
         
     private int cosineint(int x, int y, int z){
@@ -352,6 +373,7 @@ public class CookBookGUI extends GuiScreen {
     	return (int) (x*(1-w)+y*w);
     	
     }
+    
 
     
 }

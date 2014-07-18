@@ -27,8 +27,10 @@ public class CookbookButtonLoader {
 		this.multiNum = new Hashtable<String, Integer>();
 		// TODO Add buttons here
 		buttons.add(new ClickTab(0, 0, 0, 22, 22, "", 8, 1, new ItemStack(BlockLoader.cheesePress), "cheesepress"));
-		buttons.add(new ClickTab(0, 0, 0, 22, 22, "", 6, 5, new ItemStack(ItemLoader.cheeseSlice), "cheeseslice", "cheesepress", "knife" ));
-		buttons.add(new ClickTab(0, 0, 0, 22, 22, "", 1, 5, new ItemStack(ItemLoader.knife), "knife"));
+		buttons.add(new ClickTab(0, 0, 0, 22, 22, "", 9, 3, new ItemStack(ItemLoader.cheeseWheel), "cheesewheel", "cheesepress"));
+		buttons.add(new ClickTab(0, 0, 0, 22, 22, "", 6, 5, new ItemStack(ItemLoader.cheeseSlice), "cheeseslice", "cheesewheel", "knife" ));
+		buttons.add(new ClickTab(0, 0, 0, 22, 22, "", 3, 4, new ItemStack(ItemLoader.knife), "knife"));
+		buttons.add(new ClickTab(0, 0, 0, 22, 22, "", 4, 7, new ItemStack(ItemLoader.sausage), "sausage", "knife"));
 		
 		//TODO on add book page, add multi buttons
 		  //this.truth.put("knife", true);
