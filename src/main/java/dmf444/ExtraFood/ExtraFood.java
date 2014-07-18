@@ -15,7 +15,6 @@ import cpw.mods.fml.relauncher.Side;
 import dmf444.ExtraFood.Common.CommonProxy;
 import dmf444.ExtraFood.Common.EventHandler.BucketHandler;
 import dmf444.ExtraFood.Common.EventHandler.ExtraFood_EventBonemeal;
-import dmf444.ExtraFood.Common.EventHandler.TestHandle;
 import dmf444.ExtraFood.Common.RecipeHandler.CRPageCraftGet;
 import dmf444.ExtraFood.Common.RecipeHandler.JuiceRegistry;
 import dmf444.ExtraFood.Common.RecipeHandler.RegistryAutoCutter;
@@ -67,13 +66,14 @@ public class ExtraFood {
 		MinecraftForge.EVENT_BUS.register(new ExtraFood_EventBonemeal());
 		}
 		
-		MinecraftForge.EVENT_BUS.register(BucketHandler.INSTANCE);		
+		MinecraftForge.EVENT_BUS.register(BucketHandler.INSTANCE);	
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
 		AchieveLoad.loadAc();
 		
 		JBTanknet = NetworkRegistry.INSTANCE.newSimpleChannel(ModInfo.MId);
 		JBTanknet.registerMessage(PacketJBTank.Handler.class, PacketJBTank.class, 1,Side.CLIENT);
-
+		
+		
 		
 		
 			EFLog.info("Cleared EF's Registry");

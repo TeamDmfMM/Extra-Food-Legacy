@@ -11,6 +11,7 @@ import java.util.List;
 
 
 
+
 import dmf444.ExtraFood.Common.blocks.BlockLoader;
 import dmf444.ExtraFood.Common.items.ItemLoader;
 import net.minecraft.block.Block;
@@ -30,8 +31,8 @@ public class CRPageCraftGet {
 
 
 	public CRPageCraftGet() {
-		this.recipesShaped = new Hashtable();
-		this.recipesShapeless = new Hashtable();
+		this.recipesShaped = new Hashtable<String, ShapedRecipes>();
+		this.recipesShapeless = new Hashtable<String, ShapelessRecipes>();
 		this.putRecipe("cheesepress", new Object[] {"ipi", "ibi", "sss", 'i', Items.iron_ingot, 'p', Blocks.planks, 'b', Items.bucket, 's', new ItemStack(Blocks.stone_slab, 0)}, new ItemStack(BlockLoader.cheesePress));
 		this.putRecipe("knife", new Object[] {"ii ", "ii ", " j ", 'i', Items.iron_ingot, 'j', Items.stick}, new ItemStack(ItemLoader.knife, 1));
 		this.putRecipe("cheeseslice", new ItemStack(ItemLoader.cheeseSlice, 8), new ItemStack(ItemLoader.knife, 1, 32767), new ItemStack(ItemLoader.cheeseWheel, 1));
@@ -95,10 +96,10 @@ public class CRPageCraftGet {
         }
 
 
-        HashMap hashmap;
+        HashMap<Character, ItemStack> hashmap;
 
 
-        for (hashmap = new HashMap(); i < par2ArrayOfObj.length; i += 2)
+        for (hashmap = new HashMap<Character, ItemStack>(); i < par2ArrayOfObj.length; i += 2)
         {
             Character character = (Character)par2ArrayOfObj[i];
             ItemStack itemstack1 = null;
@@ -148,7 +149,7 @@ public class CRPageCraftGet {
 
 	}
 	public void putRecipe(String itemname, ItemStack out, ItemStack... par2ArrayOfObj){
-		ArrayList arraylist = new ArrayList();
+		ArrayList<ItemStack> arraylist = new ArrayList<ItemStack>();
         Object[] aobject = par2ArrayOfObj;
         int i = par2ArrayOfObj.length;
 

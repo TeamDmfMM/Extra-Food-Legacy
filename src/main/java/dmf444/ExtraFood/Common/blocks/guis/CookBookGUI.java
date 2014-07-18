@@ -220,12 +220,82 @@ public class CookBookGUI extends GuiScreen {
         		if (tab.y * 22 > yox && tab.y * 22 < this.achievementsPaneHeight - 2 + yox){
         			tab.xPosition = i1 + 2 + (tab.x * 22) + -iox;
         			tab.yPosition = j1 + 2 + (tab.y * 22) + -yox;
+//        			for (GreenLine line : CookbookButtonLoader.bookButton.getLines(tab.pagename)){
+//        				if (line.type == 0){
+//        					if (line.xx * 22 > iox && line.xx * 22 < this.achievementsPaneWidth - 2 + iox){
+//        						if (line.yy * 22 > iox && line.yy * 22 < this.achievementsPaneWidth - 2 + iox){
+//        							if (line.h * 22 > yox && line.h < this.achievementsPaneHeight - 2 + yox){
+//        								line.xx = i1 + 2 + (line.xx * 22) + -iox;
+//        								line.yy = i1 + 2 + (line.yy * 22) + -iox;
+//        								line.h = j1 + 2 + (line.h * 22) + -yox;
+//        								this.drawHorizontalLine(line.xx, line.yy, line.h, -1);
+//        							}
+//        						}
+//        					}
+//        				}
+//        				else {
+//        					if (line.xx * 22 > yox && line.xx * 22 < this.achievementsPaneHeight - 2 + yox){
+//        						if (line.yy * 22 > yox && line.yy * 22 < this.achievementsPaneHeight - 2 + yox){
+//        							if (line.h * 22 > iox && line.h < this.achievementsPaneWidth - 2 + iox){
+//        								line.xx = j1 + 2 + (line.xx * 22) + -yox;
+//        								line.yy = j1 + 2 + (line.yy * 22) + -yox;
+//        								line.h = i1 + 2 + (line.h * 22) + -iox;
+//        								this.drawVerticalLine(line.xx, line.yy, line.h, -1);
+//        							}
+//        						}
+//        					}
+//        				}
+//        			}
+        			for (ArrayList<int[]> xps : CookbookButtonLoader.bookButton.getXYCoordsOfLineForButton(tab.pagename)){
+        				float x1 = xps.get(0)[0];
+        				float y1 = xps.get(0)[1];
+        				float x2 = xps.get(1)[0];
+        				float y2 = xps.get(1)[1];
+        				int bx = 0;
+        				int by = 0;
+        				if (x1 < x2){
+        					bx = (int) (i1 + 2 + (x2 * 22) + -iox + 30);
+        					x1 += 1;
+        					x2 += 0.6;
+        					
+        				}
+        				else {
+        					bx = (int) (i1 + 2 + (x1 * 22) + -iox + - 30);
+        					x2 += 1;
+        					y2 -= 0.6;
+        				}
+        				if (y1 < y2){
+        					by = (int) (j1 + 2 + (y2 * 22) + -yox + 30);
+        					y1 += 1;
+        					y2 += 0.6;
+        					
+        				}
+        				else {
+        					by = (int) (j1 + 2 + (y1 * 22) + -yox - 30);
+        					y2 += 1;
+        					
+        				}
+        				if (x1 * 22 > iox && x1 * 22 < this.achievementsPaneWidth - 2 + iox && x2 * 22 > iox && x2 * 22 < this.achievementsPaneWidth - 2 + iox){
+        	        		if (y1 * 22 > yox && y1 * 22 < this.achievementsPaneHeight - 2 + yox && y2 * 22 > yox && y2 * 22 < this.achievementsPaneHeight - 2 + yox){
+        	        			x1 = i1 + 2 + (x1 * 22) + -iox;
+        	        			x2 = i1 + 2 + (x2 * 22) + -iox;
+        	        			y1 = j1 + 2 + (y1 * 22) + -yox;
+        	        			y2 = j1 + 2 + (y2 * 22) + -yox;
+        	        			System.err.println("yeah here!");
+        	        			this.plotCurve(x1, y1, bx, by, x2, y2);
+        	        		}
+        				}
+        				
+        			}
         			tab.drawButton(mc, 0, 0);
+        			
         		}
         	}
         }
         super.drawScreen(par1, par2, par3);
     }
+
+    
 
     
     public boolean doesGuiPauseGame()
@@ -267,13 +337,13 @@ public class CookBookGUI extends GuiScreen {
     }
     
     private void plotCurve(double startX, double startY, int bezierX, int bezierY, double endX, double endY){
-    	for(double t=0.0;t<=1;t+=0.01)  
+    	for(double t=0.0;t<=1;t+=0.001)  
     	{  
     	    int x = (int) (  (1-t)*(1-t)*startX + 2*(1-t)*t*bezierX+t*t*endX);  
     	    int y = (int) (  (1-t)*(1-t)*startY + 2*(1-t)*t*bezierY+t*t*endY);  
     	  
     	    //plot something @  x,y coordinate here...  
-    	    this.drawRect(x, y, x + 1, y + 1, 0xFFFFFFF);
+    	    this.drawRect(x, y, x + 1, y + 1, -1);
     	}
     }
         
