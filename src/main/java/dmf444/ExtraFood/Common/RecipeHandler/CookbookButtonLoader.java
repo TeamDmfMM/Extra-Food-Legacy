@@ -15,25 +15,33 @@ import dmf444.ExtraFood.Common.items.ItemLoader;
 
 public class CookbookButtonLoader {
 
-	public ArrayList<ClickTab> buttons;
+	public ArrayList<CookbookTab> buttons;
 	public static CookbookButtonLoader bookButton = new CookbookButtonLoader();
 	public Dictionary<String, Boolean> truth;
 	public Dictionary<String, Integer> multiNum;
 
 	public CookbookButtonLoader() {
 		// TODO Auto-generated constructor stub
-		this.buttons = new ArrayList<ClickTab>();
+		this.buttons = new ArrayList<CookbookTab>();
 		this.truth = new Hashtable<String, Boolean>();
 		this.multiNum = new Hashtable<String, Integer>();
-		// TODO Add buttons here
-		buttons.add(new ClickTab(0, 0, 0, 22, 22, "", 8, 1, new ItemStack(BlockLoader.cheesePress), "cheesepress"));
-		buttons.add(new ClickTab(0, 0, 0, 22, 22, "", 9, 3, new ItemStack(ItemLoader.cheeseWheel), "cheesewheel", "cheesepress"));
-		buttons.add(new ClickTab(0, 0, 0, 22, 22, "", 6, 5, new ItemStack(ItemLoader.cheeseSlice), "cheeseslice", "cheesewheel", "knife" ));
-		buttons.add(new ClickTab(0, 0, 0, 22, 22, "", 3, 4, new ItemStack(ItemLoader.knife), "knife"));
-		buttons.add(new ClickTab(0, 0, 0, 22, 22, "", 4, 7, new ItemStack(ItemLoader.sausage), "sausage", "knife"));
+		CookbookTab t = new CookbookTab("generic");
+		t.display = new ItemStack(BlockLoader.cheesePress);
 		
+		// TODO Add buttons here
+		t.buttons.add(new ClickTab(0, 0, 0, 22, 22, "", 8, 1, new ItemStack(BlockLoader.cheesePress), "cheesepress"));
+		t.buttons.add(new ClickTab(0, 0, 0, 22, 22, "", 9, 3, new ItemStack(ItemLoader.cheeseWheel), "cheesewheel", "cheesepress"));
+		t.buttons.add(new ClickTab(0, 0, 0, 22, 22, "", 6, 5, new ItemStack(ItemLoader.cheeseSlice), "cheeseslice", "cheesewheel", "knife" ));
+		t.buttons.add(new ClickTab(0, 0, 0, 22, 22, "", 3, 4, new ItemStack(ItemLoader.knife), "knife"));
+		t.buttons.add(new ClickTab(0, 0, 0, 22, 22, "", 4, 7, new ItemStack(ItemLoader.sausage), "sausage", "knife"));
+		this.buttons.add(t);
 		//TODO on add book page, add multi buttons
 		  //this.truth.put("knife", true);
+		t = new CookbookTab("autocutter");
+		t.buttons.add(new ClickTab(0, 0, 0, 22, 22, "", 3, 3, new ItemStack(BlockLoader.autoCutter), "autocutter"));
+		t.display = new ItemStack(BlockLoader.autoCutter);
+		this.buttons.add(t);
+		
 
 
 	}
@@ -60,14 +68,14 @@ public class CookbookButtonLoader {
 		}		
 	}
 	
-	public ArrayList<ArrayList<int[]>> getXYCoordsOfLineForButton(String name){
+	public ArrayList<ArrayList<int[]>> getXYCoordsOfLineForButton(String name, String pagename){
 		try {
 		ArrayList<ArrayList<int[]>> xys = new ArrayList<ArrayList<int[]>>();
-		ClickTab ctr = this.find(name);
+		ClickTab ctr = this.find(name, pagename);
 		List<String> pre = Arrays.asList(ctr.pre);
 		ArrayList<ClickTab> prectr = new ArrayList<ClickTab>();
 		for (String p : pre){
-			prectr.add(this.find(p));
+			prectr.add(this.find(p, pagename));
 		}
 		for (ClickTab ct : prectr){
 			ArrayList<int[]> arraytemp = new ArrayList<int[]>();
@@ -82,57 +90,18 @@ public class CookbookButtonLoader {
 
 
 	}
-	private ClickTab find(String name){
-		for (ClickTab tab : this.buttons){
+	private ClickTab find(String name, String pagename){
+		for (CookbookTab tabb : this.buttons){
+		if (tabb.name == pagename){
+		for (ClickTab tab : tabb.buttons){
 			if (tab.pagename == name){
 				return tab;
 			}
-		}
+		}}}
 		return null;
 	}
-	public ArrayList<GreenLine> getLines(String pagename){
-		ArrayList<GreenLine> lg = new ArrayList<GreenLine>();
-		for (ArrayList<int[]> i : this.getXYCoordsOfLineForButton(pagename)){
-			//get horiz
-			int y = i.get(0)[1];
-			int xy1 = i.get(0)[0];
-			int xy2 = i.get(1)[0];
-			GreenLine l = new GreenLine(xy1, xy2, 0, y);
-			if (xy1 < xy2){
-				y = xy2;
-				xy1 = i.get(1)[1];
-				xy2 = i.get(0)[1];
-			}
-			else {
-				y = xy1;
-				xy1 = i.get(0)[1];
-				xy2 = i.get(1)[1];
-			}
-			
-			lg.add(l);
-			l = new GreenLine(xy1, xy2, 1, y);
-			lg.add(l);
-			
-			
-		
-					
-			
-				
-			
-			
-		}
-		return lg;
-	}
-	public void drawLine(CookBookGUI g, String pagename){
-		for (ArrayList<int[]> itt : this.getXYCoordsOfLineForButton(pagename)){
-			// Get the horizontal line
-			int y = itt.get(0)[1];
-			
-			// find the vertical line
-			
-			
-		}
-	}
+	
+	
 	protected void drawHorizontalLine(int p_73730_1_, int p_73730_2_, int p_73730_3_, int p_73730_4_, CookBookGUI g)
     {
         if (p_73730_2_ < p_73730_1_)
@@ -156,11 +125,18 @@ public class CookbookButtonLoader {
 
         g.drawRect(p_73728_1_, p_73728_2_ + 1, p_73728_1_ + 1, p_73728_3_, p_73728_4_);
     }
+    public ArrayList<ClickTab> getButtons(String tab){
+    	for (CookbookTab tabb : this.buttons){
+    		if (tabb.name == tab){
+    			return tabb.buttons;
+    		}
+    	}
+
+    	return null;
 
 
 
 
 
 
-
-}
+}}

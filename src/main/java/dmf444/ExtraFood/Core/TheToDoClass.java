@@ -4,7 +4,7 @@ package dmf444.ExtraFood.Core;
 [x] Fix Book Background
 [x] Finish Crafting Page
 [] Create "Normal Page"
-[] Fix Shift out of Slot
+[x] Fix Shift out of Slot
 [] Add in other Recipes
 [x] Fix the sapling
 [] Add in knife utils
