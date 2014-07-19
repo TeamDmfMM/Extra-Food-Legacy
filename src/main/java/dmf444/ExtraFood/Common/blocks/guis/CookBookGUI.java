@@ -235,8 +235,8 @@ public class CookBookGUI extends GuiScreen {
 //        				}
 //        			}
         			for (ArrayList<int[]> xps : CookbookButtonLoader.bookButton.getXYCoordsOfLineForButton(tab.pagename, this.tab)){
-        				float x1 = xps.get(0)[0];
-        				float y1 = xps.get(0)[1];
+        				float x1 = xps.get(0)[0] + 0.1F;
+        				float y1 = xps.get(0)[1] + 0.1F;
         				float x2 = xps.get(1)[0];
         				float y2 = xps.get(1)[1];
         				int bx = 0;
