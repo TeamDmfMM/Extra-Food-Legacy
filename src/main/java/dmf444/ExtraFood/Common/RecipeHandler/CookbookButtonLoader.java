@@ -29,16 +29,18 @@ public class CookbookButtonLoader {
 		t.display = new ItemStack(BlockLoader.cheesePress);
 		
 		// TODO Add buttons here
-		t.buttons.add(new ClickTab(0, 0, 0, 22, 22, "", 8, 1, new ItemStack(BlockLoader.cheesePress), "cheesepress"));
-		t.buttons.add(new ClickTab(0, 0, 0, 22, 22, "", 9, 3, new ItemStack(ItemLoader.cheeseWheel), "cheesewheel", "cheesepress"));
-		t.buttons.add(new ClickTab(0, 0, 0, 22, 22, "", 6, 5, new ItemStack(ItemLoader.cheeseSlice), "cheeseslice", "cheesewheel", "knife" ));
+		t.buttons.add(new ClickTab(0, 0, 0, 22, 22, "", 9, 1, new ItemStack(BlockLoader.cheesePress), "cheesepress"));
+		t.buttons.add(new ClickTab(0, 0, 0, 22, 22, "", 9, 5, new ItemStack(ItemLoader.cheeseWheel), "cheesewheel", "cheesepress"));
+		
 		t.buttons.add(new ClickTab(0, 0, 0, 22, 22, "", 3, 4, new ItemStack(ItemLoader.knife), "knife"));
-		t.buttons.add(new ClickTab(0, 0, 0, 22, 22, "", 4, 7, new ItemStack(ItemLoader.sausage), "sausage", "knife"));
+		
 		this.buttons.add(t);
 		//TODO on add book page, add multi buttons
 		  //this.truth.put("knife", true);
 		t = new CookbookTab("autocutter");
-		t.buttons.add(new ClickTab(0, 0, 0, 22, 22, "", 3, 3, new ItemStack(BlockLoader.autoCutter), "autocutter"));
+		t.buttons.add(new ClickTab(0, 0, 0, 22, 22, "", 5, 6, new ItemStack(BlockLoader.autoCutter), "autocutter"));
+		t.buttons.add(new ClickTab(0, 0, 0, 22, 22, "", 1, 2, new ItemStack(ItemLoader.sausage), "sausage", "autocutter"));
+		t.buttons.add(new ClickTab(0, 0, 0, 22, 22, "", 6, 5, new ItemStack(ItemLoader.cheeseSlice), "cheeseslice", "autocutter" ));
 		t.display = new ItemStack(BlockLoader.autoCutter);
 		this.buttons.add(t);
 		

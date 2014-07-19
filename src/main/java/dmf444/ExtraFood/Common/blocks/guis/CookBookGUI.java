@@ -242,25 +242,29 @@ public class CookBookGUI extends GuiScreen {
         				int bx = 0;
         				int by = 0;
         				if (x1 < x2){
-       		             bx = (int) (i1 + 2 + (x2 * 22) + -iox + 30);
+       		             bx = (int) (i1 + 2 + (x2 * 22) + -iox - 30);
        		             x1 += 0.85F;
-       		             x2 += 0.6;
+       		             x2 += 0.1F;
+       		            
        		             
        		            }
+        				else if( x1 == x2){
+        					bx = (int)(i1 + 2 + (x2 * 22) + -iox + 30);
+        				}
        		            else {
-       		             bx = (int) (i1 + 2 + (x1 * 22) + -iox + - 30);
+       		             bx = (int) (i1 + 2 + (x1 * 22) + -iox + 30);
        		             y2 -= 0.1F;
-       		             x2 += 0.6;
+       		             x2 += 1F;
        		            }
        		            if (y1 < y2){
        		             by = (int) (j1 + 2 + (y2 * 22) + -yox + 30);
-       		             y1 += 1;
+       		             y1 += 0.9f;
        		             y2 += 0.6;
        		             
        		            }
        		            else {
        		             by = (int) (j1 + 2 + (y1 * 22) + -yox + 15);
-       		             y2 += 1;
+       		             y2 += 0.9;
        		             
        		            }
         				if (x1 * 22 > iox && x1 * 22 < this.achievementsPaneWidth - 2 + iox && x2 * 22 > iox && x2 * 22 < this.achievementsPaneWidth - 2 + iox){
@@ -269,7 +273,6 @@ public class CookBookGUI extends GuiScreen {
         	        			x2 = i1 + 2 + (x2 * 22) + -iox;
         	        			y1 = j1 + 2 + (y1 * 22) + -yox;
         	        			y2 = j1 + 2 + (y2 * 22) + -yox;
-        	        			System.err.println("yeah here!");
         	        			this.plotCurve(x1, y1, bx, by, x2, y2);
         	        		}
         				}
