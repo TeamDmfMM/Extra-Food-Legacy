@@ -34,7 +34,7 @@ public class CRPageCraftGet {
 		this.recipesShapeless = new Hashtable<String, ShapelessRecipes>();
 		this.putRecipe("cheesepress", new Object[] {"ipi", "ibi", "sss", 'i', Items.iron_ingot, 'p', Blocks.planks, 'b', Items.bucket, 's', new ItemStack(Blocks.stone_slab, 0)}, new ItemStack(BlockLoader.cheesePress));
 		this.putRecipe("knife", new Object[] {"ii ", "ii ", " j ", 'i', Items.iron_ingot, 'j', Items.stick}, new ItemStack(ItemLoader.knife, 1));
-		this.putRecipe("cheeseslice", new ItemStack(ItemLoader.cheeseSlice, 8), new ItemStack(ItemLoader.knife, 1, 32767), new ItemStack(ItemLoader.cheeseWheel, 1));
+		this.putRecipe("cheeseslice", new Object[] {"ik ", "   ", "   ", 'i', ItemLoader.cheeseWheel, 'k',  ItemLoader.knife}, new ItemStack(ItemLoader.cheeseSlice, 8));
 		//TODO place the things in here
 		// TODO Auto-generated constructor stub
 	}

@@ -11,7 +11,6 @@ import org.lwjgl.opengl.GL11;
 
 import dmf444.ExtraFood.Common.blocks.container.AutoCutterContainer;
 import dmf444.ExtraFood.Common.blocks.tileentity.AutoCutterTileEntity;
-import dmf444.ExtraFood.Core.FontLoader;
 import dmf444.ExtraFood.Core.lib.GuiLib;
 
 

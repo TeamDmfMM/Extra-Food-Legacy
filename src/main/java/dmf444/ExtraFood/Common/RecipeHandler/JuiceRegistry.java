@@ -30,12 +30,15 @@ public class JuiceRegistry {
 		//TODO Registry jucies here
 		juices = new Hashtable<Item, Fluid>();
 		juicenames = new Hashtable<Fluid, String>();
+		juicecolors = new Hashtable<Fluid, float[]>();
 		//System.out.println(FluidLoader.Fstrawberryjuice == null);
 		registerJuice(FluidLoader.Fstrawberryjuice, ItemLoader.strawberry, "extrafood:textures/blocks/StrawberryJuice_flow.png");
 		registerJuice(FluidLoader.Fbananajuice, ItemLoader.banana, "extrafood:textures/blocks/BananaJuice_flow.png");
 		registerJuice(FluidLoader.Fcarrotjuice, Items.carrot, "extrafood:textures/blocks/CarrotJuice_flow.png");
 
-
+		registerColor(FluidLoader.Fbananajuice, 211, 230, 78);
+		registerColor(FluidLoader.Fstrawberryjuice, 199, 0, 4);
+		registerColor(FluidLoader.Fcarrotjuice, 255, 110, 18);
 
 
 	}

@@ -24,7 +24,6 @@ public class StanFood extends ItemFood {
     public void registerIcons(IIconRegister iconRegister)
     {
         itemIcon = iconRegister.registerIcon("extrafood:" + this.getUnlocalizedName().substring(5)); 
-    EFLog.fatal(this.getUnlocalizedName().substring(5));
     }
     
 

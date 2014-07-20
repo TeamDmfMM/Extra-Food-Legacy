@@ -87,7 +87,7 @@ public class ExtraFood {
 		BlockLoader.initTileEntity();
 		
 		proxy.registerRenderers();
-		
+		this.registryCutter = new RegistryAutoCutter();
 		CraftingRecipies.craftering();
 		CraftingRecipies.furnacing();
 		
@@ -98,7 +98,6 @@ public class ExtraFood {
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event){
 		
-		this.registryCutter = new RegistryAutoCutter();
 		crafterPage = new CRPageCraftGet();
 		JuiceRegistry.instance = new JuiceRegistry();
 	}

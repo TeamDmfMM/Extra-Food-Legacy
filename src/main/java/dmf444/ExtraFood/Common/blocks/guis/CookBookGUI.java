@@ -22,6 +22,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
 import net.minecraftforge.common.AchievementPage;
 import dmf444.ExtraFood.Common.RecipeHandler.CookbookButtonLoader;
+import dmf444.ExtraFood.Common.RecipeHandler.CookbookTab;
 import dmf444.ExtraFood.Common.items.ItemLoader;
 import dmf444.ExtraFood.Core.lib.GuiLib;
 
@@ -39,7 +40,7 @@ public class CookBookGUI extends GuiScreen {
 	    private int px;
 	    private int py;
 	    private int x;
-	    
+	    private String tab = "generic";
 	    private int y;
 
 	    private int iox = 15;
@@ -85,8 +86,7 @@ public class CookBookGUI extends GuiScreen {
    //public static CookbookButtonLoader bookButton = new CookbookButtonLoader();
 
    public CookBookGUI() {
-	  // System.out.println("HERE");
-	   this.buttons = CookbookButtonLoader.bookButton.buttons;
+	
 
 
    }
@@ -215,12 +215,12 @@ public class CookBookGUI extends GuiScreen {
         GL11.glDepthFunc(GL11.GL_LEQUAL);
         GL11.glDisable(GL11.GL_DEPTH_TEST);
         GL11.glEnable(GL11.GL_TEXTURE_2D);
-        for (ClickTab tab : buttons){
-        	if (tab.x * 22 > iox && tab.x * 22 < this.achievementsPaneWidth - 2 + iox){
-        		if (tab.y * 22 > yox  && tab.y * 22 < this.achievementsPaneHeight - 2 + yox){ //
+        for (ClickTab tab : CookbookButtonLoader.bookButton.getButtons(this.tab)){
+        	if (tab.x * 22 > iox && tab.x * 22 < this.achievementsPaneWidth - 30 + iox){
+        		if (tab.y * 22 > yox - 2  && tab.y * 22 < this.achievementsPaneHeight - 22 + yox){ //2
         			tab.xPosition = i1 + 2 + (tab.x * 22) + -iox;
         			tab.yPosition = j1 + 2 + (tab.y * 22) + -yox;
-        			for (ArrayList<int[]> xps : CookbookButtonLoader.bookButton.getXYCoordsOfLineForButton(tab.pagename)){
+        			for (ArrayList<int[]> xps : CookbookButtonLoader.bookButton.getXYCoordsOfLineForButton(tab.pagename, this.tab)){
         				float x1 = xps.get(0)[0] + 0.1F;
         				float y1 = xps.get(0)[1] + 0.1F;
         				float x2 = xps.get(1)[0];
@@ -249,8 +249,8 @@ public class CookBookGUI extends GuiScreen {
         		             y2 += 1;
         		             
         		            }
-        				if (x1 * 22 > iox && x1 * 22 < this.achievementsPaneWidth - 2 + iox && x2 * 22 > iox && x2 * 22 < this.achievementsPaneWidth - 2 + iox){
-        	        		if (y1 * 22 > yox && y1 * 22 < this.achievementsPaneHeight - 2 + yox && y2 * 22 > yox && y2 * 22 < this.achievementsPaneHeight - 2 + yox){
+        				if (x1 * 22 > iox && x1 * 22 < this.achievementsPaneWidth - 2 + iox && x2 * 22 > iox && x2 * 22 < this.achievementsPaneWidth - 17 + iox){ //2
+        	        		if (y1 * 22 > yox && y1 * 22 < this.achievementsPaneHeight - 20 + yox && y2 * 22 > yox && y2 * 22 < this.achievementsPaneHeight - 20 + yox){
         	        			x1 = i1 + 2 + (x1 * 22) + -iox;
         	        			x2 = i1 + 2 + (x2 * 22) + -iox;
         	        			y1 = j1 + 2 + (y1 * 22) + -yox;
@@ -261,9 +261,15 @@ public class CookBookGUI extends GuiScreen {
         				
         			}
         			tab.drawButton(mc, 0, 0);
-        			
+        			}
         		}
         	}
+            int sy = 0;
+            int sx = -22;
+            for (CookbookTab cookbooktab : CookbookButtonLoader.bookButton.buttons){
+            	cookbooktab.drawButton(mc, i1 + sx, j1 + sy, this);
+            	sy += 23;
+            
         }
         super.drawScreen(par1, par2, par3);
     }
@@ -297,14 +303,33 @@ public class CookBookGUI extends GuiScreen {
     	}
     }
     protected void mouseClicked(int par1, int par2, int par3){
-    	for (ClickTab tab : buttons){
+    	int i1 = (this.width - this.achievementsPaneWidth) / 2;
+        int j1 = (this.height - this.achievementsPaneHeight) / 2;
+    	for (ClickTab tab : CookbookButtonLoader.bookButton.getButtons(this.tab)){
         	if (tab.x * 22 > iox && tab.x * 22 < this.achievementsPaneWidth - 2 + iox){
         		if (tab.y * 22 > yox && tab.y * 22 < this.achievementsPaneHeight - 2 + yox){
         			if (tab.mousePressed(mc, par1, par2)){
+        				if (tab.type == 0){
         				this.mc.displayGuiScreen(new CRPageGUI(tab.pagename, CookbookButtonLoader.bookButton.DoesHaveMultiPage(tab.pagename), CookbookButtonLoader.bookButton.NumOfPages(tab.pagename)));
+        				} else if (tab.type == 1){
+        					this.mc.displayGuiScreen(new BTPageGUI(tab.pagename, CookbookButtonLoader.bookButton.DoesHaveMultiPage(tab.pagename), CookbookButtonLoader.bookButton.NumOfPages(tab.pagename)));
+        				}
         			}
         		}
-        	}	
+        	}
+    	}
+        	int sx = -22;
+        	int sy = 0;
+        	for (CookbookTab tabby : CookbookButtonLoader.bookButton.buttons){
+        		int cx = i1 + sx;
+        		int cy = j1 + sy;
+        		if (par1 >= cx && par1 <= cx + 22){
+        			if (par2 >= cy && par2 <= cy + 22){
+        				this.tab = tabby.name;
+        			}
+        		}
+        		sy += 23;
+
     	}
     }
     

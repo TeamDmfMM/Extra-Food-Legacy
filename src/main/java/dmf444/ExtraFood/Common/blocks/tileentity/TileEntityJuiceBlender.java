@@ -283,7 +283,7 @@ public class TileEntityJuiceBlender extends TileEntity implements IInventory, IF
 		
 		if (tank.getFluid() != null){
 		 this.tank.writeToNBT(tag);
-		 EFLog.fatal(tag);
+		 //EFLog.fatal(tag);
 		}
 		super.writeToNBT(tag);
 
