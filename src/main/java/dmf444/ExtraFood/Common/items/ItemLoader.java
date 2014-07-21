@@ -22,10 +22,13 @@ public class ItemLoader {
 	public static Item veal;
 	public static Item toast;
 	public static Item slicedBread;
-	
+	public static Item bucketseaWater;
+	public static Item bucketpurifiedwater;
 	
 	private static boolean IRegister=false;
 	private static boolean FRegister=false;
+	
+
 
 	
 	public static void initiateItems() {
@@ -33,8 +36,10 @@ public class ItemLoader {
 		knife = new Knife().setUnlocalizedName(ItemLib.iK);	
 		cookBook = new Cookbook().setUnlocalizedName(ItemLib.iCB);
 		bucketstrawberry = new BucketStrawberry(2, 0.3F);
-		bucketbanana = new BucketBanana();
-		bucketcarrot = new BucketCarrot();
+		bucketbanana = new BucketBanana(2, 0.4F);
+		bucketcarrot = new BucketCarrot(2, 0.6F);
+		bucketseaWater = new BucketSeaWater(2, 0.1F);
+		bucketpurifiedwater = new BucketPurifiedWater(3, 0.3F);
 
 
 		
@@ -65,6 +70,8 @@ public class ItemLoader {
 			GameRegistry.registerItem(bucketstrawberry, ItemLib.iBS);
 			GameRegistry.registerItem(bucketbanana, ItemLib.iBB);
 			GameRegistry.registerItem(bucketcarrot, ItemLib.iBC);
+			GameRegistry.registerItem(bucketseaWater, ItemLib.iBSW);
+			GameRegistry.registerItem(bucketpurifiedwater, ItemLib.iBPW);
 
 
 		}

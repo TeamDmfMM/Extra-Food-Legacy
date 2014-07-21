@@ -18,5 +18,7 @@ public class ItemLib {
 	public static String iCBac = "CookedBacon";
 	public static String iBRS = "BreadSlice";
 	public static String iToastS = "Toast";
+	public static String iBSW = "BucketSeaWater";
+	public static String iBPW = "BucketPurifiedWater";
 
 }

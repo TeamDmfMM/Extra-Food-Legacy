@@ -5,6 +5,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemBucket;
 import net.minecraft.item.ItemFood;
@@ -20,7 +21,6 @@ public class BucketStrawberry extends ItemBucket {
 
 	private int FoodStat;
 	private float SaturationLvl;
-	private EntityPlayer player;
 
 	public BucketStrawberry(int foodBar, float saturation){
 		super(BlockLoader.Bstrawberryjuice);
@@ -34,15 +34,15 @@ public class BucketStrawberry extends ItemBucket {
 	}
 	
 	@Override
-	public ItemStack onEaten(ItemStack par1ItemStack, World par2World, EntityPlayer Player)
+	public ItemStack onEaten(ItemStack stack, World par2World, EntityPlayer Player)
     {
-		 --par1ItemStack.stackSize;
+		 --stack.stackSize;
 	        Player.getFoodStats().addStats(FoodStat, SaturationLvl);
 	        par2World.playSoundAtEntity(Player, "random.burp", 0.5F, par2World.rand.nextFloat() * 0.1F + 0.9F);
 	        if (!par2World.isRemote) {
 	        Player.addChatComponentMessage(new ChatComponentText("That tasted good!"));
 	        }
-		return par1ItemStack;
+		return stack.stackSize <= 0 ? new ItemStack(Items.bucket) : stack;
 	        
     }
 	@Override
@@ -60,20 +60,15 @@ public class BucketStrawberry extends ItemBucket {
         return EnumAction.drink;
     }
 	
-	@Override
-	public boolean onEntitySwing(EntityLivingBase entityLiving, ItemStack stack)
-	    {
-	        this.onEaten(stack, Minecraft.getMinecraft().theWorld, player);
-			return true;
-	    }
-	
-	/*public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int par4, int par5, int par6, int side, float px, float py, float pz){
-		EFLog.error("Called");
-		if(Minecraft.getMinecraft().objectMouseOver == null){
-			EFLog.error("Attempt to drink");
-			this.onEaten(stack, world, player);
-			return true;
+	public ItemStack onItemRightClick(ItemStack p_77659_1_, World p_77659_2_, EntityPlayer p_77659_3_){
+		ItemStack t = super.onItemRightClick(p_77659_1_, p_77659_2_, p_77659_3_);
+		if (t.getItem() == ItemLoader.bucketstrawberry){
+			p_77659_3_.setItemInUse(p_77659_1_, 32);
+			return p_77659_1_;
 		}
-		return false;
-	}*/
+		else {
+			return t;
+		}
+	}
+
 }

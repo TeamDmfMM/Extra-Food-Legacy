@@ -1,4 +1,4 @@
-package dmf444.ExtraFood.Core;
+package dmf444.ExtraFood.Common.WorldGen;
 
 import java.util.Random;
 

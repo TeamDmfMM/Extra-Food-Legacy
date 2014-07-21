@@ -40,7 +40,7 @@ public class CookBookGUI extends GuiScreen {
 	    private int px;
 	    private int py;
 	    private int x;
-	    private String tab = "generic";
+	    public String tab = "generic";
 	    private int y;
 
 	    private int iox = 15;
@@ -265,10 +265,10 @@ public class CookBookGUI extends GuiScreen {
         		}
         	}
             int sy = 0;
-            int sx = -22;
+            int sx = -28;
             for (CookbookTab cookbooktab : CookbookButtonLoader.bookButton.buttons){
             	cookbooktab.drawButton(mc, i1 + sx, j1 + sy, this);
-            	sy += 23;
+            	sy += 28;
             
         }
         super.drawScreen(par1, par2, par3);
@@ -336,13 +336,13 @@ public class CookBookGUI extends GuiScreen {
     private void plotCurve(double startX, double startY, int bezierX, int bezierY, double endX, double endY){
     	Tessellator tess = Tessellator.instance;
     	GL11.glPushMatrix();
-        GL11.glAlphaFunc(516, 0.003921569F);
-        GL11.glDisable(3553);
-        GL11.glEnable(3042);
-        GL11.glBlendFunc(770, 771);
+        GL11.glAlphaFunc(GL11.GL_GREATER, 0.003921569F);//516
+        GL11.glDisable(GL11.GL_TEXTURE_2D);//3553
+        GL11.glEnable(GL11.GL_BLEND);//3042
+        GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);//770,771
         GL11.glLineWidth(3F);
-        GL11.glEnable(2848);
-        GL11.glHint(3154, 4354);
+        GL11.glEnable(GL11.GL_LINE_SMOOTH);//2848
+        GL11.glHint(GL11.GL_LINE_SMOOTH_HINT, GL11.GL_NICEST); //3154, 4354
         GL11.glDisable(GL11.GL_LIGHTING);
         tess.startDrawing(3);
     	for(double t=0.0;t<=1;t+=0.01)  
@@ -358,13 +358,13 @@ public class CookBookGUI extends GuiScreen {
     	    
     	}
     	tess.draw();
-    	GL11.glBlendFunc(770, 771);
-        GL11.glDisable(2848);
-        GL11.glDisable(3042);
-        GL11.glDisable(32826);
+    	GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);//770, 771
+        GL11.glDisable(GL11.GL_LINE_SMOOTH);//2848
+        GL11.glDisable(GL11.GL_BLEND);//3042
+        GL11.glDisable(32826 /*GL_RESCALE_NORMAL_EXT*/);
         GL11.glEnable(GL11.GL_LIGHTING);
-        GL11.glEnable(3553);
-        GL11.glAlphaFunc(516, 0.1F);
+        GL11.glEnable(GL11.GL_TEXTURE_2D);//3553
+        GL11.glAlphaFunc(GL11.GL_GREATER, 0.1F);//516
         GL11.glPopMatrix();
     }
         

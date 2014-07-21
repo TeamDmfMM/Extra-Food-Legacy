@@ -28,7 +28,7 @@ import net.minecraft.world.gen.feature.WorldGenTrees;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import dmf444.ExtraFood.Core.BananaWorldGenTrees;
+import dmf444.ExtraFood.Common.WorldGen.BananaWorldGenTrees;
 import dmf444.ExtraFood.Core.EFTabs;
 
 public class BananaTreeSapling extends BlockBush implements IGrowable

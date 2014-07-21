@@ -19,6 +19,8 @@ import dmf444.ExtraFood.Common.EventHandler.TestHandle;
 import dmf444.ExtraFood.Common.RecipeHandler.CRPageCraftGet;
 import dmf444.ExtraFood.Common.RecipeHandler.JuiceRegistry;
 import dmf444.ExtraFood.Common.RecipeHandler.RegistryAutoCutter;
+import dmf444.ExtraFood.Common.WorldGen.StrawberryWorldGen;
+import dmf444.ExtraFood.Common.WorldGen.TreeManager;
 import dmf444.ExtraFood.Common.blocks.BlockLoader;
 import dmf444.ExtraFood.Common.fluids.FluidLoader;
 import dmf444.ExtraFood.Common.items.ItemLoader;
@@ -26,7 +28,6 @@ import dmf444.ExtraFood.Core.AchieveLoad;
 import dmf444.ExtraFood.Core.CraftingRecipies;
 import dmf444.ExtraFood.Core.GuiHandler;
 import dmf444.ExtraFood.Core.PacketJBTank;
-import dmf444.ExtraFood.Core.TreeManager;
 import dmf444.ExtraFood.Core.lib.ModInfo;
 import dmf444.ExtraFood.util.ConfigHandler;
 import dmf444.ExtraFood.util.EFLog;
@@ -66,6 +67,7 @@ public class ExtraFood {
 		GameRegistry.registerWorldGenerator(treeManager, 0);
 		MinecraftForge.EVENT_BUS.register(new ExtraFood_EventBonemeal());
 		}
+		GameRegistry.registerWorldGenerator(new StrawberryWorldGen(), 0);
 		
 		MinecraftForge.EVENT_BUS.register(BucketHandler.INSTANCE);		
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());

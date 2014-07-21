@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.MovingObjectPosition;
@@ -32,6 +33,8 @@ public class BucketHandler {
     private BucketHandler() {
     	buckets.put(BlockLoader.Bbananajuice, ItemLoader.bucketbanana);
     	buckets.put(BlockLoader.Bstrawberryjuice, ItemLoader.bucketstrawberry);
+    	buckets.put(BlockLoader.Bcarrotjuice, ItemLoader.bucketcarrot);
+    	buckets.put(Blocks.water, ItemLoader.bucketseaWater);
     }
 
 
