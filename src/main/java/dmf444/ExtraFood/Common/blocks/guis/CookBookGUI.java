@@ -124,7 +124,8 @@ public class CookBookGUI extends GuiScreen {
             }
             
             this.drawDefaultBackground();
-            this.genDasBookBackground(par1, par2, par3);            
+            this.genDasBookBackground(par1, par2, par3);     
+            this.genDasBorder(par1, par2, par3);
             this.drawTitle();
             GL11.glDisable(GL11.GL_LIGHTING);
             GL11.glDisable(GL11.GL_DEPTH_TEST);
@@ -134,6 +135,7 @@ public class CookBookGUI extends GuiScreen {
 
 
     }
+    
     protected void drawTitle()
     {
 		String mainGUI = StatCollector.translateToLocal("cookbook.Title");
@@ -144,6 +146,18 @@ public class CookBookGUI extends GuiScreen {
         GL11.glEnable(GL11.GL_LIGHTING);
     }
     
+    protected void genDasBorder(int par1, int par2, float par3){
+        int i1 = (this.width - this.achievementsPaneWidth) / 2;
+        int j1 = (this.height - this.achievementsPaneHeight) / 2;
+        GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
+        GL11.glEnable(GL11.GL_BLEND);
+        GL11.glDisable(GL11.GL_LIGHTING);
+        GL11.glDisable(GL11.GL_DEPTH_TEST);
+        this.mc.getTextureManager().bindTexture(GuiLib.CBborder);
+        this.drawTexturedModalRect(i1, j1, 0, 0, this.achievementsPaneWidth, this.achievementsPaneHeight);
+        GL11.glEnable(GL11.GL_LIGHTING);      
+        GL11.glDisable(GL11.GL_BLEND);
+    }
     
     protected void genDasBookBackground(int par1, int par2, float par3)
     {
@@ -204,7 +218,7 @@ public class CookBookGUI extends GuiScreen {
         GL11.glPopMatrix();       
        // GL11.glEnable(GL11.GL_DEPTH_TEST);
         GL11.glDepthFunc(GL11.GL_LEQUAL);
-      
+        //GL11.glPopMatrix();
         GL11.glDisable(GL11.GL_DEPTH_TEST);
         GL11.glEnable(GL11.GL_BLEND);
         GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
@@ -231,23 +245,27 @@ public class CookBookGUI extends GuiScreen {
         		             bx = (int) (i1 + 2 + (x2 * 22) + -iox + 30);
         		             x1 += 0.85F;
         		             x2 += 0.6;
+        		             y2 -= 0.1F;
         		             
+        		            } else if(x1 == x2 + 0.1F){
+        		            	bx = (int) (i1 + 2 + (x2 * 22) + -iox - 30);
+        		            	x2 += 0.1F;
+        		            	y1 -= 0.1F;
         		            }
         		            else {
         		             bx = (int) (i1 + 2 + (x1 * 22) + -iox + - 30);
         		             y2 -= 0.1F;
-        		             x2 += 0.6;
+        		             x2 += 1F;
         		            }
         		            if (y1 < y2){
         		             by = (int) (j1 + 2 + (y2 * 22) + -yox + 30);
-        		             y1 += 1;
+        		             y1 += 0.9F;
         		             y2 += 0.6;
         		             
         		            }
         		            else {
         		             by = (int) (j1 + 2 + (y1 * 22) + -yox + 15);
         		             y2 += 1;
-        		             
         		            }
         				if (x1 * 22 > iox && x1 * 22 < this.achievementsPaneWidth - 2 + iox && x2 * 22 > iox && x2 * 22 < this.achievementsPaneWidth - 17 + iox){ //2
         	        		if (y1 * 22 > yox && y1 * 22 < this.achievementsPaneHeight - 20 + yox && y2 * 22 > yox && y2 * 22 < this.achievementsPaneHeight - 20 + yox){

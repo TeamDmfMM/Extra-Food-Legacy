@@ -18,6 +18,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.util.ForgeDirection;
+import dmf444.ExtraFood.Client.ClientProxy;
 import dmf444.ExtraFood.Common.items.ItemLoader;
 import dmf444.ExtraFood.Core.EFTabs;
 import dmf444.ExtraFood.util.EFLog;
@@ -40,9 +41,10 @@ public class StrawberryBush extends Block implements IGrowable {
 	  public IIcon getIcon(int side, int meta){
 		  if (meta  < 7)
 	        {
-	            if (meta == 6)
+	            if (meta >= 4 && meta < 7)
 	            {
 	                meta = 5;
+	                return this.growingTextures[1];
 	            }
 
 	            return this.growingTextures[0];
@@ -83,7 +85,7 @@ public class StrawberryBush extends Block implements IGrowable {
     	switch (meta) {
     	case -1:
     			return false;
-    	case 5: 
+    	case 4: 
 			this.placeDuoInInv(player);
 			world.setBlockMetadataWithNotify(x, y, z, 0, 2);   		
     			return true;
@@ -96,13 +98,15 @@ public class StrawberryBush extends Block implements IGrowable {
     }
 
 	private void placeDuoInInv(EntityPlayer player) {
-		player.inventory.setInventorySlotContents(player.inventory.getFirstEmptyStack(), new ItemStack(ItemLoader.strawberry, 2));
-		
+		if (player.inventory.getFirstEmptyStack() == -1){
+			player.inventory.addItemStackToInventory(new ItemStack(ItemLoader.strawberry, 2));
+		} else {
+			player.inventory.setInventorySlotContents(player.inventory.getFirstEmptyStack(), new ItemStack(ItemLoader.strawberry, 2));
+		}	
 	}
+	
 	private void placeInInv(EntityPlayer player) {
-			
-		player.inventory.setInventorySlotContents(player.inventory.getFirstEmptyStack(), new ItemStack(ItemLoader.strawberry, 4));
-		
+		player.inventory.addItemStackToInventory(new ItemStack(ItemLoader.strawberry, 4));	
 	}
 	 @SideOnly(Side.CLIENT)
 	    public void registerBlockIcons(IIconRegister iiconr)
@@ -116,7 +120,7 @@ public class StrawberryBush extends Block implements IGrowable {
 	    }
 	    public int getRenderType()
 	    {
-	        return 6;
+	        return  ClientProxy.bushrender.getRenderId();
 	    }
 		public boolean isOpaqueCube()
 	    {

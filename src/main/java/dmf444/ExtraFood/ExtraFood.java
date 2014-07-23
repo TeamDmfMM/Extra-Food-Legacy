@@ -12,6 +12,7 @@ import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
+import dmf444.ExtraFood.Client.renderer.BerryRender;
 import dmf444.ExtraFood.Common.CommonProxy;
 import dmf444.ExtraFood.Common.EventHandler.BucketHandler;
 import dmf444.ExtraFood.Common.EventHandler.ExtraFood_EventBonemeal;
@@ -94,6 +95,7 @@ public class ExtraFood {
 		CraftingRecipies.furnacing();
 		
 		proxy.registerKeybinds();
+
 
 		
 	}
