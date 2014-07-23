@@ -12,8 +12,8 @@ public class RegistryAutoCutter {
 
 
 	public RegistryAutoCutter(){
-		this.registerRecipe(new RecipeAutoCutter(new ItemStack(ItemLoader.cheeseWheel, 1), new ItemStack(ItemLoader.cheeseSlice, 8)));
-		this.registerRecipe(new RecipeAutoCutter(new ItemStack(Items.porkchop, 1), new ItemStack(ItemLoader.sausage, 2)));
+		//this.registerRecipe(new RecipeAutoCutter(new ItemStack(ItemLoader.cheeseWheel, 1), new ItemStack(ItemLoader.cheeseSlice, 8)));
+		//this.registerRecipe(new RecipeAutoCutter(new ItemStack(Items.porkchop, 1), new ItemStack(ItemLoader.sausage, 2)));
 	}
 	public void registerRecipe(RecipeAutoCutter recipe){
 		recipes.add(recipe);

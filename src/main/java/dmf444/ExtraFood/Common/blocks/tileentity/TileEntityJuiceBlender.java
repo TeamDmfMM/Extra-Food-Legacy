@@ -195,8 +195,10 @@ public class TileEntityJuiceBlender extends TileEntity implements IInventory, IF
 
 	  public void updateEntity(){
 
+
 		 // EFLog.error(tank.getFluidAmount());
-		  
+
+
 		  if (this.ok()){
 			  this.ttime += 1;
 			  if (this.ttime == 20){
@@ -219,11 +221,15 @@ public class TileEntityJuiceBlender extends TileEntity implements IInventory, IF
 						  this.tank.drain(1000, true);
 
 
+
+
 					  }
 					  else if (this.tank.getFluid().fluidID == FluidLoader.Fbananajuice.getID()){
 						  this.items[1].stackSize -= 1;
 						  this.items[2] = new ItemStack(ItemLoader.bucketbanana, 1);
 						  this.tank.drain(1000, true);
+
+
 
 
 					  }
@@ -236,6 +242,10 @@ public class TileEntityJuiceBlender extends TileEntity implements IInventory, IF
 			  }
 		  }
 	  }
+
+
+
+
 
 
 
@@ -273,7 +283,7 @@ public class TileEntityJuiceBlender extends TileEntity implements IInventory, IF
 		
 		if (tank.getFluid() != null){
 		 this.tank.writeToNBT(tag);
-		 EFLog.fatal(tag);
+		 //EFLog.fatal(tag);
 		}
 		super.writeToNBT(tag);
 

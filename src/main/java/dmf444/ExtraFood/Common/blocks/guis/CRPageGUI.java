@@ -155,8 +155,9 @@ public void renderItems() {
 			}
 			   //Itemstack 9 is the output slot
 			if (items[9] != null){
-				GL11.glDisable(GL11.GL_LIGHTING);	
-			this.irender.renderItemIntoGUI(this.fontRendererObj, this.mc.getTextureManager(), items[9], x + 19, y - 44);
+				GL11.glDisable(GL11.GL_LIGHTING);
+				this.irender.renderItemIntoGUI(this.fontRendererObj, this.mc.getTextureManager(), items[9], x + 19, y - 44);
+				this.irender.renderItemOverlayIntoGUI(this.fontRendererObj, this.mc.getTextureManager(), items[9], x + 19, y - 44);
 			GL11.glEnable(GL11.GL_LIGHTING);	
 			}
 

@@ -1,17 +1,17 @@
-/**
- * 
- */
 package dmf444.ExtraFood.Common.RecipeHandler;
 
+
 import java.util.ArrayList;
+
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
+
 /**
- * @author matthew
+ * @author mincramatt12
  *
- *
+ * 7/16/14, Written
  *
  *
  *
@@ -20,14 +20,16 @@ import net.minecraft.item.ItemStack;
 public class OvenRegistry {
 	ArrayList<OvenRegistryItem> ovenitems = new ArrayList<OvenRegistryItem>();
 	public OvenRegistry(){
-		
+
+
 	}
 	public ItemStack getItem(ArrayList<ItemStack> itemsinoven){
 		for (OvenRegistryItem i : ovenitems){
 			if (this.containsAllItemsIgnoreExcess(itemsinoven, i.baseRecipe)){
 				if (this.checkIfItemsAreEqualIngoreMissing(itemsinoven, i.getItemsAdditive())){
 					return i.createItemStack(itemsinoven);
-					
+
+
 				}
 			}
 		}
@@ -57,7 +59,8 @@ public class OvenRegistry {
 				if (it.getItem() == itt){
 					truth = true;
 				}
-				
+
+
 			}
 			if (truth == false){
 				return false;
@@ -65,7 +68,8 @@ public class OvenRegistry {
 			else {
 				truth = false;
 			}
-			
+
+
 		}
 		return true;
 	}

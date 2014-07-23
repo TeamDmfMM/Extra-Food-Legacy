@@ -1,6 +1,10 @@
 package dmf444.ExtraFood;
 
+import java.io.File;
+import java.io.IOException;
+
 import net.minecraftforge.common.MinecraftForge;
+import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler; // used in 1.6.2
 import cpw.mods.fml.common.Mod.Instance;
@@ -12,6 +16,7 @@ import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
+import dmf444.ExtraFood.Client.renderer.BlockBushRenderer;
 import dmf444.ExtraFood.Common.CommonProxy;
 import dmf444.ExtraFood.Common.EventHandler.BucketHandler;
 import dmf444.ExtraFood.Common.EventHandler.ExtraFood_EventBonemeal;
@@ -28,6 +33,8 @@ import dmf444.ExtraFood.Core.CraftingRecipies;
 import dmf444.ExtraFood.Core.GuiHandler;
 import dmf444.ExtraFood.Core.PacketJBTank;
 import dmf444.ExtraFood.Core.lib.ModInfo;
+import dmf444.ExtraFood.FileReader.JarFileFinder;
+import dmf444.ExtraFood.FileReader.TextReader;
 import dmf444.ExtraFood.util.ConfigHandler;
 import dmf444.ExtraFood.util.EFLog;
 
@@ -38,21 +45,23 @@ public class ExtraFood {
 	@Instance(value = "ExtraFood")
 	public static ExtraFood instance;
 	
+	public static BlockBushRenderer bushrender;
+	
 	@SidedProxy(clientSide= ModInfo.Clientproxy, serverSide= ModInfo.Serverproxy)
 	public static CommonProxy proxy;
 	
+	public static JarFileFinder jarreader;
 	
 	public static CRPageCraftGet crafterPage;
 	public static RegistryAutoCutter registryCutter;
 	TreeManager treeManager = new TreeManager();
 	
 	public static SimpleNetworkWrapper JBTanknet;
-
 	
-	
-		@EventHandler
+	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 			
+			jarreader = new JarFileFinder();
 			EFLog.info("Extra Food has been activated, loading blocks,items and Events");
 		ConfigHandler.init(event.getSuggestedConfigurationFile());
 			
@@ -68,14 +77,13 @@ public class ExtraFood {
 		}
 		GameRegistry.registerWorldGenerator(new StrawberryWorldGen(), 0);
 		
-		MinecraftForge.EVENT_BUS.register(BucketHandler.INSTANCE);	
+		MinecraftForge.EVENT_BUS.register(BucketHandler.INSTANCE);		
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
 		AchieveLoad.loadAc();
 		
 		JBTanknet = NetworkRegistry.INSTANCE.newSimpleChannel(ModInfo.MId);
 		JBTanknet.registerMessage(PacketJBTank.Handler.class, PacketJBTank.class, 1,Side.CLIENT);
-		
-		
+
 		
 		
 			EFLog.info("Cleared EF's Registry");
@@ -89,18 +97,36 @@ public class ExtraFood {
 		BlockLoader.initTileEntity();
 		
 		proxy.registerRenderers();
-		
+		this.registryCutter = new RegistryAutoCutter();
 		CraftingRecipies.craftering();
+		CraftingRecipies.furnacing();
 		
 		proxy.registerKeybinds();
+		bushrender = new BlockBushRenderer();
+		RenderingRegistry.registerBlockHandler(bushrender);
 
 		
 	}
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event){
 		
-		this.registryCutter = new RegistryAutoCutter();
 		crafterPage = new CRPageCraftGet();
 		JuiceRegistry.instance = new JuiceRegistry();
+		
+		
+		jarreader.init();
+		// Me testing my file reader
+		File toread = jarreader.extractFile("testreader.txt", null);
+		TextReader text = new TextReader(toread);
+		try {
+			text.parse();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			return;
+		}
+		for (String s : text.allLines()){
+			EFLog.fatal(s);
+		}
 	}
+	
 }

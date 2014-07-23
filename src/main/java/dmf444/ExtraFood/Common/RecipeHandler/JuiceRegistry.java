@@ -21,7 +21,6 @@ public class JuiceRegistry {
 
 	public Dictionary<Item,Fluid > juices;
 	public Dictionary<Fluid, String> juicenames;
-
 	public Dictionary<Fluid, float[]> juicecolors;
 
 	public static JuiceRegistry instance = null;
@@ -46,12 +45,13 @@ public class JuiceRegistry {
 	public void registerColor(Fluid i, int r, int g, int b){
 		this.juicecolors.put(i, new float[] {r / 255.0f, g / 255.0f, b / 255.0f});
 	}
+	public float[] getColor(ItemStack i){
+		return this.juicecolors.get(this.getJuiceFromItemStack(i));
+	}
+
 	public void registerJuice(Fluid fluid, Item item, String texture){
 		juices.put(item, fluid);
 		juicenames.put(fluid, texture);
-	}
-	public float[] getColor(ItemStack i){
-		return this.juicecolors.get(this.getJuiceFromItemStack(i));
 	}
 	public Fluid getJuiceFromItemStack(ItemStack is){
 		try {

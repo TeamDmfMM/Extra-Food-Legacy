@@ -18,6 +18,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.util.ForgeDirection;
+import dmf444.ExtraFood.ExtraFood;
 import dmf444.ExtraFood.Common.items.ItemLoader;
 import dmf444.ExtraFood.Core.EFTabs;
 import dmf444.ExtraFood.util.EFLog;
@@ -116,7 +117,7 @@ public class StrawberryBush extends Block implements IGrowable {
 	    }
 	    public int getRenderType()
 	    {
-	        return 6;
+	        return ExtraFood.bushrender.getRenderId();
 	    }
 		public boolean isOpaqueCube()
 	    {

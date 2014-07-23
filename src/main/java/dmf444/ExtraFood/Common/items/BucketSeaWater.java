@@ -1,27 +1,27 @@
 package dmf444.ExtraFood.Common.items;
 
-
-import dmf444.ExtraFood.Common.blocks.BlockLoader;
-import dmf444.ExtraFood.Core.EFTabs;
-import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemBucket;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.world.World;
+import dmf444.ExtraFood.Common.blocks.BlockLoader;
+import dmf444.ExtraFood.Core.EFTabs;
+import dmf444.ExtraFood.Core.lib.ItemLib;
 
-
-public class BucketCarrot extends ItemBucket{
+public class BucketSeaWater extends ItemBucket{
 
 	private int FoodStat;
 	private float SaturationLvl;
 
-	public BucketCarrot(int foodBar, float saturation) {
-		super(BlockLoader.Bcarrotjuice);
+	public BucketSeaWater(int foodBar, float saturation) {
+		super(Blocks.water);
 		this.setCreativeTab(EFTabs.INSTANCE);
-		this.setTextureName("extrafood:bucket_carrot");
+		this.setTextureName("minecraft:bucket_water");
+		this.setUnlocalizedName(ItemLib.iBSW);
 		this.FoodStat = foodBar;
 		this.SaturationLvl = saturation;
 
@@ -55,7 +55,7 @@ public class BucketCarrot extends ItemBucket{
 	
 	public ItemStack onItemRightClick(ItemStack p_77659_1_, World p_77659_2_, EntityPlayer p_77659_3_){
 		ItemStack t = super.onItemRightClick(p_77659_1_, p_77659_2_, p_77659_3_);
-		if (t.getItem() == ItemLoader.bucketcarrot){
+		if (t.getItem() == ItemLoader.bucketseaWater){
 			p_77659_3_.setItemInUse(p_77659_1_, 32);
 			return p_77659_1_;
 		}

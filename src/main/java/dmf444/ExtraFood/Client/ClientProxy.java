@@ -5,7 +5,6 @@ import net.minecraft.item.Item;
 import net.minecraftforge.client.MinecraftForgeClient;
 import cpw.mods.fml.client.registry.ClientRegistry;
 import dmf444.ExtraFood.Client.renderer.AutoCutterRenderer;
-import dmf444.ExtraFood.Client.renderer.CheesePressItemRenderer;
 import dmf444.ExtraFood.Client.renderer.CheesePressRenderer;
 import dmf444.ExtraFood.Client.renderer.RenderOven;
 import dmf444.ExtraFood.Client.renderer.RendererJuiceBlender;
@@ -23,8 +22,6 @@ public class ClientProxy extends CommonProxy{
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityJuiceBlender.class, new RendererJuiceBlender());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityOven.class, new RenderOven());
 		
-		TileEntitySpecialRenderer render = new CheesePressRenderer();
-		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(BlockLoader.cheesePress), new CheesePressItemRenderer());
 		
 	}
 }

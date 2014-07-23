@@ -1,6 +1,8 @@
 package dmf444.ExtraFood.Common.WorldGen;
 
+
 import java.util.Random;
+
 
 import net.minecraft.init.Blocks;
 import net.minecraft.util.MathHelper;
@@ -10,7 +12,9 @@ import cpw.mods.fml.common.IWorldGenerator;
 import dmf444.ExtraFood.Common.blocks.BlockLoader;
 import dmf444.ExtraFood.util.EFLog;
 
+
 public class StrawberryWorldGen implements IWorldGenerator {
+
 
 	@Override
 	public void generate(Random random, int chunkX, int chunkZ, World world,
@@ -20,17 +24,23 @@ public class StrawberryWorldGen implements IWorldGenerator {
 			case 0: generateSurface(world, random, chunkX * 16, chunkZ * 16);
 			case 1: generateEnd(world, random, chunkX * 16, chunkZ * 16);
 		}
-		
+
+
 	}
+
 
 	private void generateNether(World world, Random random, int i, int j) {
 		// TODO Auto-generated method stub
-		
+
+
 	}
 
+
 	private void generateEnd(World world, Random random, int x, int z) {
-		
+
+
 	}
+
 
 	private void generateSurface(World world, Random random, int x, int z) {
 		if (random.nextInt(45) == 0){
@@ -43,7 +53,8 @@ public class StrawberryWorldGen implements IWorldGenerator {
 			for (int xpos = 0; xpos < xs; xpos++){
 				for (int ypos = 0; ypos < ys; ypos++){
 					by = world.getHeightValue(xx + xpos, zz + ypos);
-					
+
+
 					if (world.getBlock(xx + xpos, by, zz + ypos) == Blocks.tallgrass && random.nextInt(3) == 0){
 						world.setBlock(xx + xpos, by, zz + ypos, BlockLoader.strawberryBush);
 						EFLog.error("xx: " + xx + xpos + " zz: " + zz + ypos);
@@ -56,6 +67,7 @@ public class StrawberryWorldGen implements IWorldGenerator {
 				}
 			}
 		}
-		
+
+
 	}
 }
