@@ -16,9 +16,6 @@ public class BTPageGUI extends GuiScreen {
 
 String pageTextLeft;
 String pageTextRight;
-String pageTextBLeft;
-String pageTextBRight;
-
 private ItemStack[] items;
 RenderItem irender;
 GuiButton next;
@@ -37,10 +34,6 @@ int pagesAllowed;
 	 //This will be used to call the name of the page from the .lang file
 	pageTextLeft = StatCollector.translateToLocal("cookbookL." + pagename);
 	pageTextRight = StatCollector.translateToLocal("cookbookR." + pagename);
-	 
-	 // I am going to simply have a class loading the values, not the lang file.
-	 // However, the langfile will be used to determine the text.
-	 
 	this.items = ExtraFood.crafterPage.getArray(pagename);
 	this.irender = new RenderItem();
 	pagen = pagename;

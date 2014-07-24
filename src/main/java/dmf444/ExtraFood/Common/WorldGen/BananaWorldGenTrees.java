@@ -125,7 +125,7 @@ public class BananaWorldGenTrees extends WorldGenAbstractTree
 
                                     if (block1.isAir(world, i2, k1, k2) || block1.isLeaves(world, i2, k1, k2))
                                     {
-                                        this.setBlockAndNotifyAdequately(world, i2, k1, k2, Blocks.leaves, this.metaLeaves);
+                                        this.setBlockAndNotifyAdequately(world, i2, k1, k2, BlockLoader.bananaLeaf, this.metaLeaves);
                                     }
                                 }
                             }

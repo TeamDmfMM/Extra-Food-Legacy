@@ -22,6 +22,7 @@ public class BucketCarrot extends ItemBucket{
 		super(BlockLoader.Bcarrotjuice);
 		this.setCreativeTab(EFTabs.INSTANCE);
 		this.setTextureName("extrafood:bucket_carrot");
+		this.setUnlocalizedName("BucketCarrot");
 		this.FoodStat = foodBar;
 		this.SaturationLvl = saturation;
 

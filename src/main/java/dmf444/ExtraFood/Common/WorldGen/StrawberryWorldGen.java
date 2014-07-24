@@ -44,7 +44,7 @@ public class StrawberryWorldGen implements IWorldGenerator {
 
 	private void generateSurface(World world, Random random, int x, int z) {
 		if (random.nextInt(45) == 0){
-			EFLog.error("x: " + x + " z: " + z);
+			//EFLog.error("x: " + x + " z: " + z);
 			int xs = MathHelper.getRandomIntegerInRange(random, 2, 5);
 			int ys = MathHelper.getRandomIntegerInRange(random, 2, 5);
 			int xx = x + random.nextInt(15);
@@ -57,13 +57,13 @@ public class StrawberryWorldGen implements IWorldGenerator {
 
 					if (world.getBlock(xx + xpos, by, zz + ypos) == Blocks.tallgrass && random.nextInt(3) == 0){
 						world.setBlock(xx + xpos, by, zz + ypos, BlockLoader.strawberryBush);
-						EFLog.error("xx: " + xx + xpos + " zz: " + zz + ypos);
+						//EFLog.error("xx: " + xx + xpos + " zz: " + zz + ypos);
 					}
 					else if (world.getBlock(xx + xpos, by - 1, zz + ypos) == Blocks.grass && random.nextInt(3) == 0){
 						world.setBlock(xx + xpos, by, zz + ypos, BlockLoader.strawberryBush);
-						EFLog.error("xx: " + xx + xpos + " zz: " + zz + ypos);
+						//EFLog.error("xx: " + xx + xpos + " zz: " + zz + ypos);
 					}
-					EFLog.error("Block: " + world.getBlock(xx + xpos, by, zz + ypos).getUnlocalizedName());
+					//EFLog.error("Block: " + world.getBlock(xx + xpos, by, zz + ypos).getUnlocalizedName());
 				}
 			}
 		}

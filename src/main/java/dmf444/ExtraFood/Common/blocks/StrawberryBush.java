@@ -10,6 +10,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.IIcon;
@@ -18,7 +19,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.util.ForgeDirection;
-import dmf444.ExtraFood.ExtraFood;
+import dmf444.ExtraFood.Client.ClientProxy;
 import dmf444.ExtraFood.Common.items.ItemLoader;
 import dmf444.ExtraFood.Core.EFTabs;
 import dmf444.ExtraFood.util.EFLog;
@@ -41,9 +42,10 @@ public class StrawberryBush extends Block implements IGrowable {
 	  public IIcon getIcon(int side, int meta){
 		  if (meta  < 7)
 	        {
-	            if (meta == 6)
+	            if (meta >= 4 && meta < 7)
 	            {
 	                meta = 5;
+	                return this.growingTextures[1];
 	            }
 
 	            return this.growingTextures[0];
@@ -59,20 +61,43 @@ public class StrawberryBush extends Block implements IGrowable {
 	    {
 	        super.updateTick(world, x, y, z, random);
 
-	        if (world.getBlockLightValue(x, y + 1, z) >= 9)
-	        {
-	            int l = world.getBlockMetadata( x, y, z);
-
-	            if (l < 7)
-	            {
-	                float f = this.magicStuff(world,  x, y, z);
-
-	                if (random.nextInt((int)(25.0F / f) + 1) == 0)
-	                {
-	                    ++l;
-	                    world.setBlockMetadataWithNotify(x, y, z, l, 2);
-	                }
-	            }
+//	        if (world.getBlockLightValue(x, y + 1, z) >= 9) 
+	        // im just gonna change this to my own code, okay?
+//	        {
+//	            int l = world.getBlockMetadata( x, y, z);
+//
+//	            if (l < 7)
+//	            {
+//	                float f = this.magicStuff(world,  x, y, z);
+//
+//	                if (random.nextInt((int)(25.0F / f) + 1) == 0)
+//	                {
+//	                    ++l;
+//	                    world.setBlockMetadataWithNotify(x, y, z, l, 2);
+//	                }
+//	            }
+//	        }
+	        if (world.getBlockLightValue(x, y + 1, z) >= 9) {
+	        	// Can survive, next!
+	        	int meta = world.getBlockMetadata(x, y, z);
+	        	
+	        	// Can grow more?
+	        	if (meta < 7){
+	        		// Yes, yes it can!
+	        		// Now, should I use my magical power to make it grow a bit?
+	        		// Well, first lets check if it is in nice rows:
+	        		float modifier = this.getGrowthModifierForBlock(world, x, y, z);
+	        		// Now, with the modifier in mind, check if we should add to the growth:
+	        		if (random.nextInt((int)(25.0 / modifier) + 1) == 0){
+	        			// Randomly give it a little boost:
+	        			if (random.nextInt(7) == 0) {meta += 2;}
+	        			else {meta += 1;}
+	        			world.setBlockMetadataWithNotify(x, y, z, meta, 2);
+	        		}
+	        	
+	        		
+	        	}
+	        	// No, lets go home now :(
 	        }
 	    }
 	}
@@ -81,11 +106,27 @@ public class StrawberryBush extends Block implements IGrowable {
     public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float what, float these, float are) {
     	int meta = world.getBlockMetadata(x, y, z);
     	EFLog.info("Current Meta:" + meta);
+    	if (player.inventory.getCurrentItem() != null){
+    		ItemStack is = player.inventory.getCurrentItem();
+    		if (is.getItem() == Items.dye){
+    			if (is.getItemDamage() == 15){
+    				return false;
+    			}
+    		}
+    	}
     	switch (meta) {
     	case -1:
     			return false;
-    	case 5: 
+    	case 4: 
 			this.placeDuoInInv(player);
+			world.setBlockMetadataWithNotify(x, y, z, 0, 2);   		
+    			return true;
+    	case 5:
+    		this.placeDuoInInv(player);
+			world.setBlockMetadataWithNotify(x, y, z, 0, 2);   		
+    			return true;
+    	case 6:
+    		this.placeDuoInInv(player);
 			world.setBlockMetadataWithNotify(x, y, z, 0, 2);   		
     			return true;
     	case 7:
@@ -97,13 +138,15 @@ public class StrawberryBush extends Block implements IGrowable {
     }
 
 	private void placeDuoInInv(EntityPlayer player) {
-		player.inventory.setInventorySlotContents(player.inventory.getFirstEmptyStack(), new ItemStack(ItemLoader.strawberry, 2));
-		
+		if (player.inventory.getFirstEmptyStack() == -1){
+			player.inventory.addItemStackToInventory(new ItemStack(ItemLoader.strawberry, 2));
+		} else {
+			player.inventory.setInventorySlotContents(player.inventory.getFirstEmptyStack(), new ItemStack(ItemLoader.strawberry, 2));
+		}	
 	}
+	
 	private void placeInInv(EntityPlayer player) {
-			
-		player.inventory.setInventorySlotContents(player.inventory.getFirstEmptyStack(), new ItemStack(ItemLoader.strawberry, 4));
-		
+		player.inventory.addItemStackToInventory(new ItemStack(ItemLoader.strawberry, 4));	
 	}
 	 @SideOnly(Side.CLIENT)
 	    public void registerBlockIcons(IIconRegister iiconr)
@@ -117,7 +160,7 @@ public class StrawberryBush extends Block implements IGrowable {
 	    }
 	    public int getRenderType()
 	    {
-	        return ExtraFood.bushrender.getRenderId();
+	        return  ClientProxy.bushrender.getRenderId();
 	    }
 		public boolean isOpaqueCube()
 	    {
@@ -143,21 +186,32 @@ public class StrawberryBush extends Block implements IGrowable {
 		
 	    public void onBonemealEvent(World world, int x, int y, int z)
 	    {
-	        int l = world.getBlockMetadata(x, y, z) + MathHelper.getRandomIntegerInRange(world.rand, 2, 5);
-
-	        if (l > 7)
-	        {
-	            l = 7;
+	        int meta = world.getBlockMetadata(x, y, z) + 1;
+	        
+	        boolean randfact = world.rand.nextInt(3) <= 1;
+	        if (meta < 7){
+		        if ( randfact && meta == 6){
+		        	meta += 1;
+		        }
+		        else if (randfact && meta >= 4){
+		        	meta += 2;
+		        }
+		        else if (randfact && meta < 4){
+		        	meta += 3;
+		        }
+		        else {
+		        	meta += 1;
+		        }
 	        }
 
-	        world.setBlockMetadataWithNotify(x, y, z, l++, 2);
+	        world.setBlockMetadataWithNotify(x, y, z, meta, 2);
 	    }
 	    public AxisAlignedBB getCollisionBoundingBoxFromPool(World p_149668_1_, int p_149668_2_, int p_149668_3_, int p_149668_4_)
 	    {
 	        return null;
 	    }
 	    
-	    private float magicStuff(World world, int x, int y, int z)
+	    private float getGrowthModifierForBlock(World world, int x, int y, int z)
 	    {
 	        float f = 1.0F;
 	        Block block = world.getBlock(x, y, z - 1);
