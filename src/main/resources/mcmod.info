@@ -1,15 +1,17 @@
 [
 {
   "modid": "extrafood",
-  "name": "Extra Food",
-  "description": "Extra Food by mincrmatt12 and dmf444.",
+  "name": "ExtraFood",
   "version": "${mod_version}",
   "mcversion": "${minecraft_version}",
-  "url": "",
+  "description": "Extra Food by mincrmatt12 and dmf444.",
+  "credits": "Dmf444, Mincrmatt12 and thanks to all those who helped on IRC and MCForge Forums",
+  "logoFile": "",
+  "url": "https://github.com/TeamDmfMM/Extra-Food",
   "updateUrl": "",
-  "authorList": ["mincrmatt12","dmf444"],
-  "credits": "Dmf444, Mincrmatt12 and thanks to all those who helped on IRC and MCForge Forums"
+  "authorList": ["mincrmatt12", "dmf444"],
+  "parent": "",
   "screenshots": [],
-  "dependencies": []
+  "dependencies": ["mod_MinecraftForge"]
 }
 ]

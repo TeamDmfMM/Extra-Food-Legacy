@@ -12,11 +12,11 @@ import net.minecraft.util.IIcon;
  * 
  */
 
-public class FluidIcon {
+public class RenderIcon {
 	
 	private static TMap<String, IIcon> icons = new THashMap<String, IIcon>();
 	
-	private FluidIcon() {
+	private RenderIcon() {
 
 	}
 

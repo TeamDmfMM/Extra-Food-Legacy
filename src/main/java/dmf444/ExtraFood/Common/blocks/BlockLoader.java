@@ -28,8 +28,11 @@ public class BlockLoader {
 	public static Block strawberryBush;
 	public static Block Bcarrotjuice;
 	public static Block bananaLeaf;
+	public static Block peanutbush;
+	public static Block tomatoCrop;
 	
 	public static boolean Register=false;
+	
 	public static void initiateBlocks() {
 		bananaBunch = new BananaBlock(Material.cactus).setBlockName(BlockLib.bBB).setBlockTextureName("extrafood:BananaBunch");
 		saplingBanana = new BananaTreeSapling().setBlockName(BlockLib.bBS);
@@ -43,6 +46,8 @@ public class BlockLoader {
 		strawberryBush = new StrawberryBush(Material.plants).setBlockName(BlockLib.bSB);
 		Bcarrotjuice = new CarrotJuice(FluidLoader.Fcarrotjuice, Material.water).setBlockName("Fcarrotjuice");
 		bananaLeaf = new BananaLeaf().setBlockName("BananaLeaf");
+		peanutbush = new PeanutBush(Material.plants).setBlockName(BlockLib.bPB);
+		tomatoCrop = new CropTomato().setBlockName(BlockLib.bCT);
 		
 		
 		registerBlocks();
@@ -61,6 +66,9 @@ public class BlockLoader {
 			GameRegistry.registerBlock(strawberryBush, BlockLib.bSB);
 			GameRegistry.registerBlock(Bcarrotjuice, ModInfo.MId + "_" + Bcarrotjuice.getUnlocalizedName().substring(5));
 			GameRegistry.registerBlock(bananaLeaf, "BananaLeaf");
+			GameRegistry.registerBlock(peanutbush, BlockLib.bPB);
+			GameRegistry.registerBlock(tomatoCrop, BlockLib.bCT);
+			
 		}
 		Register=true;
 	}

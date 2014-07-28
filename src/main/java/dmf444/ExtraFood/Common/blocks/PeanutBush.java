@@ -1,13 +1,7 @@
 package dmf444.ExtraFood.Common.blocks;
 
-
 import java.util.Random;
 
-
-
-
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.material.Material;
@@ -18,11 +12,9 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.IIcon;
-import net.minecraft.util.MathHelper;
-import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraftforge.common.EnumPlantType;
-import net.minecraftforge.common.util.ForgeDirection;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import dmf444.ExtraFood.Client.ClientProxy;
 import dmf444.ExtraFood.Common.items.ItemLoader;
 import dmf444.ExtraFood.Core.EFTabs;
@@ -30,12 +22,11 @@ import dmf444.ExtraFood.Core.lib.ModInfo;
 import dmf444.ExtraFood.util.EFLog;
 import dmf444.ExtraFood.util.RenderIcon;
 
-
-public class StrawberryBush extends Block implements IGrowable {
-
+public class PeanutBush extends Block implements IGrowable {
 
 
-	public StrawberryBush(Material material){
+
+	public PeanutBush(Material material){
 		super(material);
 		float f = 0.5F;
 		this.setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, 0.25F, 0.5F + f);
@@ -51,15 +42,15 @@ public class StrawberryBush extends Block implements IGrowable {
 	            if (meta >= 4 && meta < 7)
 	            {
 	                meta = 5;
-	                return RenderIcon.getIcon("Strawberries", 1);
+	                return RenderIcon.getIcon("Peanut", 1);
 	            }
 
 
-	            return RenderIcon.getIcon("Strawberries");
+	            return RenderIcon.getIcon("Peanut");
 	        }
 	        else
 	        {
-	            return RenderIcon.getIcon("Strawberries", 2);
+	            return RenderIcon.getIcon("Peanut", 2);
 	        }
 	}
 
@@ -155,23 +146,23 @@ public class StrawberryBush extends Block implements IGrowable {
 
 	private void placeDuoInInv(EntityPlayer player) {
 		if (player.inventory.getFirstEmptyStack() == -1){
-			player.inventory.addItemStackToInventory(new ItemStack(ItemLoader.strawberry, 2));
+			player.inventory.addItemStackToInventory(new ItemStack(ItemLoader.peanut, 2));
 		} else {
-			player.inventory.setInventorySlotContents(player.inventory.getFirstEmptyStack(), new ItemStack(ItemLoader.strawberry, 2));
+			player.inventory.setInventorySlotContents(player.inventory.getFirstEmptyStack(), new ItemStack(ItemLoader.peanut, 2));
 		}	
 	}
 
 
 	private void placeInInv(EntityPlayer player) {
-		player.inventory.addItemStackToInventory(new ItemStack(ItemLoader.strawberry, 4));	
+		player.inventory.addItemStackToInventory(new ItemStack(ItemLoader.peanut, 4));	
 	}
 	 @SideOnly(Side.CLIENT)
 	    public void registerBlockIcons(IIconRegister iiconr)
 	    {
 
-	        	RenderIcon.addIcon("Strawberries", ModInfo.MId.toLowerCase() + ":Plants/berries_stage_0", iiconr);
-	        	RenderIcon.addIcon("Strawberries" + "1", ModInfo.MId.toLowerCase() + ":Plants/strawberry_stage_1", iiconr);
-	        	RenderIcon.addIcon("Strawberries" + "2", ModInfo.MId.toLowerCase() + ":Plants/strawberry_stage_2", iiconr);
+	        	RenderIcon.addIcon("Peanut", ModInfo.MId.toLowerCase() + ":Plants/peanut_stage_0", iiconr);
+	        	RenderIcon.addIcon("Peanut" + "1", ModInfo.MId.toLowerCase() + ":Plants/peanut_stage_1", iiconr);
+	        	RenderIcon.addIcon("Peanut" + "2", ModInfo.MId.toLowerCase() + ":Plants/peanut_stage_2", iiconr);
 
 	    }
 	    public int getRenderType()

@@ -13,12 +13,24 @@ item.bucketstrawberry.name=Strawberry Bucket
 item.bucketbanana.name=Banana Bucket
 item.Bacon.name=Bacon
 item.CookedBacon.name=Cooked Bacon
+item.FrenchFries.name=French Fries
+item.PotatoLava.name=Potato Lava
 
 #Block Names
 tile.Banana_Bunch.name=Banana Bunch
 tile.CheesePress.name=Cheese Press
 tile.Bannana_Sapling.name=Banana Sapling
-fluid.strawberryjuice.name=Strawberry Juice
+
+#Fluid Names ---This is for mod Compatibility
+fluid.strawberryjuice=Strawberry Juice
+fluid.carrotjuice=Carrot Juice
+fluid.bananajuice=Banana Juice
+
+#--GUI's
+gui.JB=Juice Blender
+gui.AC=Auto Cutter
+gui.CP=Cheese Press
+
 
 #--Cook Book Names
 cookbook.Title=Cookbook
@@ -31,7 +43,3 @@ cookbook.knife=The cutting knife, a staple of any good kitchen, is used for many
 cookbookL.SeaWater=Upon living in this world of Minecraftia, you discover that sometimes the foods you find or make just are not enough to satisfy your hunger. You've plotted different ways of solving this, but have ended up with only failiure. As you see an animal drinking at a river, an idea hits you. By combining the ability to pickup liquids through a bucket 
 cookbookR.SeaWater=with the lake water, you discover Sea Water, a salty, but drinkable fluid. In order to get rid of that horrible taste, you can place the sea water into a furnace, creating purified water. You note the fact that placing this water down will recreate "water" and cannot naturally be found.
 
-#--GUI's
-gui.JB=Juice Blender
-gui.AC=Auto Cutter
-gui.CP=Cheese Press
