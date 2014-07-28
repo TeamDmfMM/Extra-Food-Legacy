@@ -3,7 +3,7 @@
   "modid": "extrafood",
   "name": "Extra Food",
   "description": "Extra Food by mincrmatt12 and dmf444.",
-  "version": "${mod_version}",
+  "version": "1.7.10-0.5.9b"
   "mcversion": "${minecraft_version}",
   "url": "",
   "updateUrl": "",

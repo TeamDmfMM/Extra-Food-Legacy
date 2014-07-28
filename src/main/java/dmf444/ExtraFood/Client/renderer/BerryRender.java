@@ -33,10 +33,10 @@ public class BerryRender implements ISimpleBlockRenderingHandler {
 		    GL11.glTranslatef(-0.3F, -0.3F, -0.3F);
 		    GL11.glDisable(GL11.GL_CULL_FACE);
 
-
+		    tessellator.setColorOpaque_F(1.0F, 1.0F, 1.0F);
 		    // for "inventory" blocks (actually for items which are equipped, dropped, or in inventory), should render in [0,0,0] to [1,1,1]
 		    tessellator.startDrawingQuads();
-		    renderBlock(tessellator, 0.0, 0.0, 0.0, block);
+		    renderBlock(tessellator, 0.0, 0.0, 0.0, block, metadata);
 		    tessellator.draw();
 		    
 
@@ -73,7 +73,7 @@ public class BerryRender implements ISimpleBlockRenderingHandler {
 
 
 	    //     tessellator.draw() will be called by the caller after return
-		renderer.setRenderBoundsFromBlock(block);
+		renderer.setRenderBounds(0, 0, 0, 1, 0.25, 1);
 		renderer.renderStandardBlock(block, x, y,z );
 		renderer.setRenderBounds(0, 0, 0, 1,  1,  1);
 	    return true;
@@ -93,8 +93,8 @@ public class BerryRender implements ISimpleBlockRenderingHandler {
 	}
 
 
-	private void renderBlock(Tessellator tess, double x, double y, double z, Block block){
-		IIcon icon1 = block.getIcon(0, 0);
+	private void renderBlock(Tessellator tess, double x, double y, double z, Block block, int meta){
+		IIcon icon1 = block.getIcon(0, meta);
 		double minU1 = (double)icon1.getMinU();
 	    double minV1 = (double)icon1.getMinV();
 	    double maxU1 = (double)icon1.getMaxU();

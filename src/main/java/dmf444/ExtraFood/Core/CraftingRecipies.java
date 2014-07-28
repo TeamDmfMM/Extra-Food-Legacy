@@ -32,7 +32,7 @@ public class CraftingRecipies {
 	}
 	
 	/*
-	 *  Adds in recipies that can be cut by the knife and cutt by the Auto Cutter.
+	 *  Adds in recipies that can be cut by the knife and cut by the Auto Cutter.
 	 * 
 	 */
 	public static void Cutting(ItemStack input, ItemStack output){
