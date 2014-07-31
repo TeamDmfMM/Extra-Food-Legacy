@@ -32,9 +32,9 @@ public class JuiceRegistry {
 		juicenames = new Hashtable<Fluid, String>();
 		juicecolors = new Hashtable<Fluid, float[]>();
 		//System.out.println(FluidLoader.Fstrawberryjuice == null);
-		registerJuice(FluidLoader.Fstrawberryjuice, ItemLoader.strawberry, "extrafood:textures/blocks/StrawberryJuice_flow.png");
-		registerJuice(FluidLoader.Fbananajuice, ItemLoader.banana, "extrafood:textures/blocks/BananaJuice_flow.png");
-		registerJuice(FluidLoader.Fcarrotjuice, Items.carrot, "extrafood:textures/blocks/CarrotJuice_flow.png");
+		registerJuice(FluidLoader.Fstrawberryjuice, ItemLoader.strawberry, "extrafood:textures/blocks/fluid/Fluid_StrawberryJuice_flow.png");
+		registerJuice(FluidLoader.Fbananajuice, ItemLoader.banana, "extrafood:textures/blocks/fluid/Fluid_BananaJuice_flow.png");
+		registerJuice(FluidLoader.Fcarrotjuice, Items.carrot, "extrafood:textures/blocks/fluid/Fluid_CarrotJuice_flow.png");
 
 		registerColor(FluidLoader.Fbananajuice, 211, 230, 78);
 		registerColor(FluidLoader.Fstrawberryjuice, 199, 0, 4);

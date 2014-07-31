@@ -34,12 +34,29 @@ public class ItemLib {
 	public static String iP = "Peanut";
 	public static String iTom = "Tomato";
 	public static String iTS = "TomatoSeeds";
+	public static String iLet = "Lettuce";
+	public static String iULS = "RawLettuceSeeds";
+	public static String iCLS = "CoatedLettuceSeeds";
+	public static String iCP = "PastaWithSauce";
+	public static String iMB = "meatballs";
+	public static String iMBP = "pastaMeatballs";
+	public static String iSushi = "Sushi";
+	public static String iFP = "FishPieces";
+	public static String iPKeb = "porkKebab";
+	public static String iSKeb = "steakKebab";
+	public static String iVKeb = "vealKebab";
 	
 	//Sandwhiches
 	public static String iSandCB = "BaconCheeseSandwhich";
 	public static String iSandGC = "GrilledCheeseSandwhich";
 	public static String iSandS = "SausageSandwhich";
 	public static String iSandH = "HamburgerSandwhich";
+	
+	
+	
+	
+	
+
 	
 	
 	

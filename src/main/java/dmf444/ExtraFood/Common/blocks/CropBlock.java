@@ -11,10 +11,21 @@ import net.minecraft.item.Item;
 import net.minecraft.util.IIcon;
 
 /*--Future Reference. Copied of the BlockCarrot DIRECTLY w/ minimal change--*/
-public class CropTomato extends BlockCrops{
+public class CropBlock extends BlockCrops{
 	
 	    @SideOnly(Side.CLIENT)
 	    private IIcon[] PlantIcons;
+	    private String Crop;
+	    
+	    /*
+	     * This is modified from original to allow multiple types of plants
+	     */
+	    public CropBlock(String cropName){
+	    	super();
+	    	this.Crop = cropName;
+
+	    }
+
 
 	    /**
 	     * Gets the block's texture. Args: side, meta
@@ -36,15 +47,25 @@ public class CropTomato extends BlockCrops{
 	            return this.PlantIcons[3];
 	        }
 	    }
-
+	    	//Seeds
 	    protected Item func_149866_i()
-	    {
-	        return ItemLoader.tomato;
+	    {	
+	        if(Crop == "tomato"){
+	        	return ItemLoader.tomato;
+	        }else if (Crop == "lettuce"){
+	        	return ItemLoader.rawlettuceSeeds;
+	        }
+	        return null;
 	    }
-
+	    	//Fruit
 	    protected Item func_149865_P()
 	    {
-	        return ItemLoader.tomato;
+	        if(Crop == "tomato"){
+	        	return ItemLoader.tomato;
+	        }else if (Crop == "lettuce"){
+	        	return ItemLoader.lettuce;
+	        }
+	        return null;
 	    }
 
 	    @SideOnly(Side.CLIENT)
@@ -54,7 +75,7 @@ public class CropTomato extends BlockCrops{
 
 	        for (int i = 0; i < this.PlantIcons.length; ++i)
 	        {
-	            this.PlantIcons[i] = icon.registerIcon( ModInfo.MId.toLowerCase() + ":Plants/tomato" + "_stage_" + i);
+	            this.PlantIcons[i] = icon.registerIcon( ModInfo.MId.toLowerCase() + ":Plants/" + Crop + "_stage_" + i);
 	        }
 	    }
 	}

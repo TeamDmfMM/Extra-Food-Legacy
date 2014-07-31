@@ -23,6 +23,7 @@ import dmf444.ExtraFood.Common.EventHandler.ExtraFood_eventTextureHook;
 import dmf444.ExtraFood.Common.RecipeHandler.CRPageCraftGet;
 import dmf444.ExtraFood.Common.RecipeHandler.JuiceRegistry;
 import dmf444.ExtraFood.Common.RecipeHandler.RegistryAutoCutter;
+import dmf444.ExtraFood.Common.WorldGen.PeanutWorldGen;
 import dmf444.ExtraFood.Common.WorldGen.StrawberryWorldGen;
 import dmf444.ExtraFood.Common.WorldGen.TreeManager;
 import dmf444.ExtraFood.Common.blocks.BlockLoader;
@@ -71,14 +72,21 @@ public class ExtraFood {
 		GameRegistry.registerWorldGenerator(treeManager, 0);
 		MinecraftForge.EVENT_BUS.register(new ExtraFood_EventBonemeal());
 		}
+		//Generate Bushes
 		GameRegistry.registerWorldGenerator(new StrawberryWorldGen(), 0);
-		
-		MinecraftForge.EVENT_BUS.register(BucketHandler.INSTANCE);	
+		GameRegistry.registerWorldGenerator(PeanutWorldGen.peanutGen, 0);
+		//Bucket Pickup Handler
+		MinecraftForge.EVENT_BUS.register(BucketHandler.INSTANCE);
+		//Add Seeds to the grass list
 		MinecraftForge.addGrassSeed(new ItemStack(ItemLoader.tomatoSeeds), 20);
+		MinecraftForge.addGrassSeed(new ItemStack(ItemLoader.rawlettuceSeeds), 25);
+		//Hook allows other mods to use liquid Textures
 		MinecraftForge.EVENT_BUS.register(new ExtraFood_eventTextureHook());
+		//Gui Handler Registration
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
+		//Load the Achivements
 		AchieveLoad.loadAc();
-		
+		//Init the packet Handler
 		JBTanknet = NetworkRegistry.INSTANCE.newSimpleChannel(ModInfo.MId);
 		JBTanknet.registerMessage(PacketJBTank.Handler.class, PacketJBTank.class, 1,Side.CLIENT);
 
