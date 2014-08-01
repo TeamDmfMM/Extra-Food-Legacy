@@ -178,7 +178,7 @@ public class TileEntityJuiceBlender extends TileEntity implements IInventory, IF
 	    }
 	  public boolean ok(){
 		  if (JuiceRegistry.instance.getJuiceFromItemStack(this.items[0]) != null){
-			  if (this.juice != null){
+			  if (this.tank.getFluid() != null){
 				  if (this.tank.getFluid().getFluid() == JuiceRegistry.instance.getJuiceFromItemStack(this.items[0])){
 					  return true;
 				  }

@@ -188,7 +188,7 @@ public class StrawberryBush extends Block implements IGrowable {
 	    {
 	        int meta = world.getBlockMetadata(x, y, z) + 1;
 	        
-	        boolean randfact = world.rand.nextInt(3) <= 1;
+	        boolean randfact = world.rand.nextInt(5) <= 1;
 	        if (meta < 7){
 		        if ( randfact && meta == 6){
 		        	meta += 1;
