@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 [
 {
   "modid": "extrafood",
@@ -13,3 +14,20 @@
   "dependencies": []
 }
 ]
+=======
+[
+{
+  "modid": "extrafood",
+  "name": "Extra Food",
+  "description": "Extra Food by mincrmatt12 and dmf444.",
+  "version": "1.7.10-0.5.9b"
+  "mcversion": "${minecraft_version}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["mincrmatt12","dmf444"],
+  "credits": "Dmf444, Mincrmatt12 and thanks to all those who helped on IRC and MCForge Forums"
+  "screenshots": [],
+  "dependencies": []
+}
+]
+>>>>>>> origin/master
