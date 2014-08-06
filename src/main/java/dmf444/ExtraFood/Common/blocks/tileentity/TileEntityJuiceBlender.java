@@ -238,6 +238,9 @@ public class TileEntityJuiceBlender extends TileEntity implements ISidedInventor
 						  this.items[2] = new ItemStack(ItemLoader.bucketcarrot, 1);
 						  this.tank.drain(1000, true);
 					  }
+					  if (items[1].stackSize == 0){
+					        this.items[1] = null;
+					  }
 				  }
 			  }
 		  }

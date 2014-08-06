@@ -165,6 +165,7 @@ public class PeanutBush extends Block implements IGrowable {
 	        	RenderIcon.addIcon("Peanut" + "2", ModInfo.MId.toLowerCase() + ":Plants/peanut_stage_2", iiconr);
 
 	    }
+	 @SideOnly(Side.CLIENT)
 	    public int getRenderType()
 	    {
 	        return  ClientProxy.bushrender.getRenderId();

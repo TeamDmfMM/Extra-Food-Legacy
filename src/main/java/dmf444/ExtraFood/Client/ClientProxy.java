@@ -11,6 +11,7 @@ import dmf444.ExtraFood.Client.renderer.CheesePressRenderer;
 import dmf444.ExtraFood.Client.renderer.RenderOven;
 import dmf444.ExtraFood.Client.renderer.RendererJuiceBlender;
 import dmf444.ExtraFood.Common.CommonProxy;
+import dmf444.ExtraFood.Common.RecipeHandler.JuiceRegistry;
 import dmf444.ExtraFood.Common.blocks.BlockLoader;
 import dmf444.ExtraFood.Common.blocks.tileentity.AutoCutterTileEntity;
 import dmf444.ExtraFood.Common.blocks.tileentity.CheesePressTileEntity;
@@ -26,7 +27,7 @@ public class ClientProxy extends CommonProxy{
 		ClientRegistry.bindTileEntitySpecialRenderer(AutoCutterTileEntity.class, new AutoCutterRenderer());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityJuiceBlender.class, new RendererJuiceBlender());
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityOven.class, new RenderOven());
-		
+		//JuiceRegistry.instance = new JuiceRegistry();
 		bushrender = new BerryRender();
 		RenderingRegistry.registerBlockHandler(bushrender);
 		

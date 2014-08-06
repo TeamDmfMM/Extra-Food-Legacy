@@ -46,13 +46,14 @@ public class ItemLoader {
 	public static Item rawlettuceSeeds;
 	public static ItemSeeds tomatoSeeds, uselettuceSeeds;
 	public static Item meatballs;
+	public static Item chocolate;
 	public static Item sushi, fishpieces;
 	
 	private static boolean IRegister=false;
 	private static boolean FRegister=false;
 	
 	
-
+		
 
 	
 	public static void initiateItems() {
@@ -84,7 +85,7 @@ public class ItemLoader {
 		cookedBacon = new StanFood(2, 5.2F).setUnlocalizedName(ItemLib.iCBac);
 		toast = new StanFood(1, 0.8F).setUnlocalizedName(ItemLib.iToastS);
 		slicedBread = new StanFood(1, 0.2F).setUnlocalizedName(ItemLib.iBRS);
-		frenchFries = new StanFood(2, 0.7F).setUnlocalizedName(ItemLib.iFF());
+		frenchFries = new ItemFood(2, 0.7F, false).setUnlocalizedName("FrenchFries").setCreativeTab(EFTabs.INSTANCE).setTextureName("extrafood:" + ItemLib.iFF());//" + ItemLib.iFF()
 		tomato = new StanFood(4, 2.5F).setUnlocalizedName(ItemLib.iTom);
 		lettuce = new StanFood(4, 1.6F).setUnlocalizedName(ItemLib.iLet);	
 		egg = new StanFood(3, 0.8F).setUnlocalizedName(ItemLib.iEgg);
@@ -106,7 +107,7 @@ public class ItemLoader {
 		meatballs = new StanFood(3, 0.4F).setUnlocalizedName(ItemLib.iMB);
 		meatballpasta = new StanFood(9, 1.4F).setUnlocalizedName(ItemLib.iMBP);
 		fishpieces = new StanFood(2, 0.5F).setUnlocalizedName(ItemLib.iFP);
-
+		chocolate = new StanFood(2, 0.8F).setUnlocalizedName(ItemLib.iCho);
 		
 		registerFood();
 	}
@@ -166,6 +167,7 @@ public class ItemLoader {
 			GameRegistry.registerItem(pork_kebab, ItemLib.iPKeb);
 			GameRegistry.registerItem(veal_kebab, ItemLib.iVKeb);
 			GameRegistry.registerItem(steak_kebab, ItemLib.iSKeb);
+			GameRegistry.registerItem(chocolate, ItemLib.iCho);
 			
 			//Register into Ore Dictionary
 			OreDictionary.registerOre("foodHamburger", ItemLoader.cookedHamburger);
@@ -182,6 +184,7 @@ public class ItemLoader {
 			OreDictionary.registerOre("foodMeatballPasta", ItemLoader.meatballpasta);
 			OreDictionary.registerOre("foodSushi", ItemLoader.sushi);
 			OreDictionary.registerOre("fishpieces", ItemLoader.fishpieces);
+			OreDictionary.registerOre("foodChocolate", ItemLoader.chocolate);
 			OreDictionary.registerOre("itemKnife", ItemLoader.knife);
 			
 		}

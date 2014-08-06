@@ -1,13 +1,17 @@
 package dmf444.ExtraFood.Core.lib;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import dmf444.ExtraFood.util.ConfigHandler;
 import dmf444.ExtraFood.util.EFLog;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.world.World;
 
 public class ItemLib {
 	static EntityPlayer entityplayer;
-	private static Object getName = Minecraft.getMinecraft().getSession().getUsername();
+
 
 
 	public static String iCW = "Cheese_Wheel";
@@ -45,6 +49,7 @@ public class ItemLib {
 	public static String iPKeb = "porkKebab";
 	public static String iSKeb = "steakKebab";
 	public static String iVKeb = "vealKebab";
+	public static String iCho = "chocolate";
 	
 	//Sandwhiches
 	public static String iSandCB = "BaconCheeseSandwhich";
@@ -53,19 +58,14 @@ public class ItemLib {
 	public static String iSandH = "HamburgerSandwhich";
 	
 	
-	
-	
-	
 
-	
-	
-	
 	
 	//Special ones
 	public static String iFF(){
-		if(getName.equals("dmf444") || getName.equals("matto9193") || getName.equals("Aureylian") || ConfigHandler.FeelLikeAure){
-			return "PotatoLava";
-		}
-		return "FrenchFries";
+			if(ConfigHandler.FeelLikeAure){
+				return "PotatoLava";
+			}
+			return "FrenchFries";
 	}
+
 }

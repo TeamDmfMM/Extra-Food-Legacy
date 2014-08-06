@@ -31,6 +31,7 @@ public class CraftingRecipies {
 	GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ItemLoader.sandwhichGC), new Object[] { " i ", " c ", " i ", 'i', "foodToast", 'h', "foodCheeseSlice"}));
 	GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ItemLoader.sandwhichS), new Object[] { " i ", " s ", " i ", 'i', "foodBread", 'h', "foodSausage"}));
 	GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ItemLoader.sushi), new ItemStack(Blocks.tallgrass, 1, 1), "fishpieces"));
+	GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ItemLoader.chocolate), new Object[] { " s ", " m ", " c ", 's', new ItemStack(Items.sugar), 'm', new ItemStack(Items.milk_bucket), 'c', new ItemStack(Items.dye, 1, 3)}));
 	GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ItemLoader.pork_kebab, 2), new ItemStack(Items.cooked_porkchop), "itemKnife", "cropLettuce"));
 	GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ItemLoader.steak_kebab, 2), new ItemStack(Items.cooked_beef), "itemKnife", "cropLettuce"));
 	GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ItemLoader.veal_kebab, 2), new ItemStack(ItemLoader.veal), "itemKnife", "cropLettuce"));	

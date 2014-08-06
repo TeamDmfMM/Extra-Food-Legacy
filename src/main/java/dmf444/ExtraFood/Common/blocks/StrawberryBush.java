@@ -174,6 +174,7 @@ public class StrawberryBush extends Block implements IGrowable {
 	        	RenderIcon.addIcon("Strawberries" + "2", ModInfo.MId.toLowerCase() + ":Plants/strawberry_stage_2", iiconr);
 
 	    }
+	 @SideOnly(Side.CLIENT)
 	    public int getRenderType()
 	    {
 	        return  ClientProxy.bushrender.getRenderId();
