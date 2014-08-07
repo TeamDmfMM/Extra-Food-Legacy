@@ -30,8 +30,8 @@ public class CookbookButtonLoader {
 		// TODO Add buttons here
 		t.buttons.add(new ClickTab(0, 0, 0, 22, 22, "", 12, 1, new ItemStack(BlockLoader.cheesePress), "cheesepress"));
 		t.buttons.add(new ClickTab(0, 0, 0, 22, 22, "", 9, 3, new ItemStack(ItemLoader.cheeseWheel), "cheesewheel", "cheesepress"));
-		t.buttons.add(new ClickTab(0, 0, 0, 22, 22, "", 6, 5, new ItemStack(ItemLoader.cheeseSlice), "cheeseslice", "cheesewheel", "knife" ));
-		t.buttons.add(new ClickTab(0, 0, 0, 22, 22, "", 3, 4, new ItemStack(ItemLoader.knife), "knife"));
+		t.buttons.add(new ClickTab(0, 0, 0, 22, 22, "", 6, 5, new ItemStack(ItemLoader.cheeseSlice), "cheeseslice", 1, "cheesewheel", "knife" ));
+		t.buttons.add(new ClickTab(0, 0, 0, 22, 22, "", 3, 4, new ItemStack(ItemLoader.knife), "knife", 1));
 		
 		t.buttons.add(new ClickTab(0, 0, 0, 22, 22, "", 1, 10, new ItemStack(ItemLoader.bacon), "bacon", 1, "knife"));
 		this.buttons.add(t);
@@ -54,6 +54,10 @@ public class CookbookButtonLoader {
 
 		//TODO on add book page, add multi buttons
 		  //this.truth.put("knife", true);
+		this.truth.put("SeaWater", true);
+		this.multiNum.put("SeaWater", 1);
+		this.truth.put("cheeseslice", true);
+		this.multiNum.put("cheeseslice", 1);
 
 
 	}
@@ -65,7 +69,7 @@ public class CookbookButtonLoader {
 		if (this.multiNum.get(page) != null){
 			return this.multiNum.get(page);
 		} else {
-			return 1;
+			return 0;
 		}
 	}
 	

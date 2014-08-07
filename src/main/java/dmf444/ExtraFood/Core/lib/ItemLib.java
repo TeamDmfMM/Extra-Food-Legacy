@@ -50,12 +50,43 @@ public class ItemLib {
 	public static String iSKeb = "steakKebab";
 	public static String iVKeb = "vealKebab";
 	public static String iCho = "chocolate";
+	public static String iPC = "pancake";	
+	
+	
 	
 	//Sandwhiches
 	public static String iSandCB = "BaconCheeseSandwhich";
 	public static String iSandGC = "GrilledCheeseSandwhich";
 	public static String iSandS = "SausageSandwhich";
 	public static String iSandH = "HamburgerSandwhich";
+	public static String iSandPBN = "PB&NSandwich";
+	public static String iSandPBJ = "PB&JSandwich";
+	public static String iSandBLT = "BLTSandwich";
+	public static String iSandPeanutB = "PeanutButterSandwich";
+	public static String iChoSandwich = "ChocolateSandwich";
+
+	public static String iPB = "peanutButter";
+	public static String iGrater = "Grater";
+	public static String iButter = "butter";
+	public static String iVanIceCream = "vanillaIceCream";
+	public static String iChoIceCream = "chocolateIceCream";
+	public static String iStrawIceCream = "strawberryIceCream";
+	public static String iCNF = "chineseFood";
+	public static String iChoSpread = "chocolateSpread";
+	/* 
+	 * Jelly 
+	 */
+	public static String iJ = "Jelly";
+	public static String iPopcicle = "icePopcicle";
+	public static String iNeoIceCream = "neopolitanIceCream"; 
+	public static String iYogurt = "yogurt";
+	public static String iStrawYogurt = "strawberryYogurt";
+	public static String iButterMilk = "ButterMilk";
+	public static String iFrenchToast = "FrenchToast";
+	
+
+
+
 	
 	
 

@@ -26,6 +26,9 @@ public class CraftingRecipies {
 	GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(BlockLoader.autoCutter, 1), new Object[] {"pki", "psp", "p p", 'p', "plankWood", 'k', ItemLoader.knife, 'i', "ingotIron", 's', "slabWood"}));
 	GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(BlockLoader.juiceBlender, 1), new Object[] {"sss", " ws", "sss", 's', new ItemStack(Blocks.stone_slab, 1, 0), 'w', "plankWood"}));
 	//Items and Food
+	GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ItemLoader.pancakes, 2), new Object[] {"ws ", "bm ", 'w', Items.wheat, 's', Items.sugar, 'b', "foodButter", 'm', Items.milk_bucket}));
+	GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ItemLoader.peanutButter, 1), "itemGrater", "foodPeanuts", new ItemStack (Items.bowl, 1), "foodButter"));
+	GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ItemLoader.grater, 1), new Object[] {"ss ", "ii ", "ii ", 's', "stickWood", 'i', "ingotIron"}));
 	GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ItemLoader.knife, 1), new Object[] {"ii ", "ii ", " j ", 'i', "ingotIron", 'j', "stickWood"}));
 	GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ItemLoader.sandwhichHamburger), new Object[] { " i ", " h ", " i ", 'i', "foodBread", 'h', "foodHamburger"}));
 	GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ItemLoader.sandwhichGC), new Object[] { " i ", " c ", " i ", 'i', "foodToast", 'h', "foodCheeseSlice"}));

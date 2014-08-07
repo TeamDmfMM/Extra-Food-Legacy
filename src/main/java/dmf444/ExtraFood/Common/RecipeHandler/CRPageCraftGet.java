@@ -41,6 +41,7 @@ public class CRPageCraftGet {
 		// TODO Auto-generated constructor stub
 	}
 	public ItemStack[] getArray(String itemname){
+		itemname = itemname.trim();
 		if (recipesShaped.get(itemname) != null){
 			ItemStack[] items = new ItemStack[10];
 			int co = 0;
