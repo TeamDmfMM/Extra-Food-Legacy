@@ -38,11 +38,11 @@ public class BlockLoader {
 	public static void initiateBlocks() {
 		bananaBunch = new BananaBlock(Material.cactus).setBlockName(BlockLib.bBB).setBlockTextureName("extrafood:BananaBunch");
 		saplingBanana = new BananaTreeSapling().setBlockName(BlockLib.bBS);
-		cheesePress = new CheesePress().setBlockName(BlockLib.bCP);
-		autoCutter = new AutoCutter().setBlockName(BlockLib.bAC);
-		juiceBlender = new BlockJuiceBlender(Material.anvil).setBlockName(BlockLib.bJB);
+		cheesePress = new CheesePress().setBlockName(BlockLib.bCP).setHardness(1.5F);
+		autoCutter = new AutoCutter().setBlockName(BlockLib.bAC).setHardness(2.0F);
+		juiceBlender = new BlockJuiceBlender().setBlockName(BlockLib.bJB).setHardness(1.5F);
 		oven = new Oven().setBlockName(BlockLib.bO);
-		whiteout = new Whiteout().setBlockName("TheWhiteBlock").setBlockTextureName("extrafood:The whiteout");
+		whiteout = new Whiteout().setBlockName("TheWhiteBlock").setBlockTextureName("extrafood:The whiteout").setHardness(1.5F);
 		Bbananajuice = new BananaJuice(FluidLoader.Fbananajuice, Material.water).setBlockName("Fbananajuice");
 		Bstrawberryjuice = new StrawberryJuice(FluidLoader.Fstrawberryjuice, Material.water).setBlockName("StrawberryJuice");
 		strawberryBush = new StrawberryBush(Material.plants).setBlockName(BlockLib.bSB);

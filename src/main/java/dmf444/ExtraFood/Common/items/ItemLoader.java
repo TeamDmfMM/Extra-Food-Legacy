@@ -100,31 +100,31 @@ public class ItemLoader {
 		rawHamburger = ((ItemFood) new StanFood(4, 0.6F).setUnlocalizedName(ItemLib.iRH)).setPotionEffect(Potion.hunger.id, 30, 0, 0.4F);
 		
 		//Non-balanced foods
-		rawpasta = new StanFood(3, 0.3F).setUnlocalizedName(ItemLib.iPasta);
+		rawpasta = new ReturnFood(3, 0.3F, Items.bowl).setUnlocalizedName(ItemLib.iPasta);
 		sandwhichS = new StanFood(7, 1.0F).setUnlocalizedName(ItemLib.iSandS);
 		sandwhichCB = new StanFood(6, 1.4F).setUnlocalizedName(ItemLib.iSandCB);
 		sandwhichGC = new StanFood(3, 0.9F).setUnlocalizedName(ItemLib.iSandGC);
 		cookedHamburger = new StanFood(7, 1.6F).setUnlocalizedName(ItemLib.iCH);
 		sandwhichHamburger = new StanFood(9, 1.0F).setUnlocalizedName(ItemLib.iSandH);
 		peanut = ((ItemFood) new StanFood(1, 0.2F).setUnlocalizedName(ItemLib.iP)).setAlwaysEdible();
-		cookedpasta = new StanFood(6, 1.3F).setUnlocalizedName(ItemLib.iCP);
+		cookedpasta = new ReturnFood(6, 1.3F, Items.bowl).setUnlocalizedName(ItemLib.iCP);
 		meatballs = new StanFood(3, 0.4F).setUnlocalizedName(ItemLib.iMB);
-		meatballpasta = new StanFood(9, 1.4F).setUnlocalizedName(ItemLib.iMBP);
+		meatballpasta = new ReturnFood(9, 1.4F, Items.bowl).setUnlocalizedName(ItemLib.iMBP);
 		fishpieces = new StanFood(2, 0.5F).setUnlocalizedName(ItemLib.iFP);
 		chocolate = new StanFood(2, 0.8F).setUnlocalizedName(ItemLib.iCho);
 		pancakes = new StanFood(6, 1.2F).setUnlocalizedName(ItemLib.iPC);
 		peanutButter = ((ItemFood) new StanFood(3, 4.5F).setUnlocalizedName(ItemLib.iPB)).setPotionEffect(Potion.confusion.id, 10, 0, 0.8F);
 		butter = new StanFood(1, 1.0F).setUnlocalizedName(ItemLib.iButter);
-		vanillaIceCream = new StanFood(2, 0.8F).setUnlocalizedName(ItemLib.iVanIceCream);
-		chocolateIceCream = new StanFood(3, 0.8F).setUnlocalizedName(ItemLib.iChoIceCream);
-		strawberryIceCream = new StanFood(3, 2.5F).setUnlocalizedName(ItemLib.iStrawIceCream);
+		vanillaIceCream = new DrinkActionFood(2, 0.8F).setUnlocalizedName(ItemLib.iVanIceCream);
+		chocolateIceCream = new DrinkActionFood(3, 0.8F).setUnlocalizedName(ItemLib.iChoIceCream);
+		strawberryIceCream = new DrinkActionFood(3, 2.5F).setUnlocalizedName(ItemLib.iStrawIceCream);
 		chineseFood = new StanFood(7, 5.0F).setUnlocalizedName(ItemLib.iCNF);
 		chocolateSpread = ((ItemFood) new StanFood(4, 4.5F).setUnlocalizedName(ItemLib.iChoSpread)).setPotionEffect(Potion.confusion.id, 10, 0, 0.8F);
 		jelly = ((ItemFood) new StanFood(5, 2.0F).setUnlocalizedName(ItemLib.iJ)).setPotionEffect(Potion.heal.id, 5, 0, 0.1F);
 		sandwichBLT = new StanFood(8, 10.0F).setUnlocalizedName(ItemLib.iSandBLT);
 		sandwichPBJ = new StanFood(8, 9.5F).setUnlocalizedName(ItemLib.iSandPBJ);
 		sandwichPBN = new StanFood(8, 9.0F).setUnlocalizedName(ItemLib.iSandPBN);
-		icePop = new StanFood(2, 0.9F).setUnlocalizedName(ItemLib.iPopcicle);
+		icePop = new DrinkActionFood(2, 0.9F).setUnlocalizedName(ItemLib.iPopcicle);
 		neoIceCream = new ReturnFood(8, 4.5F, Items.bowl).setUnlocalizedName(ItemLib.iNeoIceCream);
 		sandwichPB = new StanFood(2, 3.5F).setUnlocalizedName(ItemLib.iSandPeanutB);
 		butterMilk = new ButterMilk(4, 3.6F).setUnlocalizedName(ItemLib.iButterMilk);
@@ -223,8 +223,10 @@ public class ItemLoader {
 			OreDictionary.registerOre("foodSausage", ItemLoader.sausage);
 			OreDictionary.registerOre("foodRawPasta", ItemLoader.rawpasta);
 			OreDictionary.registerOre("foodPeanuts", ItemLoader.peanut);
+			OreDictionary.registerOre("foodStrawberry", ItemLoader.strawberry);
 			OreDictionary.registerOre("cropTomato", ItemLoader.tomato);
 			OreDictionary.registerOre("cropLettuce", ItemLoader.lettuce);
+			OreDictionary.registerOre("foodCookedBacon", ItemLoader.cookedBacon);
 			OreDictionary.registerOre("foodCookedPasta", ItemLoader.cookedpasta);
 			OreDictionary.registerOre("foodMeatballs", ItemLoader.meatballs);
 			OreDictionary.registerOre("foodMeatballPasta", ItemLoader.meatballpasta);
@@ -241,6 +243,7 @@ public class ItemLoader {
 			OreDictionary.registerOre("itemGrater", ItemLoader.grater);
 			OreDictionary.registerOre("foodButter", ItemLoader.butter);
 			OreDictionary.registerOre("foodChocolateSpread", ItemLoader.chocolateSpread);
+			OreDictionary.registerOre("foodEgg", ItemLoader.egg);
 			OreDictionary.registerOre("foodJelly", ItemLoader.jelly);
 			OreDictionary.registerOre("foodBLT", ItemLoader.sandwichBLT);
 			OreDictionary.registerOre("foodPBJ", ItemLoader.sandwichPBJ);

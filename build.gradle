@@ -17,6 +17,11 @@ buildscript {
 
 apply plugin: 'forge'
 
+
+sourceCompatibility = 1.7 
+targetCompatibility = 1.7 
+
+
 ext.configFile = file "build.properties"
 
 configFile.withReader {
@@ -40,7 +45,19 @@ minecraft {
 
 version = "${config.minecraft_version}-${config.mod_version}.${config.build_number}"
 
+repositories { 
+  mavenCentral() 
+    maven { 
+        name = "chickenbones" 
+        url = "http://chickenbones.net/maven/" 
+  }
+} 
+
+
 dependencies {
+    compile "codechicken:CodeChickenCore:1.7.10-1.0.2.9:dev" 
+    compile "codechicken:NotEnoughItems:1.7.10-1.0.2.15:dev" 
+
     // you may put jars on which you depend on in ./libs
     // or you may define them like so..
     //compile "some.group:artifact:version:classifier"

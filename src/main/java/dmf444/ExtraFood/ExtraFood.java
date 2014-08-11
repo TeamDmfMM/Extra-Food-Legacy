@@ -2,6 +2,7 @@ package dmf444.ExtraFood;
 
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.event.TextureStitchEvent;
+import net.minecraftforge.common.ChestGenHooks;
 import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler; // used in 1.6.2
@@ -33,6 +34,7 @@ import dmf444.ExtraFood.Core.AchieveLoad;
 import dmf444.ExtraFood.Core.CraftingRecipies;
 import dmf444.ExtraFood.Core.GuiHandler;
 import dmf444.ExtraFood.Core.PacketJBTank;
+import dmf444.ExtraFood.Core.Crossmod.NEIAutoCutterHandler.AutoCutterRecipe;
 import dmf444.ExtraFood.Core.lib.ModInfo;
 import dmf444.ExtraFood.util.ConfigHandler;
 import dmf444.ExtraFood.util.EFLog;
@@ -72,6 +74,7 @@ public class ExtraFood {
 		GameRegistry.registerWorldGenerator(treeManager, 0);
 		MinecraftForge.EVENT_BUS.register(new ExtraFood_EventBonemeal());
 		}
+		
 		//Generate Bushes
 		GameRegistry.registerWorldGenerator(new StrawberryWorldGen(), 0);
 		GameRegistry.registerWorldGenerator(PeanutWorldGen.peanutGen, 0);
@@ -82,10 +85,12 @@ public class ExtraFood {
 		MinecraftForge.addGrassSeed(new ItemStack(ItemLoader.rawlettuceSeeds), 25);
 		//Hook allows other mods to use liquid Textures
 		MinecraftForge.EVENT_BUS.register(new ExtraFood_eventTextureHook());
-		//Gui Handler Registration
-		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
+		//ChestGenHooks.addDungeonLoot(new ItemStack(ItemLoader.cookBook), 100, 1, 1);
 		//Load the Achivements
 		AchieveLoad.loadAc();
+		
+		//Gui Handler Registration
+		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
 		//Init the packet Handler
 		JBTanknet = NetworkRegistry.INSTANCE.newSimpleChannel(ModInfo.MId);
 		JBTanknet.registerMessage(PacketJBTank.Handler.class, PacketJBTank.class, 1,Side.CLIENT);
@@ -118,6 +123,7 @@ public class ExtraFood {
 		
 		crafterPage = new CRPageCraftGet();
 		JuiceRegistry.instance = new JuiceRegistry();
+
 	}
 
 }

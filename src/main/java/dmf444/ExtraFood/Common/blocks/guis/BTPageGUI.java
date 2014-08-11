@@ -329,13 +329,15 @@ public int drawElementHungerStats(ArrayList<Object> args, int x, int y, int flag
 		GL11.glEnable(GL11.GL_LIGHTING);
 		GL11.glDisable(GL11.GL_BLEND);
 		//FontRenderer fontr = this.fontRendererObj;
-		//fontRendererObj.setUnicodeFlag(true);
-		fontRendererObj.drawStringWithShadow("Hunger Stats:", x, y, 0x3333FF);
-
-
+		fontRendererObj.setUnicodeFlag(true);
+		fontRendererObj.drawStringWithShadow("Hunger Stats:", x + 19, y, 0x3333FF);
+		fontRendererObj.setUnicodeFlag(false);
+		if (args.size() > 2){
+			fontRendererObj.drawString((String) args.get(2), x + (fontRendererObj.getStringWidth((String) args.get(2)) / 2), y + 15, 0x0000000);
+		}
 		fontRendererObj.drawString(String.valueOf(args.get(0)), x + 16 + 50, y + 32, 0x0000000);
 		fontRendererObj.drawString(String.valueOf(args.get(1)), x + 16 + 50, y + 52, 0x0000000);
-		//fontRendererObj.setUnicodeFlag(false);
+		
 		return -150;
 	}
 }
@@ -451,7 +453,11 @@ public int drawElementHungerStats(ArrayList<Object> args, int x, int y, int flag
 
 
 			 case 5:
-				 typeargs.add(Integer.parseInt(currword));
+				 if (type.equals("Image")){
+					 typeargs.add(Integer.parseInt(currword));
+				 } else if (type.equals("HungerStats")){
+					 typeargs.add(currword);
+				 }
 				 break;
 			 case 6:
 				 typeargs.add(Integer.parseInt(currword));
@@ -507,7 +513,11 @@ public int drawElementHungerStats(ArrayList<Object> args, int x, int y, int flag
 
 
 			 case 5:
-				 typeargs.add(Integer.parseInt(currword));
+				 if (type.equals("Image")){
+					 typeargs.add(Integer.parseInt(currword));
+				 } else if (type.equals("HungerStats")){
+					 typeargs.add(currword);
+				 }
 				 break;
 			 case 6:
 				 typeargs.add(Integer.parseInt(currword));
@@ -553,7 +563,7 @@ public int drawElementHungerStats(ArrayList<Object> args, int x, int y, int flag
 	 types.put("TextBlock", 4);
 	 types.put("Image", 8);
 	 types.put("Crafting", 4);
-	 types.put("HungerStats", 6);
+	 types.put("HungerStats", 7);
 	 return types;
  }
  
@@ -564,7 +574,6 @@ public int drawElementHungerStats(ArrayList<Object> args, int x, int y, int flag
 			 return this.getClass().getMethod(mname, ArrayList.class, int.class, int.class, int.class);
 		 }
 	} catch (NoSuchMethodException | SecurityException e) {
-		// TODO Auto-generated catch block
 		//e.printStackTrace();
 	}
 	return null;
@@ -616,6 +625,16 @@ public int drawElementHungerStats(ArrayList<Object> args, int x, int y, int flag
     	 args.addAll(((ArrayList<Object>) pair1.get(1)));
     	 drawFunc = this.getFunctionForType(typename);
     	 // Process the xpos and ypos, we might need to calculate them!
+    	 if (!(((int)args.get(2) < ((this.page + 1) * 2)))){
+    		 //System.out.println("breakin free!");
+    		 continue;
+    	 }
+    	 int pppg = (int) args.get(2);
+    	 if (this.page != 0){
+    		 if (!(pppg >= this.page * 2)){
+    			 continue;
+    		 }
+    	 }
     	 int x = (int) args.get(0);
     	 
     	 
@@ -638,8 +657,20 @@ public int drawElementHungerStats(ArrayList<Object> args, int x, int y, int flag
     	 // Remove the from the list of arguents (so I can pass them directly to the function)
     	 args.remove(0);
     	 args.remove(0);
-    	//EFLog.error("Here: xpos = " + x + "ypos = " + y);
+    	 //EFLog.error("Here: xpos = " + x + "ypos = " + y);
     	 // Process pages
+    	 if (((int)args.get(0) < renderpage || (int)args.get(0) > renderpage + 1)){
+//    		 ArrayList<Object> ttargs = new ArrayList<Object>();
+//    		 ttargs.add(bx);
+//    		 ttargs.add(by);
+//    		 ttargs.add(renderpage);
+//    		 ttargs.add(args);
+//    		 call.add(drawFunc);
+//    		 callargs.add(ttargs);
+    		 
+    		 continue;
+    		 
+    	 }
     	 if ((int)args.get(0) != renderpage && (int)args.get(0) < this.page + 2){
     		 // Process page change
     		 renderpage++;
@@ -651,12 +682,14 @@ public int drawElementHungerStats(ArrayList<Object> args, int x, int y, int flag
     	    	 
     	    	 int tx;
     	    	 int ty;
-				int pg;
+				 int pg;
     	    	 int rval;
     	    	 ArrayList<Object> unpack = callargs.get(i1);
     	    	 tx = (int) unpack.get(0);
     	    	 ty = (int) unpack.get(1);
     	    	 pg = (int) unpack.get(2);
+    	    	 
+    	    	 
     	    	 tx = xpos + tx;
     	    	 ty = ypos + ty;
     	    	 ArrayList<Object> targs = (ArrayList<Object>) unpack.get(3);
@@ -665,11 +698,9 @@ public int drawElementHungerStats(ArrayList<Object> args, int x, int y, int flag
 					rval = (int) tocall.invoke(this, targs, tx, ty, 1);
 				} catch (IllegalAccessException | IllegalArgumentException
 						| InvocationTargetException e) {
-					// TODO Auto-generated catch block
 					//e.printStackTrace();
 					rval = 0;
-
-
+					
 				}
     	    	 ypos += -rval;
     	    	 y += -rval;
@@ -690,14 +721,15 @@ public int drawElementHungerStats(ArrayList<Object> args, int x, int y, int flag
         	 }
     		 
     	 }
-    	 if ((int)args.get(0) < renderpage || (int)args.get(0) > renderpage + 1){
-    		 ArrayList<Object> ttargs = new ArrayList<Object>();
-    		 ttargs.add(bx);
-    		 ttargs.add(by);
-    		 ttargs.add(renderpage);
-    		 ttargs.add(args);
-    		 call.add(drawFunc);
-    		 callargs.add(ttargs);
+    	 
+    	 if (((int)args.get(0) < renderpage || (int)args.get(0) > renderpage + 1)){
+//    		 ArrayList<Object> ttargs = new ArrayList<Object>();
+//    		 ttargs.add(bx);
+//    		 ttargs.add(by);
+//    		 ttargs.add(renderpage);
+//    		 ttargs.add(args);
+//    		 call.add(drawFunc);
+//    		 callargs.add(ttargs);
     		 
     		 continue;
     		 
@@ -710,7 +742,6 @@ public int drawElementHungerStats(ArrayList<Object> args, int x, int y, int flag
 			//System.err.println("drawfunc has invoked sucessfully STAND BY!!!");
 		} catch (IllegalAccessException | IllegalArgumentException
 				| InvocationTargetException e) {
-			// TODO Auto-generated catch block
 			//e.printStackTrace();
 			rval = 0;
 		}
@@ -739,8 +770,7 @@ public int drawElementHungerStats(ArrayList<Object> args, int x, int y, int flag
     	    	 
     	    	 int tx;
     	    	 int ty;
-				int pg;
-
+				 int pg;
 
     	    	 ArrayList<Object> unpack = callargs.get(i1);
     	    	 tx = (int) unpack.get(0);
@@ -754,11 +784,9 @@ public int drawElementHungerStats(ArrayList<Object> args, int x, int y, int flag
 					rval = (int) tocall.invoke(this, targs, tx, ty, 1);
 				} catch (IllegalAccessException | IllegalArgumentException
 						| InvocationTargetException e) {
-					// TODO Auto-generated catch block
-					//e.printStackTrace();
+					e.printStackTrace();
 					rval = 0;
-
-
+					
 				}
     	    	 ypos += -rval;
     	    	 y += -rval;
@@ -788,33 +816,32 @@ public int drawElementHungerStats(ArrayList<Object> args, int x, int y, int flag
      ypos = j + 19;
      int i1 = 0;
      if (renderpage - 1 % 2 == 0){
-     for (Method tocall : call){
-    	 
-    	 int tx;
-    	 int ty;
-		int pg;
-    	 int rval;
-    	 ArrayList<Object> unpack = callargs.get(i1);
-    	 tx = (int) unpack.get(0);
-    	 ty = (int) unpack.get(1);
-    	 pg = (int) unpack.get(2);
-    	 tx = xpos + tx;
-    	 ty = ypos + ty;
-    	 ArrayList<Object> targs = (ArrayList<Object>) unpack.get(3);
+    	 for (Method tocall : call){
+    		 int tx;
+    		 int ty;
+    		 int pg;
+    		 int rval;
+    		 ArrayList<Object> unpack = callargs.get(i1);
+    		 tx = (int) unpack.get(0);
+    		 ty = (int) unpack.get(1);
+    		 pg = (int) unpack.get(2);
+    		 tx = xpos + tx;
+    		 ty = ypos + ty;
+    		 ArrayList<Object> targs = (ArrayList<Object>) unpack.get(3);
     	 //System.out.println("targ" + targs);
-    	 try {
-			rval = (int) tocall.invoke(this, targs, tx, ty, 1);
-		} catch (IllegalAccessException | IllegalArgumentException
+    		 try {
+    			 rval = (int) tocall.invoke(this, targs, tx, ty, 1);
+    		 } catch (IllegalAccessException | IllegalArgumentException
 				| InvocationTargetException e) {
-			// TODO Auto-generated catch block
-			//e.printStackTrace();
-			rval = 0;
-
-
-		}
+    			 //e.printStackTrace();
+    			 rval = 0;
+    		 }
     	 ypos += -rval;
     	 i1 += 1;
-     }}}
+    	 }
+     }
+  }
+
      
  
  public int moreThanOne(){

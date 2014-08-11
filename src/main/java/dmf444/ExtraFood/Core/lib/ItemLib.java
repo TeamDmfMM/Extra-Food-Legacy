@@ -44,7 +44,7 @@ public class ItemLib {
 	public static String iCP = "PastaWithSauce";
 	public static String iMB = "meatballs";
 	public static String iMBP = "pastaMeatballs";
-	public static String iSushi = "Sushi";
+	public static String iSushi = "sushi";
 	public static String iFP = "FishPieces";
 	public static String iPKeb = "porkKebab";
 	public static String iSKeb = "steakKebab";
@@ -76,7 +76,7 @@ public class ItemLib {
 	/* 
 	 * Jelly 
 	 */
-	public static String iJ = "Jelly";
+	public static String iJ = "jelly";
 	public static String iPopcicle = "icePopcicle";
 	public static String iNeoIceCream = "neopolitanIceCream"; 
 	public static String iYogurt = "yogurt";

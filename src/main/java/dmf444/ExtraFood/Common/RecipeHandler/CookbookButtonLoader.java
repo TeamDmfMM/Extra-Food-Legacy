@@ -28,8 +28,8 @@ public class CookbookButtonLoader {
 		CookbookTab t = new CookbookTab("generic");
 		t.display = new ItemStack(BlockLoader.cheesePress);
 		// TODO Add buttons here
-		t.buttons.add(new ClickTab(0, 0, 0, 22, 22, "", 12, 1, new ItemStack(BlockLoader.cheesePress), "cheesepress"));
-		t.buttons.add(new ClickTab(0, 0, 0, 22, 22, "", 9, 3, new ItemStack(ItemLoader.cheeseWheel), "cheesewheel", "cheesepress"));
+		t.buttons.add(new ClickTab(0, 0, 0, 22, 22, "", 12, 1, new ItemStack(BlockLoader.cheesePress), "cheesepress", 1));
+		t.buttons.add(new ClickTab(0, 0, 0, 22, 22, "", 9, 3, new ItemStack(ItemLoader.cheeseWheel), "cheesewheel", 1, "cheesepress"));
 		t.buttons.add(new ClickTab(0, 0, 0, 22, 22, "", 6, 5, new ItemStack(ItemLoader.cheeseSlice), "cheeseslice", 1, "cheesewheel", "knife" ));
 		t.buttons.add(new ClickTab(0, 0, 0, 22, 22, "", 3, 4, new ItemStack(ItemLoader.knife), "knife", 1));
 		
@@ -37,14 +37,14 @@ public class CookbookButtonLoader {
 		this.buttons.add(t);
 		
 		t = new CookbookTab("autocutter");
-		t.buttons.add(new ClickTab(0, 0, 0, 22, 22, "", 3, 4, new ItemStack(BlockLoader.autoCutter), "autocutter"));
-		t.buttons.add(new ClickTab(0, 0, 0, 22, 22, "", 5, 6, new ItemStack(ItemLoader.sausage), "sausage", 0, "autocutter"));
-		t.buttons.add(new ClickTab(0, 0, 0, 22, 22, "", 5, 2, new ItemStack(ItemLoader.slicedBread), "Bread", 0, "autocutter"));
+		t.buttons.add(new ClickTab(0, 0, 0, 22, 22, "", 3, 4, new ItemStack(BlockLoader.autoCutter), "autocutter", 1));
+		t.buttons.add(new ClickTab(0, 0, 0, 22, 22, "", 5, 6, new ItemStack(ItemLoader.sausage), "sausage", 1, "autocutter"));
+		t.buttons.add(new ClickTab(0, 0, 0, 22, 22, "", 5, 2, new ItemStack(ItemLoader.slicedBread), "Bread", 1, "autocutter"));
 		t.display = new ItemStack(BlockLoader.autoCutter);
 		this.buttons.add(t);
 		
 		t = new CookbookTab("juiceBlender");
-		t.buttons.add(new ClickTab(0, 0, 0, 22, 22, "", 6, 5, new ItemStack(BlockLoader.juiceBlender), "juiceblender", 0));
+		t.buttons.add(new ClickTab(0, 0, 0, 22, 22, "", 6, 5, new ItemStack(BlockLoader.juiceBlender), "juiceblender", 1));
 		t.buttons.add(new ClickTab(0, 0, 0, 22, 22, "", 6, 2, new ItemStack(ItemLoader.bucketstrawberry), "StrawberryJuice", 1, "juiceblender"));
 		t.buttons.add(new ClickTab(0, 0, 0, 22, 22, "", 5, 7, new ItemStack(ItemLoader.bucketcarrot), "CarrotJuice", 1, "juiceblender"));
 		t.buttons.add(new ClickTab(0, 0, 0, 22, 22, "", 10, 7, new ItemStack(ItemLoader.bucketbanana), "BananaJuice", 1, "juiceblender"));
@@ -58,6 +58,10 @@ public class CookbookButtonLoader {
 		this.multiNum.put("SeaWater", 1);
 		this.truth.put("cheeseslice", true);
 		this.multiNum.put("cheeseslice", 1);
+		this.truth.put("bacon", true);
+		this.multiNum.put("bacon", 1);
+		this.truth.put("cheesepress", true);
+		this.multiNum.put("cheesepress", 1);
 
 
 	}
