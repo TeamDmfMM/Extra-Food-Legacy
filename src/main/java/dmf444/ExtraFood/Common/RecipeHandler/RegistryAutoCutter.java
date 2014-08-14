@@ -30,6 +30,7 @@ public class RegistryAutoCutter {
 		}
 		return null;
 	}
+	@SuppressWarnings("unused")
 	public Boolean isInput(ItemStack items){
 		for (int i = 0; i < recipes.size(); i++){
 			if (recipes.get(i).in.getItem() == items.getItem()){

@@ -68,6 +68,9 @@ public class CraftingRecipies {
 	GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ItemLoader.sandwichC), new Object[] {" i ", " c ", " i ", 'i', "foodBread", 'c', "foodChocolateSpread"}));
 	GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ItemLoader.sandwichPB), new Object[] {" i ", " p ", " i ", 'i', "foodBread", 'p', "foodPeanutButter"}));
 	GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ItemLoader.sandwichPBJ), new Object[] {" i ", " pj", " i ", 'i', "foodBread", 'p', "foodPeanutButter", 'j', "foodJelly"}));
+	GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ItemLoader.sandwichCheeseburger), new Object[] {"ch ", 'c', "foodCheeseSlice", 'h', "foodHamburgerSandwich"}));
+	GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ItemLoader.sandwichCheeseburger), new Object[] {" t ", "ch ", " t ", 't', "foodBread", 'c', "foodCheeseSlice", 'h', "foodHamburger"}));
+	GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ItemLoader.sandwichSupremeBurger), "itemKnife", "cropLettuce", "cropTomato", "foodCheeseburger"));
 	//Pasta
 	GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ItemLoader.rawpasta), new ItemStack(Items.bowl), "itemKnife", "cropWheat"));
 	GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ItemLoader.cookedpasta), "itemKnife", "foodRawPasta", "cropTomato"));

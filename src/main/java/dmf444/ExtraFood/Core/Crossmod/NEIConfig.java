@@ -15,6 +15,10 @@ public class NEIConfig implements IConfigureNEI{
 		if(ConfigHandler.useNEI){
 		API.registerRecipeHandler(new NEIAutoCutterHandler());
 		API.registerUsageHandler(new NEIAutoCutterHandler());
+		API.registerUsageHandler(new NEIJuiceBlenderHandler());
+		API.registerRecipeHandler(new NEIJuiceBlenderHandler());
+		API.registerUsageHandler(new NEICheesePressHandler());
+		API.registerRecipeHandler(new NEICheesePressHandler());		
 		}
 		//API.hideItem(new ItemStack(ItemLoader.knife));
 	}

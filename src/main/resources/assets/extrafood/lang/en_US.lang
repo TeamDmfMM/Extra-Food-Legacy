@@ -65,6 +65,8 @@ item.strawberryYogurt.name=Strawberry Yogurt
 item.yogurt.name=Plain Yogurt
 item.FrenchToast.name=French Toast
 item.ButterMilk.name=Butter Milk
+item.CheeseburgerSandwhich.name=Cheeseburger
+item.SupremeHamburgerSandwhich.Deluxe Hamburger
 
 #Block Names
 tile.Banana_Bunch.name=Banana Bunch

@@ -64,6 +64,8 @@ public class ItemLib {
 	public static String iSandBLT = "BLTSandwich";
 	public static String iSandPeanutB = "PeanutButterSandwich";
 	public static String iChoSandwich = "ChocolateSandwich";
+	public static String iSandCheeseBurger = "CheeseburgerSandwhich";
+	public static String iSandSupremeH = "SupremeHamburgerSandwhich";
 
 	public static String iPB = "peanutButter";
 	public static String iGrater = "Grater";

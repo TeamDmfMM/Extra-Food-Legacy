@@ -40,7 +40,7 @@ public class ItemLoader {
 	public static Item sandwhichCB, sandwhichGC, sandwichPBN, sandwichPBJ, sandwichBLT, sandwichPB, sandwhichS, sandwichC;
 	public static Item pork_kebab, steak_kebab, veal_kebab;
 	public static Item rawHamburger, cookedHamburger;
-	public static Item sandwhichHamburger;
+	public static Item sandwhichHamburger, sandwichCheeseburger, sandwichSupremeBurger;
 	public static Item tomato, lettuce;
 	public static Item rawlettuceSeeds;
 	public static ItemSeeds tomatoSeeds, uselettuceSeeds;
@@ -132,6 +132,8 @@ public class ItemLoader {
 		stawberryYogurt = new ReturnFood(3, 6.8F, Items.bowl).setUnlocalizedName(ItemLib.iStrawYogurt);
 		sandwichC = new StanFood(5, 5.5F).setUnlocalizedName(ItemLib.iChoSandwich);
 		frenchToast = new StanFood(7, 2.7F).setUnlocalizedName(ItemLib.iFrenchToast);
+		sandwichCheeseburger = new StanFood(10, 12.0F).setUnlocalizedName(ItemLib.iSandCheeseBurger);
+		sandwichSupremeBurger = new StanFood(15, 11.2F).setUnlocalizedName(ItemLib.iSandSupremeH);
 		
 		registerFood();
 	}
@@ -213,6 +215,8 @@ public class ItemLoader {
 			GameRegistry.registerItem(stawberryYogurt, ItemLib.iStrawYogurt);
 			GameRegistry.registerItem(sandwichC, ItemLib.iChoSandwich);
 			GameRegistry.registerItem(frenchToast, ItemLib.iFrenchToast);
+			GameRegistry.registerItem(sandwichCheeseburger, ItemLib.iSandCheeseBurger);
+			GameRegistry.registerItem(sandwichSupremeBurger, ItemLib.iSandSupremeH);
 			
 			//Register into Ore Dictionary
 			OreDictionary.registerOre("foodHamburger", ItemLoader.cookedHamburger);
@@ -255,6 +259,9 @@ public class ItemLoader {
 			OreDictionary.registerOre("foodYogurt", ItemLoader.yogurt);
 			OreDictionary.registerOre("foodStrawberryYogurt", ItemLoader.stawberryYogurt);
 			OreDictionary.registerOre("foodChocolateSandwich", ItemLoader.sandwichC);
+			OreDictionary.registerOre("foodHamburgerSandwich", ItemLoader.sandwhichHamburger);
+			OreDictionary.registerOre("foodCheeseburger", ItemLoader.sandwichCheeseburger);
+			OreDictionary.registerOre("foodSupremeBurger", ItemLoader.sandwichSupremeBurger);
 			OreDictionary.registerOre("foodFrenchToast", ItemLoader.frenchToast);
 			
 		}

@@ -107,7 +107,8 @@ public class NEIAutoCutterHandler extends TemplateRecipeHandler{
 			  arecipes.add(res);
 			  }
 		  }
-	  }	  
+	  }	 
+	  //FROM CLICK ON "U"
 	  @Override
 	  public void loadUsageRecipes(ItemStack ingredients){
 		  for(int x = 0; x < ExtraFood.registryCutter.getLength(); x++){

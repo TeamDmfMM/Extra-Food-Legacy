@@ -11,6 +11,7 @@ import dmf444.ExtraFood.Common.blocks.BlockLoader;
 import dmf444.ExtraFood.Common.blocks.guis.ClickTab;
 import dmf444.ExtraFood.Common.blocks.guis.CookBookGUI;
 import dmf444.ExtraFood.Common.items.ItemLoader;
+import dmf444.ExtraFood.util.ConfigHandler;
 
 public class CookbookButtonLoader {
 
@@ -48,14 +49,18 @@ public class CookbookButtonLoader {
 		t.buttons.add(new ClickTab(0, 0, 0, 22, 22, "", 6, 2, new ItemStack(ItemLoader.bucketstrawberry), "StrawberryJuice", 1, "juiceblender"));
 		t.buttons.add(new ClickTab(0, 0, 0, 22, 22, "", 5, 7, new ItemStack(ItemLoader.bucketcarrot), "CarrotJuice", 1, "juiceblender"));
 		t.buttons.add(new ClickTab(0, 0, 0, 22, 22, "", 10, 7, new ItemStack(ItemLoader.bucketbanana), "BananaJuice", 1, "juiceblender"));
+		if(ConfigHandler.overrideWater){
 		t.buttons.add(new ClickTab(0, 0, 0, 22, 22, "", 1, 5, new ItemStack(ItemLoader.bucketseaWater), "SeaWater", 1));
+		}
 		t.display = new ItemStack(BlockLoader.juiceBlender);
 		this.buttons.add(t);
 
 		//TODO on add book page, add multi buttons
 		  //this.truth.put("knife", true);
+		if(ConfigHandler.overrideWater){
 		this.truth.put("SeaWater", true);
 		this.multiNum.put("SeaWater", 1);
+		}
 		this.truth.put("cheeseslice", true);
 		this.multiNum.put("cheeseslice", 1);
 		this.truth.put("bacon", true);
