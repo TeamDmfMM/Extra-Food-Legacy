@@ -9,6 +9,7 @@ import cpw.mods.fml.common.Mod.EventHandler; // used in 1.6.2
 import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLInterModComms;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
@@ -36,6 +37,7 @@ import dmf444.ExtraFood.Core.CraftingRecipies;
 import dmf444.ExtraFood.Core.GuiHandler;
 import dmf444.ExtraFood.Core.PacketJBTank;
 import dmf444.ExtraFood.Core.Crossmod.NEIAutoCutterHandler.AutoCutterRecipe;
+import dmf444.ExtraFood.Core.Crossmod.WailaConfig;
 import dmf444.ExtraFood.Core.lib.ModInfo;
 import dmf444.ExtraFood.util.ConfigHandler;
 import dmf444.ExtraFood.util.EFLog;
@@ -102,9 +104,7 @@ public class ExtraFood {
 		CraftingRecipies.furnacing();
 		
 		proxy.registerKeybinds();
-
-
-		
+		//FMLInterModComms.sendMessage("Waila", "register", WailaConfig.class.getName() + ".callbackRegister");
 	}
 	
 	@EventHandler

@@ -131,7 +131,13 @@ public class StrawberryBush extends Block implements IGrowable {
     	}
     	switch (meta) {
     	case -1:
+    		if(meta >  7){
+    			this.placeInInv(player);
+    			world.setBlockMetadataWithNotify(x, y, z, 0, 2);
+    			return true;
+    		} else {
     			return false;
+    		}
     	case 4: 
 			this.placeDuoInInv(player);
 			world.setBlockMetadataWithNotify(x, y, z, 0, 2);   		

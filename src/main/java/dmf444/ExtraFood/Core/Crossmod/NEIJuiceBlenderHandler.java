@@ -141,8 +141,8 @@ public class NEIJuiceBlenderHandler extends TemplateRecipeHandler{
 			GL11.glColor4f(r, g, b, a);
 			 drawProgressBar(103 - 5, 64 - 11, 176, 0, 39, 4, 100, 0);
 			GL11.glColor4f(1f, 1f, 1f, 1f);
-			List<String> list = new ArrayList<String>();
-			list.add("Amount: 1000mB");
+			//List<String> list = new ArrayList<String>();
+			//list.add("Amount: 1000mB");
 			
 		  JuiceBlenderRecipe recipe = (JuiceBlenderRecipe) arecipes.get(recipeI);
 	  }

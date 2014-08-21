@@ -33,7 +33,6 @@ public class CookbookButtonLoader {
 		t.buttons.add(new ClickTab(0, 0, 0, 22, 22, "", 9, 3, new ItemStack(ItemLoader.cheeseWheel), "cheesewheel", 1, "cheesepress"));
 		t.buttons.add(new ClickTab(0, 0, 0, 22, 22, "", 6, 5, new ItemStack(ItemLoader.cheeseSlice), "cheeseslice", 1, "cheesewheel", "knife" ));
 		t.buttons.add(new ClickTab(0, 0, 0, 22, 22, "", 3, 4, new ItemStack(ItemLoader.knife), "knife", 1));
-		
 		t.buttons.add(new ClickTab(0, 0, 0, 22, 22, "", 1, 10, new ItemStack(ItemLoader.bacon), "bacon", 1, "knife"));
 		this.buttons.add(t);
 		
@@ -41,6 +40,7 @@ public class CookbookButtonLoader {
 		t.buttons.add(new ClickTab(0, 0, 0, 22, 22, "", 3, 4, new ItemStack(BlockLoader.autoCutter), "autocutter", 1));
 		t.buttons.add(new ClickTab(0, 0, 0, 22, 22, "", 5, 6, new ItemStack(ItemLoader.sausage), "sausage", 1, "autocutter"));
 		t.buttons.add(new ClickTab(0, 0, 0, 22, 22, "", 5, 2, new ItemStack(ItemLoader.slicedBread), "Bread", 1, "autocutter"));
+		t.buttons.add(new ClickTab(0, 0, 0, 22, 22, "", 8, 4, new ItemStack(ItemLoader.sandwichBLT), "sandwiches", 1, "Bread"));
 		t.display = new ItemStack(BlockLoader.autoCutter);
 		this.buttons.add(t);
 		
@@ -66,9 +66,17 @@ public class CookbookButtonLoader {
 		this.truth.put("bacon", true);
 		this.multiNum.put("bacon", 1);
 		this.truth.put("cheesepress", true);
-		this.multiNum.put("cheesepress", 1);
+		this.multiNum.put("cheesepress", 4);
+		AddPage("Bread", 1);
+		AddPage("sandwiches", 11);
+		//this.truth.put("Bread", true);
+		//this.multiNum.put("Bread", 1);
 
 
+	}
+	public void AddPage(String s, int pages){
+		this.truth.put(s, true);
+		this.multiNum.put(s, pages);
 	}
 	
 	/*

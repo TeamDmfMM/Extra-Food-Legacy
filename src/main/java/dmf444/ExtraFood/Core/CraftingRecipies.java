@@ -42,7 +42,7 @@ public class CraftingRecipies {
 	GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ItemLoader.neoIceCream), new Object[] {"vcs", " b ", 'v', "foodVanillaIceCream", 'c', "foodChocolateIceCream", 's', "foodStrawberryIceCream", 'b', Items.bowl}));
 	//Items and Food
 	GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ItemLoader.chocolateSpread), new Object[] {"gc ", "sb ", 'g', "itemGrater", 'c', "foodChocolate", 's', Items.bowl, 'b', "foodButter"}));
-	GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ItemLoader.butter), "foodButterMilk"));
+	GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ItemLoader.butter), ItemLoader.butterMilk.setContainerItem(Items.bucket)));
 	GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ItemLoader.grater), new Object[] {"ii ", "ii ", "ss ", 'i', "ingotIron", 's', "stickWood"}));
 	GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ItemLoader.pancakes, 2), new Object[] {"ws ", "bm ", 'w', Items.wheat, 's', Items.sugar, 'b', "foodButter", 'm', Items.milk_bucket}));
 	GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ItemLoader.peanutButter, 1), "itemGrater", "foodPeanuts", new ItemStack (Items.bowl, 1), "foodButter"));

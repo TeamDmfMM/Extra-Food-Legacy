@@ -10,6 +10,8 @@ import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ICrafting;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.World;
 import dmf444.ExtraFood.Common.blocks.tileentity.TileEntityJuiceBlender;
 import dmf444.ExtraFood.Core.PacketJBTank;
 
@@ -138,6 +140,9 @@ public class ContainerJuiceBlender extends Container{
          		slot.onPickupFromSlot(player, itemstackR);
          		}
       return stack;
+	}
+	public static void getTankInfo(TileEntityJuiceBlender te, EntityPlayer player) {
+		ExtraFood.JBTanknet.sendTo(new PacketJBTank(te.tank.getFluidAmount(), te.tank.getFluid().tag, te.tank.getFluid().getFluid().getID(), te.xCoord, te.yCoord, te.zCoord), (EntityPlayerMP) player);
 	}
 }
 

@@ -80,15 +80,15 @@ public class ItemLoader {
 	public static void initiateFoods(){
 		//Semi-balanced foods
 		sausage = new StanFood(3, 0.9F).setUnlocalizedName(ItemLib.iS);
-		cheeseSlice = new CheeseSlice().setUnlocalizedName(ItemLib.iCS);
-		cheeseWheel = new CheeseWheel(8, 0.6F, false).setUnlocalizedName(ItemLib.iCW);
+		cheeseSlice = new StanFood(2, 3.0F).setUnlocalizedName(ItemLib.iCS);
+		cheeseWheel = new CheeseWheel(8, 5.6F, false).setUnlocalizedName(ItemLib.iCW);
 		banana = new Banana(1, 0.8F, false).setUnlocalizedName(ItemLib.iBan);
-		strawberry = ((ItemFood) new Strawberry(1, 0.6F, false).setUnlocalizedName(ItemLib.iST)).setAlwaysEdible();
+		strawberry = ((ItemFood) new Strawberry(2, 2.0F, false).setUnlocalizedName(ItemLib.iST)).setAlwaysEdible();
 		bacon = new StanFood(1, 0.6F).setUnlocalizedName(ItemLib.iBac);
 		veal = new StanFood(8, 19.5F, true).setUnlocalizedName(ItemLib.iV);
 		cookedBacon = new StanFood(2, 5.2F).setUnlocalizedName(ItemLib.iCBac);
-		toast = new StanFood(1, 0.8F).setUnlocalizedName(ItemLib.iToastS);
-		slicedBread = new StanFood(1, 0.2F).setUnlocalizedName(ItemLib.iBRS);
+		toast = new StanFood(2, 0.8F).setUnlocalizedName(ItemLib.iToastS);
+		slicedBread = new StanFood(2, 3.0F).setUnlocalizedName(ItemLib.iBRS);
 		frenchFries = new ItemFood(2, 0.7F, false).setUnlocalizedName(ItemLib.iFF()).setCreativeTab(EFTabs.INSTANCE).setTextureName("extrafood:" + ItemLib.iFF());//" + ItemLib.iFF()
 		tomato = new StanFood(4, 2.5F).setUnlocalizedName(ItemLib.iTom);
 		lettuce = new StanFood(4, 1.6F).setUnlocalizedName(ItemLib.iLet);	
@@ -96,7 +96,7 @@ public class ItemLoader {
 		pork_kebab = new StanFood(3, 12.3F).setUnlocalizedName(ItemLib.iPKeb);
 		steak_kebab = new StanFood(3, 12.4F).setUnlocalizedName(ItemLib.iSKeb);
 		veal_kebab = new StanFood(3, 12.6F).setUnlocalizedName(ItemLib.iVKeb);		
-		sushi = new StanFood(4, 2.6F).setUnlocalizedName(ItemLib.iSushi);
+		sushi = new StanFood(8, 2.6F).setUnlocalizedName(ItemLib.iSushi);
 		rawHamburger = ((ItemFood) new StanFood(4, 0.6F).setUnlocalizedName(ItemLib.iRH)).setPotionEffect(Potion.hunger.id, 30, 0, 0.4F);
 		
 		//Non-balanced foods
@@ -109,7 +109,7 @@ public class ItemLoader {
 		peanut = ((ItemFood) new StanFood(1, 0.2F).setUnlocalizedName(ItemLib.iP)).setAlwaysEdible();
 		cookedpasta = new ReturnFood(6, 1.3F, Items.bowl).setUnlocalizedName(ItemLib.iCP);
 		meatballs = new StanFood(3, 0.4F).setUnlocalizedName(ItemLib.iMB);
-		meatballpasta = new ReturnFood(9, 1.4F, Items.bowl).setUnlocalizedName(ItemLib.iMBP);
+		meatballpasta = new ReturnFood(12, 1.4F, Items.bowl).setUnlocalizedName(ItemLib.iMBP);
 		fishpieces = new StanFood(2, 0.5F).setUnlocalizedName(ItemLib.iFP);
 		chocolate = new StanFood(2, 0.8F).setUnlocalizedName(ItemLib.iCho);
 		pancakes = new StanFood(6, 1.2F).setUnlocalizedName(ItemLib.iPC);
@@ -119,12 +119,12 @@ public class ItemLoader {
 		chocolateIceCream = new DrinkActionFood(3, 0.8F).setUnlocalizedName(ItemLib.iChoIceCream);
 		strawberryIceCream = new DrinkActionFood(3, 2.5F).setUnlocalizedName(ItemLib.iStrawIceCream);
 		chineseFood = new StanFood(7, 5.0F).setUnlocalizedName(ItemLib.iCNF);
-		chocolateSpread = ((ItemFood) new StanFood(4, 4.5F).setUnlocalizedName(ItemLib.iChoSpread)).setPotionEffect(Potion.confusion.id, 10, 0, 0.8F);
+		chocolateSpread = ((ItemFood) new StanFood(8, 4.5F).setUnlocalizedName(ItemLib.iChoSpread)).setPotionEffect(Potion.confusion.id, 10, 0, 0.8F);
 		jelly = ((ItemFood) new StanFood(5, 2.0F).setUnlocalizedName(ItemLib.iJ)).setPotionEffect(Potion.heal.id, 5, 0, 0.1F);
 		sandwichBLT = new StanFood(8, 10.0F).setUnlocalizedName(ItemLib.iSandBLT);
 		sandwichPBJ = new StanFood(8, 9.5F).setUnlocalizedName(ItemLib.iSandPBJ);
 		sandwichPBN = new StanFood(8, 9.0F).setUnlocalizedName(ItemLib.iSandPBN);
-		icePop = new DrinkActionFood(2, 0.9F).setUnlocalizedName(ItemLib.iPopcicle);
+		icePop = new DrinkActionFood(5, 3.3F).setUnlocalizedName(ItemLib.iPopcicle);
 		neoIceCream = new ReturnFood(8, 4.5F, Items.bowl).setUnlocalizedName(ItemLib.iNeoIceCream);
 		sandwichPB = new StanFood(2, 3.5F).setUnlocalizedName(ItemLib.iSandPeanutB);
 		butterMilk = new ButterMilk(4, 3.6F).setUnlocalizedName(ItemLib.iButterMilk);

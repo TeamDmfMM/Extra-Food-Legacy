@@ -52,10 +52,10 @@ GuiButton backpage;
 GuiButton backGUI;
 boolean Morethanone;
 int pagesAllowed;
-
+int p3 = 9999;
 
 ArrayList<Object> ris;
-
+ArrayList<ArrayList<Object>> p3r = new ArrayList<ArrayList<Object>>();
 
 
 
@@ -333,7 +333,15 @@ public int drawElementHungerStats(ArrayList<Object> args, int x, int y, int flag
 		fontRendererObj.drawStringWithShadow("Hunger Stats:", x + 19, y, 0x3333FF);
 		fontRendererObj.setUnicodeFlag(false);
 		if (args.size() > 2){
-			fontRendererObj.drawString((String) args.get(2), x + (fontRendererObj.getStringWidth((String) args.get(2)) / 2), y + 15, 0x0000000);
+			if(args.get(2).toString().length() > 5){
+				if(args.get(2).toString().length() > 12){
+				fontRendererObj.drawString((String) args.get(2), x + (fontRendererObj.getStringWidth((String) args.get(2)) / 5 -4), y + 15, 0x0000000);
+				} else {
+				fontRendererObj.drawString((String) args.get(2), x + (fontRendererObj.getStringWidth((String) args.get(2)) / 5), y + 15, 0x0000000);
+				}
+			} else {
+				fontRendererObj.drawString((String) args.get(2), x + (fontRendererObj.getStringWidth((String) args.get(2)) / 1), y + 15, 0x0000000);
+			}
 		}
 		fontRendererObj.drawString(String.valueOf(args.get(0)), x + 16 + 50, y + 32, 0x0000000);
 		fontRendererObj.drawString(String.valueOf(args.get(1)), x + 16 + 50, y + 52, 0x0000000);
@@ -346,7 +354,7 @@ public int drawElementHungerStats(ArrayList<Object> args, int x, int y, int flag
  public void actionPerformed(GuiButton button){
 	if (button.id == 0){
 		if(page < pagesAllowed){
-		page++;
+			page+= 2;
 		//if (StatCollector.translateToLocal("cookbook." + pagen + page) != "cookbook." + pagen + page){
 		this.pageTextLeft = StatCollector.translateToLocal(StatCollector.translateToLocal("cookbook." + pagen + page));
 		}
@@ -355,7 +363,7 @@ public int drawElementHungerStats(ArrayList<Object> args, int x, int y, int flag
 		//}
 	}
 	if (button.id == 1){
-		page--;
+		page-= 2;
 		if (StatCollector.translateToLocal("cookbook." + pagen + page) != "cookbook." + pagen + page && page > 0){
 		this.pageTextLeft = StatCollector.translateToLocal("cookbook." + pagen + page);
 		}
@@ -578,7 +586,117 @@ public int drawElementHungerStats(ArrayList<Object> args, int x, int y, int flag
 	}
 	return null;
  }
- // The longest function we've made (Actually by me)
+ // The longest function we've made (Actually by me) Edition 3!
+ public void drawold(){
+	 int i = (this.width - CookBookGUI.achievementsPaneWidth) / 2;
+     int j = (this.height - CookBookGUI.achievementsPaneHeight) / 2;
+     //EFLog.fatal("fatality = " + j);
+     // Attempt 2 :(
+     // Define "cursor" position
+     int renderpage = page;
+     int xpos = i + 28;
+     int ypos = j + 19;
+     // Define current page we are rendering
+     
+     
+     // Create pairs for everythin' (oh, and define the list of pairs)
+     ArrayList<ArrayList<Object>> pairs = new ArrayList<ArrayList<Object>>();
+     ArrayList<ArrayList<Object>> page1 = new ArrayList<ArrayList<Object>>();
+     if (this.page > p3){page1.addAll(p3r);p3r.clear();}
+     ArrayList<ArrayList<Object>> page2 = new ArrayList<ArrayList<Object>>();
+     
+     // Start pairin' them up!
+     
+     // Temp pair array
+     ArrayList<Object> pair = new ArrayList<Object>();
+     for (Object pairbuddy : ris){
+    	 if (pair.size() == 0){
+    		 pair.add(pairbuddy);
+    	 }
+    	 else {
+    		 pair.add(pairbuddy);
+    		 pairs.add(pair);
+    		 pair = new ArrayList<Object>();
+    	 }
+     }
+  // Attempt to figure out what is NOT going to be rendered, and remove it from the list
+     for (ArrayList<Object> pa : pairs){
+    	 ArrayList<Object> pat = (ArrayList<Object>) ((ArrayList<Object>) pa.get(1)).clone();
+    	 if (pat instanceof ArrayList){
+    		 int page = (int) pat.get(2);
+    		 if (page < this.page * 2){
+    			 pairs.remove(pa);
+    			 continue;
+    		 }
+    		 else if (page > (this.page + 1) * 2){
+    			 pairs.remove(pa);
+    			 continue; 
+    		 }
+    		 switch (page - (this.page * 2)){
+    		 case 0:
+    			 page1.add(pa);
+    			 break;
+    		 case 1:
+    			 page2.add(pa);
+    			 break;
+    		 }
+    	 }
+     }
+     for (ArrayList<Object> ptt : page1){
+    	 ArrayList<Object> args = (ArrayList<Object>) ptt.get(1);
+    	 int rval;
+    	 String type = (String) ptt.get(0);
+    	 try {
+			rval = (int) this.getFunctionForType(type).invoke(this, args, xpos, ypos, (ptt.size() > 2 ? 1 : 0));
+		} catch (IllegalAccessException | IllegalArgumentException
+				| InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			rval = 0;
+		}
+    	 if (rval < 0){
+    		 ypos += -rval;
+    	 }
+    	 else {
+    		 ypos += rval;
+    		 ArrayList<Object> ptata = (ArrayList<Object>) ptt.clone();
+    		 ptata.add("f");
+    		 page2.add(ptata);
+    	 }
+    	 if (ypos > j + 150){
+    		 break;
+    	 }
+    	 
+    	 
+    	 
+    	 
+     }
+     for (ArrayList<Object> ptta : page2){
+    	 ArrayList<Object> args = (ArrayList<Object>) ptta.get(1);
+    	 int rval;
+    	 String type = (String) ptta.get(0);
+    	 try {
+			rval = (int) this.getFunctionForType(type).invoke(this, args, xpos, ypos, (ptta.size() > 2 ? 1 : 0));
+		} catch (IllegalAccessException | IllegalArgumentException
+				| InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			rval = 0;
+		}
+    	 if (rval < 0){
+    		 ypos += -rval;
+    	 }
+    	 else {
+    		 ypos += rval;
+    		 p3 = this.page;
+    		 p3r.add(ptta);
+    	 }
+    	 if (ypos > j + 150){
+    		 break;
+    	 }
+     }
+     
+     
+     
+ }
  public void draw(){
 	 int i = (this.width - CookBookGUI.achievementsPaneWidth) / 2;
      int j = (this.height - CookBookGUI.achievementsPaneHeight) / 2;
@@ -629,12 +747,7 @@ public int drawElementHungerStats(ArrayList<Object> args, int x, int y, int flag
     		 //System.out.println("breakin free!");
     		 continue;
     	 }
-    	 int pppg = (int) args.get(2);
-    	 if (this.page != 0){
-    		 if (!(pppg >= this.page * 2)){
-    			 continue;
-    		 }
-    	 }
+    	 
     	 int x = (int) args.get(0);
     	 
     	 
@@ -682,7 +795,8 @@ public int drawElementHungerStats(ArrayList<Object> args, int x, int y, int flag
     	    	 
     	    	 int tx;
     	    	 int ty;
-				 int pg;
+    	    	 @SuppressWarnings("unused")
+				int pg;
     	    	 int rval;
     	    	 ArrayList<Object> unpack = callargs.get(i1);
     	    	 tx = (int) unpack.get(0);
@@ -698,6 +812,7 @@ public int drawElementHungerStats(ArrayList<Object> args, int x, int y, int flag
 					rval = (int) tocall.invoke(this, targs, tx, ty, 1);
 				} catch (IllegalAccessException | IllegalArgumentException
 						| InvocationTargetException e) {
+					// TODO Auto-generated catch block
 					//e.printStackTrace();
 					rval = 0;
 					
@@ -742,6 +857,7 @@ public int drawElementHungerStats(ArrayList<Object> args, int x, int y, int flag
 			//System.err.println("drawfunc has invoked sucessfully STAND BY!!!");
 		} catch (IllegalAccessException | IllegalArgumentException
 				| InvocationTargetException e) {
+			// TODO Auto-generated catch block
 			//e.printStackTrace();
 			rval = 0;
 		}
@@ -770,7 +886,8 @@ public int drawElementHungerStats(ArrayList<Object> args, int x, int y, int flag
     	    	 
     	    	 int tx;
     	    	 int ty;
-				 int pg;
+    	    	 @SuppressWarnings("unused")
+				int pg;
 
     	    	 ArrayList<Object> unpack = callargs.get(i1);
     	    	 tx = (int) unpack.get(0);
@@ -784,7 +901,8 @@ public int drawElementHungerStats(ArrayList<Object> args, int x, int y, int flag
 					rval = (int) tocall.invoke(this, targs, tx, ty, 1);
 				} catch (IllegalAccessException | IllegalArgumentException
 						| InvocationTargetException e) {
-					e.printStackTrace();
+					// TODO Auto-generated catch block
+					//e.printStackTrace();
 					rval = 0;
 					
 				}
@@ -816,34 +934,32 @@ public int drawElementHungerStats(ArrayList<Object> args, int x, int y, int flag
      ypos = j + 19;
      int i1 = 0;
      if (renderpage - 1 % 2 == 0){
-    	 for (Method tocall : call){
-    		 int tx;
-    		 int ty;
-    		 int pg;
-    		 int rval;
-    		 ArrayList<Object> unpack = callargs.get(i1);
-    		 tx = (int) unpack.get(0);
-    		 ty = (int) unpack.get(1);
-    		 pg = (int) unpack.get(2);
-    		 tx = xpos + tx;
-    		 ty = ypos + ty;
-    		 ArrayList<Object> targs = (ArrayList<Object>) unpack.get(3);
-    	 //System.out.println("targ" + targs);
-    		 try {
-    			 rval = (int) tocall.invoke(this, targs, tx, ty, 1);
-    		 } catch (IllegalAccessException | IllegalArgumentException
-				| InvocationTargetException e) {
-    			 //e.printStackTrace();
-    			 rval = 0;
-    		 }
+     for (Method tocall : call){
+    	 int tx;
+    	 int ty;
+    	 @SuppressWarnings("unused")
+		 int pg;
+    	 int rval;
+    	 	ArrayList<Object> unpack = callargs.get(i1);
+    	 	tx = (int) unpack.get(0);
+    	 	ty = (int) unpack.get(1);
+    	 	pg = (int) unpack.get(2);
+    	 	tx = xpos + tx;
+    	 	ty = ypos + ty;
+    	 	ArrayList<Object> targs = (ArrayList<Object>) unpack.get(3);
+    	 	//System.out.println("targ" + targs);
+    	 	try {
+    	 		rval = (int) tocall.invoke(this, targs, tx, ty, 1);
+    	 	} catch (IllegalAccessException | IllegalArgumentException| InvocationTargetException e) {
+			//e.printStackTrace();
+			rval = 0;
+    	 	}
     	 ypos += -rval;
     	 i1 += 1;
-    	 }
-     }
+     	}
+    }
   }
-
      
- 
  public int moreThanOne(){
 	 ArrayList<ArrayList<Object>> pairs = new ArrayList<ArrayList<Object>>();
      
@@ -880,5 +996,11 @@ public int drawElementHungerStats(ArrayList<Object> args, int x, int y, int flag
          this.mc.setIngameFocus();
      }
  }
+ @Override
+ public boolean doesGuiPauseGame()
+ {
+     return false;
+ }
+
   
 }

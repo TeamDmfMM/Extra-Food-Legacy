@@ -11,6 +11,7 @@ import java.util.List;
 
 
 
+
 import dmf444.ExtraFood.Common.blocks.BlockLoader;
 import dmf444.ExtraFood.Common.items.ItemLoader;
 import net.minecraft.block.Block;
@@ -37,8 +38,8 @@ public class CRPageCraftGet {
 		this.putRecipe("cheeseslice", new Object[] {"ik ", "   ", "   ", 'i', ItemLoader.cheeseWheel, 'k',  ItemLoader.knife}, new ItemStack(ItemLoader.cheeseSlice, 8));
 		this.putRecipe("sausage", new Object[] {"ik ", "   ", "   ", 'i', Items.porkchop, 'k',  ItemLoader.knife}, new ItemStack(ItemLoader.sausage, 2));
 		this.putRecipe("Bread", new Object[] {"ik ", "   ", "   ", 'i', Items.bread, 'k',  ItemLoader.knife}, new ItemStack(ItemLoader.slicedBread, 6));
+		this.putRecipe("sandwichPBN",  new Object[] {" t ", " cp", " t ", 't', ItemLoader.toast, 'c', ItemLoader.chocolateSpread, 'p', ItemLoader.peanutButter}, new ItemStack(ItemLoader.sandwichPBN));
 		//TODO place the things in here
-		// TODO Auto-generated constructor stub
 	}
 	public ItemStack[] getArray(String itemname){
 		itemname = itemname.trim();
