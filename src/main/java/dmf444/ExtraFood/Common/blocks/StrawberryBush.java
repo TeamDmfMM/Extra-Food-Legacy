@@ -1,7 +1,9 @@
 package dmf444.ExtraFood.Common.blocks;
 
 
+import java.util.ArrayList;
 import java.util.Random;
+
 
 
 
@@ -120,7 +122,7 @@ public class StrawberryBush extends Block implements IGrowable {
     @Override
     public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float what, float these, float are) {
     	int meta = world.getBlockMetadata(x, y, z);
-    	EFLog.info("Current Meta:" + meta);
+    	//EFLog.info("Current Meta:" + meta);
     	if (player.inventory.getCurrentItem() != null){
     		ItemStack is = player.inventory.getCurrentItem();
     		if (is.getItem() == Items.dye){
@@ -131,46 +133,64 @@ public class StrawberryBush extends Block implements IGrowable {
     	}
     	switch (meta) {
     	case -1:
-    		if(meta >  7){
-    			this.placeInInv(player);
+    			return false;
+    			
+    	case 4: case 5: case 6:
+			if(this.isSpaceInInv(player, 2) == true){
+				player.inventory.addItemStackToInventory(new ItemStack(ItemLoader.strawberry, 2));
+				world.setBlockMetadataWithNotify(x, y, z, 0, 2);   		
+    			return true;
+			} else {
+				return false;
+			}
+
+    	case 7: case 8:
+    		if(this.isSpaceInInv(player, 4) == true){
+    			player.inventory.addItemStackToInventory(new ItemStack(ItemLoader.strawberry, 4));
     			world.setBlockMetadataWithNotify(x, y, z, 0, 2);
     			return true;
     		} else {
-    			return false;
-    		}
-    	case 4: 
-			this.placeDuoInInv(player);
-			world.setBlockMetadataWithNotify(x, y, z, 0, 2);   		
-    			return true;
-    	case 5:
-    		this.placeDuoInInv(player);
-			world.setBlockMetadataWithNotify(x, y, z, 0, 2);   		
-    			return true;
-    	case 6:
-    		this.placeDuoInInv(player);
-			world.setBlockMetadataWithNotify(x, y, z, 0, 2);   		
-    			return true;
-    	case 7:
-    			this.placeInInv(player);
-    			world.setBlockMetadataWithNotify(x, y, z, 0, 2);
-    			return true;
+				return false;
+			}
+
     	}
 		return false;
     }
 
-
-	private void placeDuoInInv(EntityPlayer player) {
-		if (player.inventory.getFirstEmptyStack() == -1){
-			player.inventory.addItemStackToInventory(new ItemStack(ItemLoader.strawberry, 2));
-		} else {
-			player.inventory.setInventorySlotContents(player.inventory.getFirstEmptyStack(), new ItemStack(ItemLoader.strawberry, 2));
-		}	
+    private ArrayList<Integer> SlotsWithItem = new ArrayList<Integer>();
+    
+	private boolean isSpaceInInv(EntityPlayer player, int numberIn) {
+		if(player.inventory.getFirstEmptyStack() == -1 && !player.inventory.hasItem(ItemLoader.strawberry)){
+			return false; //Player has no empty inventory and has no strawberry
+		} else if(player.inventory.getFirstEmptyStack() != -1){
+				return true;
+		} else if(player.inventory.hasItem(ItemLoader.strawberry)){
+			this.getItemStacks(player);
+			for(int i = 0; i <= SlotsWithItem.size(); ++i){
+				//ItemStack item = player.inventory.getStackInSlot(SlotsWithItem.get(i));
+				EFLog.error(SlotsWithItem.get(i));
+				if(player.inventory.getStackInSlot(SlotsWithItem.get(i)).stackSize < 32 && player.inventory.getStackInSlot(SlotsWithItem.get(i)).stackSize + numberIn <= 32){
+					return true;
+				} else {
+					return false;
+				}		//player.inventory.addItemStackToInventory(new ItemStack(ItemLoader.strawberry, 2));
+			}
+		}
+		return true;
 	}
-
+	private void getItemStacks(EntityPlayer player){
+		SlotsWithItem.clear();
+		for(int i = 0; i < player.inventory.mainInventory.length; ++i){
+			if(player.inventory.mainInventory[i].isItemEqual(new ItemStack(ItemLoader.strawberry))){
+				SlotsWithItem.add(i);
+			}
+		}
+	}
 
 	private void placeInInv(EntityPlayer player) {
 		player.inventory.addItemStackToInventory(new ItemStack(ItemLoader.strawberry, 4));	
 	}
+	
 	 @SideOnly(Side.CLIENT)
 	    public void registerBlockIcons(IIconRegister iiconr)
 	    {

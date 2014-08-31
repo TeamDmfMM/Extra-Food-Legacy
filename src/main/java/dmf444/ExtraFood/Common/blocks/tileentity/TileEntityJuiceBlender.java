@@ -320,8 +320,8 @@ public class TileEntityJuiceBlender extends TileEntity implements ISidedInventor
 		}
         super.readFromNBT(tag);
         this.tank.readFromNBT(tag);
-        this.amountin = tank.getFluidAmount();
-        this.myjuice = tank.getFluid();
+        //this.amountin = tank.getFluidAmount();
+        //this.myjuice = tank.getFluid();
 	    //EFLog.error(tank.getFluidAmount());
 	}
 

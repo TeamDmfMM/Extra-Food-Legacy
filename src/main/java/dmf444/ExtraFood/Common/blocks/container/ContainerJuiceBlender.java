@@ -141,8 +141,5 @@ public class ContainerJuiceBlender extends Container{
          		}
       return stack;
 	}
-	public static void getTankInfo(TileEntityJuiceBlender te, EntityPlayer player) {
-		ExtraFood.JBTanknet.sendTo(new PacketJBTank(te.tank.getFluidAmount(), te.tank.getFluid().tag, te.tank.getFluid().getFluid().getID(), te.xCoord, te.yCoord, te.zCoord), (EntityPlayerMP) player);
-	}
 }
 

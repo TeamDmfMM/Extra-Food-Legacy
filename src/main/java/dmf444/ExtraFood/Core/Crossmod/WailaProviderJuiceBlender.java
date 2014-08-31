@@ -26,11 +26,12 @@ public class WailaProviderJuiceBlender implements IWailaDataProvider{
 	@Override
 	public List<String> getWailaBody(ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
 		TileEntityJuiceBlender jb = (TileEntityJuiceBlender) accessor.getTileEntity();
-		ContainerJuiceBlender.getTankInfo(jb, accessor.getPlayer());
-		String fluid = jb.tank.getFluid().getFluid().getLocalizedName(jb.tank.getFluid());
-		int fluidAmount = jb.tank.getFluidAmount();
+		
+		String fluid = jb.tank.readFromNBT(accessor.getNBTData()).getFluid().getFluid().getLocalizedName(jb.tank.getFluid());
+		int fluidAmount = jb.tank.readFromNBT(accessor.getNBTData()).getFluidAmount();
+		//EFLog.error(jb.tank.readFromNBT(accessor.getNBTData()).getFluid());
 		int capacity = jb.tank.getCapacity();
-		EFLog.error(fluid + ", " + fluidAmount + "/" + capacity);
+		//EFLog.error(fluid + ", " + fluidAmount + "/" + capacity);
 		if(jb.tank.getFluid() == null){
 			currenttip.add("Fluid: None");
 			currenttip.add("Amount: 0/" + String.valueOf(capacity) + " mB");			
