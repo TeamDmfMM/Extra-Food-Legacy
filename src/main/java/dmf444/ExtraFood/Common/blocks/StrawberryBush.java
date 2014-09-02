@@ -166,15 +166,17 @@ public class StrawberryBush extends Block implements IGrowable {
 				return true;
 		} else if(player.inventory.hasItem(ItemLoader.strawberry)){
 			this.getItemStacks(player);
-			for(int i = 0; i <= SlotsWithItem.size(); ++i){
+			if (SlotsWithItem.isEmpty()){
+				return false;
+			}
+			for(int i = 0; i <= SlotsWithItem.size() - 1; ++i){
 				//ItemStack item = player.inventory.getStackInSlot(SlotsWithItem.get(i));
-				EFLog.error(SlotsWithItem.get(i));
+				//EFLog.error(SlotsWithItem.get(i));
 				if(player.inventory.getStackInSlot(SlotsWithItem.get(i)).stackSize < 32 && player.inventory.getStackInSlot(SlotsWithItem.get(i)).stackSize + numberIn <= 32){
 					return true;
-				} else {
-					return false;
 				}		//player.inventory.addItemStackToInventory(new ItemStack(ItemLoader.strawberry, 2));
 			}
+			return false;
 		}
 		return true;
 	}
@@ -187,8 +189,19 @@ public class StrawberryBush extends Block implements IGrowable {
 		}
 	}
 
-	private void placeInInv(EntityPlayer player) {
-		player.inventory.addItemStackToInventory(new ItemStack(ItemLoader.strawberry, 4));	
+	//private void placeInInv(EntityPlayer player) {
+	//	player.inventory.addItemStackToInventory(new ItemStack(ItemLoader.strawberry, 4));	
+	//}
+	public void onNeighborBlockChange(World world, int x, int y, int z, Block block){
+		boolean drop = false; //False don't drop. True break
+		
+		if(!world.isSideSolid(x, y - 1, z, ForgeDirection.UP)){
+			drop = true;
+		}
+		if(drop == true){
+			this.dropBlockAsItem(world, x, y, z, 0, 0);
+			world.setBlockToAir(x, y, z);
+		}
 	}
 	
 	 @SideOnly(Side.CLIENT)

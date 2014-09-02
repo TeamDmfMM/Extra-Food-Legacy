@@ -1,12 +1,12 @@
 package dmf444.ExtraFood.Common;
 
 public class CommonProxy {
-	public void registerRenderers(){
-		
-	}
+	public void registerRenderers(){//NOOOP
+		}
 
-	public void registerKeybinds() {
-		// TODO Auto-generated method stub
+	public void registerKeybinds() {// NOOP
+	}
+	public void intermodComm(){
 		
 	}
 }

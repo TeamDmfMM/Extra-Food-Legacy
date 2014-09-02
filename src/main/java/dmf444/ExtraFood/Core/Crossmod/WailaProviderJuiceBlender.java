@@ -8,11 +8,13 @@ import dmf444.ExtraFood.Common.blocks.container.ContainerJuiceBlender;
 import dmf444.ExtraFood.Common.blocks.tileentity.TileEntityJuiceBlender;
 import dmf444.ExtraFood.Core.PacketJBTank;
 import dmf444.ExtraFood.util.EFLog;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.World;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 import mcp.mobius.waila.api.IWailaConfigHandler;
@@ -26,13 +28,14 @@ public class WailaProviderJuiceBlender implements IWailaDataProvider{
 	@Override
 	public List<String> getWailaBody(ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
 		TileEntityJuiceBlender jb = (TileEntityJuiceBlender) accessor.getTileEntity();
-		
-		String fluid = jb.tank.readFromNBT(accessor.getNBTData()).getFluid().getFluid().getLocalizedName(jb.tank.getFluid());
-		int fluidAmount = jb.tank.readFromNBT(accessor.getNBTData()).getFluidAmount();
+		World w = Minecraft.getMinecraft().theWorld;
+		TileEntityJuiceBlender lmnop = (TileEntityJuiceBlender) w.getTileEntity(jb.xCoord, jb.yCoord, jb.zCoord);
+		String fluid = lmnop.tank.readFromNBT(accessor.getNBTData()).getFluid().getFluid().getLocalizedName(jb.tank.getFluid());
+		int fluidAmount = lmnop.tank.readFromNBT(accessor.getNBTData()).getFluidAmount();
 		//EFLog.error(jb.tank.readFromNBT(accessor.getNBTData()).getFluid());
-		int capacity = jb.tank.getCapacity();
-		//EFLog.error(fluid + ", " + fluidAmount + "/" + capacity);
-		if(jb.tank.getFluid() == null){
+		int capacity = lmnop.tank.getCapacity();
+		EFLog.error(fluid + ", " + fluidAmount + "/" + capacity);
+		if(lmnop.tank.getFluidAmount() == 0){
 			currenttip.add("Fluid: None");
 			currenttip.add("Amount: 0/" + String.valueOf(capacity) + " mB");			
 		} else {

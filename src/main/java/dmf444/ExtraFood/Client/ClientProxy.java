@@ -33,8 +33,12 @@ public class ClientProxy extends CommonProxy{
 		bushrender = new BerryRender();
 		RenderingRegistry.registerBlockHandler(bushrender);
 		
-		FMLInterModComms.sendMessage("Waila", "register", WailaConfig.class.getName() + ".callbackRegister");
 		
+		
+	}
+	@Override
+	public void intermodComm(){
+		FMLInterModComms.sendMessage("Waila", "register", WailaConfig.class.getName() + ".callbackRegister");
 	}
 }
 

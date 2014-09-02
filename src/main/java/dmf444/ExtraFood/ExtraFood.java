@@ -104,7 +104,7 @@ public class ExtraFood {
 		CraftingRecipies.furnacing();
 		
 		proxy.registerKeybinds();
-		//FMLInterModComms.sendMessage("Waila", "register", WailaConfig.class.getName() + ".callbackRegister");
+		proxy.intermodComm();
 	}
 	
 	@EventHandler
