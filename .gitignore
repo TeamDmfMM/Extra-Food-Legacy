@@ -3,7 +3,7 @@
 /build
 /.settings
 /eclipse
-/gradle
+/.gradle
 *.bat
 !gradlew.bat
 *.txt
