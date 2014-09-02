@@ -5,7 +5,7 @@ ExtraFood1.7
  everytime I push, a nice ferryman will compile the code for you, and allow you to get into all the
  beta-ness of beta builds.
  
- https://drone.io/github.com/dmf444/ExtraFood1.7/status.png
+[![Build Status](https://drone.io/github.com/dmf444/ExtraFood1.7/status.png)](https://drone.io/github.com/dmf444/ExtraFood1.7/latest)
  
  HAVE FUN
  
