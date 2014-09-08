@@ -42,9 +42,11 @@ minecraft {
     replace "@VERSION@", "${config.mod_version}.${System.getenv("BUILD_NUMBER") ?: 0}"
     
 }
-
+if(${System.getenv("DRONE") == true){
 version = "${config.minecraft_version}-${config.mod_version}.${System.getenv("BUILD_ID") ?: config.build_number}"
-
+} else {
+version = "${config.minecraft_version}-${config.mod_version}.${System.getenv("BUILD_NUMBER") ?: config.build_number}"
+}
 repositories { 
   mavenCentral() 
     maven { 
