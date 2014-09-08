@@ -43,7 +43,7 @@ minecraft {
     
 }
 
-version = "${config.minecraft_version}-${config.mod_version}.${config.build_number}"
+version = "${config.minecraft_version}-${config.mod_version}.${System.getenv("BUILD_ID") ?: config.build_number}"
 
 repositories { 
   mavenCentral() 
