@@ -42,7 +42,7 @@ minecraft {
     replace "@VERSION@", "${config.mod_version}.${System.getenv("BUILD_NUMBER") ?: 0}"
     
 }
-meh = ${System.getenv("DRONE")}
+meh = ${System.getenv("VISIBLE")}
 if(meh == true){
 version = "${config.minecraft_version}-${config.mod_version}.${System.getenv("BUILD_ID") ?: config.build_number}"
 } else {
