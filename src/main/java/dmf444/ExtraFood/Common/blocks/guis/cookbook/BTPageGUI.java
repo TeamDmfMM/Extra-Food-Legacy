@@ -1,4 +1,6 @@
-package dmf444.ExtraFood.Common.blocks.guis;
+package dmf444.ExtraFood.Common.blocks.guis.cookbook;
+
+
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -7,9 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
 import javax.print.attribute.standard.Sides;
-
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
@@ -22,23 +22,21 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
 
-
 import org.lwjgl.opengl.GL11;
-
 
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.relauncher.Side;
 import dmf444.ExtraFood.ExtraFood;
 import dmf444.ExtraFood.Common.RecipeHandler.CookbookButtonLoader;
+import dmf444.ExtraFood.Common.blocks.guis.ButtonBackGUI;
+import dmf444.ExtraFood.Common.blocks.guis.ButtonNextPageGUI;
+import dmf444.ExtraFood.Common.blocks.guis.CookBookGUI;
 import dmf444.ExtraFood.Core.lib.GuiLib;
 import dmf444.ExtraFood.Core.lib.ItemLib;
 import dmf444.ExtraFood.util.EFLog;
 
-
 public class BTPageGUI extends GuiScreen {
-
-
 
 
 String pageTextLeft;
@@ -52,17 +50,14 @@ GuiButton backpage;
 GuiButton backGUI;
 boolean Morethanone;
 int pagesAllowed;
-int p3 = 9999;
 
-ArrayList<Object> ris;
+ArrayList<CBElement> ris;
+int p3 = 9999;
 ArrayList<ArrayList<Object>> p3r = new ArrayList<ArrayList<Object>>();
 
 
 
-
-
  public BTPageGUI(String pagename, Boolean multipg, int multiplePG) {
-
 
 	 //This will be used to call the name of the page from the .lang file
 	pageTextLeft = StatCollector.translateToLocal("cookbookL." + pagename);
@@ -70,19 +65,15 @@ ArrayList<ArrayList<Object>> p3r = new ArrayList<ArrayList<Object>>();
 	this.items = ExtraFood.crafterPage.getArray(pagename);
 	this.irender = new RenderItem();
 	pagen = pagename;
-
-
-	ris = (ArrayList<Object>) this.digestString(StatCollector.translateToLocal("cookbook." + pagename));
-	this.pagesAllowed = multiplePG; //CookbookButtonLoader.bookButton.NumOfPages(pagename);
-	this.Morethanone = multipg; //(CookbookButtonLoader.bookButton.NumOfPages(pagename) > 1 ? true : false);
-
-
+	
+	ris = (ArrayList<CBElement>) this.digestString(StatCollector.translateToLocal("cookbook." + pagename));
+	this.pagesAllowed = CookbookButtonLoader.bookButton.NumOfPages(pagename);
+	this.Morethanone = (CookbookButtonLoader.bookButton.NumOfPages(pagename) > 1 ? true : false);
+	
 }
 
-
  public void drawScreen(int par1, int par2, float par3) {
-
-
+	 
 	this.drawDefaultBackground();	
 	this.drawBookBackground();
 /*	this.drawTextLeftSide();
@@ -97,23 +88,21 @@ ArrayList<ArrayList<Object>> p3r = new ArrayList<ArrayList<Object>>();
  
 /* protected void drawTextRightSide() {
 	 //parts = string.split("-")
-     int i = (this.width - CookBookGUI.getAchievementsPaneWidth()) / 2;
+     int i = (this.width - CookBookGUI.achievementsPaneWidth) / 2;
      int j = (this.height - CookBookGUI.achievementsPaneHeight) / 2;
      this.fontRendererObj.setUnicodeFlag(true);
 	 this.fontRendererObj.drawSplitString(pageTextRight, i + 140, j + 19, 93, 0x0000000);
      this.fontRendererObj.setUnicodeFlag(false);
 	 }
 
-
  protected void drawTextLeftSide() {
 	 //parts = string.split("-")
-     int i = (this.width - CookBookGUI.getAchievementsPaneWidth()) / 2;
+     int i = (this.width - CookBookGUI.achievementsPaneWidth) / 2;
      int j = (this.height - CookBookGUI.achievementsPaneHeight) / 2;
      this.fontRendererObj.setUnicodeFlag(true);
 	 this.fontRendererObj.drawSplitString(pageTextLeft, i + 28, j + 19, 93, 0x0000000);
      this.fontRendererObj.setUnicodeFlag(false);
 	 }*/
-
 
  public void initGui(){
      int i = (this.width - CookBookGUI.getAchievementsPaneWidth()) / 2;
@@ -127,40 +116,37 @@ ArrayList<ArrayList<Object>> p3r = new ArrayList<ArrayList<Object>>();
      }
  }
 
-
 protected void drawBookBackground() {
 	//I decided to use the achivement size, because it kinda just worked!
 	int i1 = (this.width - CookBookGUI.getAchievementsPaneWidth()) / 2;
     int j1 = (this.height - CookBookGUI.achievementsPaneHeight) / 2;
     
     int k1 = j1 - 32;
-
-
+	
     GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
 	this.mc.getTextureManager().bindTexture(GuiLib.CBopen);
     this.drawTexturedModalRect(i1, j1, 0, 0, CookBookGUI.getAchievementsPaneWidth(), CookBookGUI.achievementsPaneHeight + 50);
     
  }
 
-
 public int drawElementTextBlock(ArrayList<Object> args, int x, int y, int flag){
-	//System.out.println(args.size());
+	System.out.println(args.size());
 	 this.fontRendererObj.setUnicodeFlag(true);
-	//System.out.println("Magical Calling");
+	System.out.println("Magical Calling");
 	 int i = (this.width - CookBookGUI.getAchievementsPaneWidth()) / 2;
 	    int j = (this.height - CookBookGUI.achievementsPaneHeight) / 2;
    // Check height of block
     int w = 93;
     int h = this.fontRendererObj.splitStringWidth((String) args.get(0), w);
     if (h + y > j + 155){
-    	//System.out.println("render" + args.get(0));
+    	System.out.println("render" + args.get(0));
     	// do splitting stuff
     	this.fontRendererObj.setUnicodeFlag(true);
     	String p1 = (String) args.get(0);
     	
     	StringBuilder p2 = new StringBuilder();
     	int ii = p1.length() - 2;
-    	//EFLog.fatal(p1 + "test + " + p2);
+    	EFLog.fatal(p1 + "test + " + p2);
     	while (h + y > j + 155){
     		
     		p2.insert(0, p1.charAt(ii));
@@ -179,19 +165,18 @@ public int drawElementTextBlock(ArrayList<Object> args, int x, int y, int flag){
     		else {
     			String p2r = p2.substring(1, p2.length());
     			this.fontRendererObj.drawSplitString(p2r, x, y, 93, 0x0000000);
+    			this.fontRendererObj.setUnicodeFlag(false);
     			return -h;
     		}
     	}
-
 
     	
     			
     
     else {
-    	//System.out.println("render" + args.get(0));
+    	System.out.println("render" + args.get(0));
     	this.fontRendererObj.drawSplitString((String) args.get(0), x, y, 93, 0x0000000);
-    	this.fontRendererObj.setUnicodeFlag(false);
-    	return -h;
+    	return h;
     }
     
     
@@ -200,7 +185,7 @@ public int drawElementTextBlock(ArrayList<Object> args, int x, int y, int flag){
 public int drawElementImage(ArrayList<Object> args, int x, int y, int flag){
 	int i = (this.width - CookBookGUI.getAchievementsPaneWidth()) / 2;
     int j = (this.height - CookBookGUI.achievementsPaneHeight) / 2;
-    //System.out.println(y + 0 + ":" + j);
+    System.out.println(y + 0 + ":" + j);
 	if (y + (int)args.get(2) < j  + 155){
 		ResourceLocation image = (ResourceLocation) args.get(0);
 		int w = (int) args.get(1);
@@ -208,24 +193,25 @@ public int drawElementImage(ArrayList<Object> args, int x, int y, int flag){
 		int xx = (int) args.get(3);
 		int yy = (int) args.get(4);
 		this.mc.renderEngine.bindTexture(image);
+		GL11.glDisable(GL11.GL_LIGHTING);
 		this.drawTexturedModalRect(x, y, xx, yy, w, h);
+		GL11.glEnable(GL11.GL_LIGHTING);
 		return -h;
 	}
 	else {
 		return 1;
 	}
-
-
+	
 }
 public int drawElementCrafting(ArrayList<Object> args, int x, int y, int flag){
 	int j1 = (this.height - CookBookGUI.achievementsPaneHeight) / 2;
 	int i1 = (this.width - CookBookGUI.getAchievementsPaneWidth()) / 2;
-	//EFLog.fatal("y : " + y + " j1 : " + j1 + " check : " +(j1 +19));
-	if ((y > j1 + 19)){//args.size() > 1
+	EFLog.fatal("y : " + y + " j1 : " + j1 + " check : " +(j1 +19));
+	if (args.size() > 1){
 		return 1;
 	}
-	int x1 = x + 22;
-    int y1 = y + 58;
+	int x1 = x + 20;
+    int y1 = y + 50;
     this.mc.getTextureManager().bindTexture(GuiLib.CBcraftgrid);
     GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
     GL11.glEnable(GL11.GL_BLEND);
@@ -234,59 +220,56 @@ public int drawElementCrafting(ArrayList<Object> args, int x, int y, int flag){
 	ItemStack[] items = ExtraFood.instance.crafterPage.getArray((String) args.get(0).toString());
 	for (ItemStack i : ExtraFood.instance.crafterPage.getArray((String) args.get(0).toString())){
 		if (i != null){
-
-
+			
 				/* Items 0-2 Render in top row
 				 * Items 3-5 Render in middle row
 				 * Items 6-8 Render in final row
 				*/
-
-
-
-
+		
+				
 			if (items[0] != null){				
 		    GL11.glDisable(GL11.GL_LIGHTING);					
-			this.irender.renderItemIntoGUI(this.fontRendererObj, this.mc.getTextureManager(), items[0], x1 - 3, y1 + 1);
+			this.irender.renderItemIntoGUI(this.fontRendererObj, this.mc.getTextureManager(), items[0], x1 - 3, y1);
 			GL11.glEnable(GL11.GL_LIGHTING);			
 			}	
 			if (items[1] != null){
 			    GL11.glDisable(GL11.GL_LIGHTING);	
-			this.irender.renderItemIntoGUI(this.fontRendererObj, this.mc.getTextureManager(), items[1], x1 + 18, y1 + 1);
+			this.irender.renderItemIntoGUI(this.fontRendererObj, this.mc.getTextureManager(), items[1], x1 + 18, y1);
 				GL11.glEnable(GL11.GL_LIGHTING);	
 			}
 			if (items[2] != null){
 			    GL11.glDisable(GL11.GL_LIGHTING);	
-			this.irender.renderItemIntoGUI(this.fontRendererObj, this.mc.getTextureManager(), items[2], x1 + 40, y1 + 1);
+			this.irender.renderItemIntoGUI(this.fontRendererObj, this.mc.getTextureManager(), items[2], x1 + 40, y1);
 			GL11.glEnable(GL11.GL_LIGHTING);	
 			}
 			if (items[3] != null){
 			    GL11.glDisable(GL11.GL_LIGHTING);	
-			this.irender.renderItemIntoGUI(this.fontRendererObj, this.mc.getTextureManager(), items[3], x1 - 3, y1 + 22);
+			this.irender.renderItemIntoGUI(this.fontRendererObj, this.mc.getTextureManager(), items[3], x1 - 3, y1 + 21);
 			GL11.glEnable(GL11.GL_LIGHTING);	
 			}
 			if (items[4] != null){
 			    GL11.glDisable(GL11.GL_LIGHTING);	
-			this.irender.renderItemIntoGUI(this.fontRendererObj, this.mc.getTextureManager(), items[4], x1 + 18, y1 + 22);
+			this.irender.renderItemIntoGUI(this.fontRendererObj, this.mc.getTextureManager(), items[4], x1 + 18, y1 + 21);
 			GL11.glEnable(GL11.GL_LIGHTING);	
 			}
 			if (items[5] != null){
 			    GL11.glDisable(GL11.GL_LIGHTING);	
-			this.irender.renderItemIntoGUI(this.fontRendererObj, this.mc.getTextureManager(), items[5], x1 + 40, y1 + 22);
+			this.irender.renderItemIntoGUI(this.fontRendererObj, this.mc.getTextureManager(), items[5], x1 + 40, y1 + 21);
 			GL11.glEnable(GL11.GL_LIGHTING);	
 			}
 			if (items[6] != null){
 			    GL11.glDisable(GL11.GL_LIGHTING);	
-			this.irender.renderItemIntoGUI(this.fontRendererObj, this.mc.getTextureManager(), items[6], x1 - 3, y1 + 44);
+			this.irender.renderItemIntoGUI(this.fontRendererObj, this.mc.getTextureManager(), items[6], x1 - 3, y1 + 43);
 			GL11.glEnable(GL11.GL_LIGHTING);	
 			}
 			if (items[7] != null){
 			    GL11.glDisable(GL11.GL_LIGHTING);	
-			this.irender.renderItemIntoGUI(this.fontRendererObj, this.mc.getTextureManager(), items[7], x1 + 18, y1 + 44);
+			this.irender.renderItemIntoGUI(this.fontRendererObj, this.mc.getTextureManager(), items[7], x1 + 18, y1 + 43);
 			GL11.glEnable(GL11.GL_LIGHTING);	
 			}
 			if (items[8] != null){
 			    GL11.glDisable(GL11.GL_LIGHTING);	
-			this.irender.renderItemIntoGUI(this.fontRendererObj, this.mc.getTextureManager(), items[8], x1 + 40, y1 + 44);
+			this.irender.renderItemIntoGUI(this.fontRendererObj, this.mc.getTextureManager(), items[8], x1 + 40, y1 + 43);
 			GL11.glEnable(GL11.GL_LIGHTING);	
 			}
 			   //Itemstack 9 is the output slot
@@ -297,17 +280,13 @@ public int drawElementCrafting(ArrayList<Object> args, int x, int y, int flag){
 			GL11.glEnable(GL11.GL_LIGHTING);	
 			}
 
-
 			GL11.glEnable(GL11.GL_LIGHTING);
 		}
-
-
-
+		
 
 	}
 	return -150;
 }
-
 
 public int drawElementHungerStats(ArrayList<Object> args, int x, int y, int flag){
 	int i1 = (this.width - CookBookGUI.getAchievementsPaneWidth()) / 2;
@@ -320,41 +299,32 @@ public int drawElementHungerStats(ArrayList<Object> args, int x, int y, int flag
 		GL11.glDisable(GL11.GL_LIGHTING);
 		GL11.glEnable(GL11.GL_BLEND);
 		GL11.glColor4f(1f, 1f, 1f, 1f);
-
-
-		this.mc.renderEngine.bindTexture(new ResourceLocation("extrafood:textures/gui/cookbookimages/BookIcons.png"));
+		
+		this.mc.renderEngine.bindTexture(new ResourceLocation("extrafood:textures/gui/cookbookimages/icon/BookIcons.png"));
 		this.drawTexturedModalRect(x + 3, y + 30, 0, 0, 12, 24);
 		this.drawTexturedModalRect(x + 3, y + 50, 12, 0, 12, 24);
 		GL11.glPopMatrix();
 		GL11.glEnable(GL11.GL_LIGHTING);
 		GL11.glDisable(GL11.GL_BLEND);
-		//FontRenderer fontr = this.fontRendererObj;
-		fontRendererObj.setUnicodeFlag(true);
-		fontRendererObj.drawStringWithShadow("Hunger Stats:", x + 19, y, 0x3333FF);
-		fontRendererObj.setUnicodeFlag(false);
+		FontRenderer fontr = this.fontRendererObj;
+		fontr.setUnicodeFlag(true);
+		fontr.drawStringWithShadow("Hunger Stats:", x + 19, y, 0x3333FF);
 		if (args.size() > 2){
-			if(args.get(2).toString().length() > 5){
-				if(args.get(2).toString().length() > 12){
-				fontRendererObj.drawString((String) args.get(2), x + (fontRendererObj.getStringWidth((String) args.get(2)) / 5 -4), y + 15, 0x0000000);
-				} else {
-				fontRendererObj.drawString((String) args.get(2), x + (fontRendererObj.getStringWidth((String) args.get(2)) / 5), y + 15, 0x0000000);
-				}
-			} else {
-				fontRendererObj.drawString((String) args.get(2), x + (fontRendererObj.getStringWidth((String) args.get(2)) / 1), y + 15, 0x0000000);
-			}
+		fontr.setUnicodeFlag(false);
+		fontr.drawString((String) args.get(2), x + (fontr.getStringWidth((String) args.get(2)) / 2), y + 15, 0x0000000);
+		fontr.setUnicodeFlag(true);
 		}
-		fontRendererObj.drawString(String.valueOf(args.get(0)), x + 16 + 50, y + 32, 0x0000000);
-		fontRendererObj.drawString(String.valueOf(args.get(1)), x + 16 + 50, y + 52, 0x0000000);
-		
+		fontr.drawString(String.valueOf(args.get(0)), x + 16 + 50, y + 32, 0x0000000);
+		fontr.drawString(String.valueOf(args.get(1)), x + 16 + 50, y + 52, 0x0000000);
+		fontr.setUnicodeFlag(false);
 		return -150;
 	}
 }
 
-
  public void actionPerformed(GuiButton button){
 	if (button.id == 0){
 		if(page < pagesAllowed){
-			page+= 2;
+		page+= 2;
 		//if (StatCollector.translateToLocal("cookbook." + pagen + page) != "cookbook." + pagen + page){
 		this.pageTextLeft = StatCollector.translateToLocal(StatCollector.translateToLocal("cookbook." + pagen + page));
 		}
@@ -373,73 +343,61 @@ public int drawElementHungerStats(ArrayList<Object> args, int x, int y, int flag
 		}
 	}	
 	if (button.id == 2){
-
 		this.fontRendererObj.setUnicodeFlag(false);
 		this.mc.displayGuiScreen(new CookBookGUI());
 
-
 	}
-
 
 	}
  // Begin new render code
  // This will fuse both pages together by parsing strings and rendering stuff!
  // YAY!
- public List<Object> digestString(String in){
-	 List<Object> instruct = new ArrayList<Object>();
+ public List<CBElement> digestString(String in){
+	 List<CBElement> instruct = new ArrayList<CBElement>();
 	 boolean typetest = false;
 	 String type = "";
-
-
+	 
 	 int argpos = 0;
-
-
+	 
 	 String currword = "";
-
-
+	 
 	 ArrayList<Object> typeargs = new ArrayList<Object>();
 	 for (char star : in.toCharArray()){
-		 //System.err.println(star);
+		 System.err.println(star);
 		 if (star == '<'){
 			 typetest = true;
-			 //System.out.println("t" + currword);
+			 System.out.println("t" + currword);
 			 continue;
 		 }
 		 if (star == '|' && typetest == true){
 			 typetest = false;
-			 //System.out.println("t" + currword);
+			 System.out.println("t" + currword);
 			 if (this.types().contains(currword)){
-				 //System.out.println(currword.trim());
+				 System.out.println(currword.trim());
 				 type = currword;
 				 currword = "";
 			 }
-
-
+			 
 			 continue;
 		 }
-
-
+		 
 		 else if (star == '|' && typetest == false){
-			 //System.err.println("argpos (for dumudums): " + argpos);
+			 System.err.println("argpos (for dumudums): " + argpos);
 			 switch (argpos){
 			 case 0:
 				 typeargs.add(Integer.parseInt(currword));
 				 break;
-
-
+			 
 			 case 1:
 				 typeargs.add(Integer.parseInt(currword));
 				 break;
-
-
+			 
 			 case 2:
 				 typeargs.add(Integer.parseInt(currword));
 				 break;
-
-
+			 
 			 case 3:
-
-
+				 
 				 if (type.equals( "TextBlock") || type.equals("Crafting")){
 					 typeargs.add(currword);
 				 }
@@ -458,12 +416,12 @@ public int drawElementHungerStats(ArrayList<Object> args, int x, int y, int flag
 					 typeargs.add(Float.parseFloat(currword));
 				 }
 				 break;
-
-
+			 
 			 case 5:
 				 if (type.equals("Image")){
 					 typeargs.add(Integer.parseInt(currword));
-				 } else if (type.equals("HungerStats")){
+					 }
+				 else if (type.equals("HungerStats")){
 					 typeargs.add(currword);
 				 }
 				 break;
@@ -479,27 +437,22 @@ public int drawElementHungerStats(ArrayList<Object> args, int x, int y, int flag
 			 continue;
 		 }
 		 if (star == '>'){
-
-
+			 
 			 switch (argpos){
 			 case 0:
 				 typeargs.add(Integer.parseInt(currword));
 				 break;
-
-
+			 
 			 case 1:
 				 typeargs.add(Integer.parseInt(currword));
 				 break;
-
-
+			 
 			 case 2:
 				 typeargs.add(Integer.parseInt(currword));
 				 break;
-
-
+			 
 			 case 3:
-
-
+				 
 				 if (type.equals( "TextBlock") || type.equals("Crafting")){
 					 typeargs.add(currword);
 				 }
@@ -518,12 +471,11 @@ public int drawElementHungerStats(ArrayList<Object> args, int x, int y, int flag
 					 typeargs.add(Float.parseFloat(currword));
 				 }
 				 break;
-
-
 			 case 5:
 				 if (type.equals("Image")){
 					 typeargs.add(Integer.parseInt(currword));
-				 } else if (type.equals("HungerStats")){
+					 }
+				 else if (type.equals("HungerStats")){
 					 typeargs.add(currword);
 				 }
 				 break;
@@ -533,26 +485,22 @@ public int drawElementHungerStats(ArrayList<Object> args, int x, int y, int flag
 			 case 7:
 				 typeargs.add(Integer.parseInt(currword));
 				 break;
-
-
+			 
 			 }
 			 currword = "";
 			 argpos = 0;
-			 instruct.add(type);
-			 instruct.add(typeargs);
+			 instruct.add(this.packElement(type, typeargs));
 			 typeargs = new ArrayList<Object>();
 			 continue;
 		 }
 			 currword += star;
-			 //System.out.println(currword);
+			 System.out.println(currword);
 			 continue;
-
-
-
-
+		 
+	
 	 }
 	 for (Object o : instruct){
-		 //System.out.println(o);
+		 System.out.println(o);
 	 }
 	 return instruct;
  }
@@ -582,7 +530,8 @@ public int drawElementHungerStats(ArrayList<Object> args, int x, int y, int flag
 			 return this.getClass().getMethod(mname, ArrayList.class, int.class, int.class, int.class);
 		 }
 	} catch (NoSuchMethodException | SecurityException e) {
-		//e.printStackTrace();
+		// TODO Auto-generated catch block
+		e.printStackTrace();
 	}
 	return null;
  }
@@ -590,7 +539,7 @@ public int drawElementHungerStats(ArrayList<Object> args, int x, int y, int flag
  public void drawold(){
 	 int i = (this.width - CookBookGUI.getAchievementsPaneWidth()) / 2;
      int j = (this.height - CookBookGUI.achievementsPaneHeight) / 2;
-     //EFLog.fatal("fatality = " + j);
+     EFLog.fatal("fatality = " + j);
      // Attempt 2 :(
      // Define "cursor" position
      int renderpage = page;
@@ -700,7 +649,144 @@ public int drawElementHungerStats(ArrayList<Object> args, int x, int y, int flag
  public void draw(){
 	 int i = (this.width - CookBookGUI.getAchievementsPaneWidth()) / 2;
      int j = (this.height - CookBookGUI.achievementsPaneHeight) / 2;
-     //EFLog.fatal("fatality = " + j);
+	 
+	 
+	 // Attempt to figure out what goes where, and map it out to a simple layout
+	 ArrayList<CBElement> renderlist = new ArrayList<CBElement>();
+	 for (CBElement prt : ris){
+		 if (!this.checkPage(prt, page)){
+			 continue;
+		 }
+		 renderlist.add(prt);
+	 }
+	 int page_1_x = i + 28;
+	 int page_1_y = j + 19;
+	 int page_2_x = i + 140;
+	 int page_2_y = j + 19;
+	 
+	 
+	 int render_at_x = 0;
+	 
+	 int render_at_y = 0;
+	 boolean use_above = false;
+	 
+	 Method call_to_render;
+	 
+	 for (CBElement rendering : renderlist){
+		 /* Step 1
+		  * Figure out where to render
+		  * the object by either using
+		  * the provided co-ordinates
+		  * or by using the variables
+		  * set up top.
+		  */
+		 if (rendering.x == -1){
+			 use_above = true;
+		 }
+		 else {
+			 use_above = false;
+		 }
+		 
+		 switch (rendering.page % 2){
+		 case 0:
+			 if (use_above == true){
+				 render_at_x = page_1_x;
+				 render_at_y = page_1_y;
+			 }
+			 else {
+				 render_at_x = i + rendering.x;
+				 render_at_y = j + rendering.y;
+			 }
+			 break;
+		 case 1:
+			 if (use_above == true){
+				 render_at_x = page_2_x;
+				 render_at_y = page_2_y;
+			 }
+			 else {
+				 render_at_x = i + 140 + rendering.x;
+				 render_at_y = j + rendering.y;
+			 }
+			 break;
+		 }
+		 /*
+		  * Step 2
+		  * Actually render the thing at given co-ords
+		  * by calling the associated function. As dual-
+		  * page stretching is now obsolete (due to many
+		  * complications) flag is always 0.
+		  */
+		 call_to_render = this.getFunctionForType(rendering.type);
+		 try {
+			 int height_to_add = (int) call_to_render.invoke(this, rendering.args, render_at_x, render_at_y, 0);
+			 if (height_to_add > 0){
+				 switch (rendering.page % 2){
+				 case 0:
+					 page_1_y += height_to_add;
+					 break;
+				 case 1:
+					 page_2_y += height_to_add;
+				 }
+				 
+			 }
+		 }
+		 catch (Exception e){
+			 
+		 }
+		 
+	 }
+	 
+ }
+ 
+ // All of these are helper functions,
+ // dont use them.
+ 
+ @SuppressWarnings("unchecked")
+private CBElement packElement(String t, ArrayList<Object> argst){
+	 CBElement ret = new CBElement();
+	 ArrayList<Object> args = (ArrayList<Object>) argst.clone();
+	 ret.type = t;
+	 ret.x = (int) args.get(0);
+	 ret.y = (int) args.get(1);
+	 ret.page = (int) args.get(2);
+	 args.remove(0);
+	 args.remove(0);
+	 args.remove(0);
+	 ret.args = args;
+	 return ret;
+	 
+ }
+ 
+ private boolean checkPage(CBElement element, int page){
+	 if (element.page == page || element.page == page+1){
+		 return true;
+	 }
+	 else {
+		 return false;
+	 }
+ }
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ public void drawl(){
+	 int i = (this.width - CookBookGUI.getAchievementsPaneWidth()) / 2;
+     int j = (this.height - CookBookGUI.achievementsPaneHeight) / 2;
+     EFLog.fatal("fatality = " + j);
      // Attempt 2 :(
      // Define "cursor" position
      int renderpage = page;
@@ -735,8 +821,8 @@ public int drawElementHungerStats(ArrayList<Object> args, int x, int y, int flag
      // Ok, now iterate over all of the pairs and render them based on stuff!
      for (ArrayList<Object> pair1 : pairs){
     	 // Get type
-    	 //System.err.println("at pair thingie" + pair1);
-    	 //EFLog.info("Here");
+    	 System.err.println("at pair thingie" + pair1);
+    	 EFLog.info("Here");
     	 String typename = (String) pair1.get(0);
     	 // Extract arguments
     	 ArrayList<Object> args = new ArrayList<Object>();
@@ -744,7 +830,7 @@ public int drawElementHungerStats(ArrayList<Object> args, int x, int y, int flag
     	 drawFunc = this.getFunctionForType(typename);
     	 // Process the xpos and ypos, we might need to calculate them!
     	 if (!(((int)args.get(2) < ((this.page + 1) * 2)))){
-    		 //System.out.println("breakin free!");
+    		 System.out.println("breakin free!");
     		 continue;
     	 }
     	 
@@ -770,7 +856,7 @@ public int drawElementHungerStats(ArrayList<Object> args, int x, int y, int flag
     	 // Remove the from the list of arguents (so I can pass them directly to the function)
     	 args.remove(0);
     	 args.remove(0);
-    	 //EFLog.error("Here: xpos = " + x + "ypos = " + y);
+    	 EFLog.error("Here: xpos = " + x + "ypos = " + y);
     	 // Process pages
     	 if (((int)args.get(0) < renderpage || (int)args.get(0) > renderpage + 1)){
 //    		 ArrayList<Object> ttargs = new ArrayList<Object>();
@@ -788,7 +874,7 @@ public int drawElementHungerStats(ArrayList<Object> args, int x, int y, int flag
     		 // Process page change
     		 renderpage++;
     		 xpos = (renderpage % 2 == 0 ? i + 28 : i + 140);
-    		 //FMLLog.info("This is extrafood speaking, not fml. Anyways the data i eany is: " + xpos, xpos);
+    		 FMLLog.info("This is extrafood speaking, not fml. Anyways the data i eany is: " + xpos, xpos);
     	     ypos = j + 19;
     	     int i1 = 0;
     	     for (Method tocall : call){
@@ -807,13 +893,13 @@ public int drawElementHungerStats(ArrayList<Object> args, int x, int y, int flag
     	    	 tx = xpos + tx;
     	    	 ty = ypos + ty;
     	    	 ArrayList<Object> targs = (ArrayList<Object>) unpack.get(3);
-    	    	 //System.out.println("targ" + targs);
+    	    	 System.out.println("targ" + targs);
     	    	 try {
 					rval = (int) tocall.invoke(this, targs, tx, ty, 1);
 				} catch (IllegalAccessException | IllegalArgumentException
 						| InvocationTargetException e) {
 					// TODO Auto-generated catch block
-					//e.printStackTrace();
+					e.printStackTrace();
 					rval = 0;
 					
 				}
@@ -852,13 +938,13 @@ public int drawElementHungerStats(ArrayList<Object> args, int x, int y, int flag
     	 args.remove(0);
     	 int rval;
     	 try {
-    		//System.err.println("drawfunc is preparing to invoke STAND BY!!!");
+    		System.err.println("drawfunc is preparing to invoke STAND BY!!!");
 			rval = (int) drawFunc.invoke(this, args, x, y, 0);
-			//System.err.println("drawfunc has invoked sucessfully STAND BY!!!");
+			System.err.println("drawfunc has invoked sucessfully STAND BY!!!");
 		} catch (IllegalAccessException | IllegalArgumentException
 				| InvocationTargetException e) {
 			// TODO Auto-generated catch block
-			//e.printStackTrace();
+			e.printStackTrace();
 			rval = 0;
 		}
     	 if (rval > 0){
@@ -879,7 +965,7 @@ public int drawElementHungerStats(ArrayList<Object> args, int x, int y, int flag
     		 ypos = j + 19;
     		 renderpage++;
     		 xpos = (renderpage % 2 == 0 ? i + 28 : i + 140);
-    		 //FMLLog.info("This is extrafood speaking, not fml. Anyways the data i eany is: " + xpos, xpos);
+    		 FMLLog.info("This is extrafood speaking, not fml. Anyways the data i eany is: " + xpos, xpos);
     	     ypos = j + 19;
     	     int i1 = 0;
     	     for (Method tocall : call){
@@ -896,13 +982,13 @@ public int drawElementHungerStats(ArrayList<Object> args, int x, int y, int flag
     	    	 tx = xpos + tx;
     	    	 ty = ypos + ty;
     	    	 ArrayList<Object> targs = (ArrayList<Object>) unpack.get(3);
-    	    	 //System.out.println("targ" + targs);
+    	    	 System.out.println("targ" + targs);
     	    	 try {
 					rval = (int) tocall.invoke(this, targs, tx, ty, 1);
 				} catch (IllegalAccessException | IllegalArgumentException
 						| InvocationTargetException e) {
 					// TODO Auto-generated catch block
-					//e.printStackTrace();
+					e.printStackTrace();
 					rval = 0;
 					
 				}
@@ -935,31 +1021,34 @@ public int drawElementHungerStats(ArrayList<Object> args, int x, int y, int flag
      int i1 = 0;
      if (renderpage - 1 % 2 == 0){
      for (Method tocall : call){
+    	 
     	 int tx;
     	 int ty;
     	 @SuppressWarnings("unused")
-		 int pg;
+		int pg;
     	 int rval;
-    	 	ArrayList<Object> unpack = callargs.get(i1);
-    	 	tx = (int) unpack.get(0);
-    	 	ty = (int) unpack.get(1);
-    	 	pg = (int) unpack.get(2);
-    	 	tx = xpos + tx;
-    	 	ty = ypos + ty;
-    	 	ArrayList<Object> targs = (ArrayList<Object>) unpack.get(3);
-    	 	//System.out.println("targ" + targs);
-    	 	try {
-    	 		rval = (int) tocall.invoke(this, targs, tx, ty, 1);
-    	 	} catch (IllegalAccessException | IllegalArgumentException| InvocationTargetException e) {
-			//e.printStackTrace();
+    	 ArrayList<Object> unpack = callargs.get(i1);
+    	 tx = (int) unpack.get(0);
+    	 ty = (int) unpack.get(1);
+    	 pg = (int) unpack.get(2);
+    	 tx = xpos + tx;
+    	 ty = ypos + ty;
+    	 ArrayList<Object> targs = (ArrayList<Object>) unpack.get(3);
+    	 System.out.println("targ" + targs);
+    	 try {
+			rval = (int) tocall.invoke(this, targs, tx, ty, 1);
+		} catch (IllegalAccessException | IllegalArgumentException
+				| InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 			rval = 0;
-    	 	}
+			
+		}
     	 ypos += -rval;
     	 i1 += 1;
-     	}
-    }
-  }
+     }}}
      
+ 
  public int moreThanOne(){
 	 ArrayList<ArrayList<Object>> pairs = new ArrayList<ArrayList<Object>>();
      
@@ -985,7 +1074,6 @@ public int drawElementHungerStats(ArrayList<Object> args, int x, int y, int flag
      }
      return tp;
  }
- 
  @Override
  protected void keyTyped(char p_73869_1_, int p_73869_2_)
  {
@@ -996,11 +1084,5 @@ public int drawElementHungerStats(ArrayList<Object> args, int x, int y, int flag
          this.mc.setIngameFocus();
      }
  }
- @Override
- public boolean doesGuiPauseGame()
- {
-     return false;
- }
-
-  
 }
+

@@ -25,6 +25,7 @@ import dmf444.ExtraFood.Common.RecipeHandler.CookbookButtonLoader;
 import dmf444.ExtraFood.Common.RecipeHandler.CookbookTab;
 import dmf444.ExtraFood.Common.items.ItemLoader;
 import dmf444.ExtraFood.Core.lib.GuiLib;
+import dmf444.ExtraFood.Common.blocks.guis.cookbook.BTPageGUI;
 
 import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.GL11;
@@ -60,8 +61,8 @@ public class CookBookGUI extends GuiScreen {
 
     /** The right y coordinate of the achievement map */
     private static final int guiMapRight = maxDisplayRow * 24 - 77;
-    protected static int achievementsPaneWidth = 256;
-    protected static int achievementsPaneHeight = 202;
+    private static int achievementsPaneWidth = 256;
+    public static int achievementsPaneHeight = 202;
     
     private int isMouseButtonDown;
     /** The x position of the achievement map */
@@ -390,6 +391,12 @@ public class CookBookGUI extends GuiScreen {
     	double w = (1-Math.cos(z*Math.PI))/2;
     	return (int) (x*(1-w)+y*w);
     	
+    }
+    public static int getAchievementsPaneWidth(){
+    	return achievementsPaneWidth;
+    }
+    public static void setAchievementsPaneWidth(int achievementsPaneWidth) {
+    	CookBookGUI.achievementsPaneWidth = achievementsPaneWidth;
     }
     
 }
