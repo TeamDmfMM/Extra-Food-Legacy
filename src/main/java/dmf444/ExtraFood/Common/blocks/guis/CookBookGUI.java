@@ -184,7 +184,7 @@ public class CookBookGUI extends GuiScreen {
         {
             l = guiMapRight - 1;
         }
-
+        GL11.glColor4d(1, 1, 1, 1);
         int i1 = (this.width - this.achievementsPaneWidth) / 2;
         int j1 = (this.height - this.achievementsPaneHeight) / 2;
         int k1 = i1 + 16;
@@ -364,6 +364,7 @@ public class CookBookGUI extends GuiScreen {
         GL11.glHint(GL11.GL_LINE_SMOOTH_HINT, GL11.GL_NICEST); //3154, 4354
         GL11.glDisable(GL11.GL_LIGHTING);
         tess.startDrawing(3);
+        tess.setColorRGBA_F(1f, 1f, 1f, 1f);
     	for(double t=0.0;t<=1;t+=0.01)  
     	{  
     	    int x = (int) (  (1-t)*(1-t)*startX + 2*(1-t)*t*bezierX+t*t*endX);  
@@ -376,11 +377,13 @@ public class CookBookGUI extends GuiScreen {
     	    
     	    
     	}
+    	GL11.glColor4d(1, 1, 1, 1);
+    	tess.setColorRGBA_F(1f, 1f, 1f, 1f);
     	tess.draw();
     	GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);//770, 771
         GL11.glDisable(GL11.GL_LINE_SMOOTH);//2848
         GL11.glDisable(GL11.GL_BLEND);//3042
-        GL11.glDisable(32826 /*GL_RESCALE_NORMAL_EXT*/);
+        GL11.glDisable(32826/*GL_RESCALE_NORMAL_EXT*/);
         GL11.glEnable(GL11.GL_LIGHTING);
         GL11.glEnable(GL11.GL_TEXTURE_2D);//3553
         GL11.glAlphaFunc(GL11.GL_GREATER, 0.1F);//516

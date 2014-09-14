@@ -130,23 +130,23 @@ protected void drawBookBackground() {
  }
 
 public int drawElementTextBlock(ArrayList<Object> args, int x, int y, int flag){
-	System.out.println(args.size());
+	//System.out.println(args.size());
 	 this.fontRendererObj.setUnicodeFlag(true);
-	System.out.println("Magical Calling");
+	//System.out.println("Magical Calling");
 	 int i = (this.width - CookBookGUI.getAchievementsPaneWidth()) / 2;
 	    int j = (this.height - CookBookGUI.achievementsPaneHeight) / 2;
    // Check height of block
     int w = 93;
     int h = this.fontRendererObj.splitStringWidth((String) args.get(0), w);
     if (h + y > j + 155){
-    	System.out.println("render" + args.get(0));
+    	//System.out.println("render" + args.get(0));
     	// do splitting stuff
     	this.fontRendererObj.setUnicodeFlag(true);
     	String p1 = (String) args.get(0);
     	
     	StringBuilder p2 = new StringBuilder();
     	int ii = p1.length() - 2;
-    	EFLog.fatal(p1 + "test + " + p2);
+    	//EFLog.fatal(p1 + "test + " + p2);
     	while (h + y > j + 155){
     		
     		p2.insert(0, p1.charAt(ii));
@@ -174,7 +174,7 @@ public int drawElementTextBlock(ArrayList<Object> args, int x, int y, int flag){
     			
     
     else {
-    	System.out.println("render" + args.get(0));
+    	//System.out.println("render" + args.get(0));
     	this.fontRendererObj.drawSplitString((String) args.get(0), x, y, 93, 0x0000000);
     	return h;
     }
@@ -185,7 +185,7 @@ public int drawElementTextBlock(ArrayList<Object> args, int x, int y, int flag){
 public int drawElementImage(ArrayList<Object> args, int x, int y, int flag){
 	int i = (this.width - CookBookGUI.getAchievementsPaneWidth()) / 2;
     int j = (this.height - CookBookGUI.achievementsPaneHeight) / 2;
-    System.out.println(y + 0 + ":" + j);
+    //System.out.println(y + 0 + ":" + j);
 	if (y + (int)args.get(2) < j  + 155){
 		ResourceLocation image = (ResourceLocation) args.get(0);
 		int w = (int) args.get(1);
@@ -194,6 +194,7 @@ public int drawElementImage(ArrayList<Object> args, int x, int y, int flag){
 		int yy = (int) args.get(4);
 		this.mc.renderEngine.bindTexture(image);
 		GL11.glDisable(GL11.GL_LIGHTING);
+		GL11.glColor4f(1f, 1f, 1f, 1f);
 		this.drawTexturedModalRect(x, y, xx, yy, w, h);
 		GL11.glEnable(GL11.GL_LIGHTING);
 		return -h;
@@ -206,12 +207,13 @@ public int drawElementImage(ArrayList<Object> args, int x, int y, int flag){
 public int drawElementCrafting(ArrayList<Object> args, int x, int y, int flag){
 	int j1 = (this.height - CookBookGUI.achievementsPaneHeight) / 2;
 	int i1 = (this.width - CookBookGUI.getAchievementsPaneWidth()) / 2;
-	EFLog.fatal("y : " + y + " j1 : " + j1 + " check : " +(j1 +19));
+	//EFLog.fatal("y : " + y + " j1 : " + j1 + " check : " +(j1 +19));
 	if (args.size() > 1){
 		return 1;
 	}
 	int x1 = x + 20;
     int y1 = y + 50;
+    this.fontRendererObj.setUnicodeFlag(false);
     this.mc.getTextureManager().bindTexture(GuiLib.CBcraftgrid);
     GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
     GL11.glEnable(GL11.GL_BLEND);
@@ -300,7 +302,7 @@ public int drawElementHungerStats(ArrayList<Object> args, int x, int y, int flag
 		GL11.glEnable(GL11.GL_BLEND);
 		GL11.glColor4f(1f, 1f, 1f, 1f);
 		
-		this.mc.renderEngine.bindTexture(new ResourceLocation("extrafood:textures/gui/cookbookimages/icon/BookIcons.png"));
+		this.mc.renderEngine.bindTexture(new ResourceLocation("extrafood:textures/gui/cookbookimages/BookIcons.png"));
 		this.drawTexturedModalRect(x + 3, y + 30, 0, 0, 12, 24);
 		this.drawTexturedModalRect(x + 3, y + 50, 12, 0, 12, 24);
 		GL11.glPopMatrix();
@@ -311,7 +313,7 @@ public int drawElementHungerStats(ArrayList<Object> args, int x, int y, int flag
 		fontr.drawStringWithShadow("Hunger Stats:", x + 19, y, 0x3333FF);
 		if (args.size() > 2){
 		fontr.setUnicodeFlag(false);
-		fontr.drawString((String) args.get(2), x + (fontr.getStringWidth((String) args.get(2)) / 2), y + 15, 0x0000000);
+		fontr.drawString((String) args.get(2), x + 7, y + 15, 0x0000000);
 		fontr.setUnicodeFlag(true);
 		}
 		fontr.drawString(String.valueOf(args.get(0)), x + 16 + 50, y + 32, 0x0000000);
@@ -363,15 +365,15 @@ public int drawElementHungerStats(ArrayList<Object> args, int x, int y, int flag
 	 
 	 ArrayList<Object> typeargs = new ArrayList<Object>();
 	 for (char star : in.toCharArray()){
-		 System.err.println(star);
+		 //System.err.println(star);
 		 if (star == '<'){
 			 typetest = true;
-			 System.out.println("t" + currword);
+			 //System.out.println("t" + currword);
 			 continue;
 		 }
 		 if (star == '|' && typetest == true){
 			 typetest = false;
-			 System.out.println("t" + currword);
+			 //System.out.println("t" + currword);
 			 if (this.types().contains(currword)){
 				 System.out.println(currword.trim());
 				 type = currword;
@@ -382,7 +384,7 @@ public int drawElementHungerStats(ArrayList<Object> args, int x, int y, int flag
 		 }
 		 
 		 else if (star == '|' && typetest == false){
-			 System.err.println("argpos (for dumudums): " + argpos);
+			 //System.err.println("argpos (for dumudums): " + argpos);
 			 switch (argpos){
 			 case 0:
 				 typeargs.add(Integer.parseInt(currword));
@@ -494,13 +496,13 @@ public int drawElementHungerStats(ArrayList<Object> args, int x, int y, int flag
 			 continue;
 		 }
 			 currword += star;
-			 System.out.println(currword);
+			 //System.out.println(currword);
 			 continue;
 		 
 	
 	 }
 	 for (Object o : instruct){
-		 System.out.println(o);
+		 //System.out.println(o);
 	 }
 	 return instruct;
  }
@@ -531,7 +533,7 @@ public int drawElementHungerStats(ArrayList<Object> args, int x, int y, int flag
 		 }
 	} catch (NoSuchMethodException | SecurityException e) {
 		// TODO Auto-generated catch block
-		e.printStackTrace();
+		//e.printStackTrace();
 	}
 	return null;
  }
@@ -539,7 +541,7 @@ public int drawElementHungerStats(ArrayList<Object> args, int x, int y, int flag
  public void drawold(){
 	 int i = (this.width - CookBookGUI.getAchievementsPaneWidth()) / 2;
      int j = (this.height - CookBookGUI.achievementsPaneHeight) / 2;
-     EFLog.fatal("fatality = " + j);
+     //EFLog.fatal("fatality = " + j);
      // Attempt 2 :(
      // Define "cursor" position
      int renderpage = page;
@@ -786,7 +788,7 @@ private CBElement packElement(String t, ArrayList<Object> argst){
  public void drawl(){
 	 int i = (this.width - CookBookGUI.getAchievementsPaneWidth()) / 2;
      int j = (this.height - CookBookGUI.achievementsPaneHeight) / 2;
-     EFLog.fatal("fatality = " + j);
+     //EFLog.fatal("fatality = " + j);
      // Attempt 2 :(
      // Define "cursor" position
      int renderpage = page;
@@ -821,8 +823,8 @@ private CBElement packElement(String t, ArrayList<Object> argst){
      // Ok, now iterate over all of the pairs and render them based on stuff!
      for (ArrayList<Object> pair1 : pairs){
     	 // Get type
-    	 System.err.println("at pair thingie" + pair1);
-    	 EFLog.info("Here");
+    	 //System.err.println("at pair thingie" + pair1);
+    	 //EFLog.info("Here");
     	 String typename = (String) pair1.get(0);
     	 // Extract arguments
     	 ArrayList<Object> args = new ArrayList<Object>();
@@ -830,7 +832,7 @@ private CBElement packElement(String t, ArrayList<Object> argst){
     	 drawFunc = this.getFunctionForType(typename);
     	 // Process the xpos and ypos, we might need to calculate them!
     	 if (!(((int)args.get(2) < ((this.page + 1) * 2)))){
-    		 System.out.println("breakin free!");
+    		 //System.out.println("breakin free!");
     		 continue;
     	 }
     	 
@@ -856,7 +858,7 @@ private CBElement packElement(String t, ArrayList<Object> argst){
     	 // Remove the from the list of arguents (so I can pass them directly to the function)
     	 args.remove(0);
     	 args.remove(0);
-    	 EFLog.error("Here: xpos = " + x + "ypos = " + y);
+    	 //EFLog.error("Here: xpos = " + x + "ypos = " + y);
     	 // Process pages
     	 if (((int)args.get(0) < renderpage || (int)args.get(0) > renderpage + 1)){
 //    		 ArrayList<Object> ttargs = new ArrayList<Object>();
@@ -874,7 +876,7 @@ private CBElement packElement(String t, ArrayList<Object> argst){
     		 // Process page change
     		 renderpage++;
     		 xpos = (renderpage % 2 == 0 ? i + 28 : i + 140);
-    		 FMLLog.info("This is extrafood speaking, not fml. Anyways the data i eany is: " + xpos, xpos);
+    		 //FMLLog.info("This is extrafood speaking, not fml. Anyways the data i eany is: " + xpos, xpos);
     	     ypos = j + 19;
     	     int i1 = 0;
     	     for (Method tocall : call){
@@ -893,13 +895,13 @@ private CBElement packElement(String t, ArrayList<Object> argst){
     	    	 tx = xpos + tx;
     	    	 ty = ypos + ty;
     	    	 ArrayList<Object> targs = (ArrayList<Object>) unpack.get(3);
-    	    	 System.out.println("targ" + targs);
+    	    	// System.out.println("targ" + targs);
     	    	 try {
 					rval = (int) tocall.invoke(this, targs, tx, ty, 1);
 				} catch (IllegalAccessException | IllegalArgumentException
 						| InvocationTargetException e) {
 					// TODO Auto-generated catch block
-					e.printStackTrace();
+					//e.printStackTrace();
 					rval = 0;
 					
 				}
@@ -938,13 +940,13 @@ private CBElement packElement(String t, ArrayList<Object> argst){
     	 args.remove(0);
     	 int rval;
     	 try {
-    		System.err.println("drawfunc is preparing to invoke STAND BY!!!");
+    		//System.err.println("drawfunc is preparing to invoke STAND BY!!!");
 			rval = (int) drawFunc.invoke(this, args, x, y, 0);
-			System.err.println("drawfunc has invoked sucessfully STAND BY!!!");
+			//System.err.println("drawfunc has invoked sucessfully STAND BY!!!");
 		} catch (IllegalAccessException | IllegalArgumentException
 				| InvocationTargetException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//e.printStackTrace();
 			rval = 0;
 		}
     	 if (rval > 0){
@@ -965,7 +967,7 @@ private CBElement packElement(String t, ArrayList<Object> argst){
     		 ypos = j + 19;
     		 renderpage++;
     		 xpos = (renderpage % 2 == 0 ? i + 28 : i + 140);
-    		 FMLLog.info("This is extrafood speaking, not fml. Anyways the data i eany is: " + xpos, xpos);
+    		 //FMLLog.info("This is extrafood speaking, not fml. Anyways the data i eany is: " + xpos, xpos);
     	     ypos = j + 19;
     	     int i1 = 0;
     	     for (Method tocall : call){
@@ -982,13 +984,13 @@ private CBElement packElement(String t, ArrayList<Object> argst){
     	    	 tx = xpos + tx;
     	    	 ty = ypos + ty;
     	    	 ArrayList<Object> targs = (ArrayList<Object>) unpack.get(3);
-    	    	 System.out.println("targ" + targs);
+    	    	 //System.out.println("targ" + targs);
     	    	 try {
 					rval = (int) tocall.invoke(this, targs, tx, ty, 1);
 				} catch (IllegalAccessException | IllegalArgumentException
 						| InvocationTargetException e) {
 					// TODO Auto-generated catch block
-					e.printStackTrace();
+					//e.printStackTrace();
 					rval = 0;
 					
 				}
@@ -1034,13 +1036,13 @@ private CBElement packElement(String t, ArrayList<Object> argst){
     	 tx = xpos + tx;
     	 ty = ypos + ty;
     	 ArrayList<Object> targs = (ArrayList<Object>) unpack.get(3);
-    	 System.out.println("targ" + targs);
+    	// System.out.println("targ" + targs);
     	 try {
 			rval = (int) tocall.invoke(this, targs, tx, ty, 1);
 		} catch (IllegalAccessException | IllegalArgumentException
 				| InvocationTargetException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//e.printStackTrace();
 			rval = 0;
 			
 		}

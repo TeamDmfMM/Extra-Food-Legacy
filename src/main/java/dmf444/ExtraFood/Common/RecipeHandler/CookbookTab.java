@@ -42,6 +42,7 @@ public class CookbookTab {
 		m.getTextureManager().bindTexture(GuiLib.CBborder);
 		GL11.glDisable(GL11.GL_LIGHTING);
 		GL11.glEnable(GL11.GL_BLEND);
+		GL11.glColor4d(1, 1, 1, 1);
 		if(gui.tab != this.name){
 			gui.drawTexturedModalRect(p1 - 8, p2 + 2, 92, 202, 37, 26); //2, 204, 22, 22     ``54``
 			this.rinder.renderItemIntoGUI(m.fontRenderer, m.getTextureManager(), this.display,p1 + 11, p2 + 2 + 4);
