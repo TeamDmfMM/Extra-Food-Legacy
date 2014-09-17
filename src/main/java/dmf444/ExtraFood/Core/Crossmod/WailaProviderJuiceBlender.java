@@ -34,7 +34,7 @@ public class WailaProviderJuiceBlender implements IWailaDataProvider{
 		int fluidAmount = lmnop.tank.readFromNBT(accessor.getNBTData()).getFluidAmount();
 		//EFLog.error(jb.tank.readFromNBT(accessor.getNBTData()).getFluid());
 		int capacity = lmnop.tank.getCapacity();
-		EFLog.error(fluid + ", " + fluidAmount + "/" + capacity);
+		//EFLog.error(fluid + ", " + fluidAmount + "/" + capacity);
 		if(lmnop.tank.getFluidAmount() == 0){
 			currenttip.add("Fluid: None");
 			currenttip.add("Amount: 0/" + String.valueOf(capacity) + " mB");			

@@ -50,7 +50,7 @@ public int type = 0;
 
 
 	public void drawButton(Minecraft m, int p1, int p2){
-
+			GL11.glPushMatrix();
 			m.getTextureManager().bindTexture(GuiLib.CBborder);
 			GL11.glDisable(GL11.GL_LIGHTING);
 			GL11.glEnable(GL11.GL_BLEND);
@@ -58,7 +58,7 @@ public int type = 0;
 			this.rinder.renderItemIntoGUI(m.fontRenderer, m.getTextureManager(), this.item, xPosition + 3, yPosition + 2);
 			GL11.glEnable(GL11.GL_LIGHTING);
 			GL11.glDisable(GL11.GL_BLEND);
-
+			GL11.glPopMatrix();
 	}
 
 

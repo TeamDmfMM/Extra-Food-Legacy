@@ -82,7 +82,7 @@ public class CraftingRecipies {
 	GameRegistry.addShapedRecipe(new ItemStack(ItemLoader.uselettuceSeeds, 2), new Object[] { " c ", "csc", " c ", 'c', new ItemStack(Items.clay_ball, 1), 's', new ItemStack(ItemLoader.rawlettuceSeeds)});
 	
 	Cutting(new ItemStack(Items.fish, 1), new ItemStack(ItemLoader.fishpieces, 1));
-	Cutting(new ItemStack(ItemLoader.cookedHamburger, 1), new ItemStack(ItemLoader.meatballs, 1));
+	Cutting(new ItemStack(ItemLoader.cookedHamburger, 1), new ItemStack(ItemLoader.meatballs, 3));
 	Cutting(new ItemStack(ItemLoader.cheeseWheel, 1), new ItemStack(ItemLoader.cheeseSlice, 8));
 	Cutting(new ItemStack(Items.bread, 1), new ItemStack(ItemLoader.slicedBread, 6));
 	Cutting(new ItemStack(Items.porkchop, 1), new ItemStack(ItemLoader.sausage, 2));
@@ -102,11 +102,12 @@ public class CraftingRecipies {
 		GameRegistry.addSmelting(Items.milk_bucket, new ItemStack(ItemLoader.butterMilk), 0.9F);
 	}
 	
-	/*
+	/**
 	 *  Adds in recipes that can be cut by the knife and cut by the Auto Cutter.
-	 *  params:
-	 *  		input - Item that goes in
-	 * 			output - Item that comes out
+	 *  <ul>
+	 *  <li>params:</li>
+	 *  <li>input - Item that goes in</li>
+	 * 	<li>output - Item that comes out</li>
 	 */
 	public static void Cutting(ItemStack input, ItemStack output){
 		ExtraFood.instance.registryCutter.registerRecipe(new RecipeAutoCutter(input, output));

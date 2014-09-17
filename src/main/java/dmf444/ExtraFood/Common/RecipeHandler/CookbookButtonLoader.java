@@ -62,11 +62,11 @@ public class CookbookButtonLoader {
 		this.multiNum.put("SeaWater", 1);
 		}
 		this.truth.put("cheeseslice", true);
-		this.multiNum.put("cheeseslice", 1);
+		this.multiNum.put("cheeseslice", 2);
 		this.truth.put("bacon", true);
-		this.multiNum.put("bacon", 1);
+		this.multiNum.put("bacon", 2);
 		this.truth.put("cheesepress", true);
-		this.multiNum.put("cheesepress", 4);
+		this.multiNum.put("cheesepress", 2);
 		AddPage("Bread", 1);
 		AddPage("sandwiches", 11);
 		//this.truth.put("Bread", true);
@@ -86,7 +86,7 @@ public class CookbookButtonLoader {
 		if (this.multiNum.get(page) != null){
 			return this.multiNum.get(page);
 		} else {
-			return 0;
+			return 1;
 		}
 	}
 	
