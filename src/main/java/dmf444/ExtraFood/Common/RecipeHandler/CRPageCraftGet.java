@@ -36,11 +36,11 @@ public class CRPageCraftGet {
 		this.putRecipe("cheeseslice", new Object[] {"ik ", "   ", "   ", 'i', ItemLoader.cheeseWheel, 'k',  ItemLoader.knife}, new ItemStack(ItemLoader.cheeseSlice, 8));
 		this.putRecipe("sausage", new Object[] {"ik ", "   ", "   ", 'i', Items.porkchop, 'k',  ItemLoader.knife}, new ItemStack(ItemLoader.sausage, 2));
 		this.putRecipe("Bread", new Object[] {"ik ", "   ", "   ", 'i', Items.bread, 'k',  ItemLoader.knife}, new ItemStack(ItemLoader.slicedBread, 6));
-		this.putRecipe("Bread", new Object[] {"ik ", "   ", "   ", 'i', Items.potato, 'k',  ItemLoader.knife}, new ItemStack(ItemLoader.frenchFries, 1));
-		this.putRecipe("Bread", new Object[] {"ik ", "   ", "   ", 'i', Items.beef, 'k',  ItemLoader.knife}, new ItemStack(ItemLoader.rawHamburger, 1));
-		this.putRecipe("Bread", new Object[] {"ik ", "   ", "   ", 'i', Items.cooked_beef, 'k',  ItemLoader.knife}, new ItemStack(ItemLoader.cookedHamburger, 1));
-		this.putRecipe("Bread", new Object[] {"ik ", "   ", "   ", 'i', Items.fish, 'k',  ItemLoader.knife}, new ItemStack(ItemLoader.fishpieces, 1));
-		this.putRecipe("Bread", new Object[] {"ik ", "   ", "   ", 'i', ItemLoader.cookedHamburger, 'k',  ItemLoader.knife}, new ItemStack(ItemLoader.meatballs, 3));
+		this.putRecipe("frenchFries", new Object[] {"ik ", "   ", "   ", 'i', Items.potato, 'k',  ItemLoader.knife}, new ItemStack(ItemLoader.frenchFries, 1));
+		this.putRecipe("BugerRaw", new Object[] {"ik ", "   ", "   ", 'i', Items.beef, 'k',  ItemLoader.knife}, new ItemStack(ItemLoader.rawHamburger, 1));
+		this.putRecipe("BurgerCooked", new Object[] {"ik ", "   ", "   ", 'i', Items.cooked_beef, 'k',  ItemLoader.knife}, new ItemStack(ItemLoader.cookedHamburger, 1));
+		this.putRecipe("Fishpieces", new Object[] {"ik ", "   ", "   ", 'i', Items.fish, 'k',  ItemLoader.knife}, new ItemStack(ItemLoader.fishpieces, 1));
+		this.putRecipe("meatballs", new Object[] {"ik ", "   ", "   ", 'i', ItemLoader.cookedHamburger, 'k',  ItemLoader.knife}, new ItemStack(ItemLoader.meatballs, 3));
 		
 		this.putRecipe("cheesepress", new Object[] {"ipi", "ibi", "sss" , 'i', new ItemStack(Items.iron_ingot), 'p', new ItemStack(Blocks.planks, 1, 0), 'b', Items.bucket, 's', new ItemStack(Blocks.stone_slab, 1, 0)}, new ItemStack(BlockLoader.cheesePress, 1));
 		this.putRecipe("autoCutter", new Object[] {"pki", "psp", "p p" , 'p', new ItemStack(Blocks.planks, 1, 0), 'k', ItemLoader.knife, 'i', new ItemStack(Items.iron_ingot), 's', new ItemStack(Blocks.wooden_slab, 1, 0)}, new ItemStack(BlockLoader.autoCutter, 1));
@@ -53,6 +53,7 @@ public class CRPageCraftGet {
 		this.putRecipe("cookBook4", new Object[] {" b ", " l ", " f " , 'b', Items.book, 'l', Items.leather, 'f', Items.potato}, new ItemStack(ItemLoader.cookBook, 1));
 		this.putRecipe("cookBook5", new Object[] {" b ", " l ", " f " , 'b', Items.book, 'l', Items.leather, 'f', Items.fish}, new ItemStack(ItemLoader.cookBook, 1));
 		*/
+		this.putRecipe("whiteout", new Object[] {"www", "www", "www" , 'w', new ItemStack(Items.dye, 1, 15)}, new ItemStack(BlockLoader.whiteout));
 		this.putRecipe("vanillaIceCream", new Object[] {" i ", "bm ", " s " , 'i', Blocks.ice, 'b', new ItemStack(Items.dye, 1, 15), 'm', Items.milk_bucket, 's', new ItemStack(ItemLoader.slicedBread)}, new ItemStack(ItemLoader.vanillaIceCream));
 		this.putRecipe("chocolateIceCream", new Object[] {" i ", "cm ", " s " , 'i', Blocks.ice, 'c', new ItemStack(ItemLoader.chocolate), 'm', Items.milk_bucket, 's', new ItemStack(ItemLoader.slicedBread)}, new ItemStack(ItemLoader.chocolateIceCream));
 		this.putRecipe("strawberryIceCream", new Object[] {" i ", "tm ", " s " , 'i', Blocks.ice, 't', new ItemStack(ItemLoader.strawberry), 'm', Items.milk_bucket, 's', new ItemStack(ItemLoader.slicedBread)}, new ItemStack(ItemLoader.strawberryIceCream));
@@ -63,7 +64,7 @@ public class CRPageCraftGet {
 		this.putRecipe("grater", new Object[] {"ii ", "ii ", "ss " , 'i', new ItemStack(Items.iron_ingot), 's', new ItemStack(Items.stick)}, new ItemStack(ItemLoader.grater));
 		this.putRecipe("pancakes", new Object[] {"ws ", "bm " , 'w', Items.wheat, 's', Items.sugar, 'b', new ItemStack(ItemLoader.butter), 'm', Items.milk_bucket}, new ItemStack(ItemLoader.pancakes, 2));
 		this.putRecipe("peanutButter", new ItemStack(ItemLoader.peanutButter, 1),  new ItemStack(ItemLoader.grater), new ItemStack(ItemLoader.peanut), new ItemStack (Items.bowl, 1), new ItemStack(ItemLoader.butter));
-		this.putRecipe("grater", new Object[] {"ss ", "ii ", "ii " , 's', new ItemStack(Items.stick), 'i', new ItemStack(Items.iron_ingot)}, new ItemStack(ItemLoader.grater, 1));
+		this.putRecipe("grater1", new Object[] {"ss ", "ii ", "ii " , 's', new ItemStack(Items.stick), 'i', new ItemStack(Items.iron_ingot)}, new ItemStack(ItemLoader.grater, 1));
 		this.putRecipe("knife", new Object[] {"ii ", "ii ", " j " , 'i', new ItemStack(Items.iron_ingot), 'j', new ItemStack(Items.stick)}, new ItemStack(ItemLoader.knife, 1));
 		this.putRecipe("sushi", new ItemStack(ItemLoader.sushi),  new ItemStack(Blocks.tallgrass, 1, 1), new ItemStack(ItemLoader.fishpieces));
 		this.putRecipe("chineseFood", new ItemStack(ItemLoader.chineseFood),  new ItemStack(ItemLoader.sushi), new ItemStack(ItemLoader.rawpasta), new ItemStack(Items.paper));
@@ -117,6 +118,7 @@ public class CRPageCraftGet {
 				items[co] = ii;
 				co++;
 			}
+			items[9] = this.recipesShapeless.get(itemname).getRecipeOutput();
 			return items;
 		}
 		else {
@@ -238,8 +240,8 @@ public class CRPageCraftGet {
             }
         }
 
-
-		this.recipesShapeless.put(itemname, new ShapelessRecipes(out, arraylist));
+        ShapelessRecipes shaplessR = new ShapelessRecipes(out, arraylist);
+		this.recipesShapeless.put(itemname, shaplessR);
 	}
 
 

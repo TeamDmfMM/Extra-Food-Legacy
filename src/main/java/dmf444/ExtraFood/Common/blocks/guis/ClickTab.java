@@ -3,6 +3,7 @@ package dmf444.ExtraFood.Common.blocks.guis;
 
 import org.lwjgl.opengl.GL11;
 
+import dmf444.ExtraFood.Common.items.ItemLoader;
 import dmf444.ExtraFood.Core.lib.GuiLib;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
@@ -44,9 +45,17 @@ public int type = 0;
 	this.rinder = new RenderItem();
 	this.pagename = name;
 	this.pre = pre;
-
-
-}
+	}
+	
+	public ClickTab(int xPOS, int yPOS, ItemStack itemStack, String page_name, String... pres){
+		super(0, 0, 0, 22, 22, "");
+		x = xPOS;
+		y = yPOS;
+		item = itemStack;
+		this.rinder = new RenderItem();
+		this.pagename = page_name;
+		this.pre = pres;
+	}
 
 
 	public void drawButton(Minecraft m, int p1, int p2){

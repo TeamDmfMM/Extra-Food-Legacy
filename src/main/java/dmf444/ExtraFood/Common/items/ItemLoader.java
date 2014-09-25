@@ -82,7 +82,7 @@ public class ItemLoader {
 		sausage = new StanFood(3, 0.9F).setUnlocalizedName(ItemLib.iS);
 		cheeseSlice = new StanFood(2, 3.0F).setUnlocalizedName(ItemLib.iCS);
 		cheeseWheel = new CheeseWheel(8, 5.6F, false).setUnlocalizedName(ItemLib.iCW);
-		banana = new Banana(1, 0.8F, false).setUnlocalizedName(ItemLib.iBan);
+		banana = new Banana(4, 0.8F, false).setUnlocalizedName(ItemLib.iBan);
 		strawberry = ((ItemFood) new Strawberry(2, 2.0F, false).setUnlocalizedName(ItemLib.iST)).setAlwaysEdible();
 		bacon = new StanFood(1, 0.6F).setUnlocalizedName(ItemLib.iBac);
 		veal = new StanFood(8, 19.5F, true).setUnlocalizedName(ItemLib.iV);

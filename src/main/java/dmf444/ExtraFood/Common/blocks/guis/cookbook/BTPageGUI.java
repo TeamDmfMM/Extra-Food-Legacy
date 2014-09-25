@@ -176,10 +176,9 @@ public int drawElementTextBlock(ArrayList<Object> args, int x, int y, int flag){
     else {
     	//System.out.println("render" + args.get(0));
     	this.fontRendererObj.drawSplitString((String) args.get(0), x, y, 93, 0x0000000);
+    	this.fontRendererObj.setUnicodeFlag(false);
     	return h;
     }
-    
-    
     
 }
 public int drawElementImage(ArrayList<Object> args, int x, int y, int flag){
@@ -276,7 +275,7 @@ public int drawElementCrafting(ArrayList<Object> args, int x, int y, int flag){
 			}
 			   //Itemstack 9 is the output slot
 			if (items[9] != null){
-				GL11.glDisable(GL11.GL_LIGHTING);
+			GL11.glDisable(GL11.GL_LIGHTING);
 				this.irender.renderItemIntoGUI(this.fontRendererObj, this.mc.getTextureManager(), items[9], x1 + 19, y1 - 44);
 				this.irender.renderItemOverlayIntoGUI(this.fontRendererObj, this.mc.getTextureManager(), items[9], x1 + 19, y1 - 44);
 			GL11.glEnable(GL11.GL_LIGHTING);	
@@ -883,8 +882,7 @@ private CBElement packElement(String t, ArrayList<Object> argst){
     	    	 
     	    	 int tx;
     	    	 int ty;
-    	    	 @SuppressWarnings("unused")
-				int pg;
+    	    	 int pg;
     	    	 int rval;
     	    	 ArrayList<Object> unpack = callargs.get(i1);
     	    	 tx = (int) unpack.get(0);
@@ -974,8 +972,7 @@ private CBElement packElement(String t, ArrayList<Object> argst){
     	    	 
     	    	 int tx;
     	    	 int ty;
-    	    	 @SuppressWarnings("unused")
-				int pg;
+    	    	 int pg;
 
     	    	 ArrayList<Object> unpack = callargs.get(i1);
     	    	 tx = (int) unpack.get(0);
@@ -1026,8 +1023,7 @@ private CBElement packElement(String t, ArrayList<Object> argst){
     	 
     	 int tx;
     	 int ty;
-    	 @SuppressWarnings("unused")
-		int pg;
+    	 int pg;
     	 int rval;
     	 ArrayList<Object> unpack = callargs.get(i1);
     	 tx = (int) unpack.get(0);
