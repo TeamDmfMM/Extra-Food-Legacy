@@ -4,6 +4,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.common.ChestGenHooks;
 import net.minecraftforge.common.MinecraftForge;
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler; // used in 1.6.2
 import cpw.mods.fml.common.Mod.Instance;
@@ -37,6 +38,7 @@ import dmf444.ExtraFood.Core.CraftingRecipies;
 import dmf444.ExtraFood.Core.GuiHandler;
 import dmf444.ExtraFood.Core.PacketJBTank;
 import dmf444.ExtraFood.Core.Crossmod.NEIAutoCutterHandler.AutoCutterRecipe;
+import dmf444.ExtraFood.Core.Crossmod.ThaumcraftAspects;
 import dmf444.ExtraFood.Core.Crossmod.WailaConfig;
 import dmf444.ExtraFood.Core.lib.ModInfo;
 import dmf444.ExtraFood.util.ConfigHandler;
@@ -112,6 +114,11 @@ public class ExtraFood {
 		
 		crafterPage = new CRPageCraftGet();
 		JuiceRegistry.instance = new JuiceRegistry();
+		if (Loader.isModLoaded("Thaumcraft")){
+			ThaumcraftAspects.registerThaumAspect();
+			FMLInterModComms.sendMessage("Thaumcraft", "harvestStandardCrop", new ItemStack(BlockLoader.tomatoCrop,1,7));
+			FMLInterModComms.sendMessage("Thaumcraft", "harvestStandardCrop", new ItemStack(BlockLoader.lettuceCrop,1,7));
+		}
 
 	}
 
