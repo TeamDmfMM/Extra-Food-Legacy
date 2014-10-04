@@ -28,8 +28,8 @@ public class ThaumcraftAspects {
 		ThaumcraftApi.registerObjectTag(new ItemStack(BlockLoader.Bstrawberryjuice), (new AspectList()).add(Aspect.CROP, 2).add(Aspect.HUNGER, 1).add(Aspect.PLANT, 1).add(Aspect.WATER, 4));
 		ThaumcraftApi.registerObjectTag(new ItemStack(BlockLoader.Bcarrotjuice), (new AspectList()).add(Aspect.CROP, 1).add(Aspect.HUNGER, 1).add(Aspect.SENSES, 1).add(Aspect.WATER, 4));
 		ThaumcraftApi.registerObjectTag(new ItemStack(BlockLoader.Bbananajuice), (new AspectList()).add(Aspect.CROP, 1).add(Aspect.HUNGER, 1).add(Aspect.ORDER, 2).add(Aspect.WATER, 4));
-		ThaumcraftApi.registerObjectTag(new ItemStack(BlockLoader.tomatoCrop), (new AspectList()).add(Aspect.CROP, 1).add(Aspect.HUNGER, 1).add(Aspect.LIFE, 1));
-		ThaumcraftApi.registerObjectTag(new ItemStack(BlockLoader.lettuceCrop), (new AspectList()).add(Aspect.CROP, 1).add(Aspect.HUNGER, 1).add(Aspect.HEAL, 1));
+		ThaumcraftApi.registerObjectTag(new ItemStack(ItemLoader.tomato), (new AspectList()).add(Aspect.CROP, 1).add(Aspect.HUNGER, 1).add(Aspect.LIFE, 1));
+		ThaumcraftApi.registerObjectTag(new ItemStack(ItemLoader.lettuce), (new AspectList()).add(Aspect.CROP, 1).add(Aspect.HUNGER, 1).add(Aspect.HEAL, 1));
 		
 		
 	}

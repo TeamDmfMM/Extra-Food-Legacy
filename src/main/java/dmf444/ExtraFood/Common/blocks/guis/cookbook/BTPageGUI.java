@@ -133,6 +133,7 @@ public int drawElementTextBlock(ArrayList<Object> args, int x, int y, int flag){
 	//System.out.println(args.size());
 	 this.fontRendererObj.setUnicodeFlag(true);
 	//System.out.println("Magical Calling");
+	 GL11.glDisable(GL11.GL_LIGHTING);
 	 int i = (this.width - CookBookGUI.getAchievementsPaneWidth()) / 2;
 	    int j = (this.height - CookBookGUI.achievementsPaneHeight) / 2;
    // Check height of block
@@ -160,12 +161,14 @@ public int drawElementTextBlock(ArrayList<Object> args, int x, int y, int flag){
     		if (flag == 0){
     			this.fontRendererObj.drawSplitString(p1, x, y, 93, 0x0000000);
     			this.fontRendererObj.setUnicodeFlag(false);
+    			GL11.glEnable(GL11.GL_LIGHTING);
     			return h;
     		}
     		else {
     			String p2r = p2.substring(1, p2.length());
     			this.fontRendererObj.drawSplitString(p2r, x, y, 93, 0x0000000);
     			this.fontRendererObj.setUnicodeFlag(false);
+    			GL11.glEnable(GL11.GL_LIGHTING);
     			return -h;
     		}
     	}
@@ -196,10 +199,11 @@ public int drawElementImage(ArrayList<Object> args, int x, int y, int flag){
 		GL11.glColor4f(1f, 1f, 1f, 1f);
 		this.drawTexturedModalRect(x, y, xx, yy, w, h);
 		GL11.glEnable(GL11.GL_LIGHTING);
-		return -h;
+		return h;
 	}
 	else {
-		return 1;
+		int h = (int) args.get(2);
+		return h;
 	}
 	
 }
@@ -305,8 +309,7 @@ public int drawElementHungerStats(ArrayList<Object> args, int x, int y, int flag
 		this.drawTexturedModalRect(x + 3, y + 30, 0, 0, 12, 24);
 		this.drawTexturedModalRect(x + 3, y + 50, 12, 0, 12, 24);
 		GL11.glPopMatrix();
-		GL11.glEnable(GL11.GL_LIGHTING);
-		GL11.glDisable(GL11.GL_BLEND);
+
 		FontRenderer fontr = this.fontRendererObj;
 		fontr.setUnicodeFlag(true);
 		fontr.drawStringWithShadow("Hunger Stats:", x + 19, y, 0x3333FF);
@@ -318,6 +321,8 @@ public int drawElementHungerStats(ArrayList<Object> args, int x, int y, int flag
 		fontr.drawString(String.valueOf(args.get(0)), x + 16 + 50, y + 32, 0x0000000);
 		fontr.drawString(String.valueOf(args.get(1)), x + 16 + 50, y + 52, 0x0000000);
 		fontr.setUnicodeFlag(false);
+		GL11.glEnable(GL11.GL_LIGHTING);
+		GL11.glDisable(GL11.GL_BLEND);		
 		return -150;
 	}
 }

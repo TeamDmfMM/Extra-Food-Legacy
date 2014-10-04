@@ -46,7 +46,7 @@ public class CookBookGUI extends GuiScreen {
 
 	    private int iox = 15;
 	    private int yox = 30;//50
-	    
+	   
 	    //mincrmatt12 button vars
 	    private ArrayList<ClickTab> buttons;
 	    
@@ -133,6 +133,7 @@ public class CookBookGUI extends GuiScreen {
             GL11.glDisable(GL11.GL_DEPTH_TEST);
             GL11.glEnable(GL11.GL_LIGHTING);
             GL11.glEnable(GL11.GL_DEPTH_TEST);
+           
     	}
 
 

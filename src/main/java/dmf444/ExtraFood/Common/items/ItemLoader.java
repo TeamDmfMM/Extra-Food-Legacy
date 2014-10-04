@@ -87,9 +87,9 @@ public class ItemLoader {
 		bacon = new StanFood(1, 0.6F).setUnlocalizedName(ItemLib.iBac);
 		veal = new StanFood(8, 19.5F, true).setUnlocalizedName(ItemLib.iV);
 		cookedBacon = new StanFood(2, 5.2F).setUnlocalizedName(ItemLib.iCBac);
-		toast = new StanFood(2, 0.8F).setUnlocalizedName(ItemLib.iToastS);
-		slicedBread = new StanFood(2, 3.0F).setUnlocalizedName(ItemLib.iBRS);
-		frenchFries = new ItemFood(2, 0.7F, false).setUnlocalizedName(ItemLib.iFF()).setCreativeTab(EFTabs.INSTANCE).setTextureName("extrafood:" + ItemLib.iFF());//" + ItemLib.iFF()
+		toast = new StanFood(6, 0.8F).setUnlocalizedName(ItemLib.iToastS);
+		slicedBread = new StanFood(4, 3.0F).setUnlocalizedName(ItemLib.iBRS);
+		frenchFries = new ItemFood(8, 0.7F, false).setUnlocalizedName(ItemLib.iFF()).setCreativeTab(EFTabs.INSTANCE).setTextureName("extrafood:" + ItemLib.iFF());//" + ItemLib.iFF()
 		tomato = new StanFood(4, 2.5F).setUnlocalizedName(ItemLib.iTom);
 		lettuce = new StanFood(4, 1.6F).setUnlocalizedName(ItemLib.iLet);	
 		egg = new StanFood(3, 0.8F).setUnlocalizedName(ItemLib.iEgg);
@@ -110,7 +110,7 @@ public class ItemLoader {
 		cookedpasta = new ReturnFood(6, 1.3F, Items.bowl).setUnlocalizedName(ItemLib.iCP);
 		meatballs = new StanFood(3, 0.4F).setUnlocalizedName(ItemLib.iMB);
 		meatballpasta = new ReturnFood(12, 1.4F, Items.bowl).setUnlocalizedName(ItemLib.iMBP);
-		fishpieces = new StanFood(2, 0.5F).setUnlocalizedName(ItemLib.iFP);
+		fishpieces = new StanFood(4, 0.5F).setUnlocalizedName(ItemLib.iFP);
 		chocolate = new StanFood(2, 0.8F).setUnlocalizedName(ItemLib.iCho);
 		pancakes = new StanFood(6, 1.2F).setUnlocalizedName(ItemLib.iPC);
 		peanutButter = ((ItemFood) new StanFood(3, 4.5F).setUnlocalizedName(ItemLib.iPB)).setPotionEffect(Potion.confusion.id, 10, 0, 0.8F);
@@ -128,8 +128,8 @@ public class ItemLoader {
 		neoIceCream = new ReturnFood(8, 4.5F, Items.bowl).setUnlocalizedName(ItemLib.iNeoIceCream);
 		sandwichPB = new StanFood(2, 3.5F).setUnlocalizedName(ItemLib.iSandPeanutB);
 		butterMilk = new ButterMilk(4, 3.6F).setUnlocalizedName(ItemLib.iButterMilk);
-		yogurt = new ReturnFood(2, 6.3F, Items.bowl).setUnlocalizedName(ItemLib.iYogurt);
-		stawberryYogurt = new ReturnFood(3, 6.8F, Items.bowl).setUnlocalizedName(ItemLib.iStrawYogurt);
+		yogurt = new ReturnFood(5, 6.3F, Items.bowl).setUnlocalizedName(ItemLib.iYogurt);
+		stawberryYogurt = new ReturnFood(5, 6.8F, Items.bowl).setUnlocalizedName(ItemLib.iStrawYogurt);
 		sandwichC = new StanFood(5, 5.5F).setUnlocalizedName(ItemLib.iChoSandwich);
 		frenchToast = new StanFood(7, 2.7F).setUnlocalizedName(ItemLib.iFrenchToast);
 		sandwichCheeseburger = new StanFood(10, 12.0F).setUnlocalizedName(ItemLib.iSandCheeseBurger);

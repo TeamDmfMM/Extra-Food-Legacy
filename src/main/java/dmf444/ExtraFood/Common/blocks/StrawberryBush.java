@@ -8,12 +8,15 @@ import java.util.Random;
 
 
 
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -122,6 +125,38 @@ public class StrawberryBush extends Block implements IGrowable {
     @Override
     public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float what, float these, float are) {
     	int meta = world.getBlockMetadata(x, y, z);
+    	if (player.inventory.getCurrentItem() != null){
+    		ItemStack is = player.inventory.getCurrentItem();
+    		if (is.getItem() == Items.dye){
+    			if (is.getItemDamage() == 15){
+    				return false;
+    			}
+    		}
+    	}
+    	switch (meta) {
+    	case -1:
+    		return false;
+    	
+    	case 4: case 5: case 6:
+    		if(!world.isRemote){
+    		ItemStack item = new ItemStack(ItemLoader.strawberry, 2);
+    		Entity Ientity = new EntityItem(world, x, y, z, item);
+			world.spawnEntityInWorld(Ientity);
+			world.setBlockMetadataWithNotify(x, y, z, 0, 2);
+			return true;
+    		}
+    	case 7: case 8:
+    		if(!world.isRemote){
+    		ItemStack item1 = new ItemStack(ItemLoader.strawberry, 4);
+    		Entity Ientity1 = new EntityItem(world, x, y, z, item1);
+			world.spawnEntityInWorld(Ientity1);
+			world.setBlockMetadataWithNotify(x, y, z, 0, 2);
+    		return true;
+    		}
+    	}
+    	return false;
+    }
+    	/*
     	//EFLog.info("Current Meta:" + meta);
     	if (player.inventory.getCurrentItem() != null){
     		ItemStack is = player.inventory.getCurrentItem();
@@ -155,7 +190,7 @@ public class StrawberryBush extends Block implements IGrowable {
 
     	}
 		return false;
-    }
+    }*/
 
     private ArrayList<Integer> SlotsWithItem = new ArrayList<Integer>();
     
