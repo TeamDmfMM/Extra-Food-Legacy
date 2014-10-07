@@ -56,7 +56,7 @@ public class CookbookButtonLoader {
 			t.buttons.add(new ClickTab(10, 3, ItemLoader.strawberryIceCream, "StrawIC", "ipop"));
 			t.buttons.add(new ClickTab(8, 2, ItemLoader.vanillaIceCream, "VanIC", "ipop"));
 			t.buttons.add(new ClickTab(10, 5, ItemLoader.neoIceCream, "NeoIC", "ipop"));
-		t.display = new ItemStack(Blocks.anvil);
+		t.render = "extrafood:textures/gui/cookbookimages/GeneralFood.png";	
 		this.buttons.add(t);
 		
 		t = new CookbookTab("CheesePress");
@@ -110,6 +110,7 @@ public class CookbookButtonLoader {
 		AddPage("worldGen", 2);
 		AddPage("butter", 2);
 		AddPage("yogurt", 2);
+		AddPage("burger", 3);
 		//this.truth.put("Bread", true);
 		//this.multiNum.put("Bread", 1);
 

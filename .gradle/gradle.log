@@ -6,11 +6,10 @@
  MCP Data version : unknown
 ****************************
 :eclipseClasspath
-Download http://mobiusstrip.eu/maven/mcp/mobius/waila/Waila/1.5.3_1.7.10/Waila-1.5.3_1.7.10-sources.jar
 :eclipseJdt
 :eclipseProject
 :eclipse
 
 BUILD SUCCESSFUL
 
-Total time: 38.533 secs
+Total time: 35.017 secs

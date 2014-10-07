@@ -1,5 +1,6 @@
 package dmf444.ExtraFood;
 
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.common.ChestGenHooks;
@@ -46,7 +47,7 @@ import dmf444.ExtraFood.util.EFLog;
 
 
 @Mod(modid = ModInfo.MId,name = ModInfo.Mname, version = ModInfo.Vers)
-//channel={"ExtraFoodRC"}, packetHandler = PacketHandler.class)
+
 public class ExtraFood {
 	@Instance(value = "ExtraFood")
 	public static ExtraFood instance;
@@ -114,13 +115,8 @@ public class ExtraFood {
 		
 		crafterPage = new CRPageCraftGet();
 		JuiceRegistry.instance = new JuiceRegistry();
-		if (Loader.isModLoaded("Thaumcraft")){
-			ThaumcraftAspects.registerThaumAspect();
-			FMLInterModComms.sendMessage("Thaumcraft", "harvestStandardCrop", new ItemStack(BlockLoader.tomatoCrop,1,7));
-			FMLInterModComms.sendMessage("Thaumcraft", "harvestStandardCrop", new ItemStack(BlockLoader.lettuceCrop,1,7));
-			FMLInterModComms.sendMessage("Thaumcraft", "harvestClickableCrop", new ItemStack(BlockLoader.strawberryBush,1,7));
-			FMLInterModComms.sendMessage("Thaumcraft", "harvestClickableCrop", new ItemStack(BlockLoader.peanutbush,1,4));
-		}
+
+
 
 	}
 

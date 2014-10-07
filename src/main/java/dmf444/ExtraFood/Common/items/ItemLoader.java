@@ -97,7 +97,7 @@ public class ItemLoader {
 		steak_kebab = new StanFood(3, 12.4F).setUnlocalizedName(ItemLib.iSKeb);
 		veal_kebab = new StanFood(3, 12.6F).setUnlocalizedName(ItemLib.iVKeb);		
 		sushi = new StanFood(8, 2.6F).setUnlocalizedName(ItemLib.iSushi);
-		rawHamburger = ((ItemFood) new StanFood(4, 0.6F).setUnlocalizedName(ItemLib.iRH)).setPotionEffect(Potion.hunger.id, 30, 0, 0.4F);
+		rawHamburger = ((ItemFood) new StanFood(5, 0.6F).setUnlocalizedName(ItemLib.iRH)).setPotionEffect(Potion.hunger.id, 30, 0, 0.4F);
 		
 		//Non-balanced foods
 		rawpasta = new ReturnFood(3, 0.3F, Items.bowl).setUnlocalizedName(ItemLib.iPasta);
@@ -127,7 +127,7 @@ public class ItemLoader {
 		icePop = new DrinkActionFood(5, 3.3F).setUnlocalizedName(ItemLib.iPopcicle);
 		neoIceCream = new ReturnFood(8, 4.5F, Items.bowl).setUnlocalizedName(ItemLib.iNeoIceCream);
 		sandwichPB = new StanFood(2, 3.5F).setUnlocalizedName(ItemLib.iSandPeanutB);
-		butterMilk = new ButterMilk(4, 3.6F).setUnlocalizedName(ItemLib.iButterMilk);
+		butterMilk = new ButterMilk(8, 3.6F).setUnlocalizedName(ItemLib.iButterMilk);
 		yogurt = new ReturnFood(5, 6.3F, Items.bowl).setUnlocalizedName(ItemLib.iYogurt);
 		stawberryYogurt = new ReturnFood(5, 6.8F, Items.bowl).setUnlocalizedName(ItemLib.iStrawYogurt);
 		sandwichC = new StanFood(5, 5.5F).setUnlocalizedName(ItemLib.iChoSandwich);

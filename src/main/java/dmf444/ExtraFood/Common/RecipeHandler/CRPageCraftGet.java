@@ -12,13 +12,18 @@ import java.util.List;
 
 
 
+
+import java.util.Map;
+
 import dmf444.ExtraFood.Common.blocks.BlockLoader;
 import dmf444.ExtraFood.Common.items.ItemLoader;
+import dmf444.ExtraFood.util.EFLog;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.item.crafting.ShapedRecipes;
 import net.minecraft.item.crafting.ShapelessRecipes;
 
@@ -95,7 +100,13 @@ public class CRPageCraftGet {
 		this.putRecipe("meatballpasta", new ItemStack(ItemLoader.meatballpasta),  new ItemStack(Items.bowl), new ItemStack(ItemLoader.meatballs), new ItemStack(ItemLoader.knife), new ItemStack(ItemLoader.knife), new ItemStack(Items.wheat), new ItemStack(ItemLoader.tomato));	
 		this.putRecipe("tomatoSeeds", new ItemStack(ItemLoader.tomatoSeeds, 2),  new ItemStack(ItemLoader.tomato));
 		this.putRecipe("uselettuceSeeds", new Object[] {" c ", "csc", " c " , 'c', new ItemStack(Items.clay_ball, 1), 's', new ItemStack(ItemLoader.rawlettuceSeeds)}, new ItemStack(ItemLoader.uselettuceSeeds, 2));
-
+		
+		this.putRecipe("CookedBacon", new ItemStack(ItemLoader.cookedBacon), new ItemStack(ItemLoader.bacon));
+		this.putRecipe("toast", new ItemStack(ItemLoader.toast), new ItemStack(ItemLoader.slicedBread));
+		this.putRecipe("egg", new ItemStack(ItemLoader.egg), new ItemStack(Items.egg));
+		this.putRecipe("pureH2O", new ItemStack(ItemLoader.bucketpurifiedwater), new ItemStack(ItemLoader.bucketseaWater));
+		this.putRecipe("cookedHamburger", new ItemStack(ItemLoader.cookedHamburger), new ItemStack(ItemLoader.rawHamburger));
+		this.putRecipe("butterMilk", new ItemStack(ItemLoader.butterMilk), new ItemStack(Items.milk_bucket));
 		//TODO place the things in here
 	}
 	public ItemStack[] getArray(String itemname){
@@ -244,5 +255,6 @@ public class CRPageCraftGet {
 		this.recipesShapeless.put(itemname, shaplessR);
 	}
 
+	
 
 }

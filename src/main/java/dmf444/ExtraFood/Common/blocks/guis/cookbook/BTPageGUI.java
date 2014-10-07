@@ -16,6 +16,7 @@ import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.entity.RenderItem;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.server.MinecraftServer;
@@ -32,6 +33,7 @@ import dmf444.ExtraFood.Common.RecipeHandler.CookbookButtonLoader;
 import dmf444.ExtraFood.Common.blocks.guis.ButtonBackGUI;
 import dmf444.ExtraFood.Common.blocks.guis.ButtonNextPageGUI;
 import dmf444.ExtraFood.Common.blocks.guis.CookBookGUI;
+import dmf444.ExtraFood.Common.items.ItemLoader;
 import dmf444.ExtraFood.Core.lib.GuiLib;
 import dmf444.ExtraFood.Core.lib.ItemLib;
 import dmf444.ExtraFood.util.EFLog;
@@ -207,6 +209,47 @@ public int drawElementImage(ArrayList<Object> args, int x, int y, int flag){
 	}
 	
 }
+public int drawElementFurnace(ArrayList<Object> args, int x, int y, int flag){
+	int j1 = (this.height - CookBookGUI.achievementsPaneHeight) /2;
+	int i1 = (this.width - CookBookGUI.getAchievementsPaneWidth()) / 2;
+	if (args.size() > 1){
+		return 1;
+	}
+	int x1 = x +20;
+	int y1 = y + 50;
+	this.fontRendererObj.setUnicodeFlag(false);
+	this.mc.getTextureManager().bindTexture(GuiLib.CBfurnace);
+	GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
+    GL11.glEnable(GL11.GL_BLEND);
+    GL11.glDisable(GL11.GL_LIGHTING);	
+    this.drawTexturedModalRect(x1 + 7, y1 - 40, 0, 0,  CookBookGUI.getAchievementsPaneWidth(), CookBookGUI.achievementsPaneHeight);
+    GL11.glDisable(GL11.GL_BLEND);
+    GL11.glEnable(GL11.GL_LIGHTING);	
+    ItemStack[] items = ExtraFood.instance.crafterPage.getArray((String) args.get(0).toString());
+    for (ItemStack i : ExtraFood.instance.crafterPage.getArray((String) args.get(0).toString())){	
+    	if (items != null){
+    		/* Items 0 is in
+    		 * items 1 is out
+    		 */
+			if (items[0] != null){				
+			    GL11.glDisable(GL11.GL_LIGHTING);					
+				this.irender.renderItemIntoGUI(this.fontRendererObj, this.mc.getTextureManager(), items[0], x1 + 16, y1 + 9);
+				GL11.glEnable(GL11.GL_LIGHTING);			
+			}
+			if (items[9] != null){
+			GL11.glDisable(GL11.GL_LIGHTING);
+				this.irender.renderItemIntoGUI(this.fontRendererObj, this.mc.getTextureManager(), items[9], x1 + 16, y1 - 33);
+				this.irender.renderItemOverlayIntoGUI(this.fontRendererObj, this.mc.getTextureManager(), items[9], x1 + 16, y1 - 33);
+			GL11.glEnable(GL11.GL_LIGHTING);	
+			}
+			GL11.glDisable(GL11.GL_LIGHTING);
+				this.irender.renderItemIntoGUI(this.fontRendererObj, this.mc.getTextureManager(), new ItemStack(Items.coal), x1 + 16, y1 + 49);
+			GL11.glEnable(GL11.GL_LIGHTING);
+    	}
+    }
+    return -150;
+}
+
 public int drawElementCrafting(ArrayList<Object> args, int x, int y, int flag){
 	int j1 = (this.height - CookBookGUI.achievementsPaneHeight) / 2;
 	int i1 = (this.width - CookBookGUI.getAchievementsPaneWidth()) / 2;
@@ -404,7 +447,7 @@ public int drawElementHungerStats(ArrayList<Object> args, int x, int y, int flag
 			 
 			 case 3:
 				 
-				 if (type.equals( "TextBlock") || type.equals("Crafting")){
+				 if (type.equals( "TextBlock") || type.equals("Crafting") || type.equals("Furnace")){
 					 typeargs.add(currword);
 				 }
 				 else if (type.equals("Image")){
@@ -459,7 +502,7 @@ public int drawElementHungerStats(ArrayList<Object> args, int x, int y, int flag
 			 
 			 case 3:
 				 
-				 if (type.equals( "TextBlock") || type.equals("Crafting")){
+				 if (type.equals( "TextBlock") || type.equals("Crafting") || type.equals("Furnace")){
 					 typeargs.add(currword);
 				 }
 				 else if (type.equals("Image")){
@@ -517,6 +560,7 @@ public int drawElementHungerStats(ArrayList<Object> args, int x, int y, int flag
 	 types.add("Image");
 	 types.add("Crafting");
 	 types.add("HungerStats");
+	 types.add("Furnace");
 	 return types;
  }
  public Map<String, Integer> acount(){
@@ -526,6 +570,7 @@ public int drawElementHungerStats(ArrayList<Object> args, int x, int y, int flag
 	 types.put("Image", 8);
 	 types.put("Crafting", 4);
 	 types.put("HungerStats", 7);
+	 types.put("Furnace", 4);
 	 return types;
  }
  
@@ -1086,6 +1131,11 @@ private CBElement packElement(String t, ArrayList<Object> argst){
          this.mc.displayGuiScreen((GuiScreen)null);
          this.mc.setIngameFocus();
      }
+ }
+ @Override
+ public boolean doesGuiPauseGame()
+ {
+     return false;
  }
 }
 

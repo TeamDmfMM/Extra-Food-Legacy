@@ -14,6 +14,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import dmf444.ExtraFood.Common.blocks.tileentity.TileEntityJuiceBlender;
 import dmf444.ExtraFood.Core.PacketJBTank;
+import dmf444.ExtraFood.util.EFLog;
 
 
 public class ContainerJuiceBlender extends Container{
@@ -54,9 +55,11 @@ public class ContainerJuiceBlender extends Container{
 		return true;
 	}
 	
+	
 	@Override
 	public void detectAndSendChanges(){
 		super.detectAndSendChanges();		
+		EFLog.fatal("MONONINOMA");
 		for (int i = 0; i < this.crafters.size(); ++i){
 			if (crafters.get(i) instanceof EntityPlayerMP){
 				if (tileEntity.tank.getFluid() != null){
@@ -65,6 +68,8 @@ public class ContainerJuiceBlender extends Container{
 		}
 	}
 	}
+
+	
 	@Override
     public ItemStack transferStackInSlot(EntityPlayer player, int slotty){
 		 ItemStack stack = null;
