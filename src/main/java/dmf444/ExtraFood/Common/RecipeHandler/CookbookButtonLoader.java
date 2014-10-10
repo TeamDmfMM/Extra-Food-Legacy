@@ -111,6 +111,8 @@ public class CookbookButtonLoader {
 		AddPage("butter", 2);
 		AddPage("yogurt", 2);
 		AddPage("burger", 3);
+		AddPage("sandwichBurger", 3);
+		AddPage("autocutter", 2);
 		//this.truth.put("Bread", true);
 		//this.multiNum.put("Bread", 1);
 

@@ -64,7 +64,7 @@ public class ItemLoader {
 
 		knife = new Knife().setUnlocalizedName(ItemLib.iK);	
 		cookBook = new Cookbook().setUnlocalizedName(ItemLib.iCB);
-		bucketstrawberry = new BucketStrawberry(2, 0.3F);
+		bucketstrawberry = new BucketStrawberry(6, 0.3F);
 		bucketbanana = new BucketBanana(2, 0.4F);
 		bucketcarrot = new BucketCarrot(2, 0.6F);
 		bucketseaWater = new BucketSeaWater(2, 0.1F);

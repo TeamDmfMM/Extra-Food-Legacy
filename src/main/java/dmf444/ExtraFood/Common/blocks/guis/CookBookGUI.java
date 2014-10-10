@@ -80,6 +80,8 @@ public class CookBookGUI extends GuiScreen {
     protected int mouseY;
     protected double field_74117_m;
     protected double field_74115_n;
+    private int mousey;
+	private int mousex;
     
     public static final int GUI_ID = 10;
     
@@ -129,6 +131,7 @@ public class CookBookGUI extends GuiScreen {
             this.genDasButtons(par1, par2, par3);
             this.genDasBorder(par1, par2, par3);
             this.drawTitle();
+            this.drawHoverers();
             GL11.glDisable(GL11.GL_LIGHTING);
             GL11.glDisable(GL11.GL_DEPTH_TEST);
             GL11.glEnable(GL11.GL_LIGHTING);
@@ -138,6 +141,62 @@ public class CookBookGUI extends GuiScreen {
 
 
     }
+    private void drawHoverers() {
+    	int i1 = (this.width - this.achievementsPaneWidth) / 2;
+	    int j1 = (this.height - this.achievementsPaneHeight) / 2;
+	    int sx = -26;
+    	int sy = 0;
+		// TODO Auto-generated method stub
+    	/*for (ClickTab tab : CookbookButtonLoader.bookButton.getButtons(this.tab)){
+        	if (tab.x * 22 > iox && tab.x * 22 < this.achievementsPaneWidth - 2 + iox){
+        		if (tab.y * 22 > yox && tab.y * 22 < this.achievementsPaneHeight - 2 + yox){
+        			if (tab.mousePressed(mc, mousex, mousey)){
+        				List lines = new ArrayList<String>();
+        				String pagename;
+        				if (StatCollector.canTranslate("cookbook.tabname." + tab.pagename)){
+        					pagename = StatCollector.translateToLocal("cookbook.tabname." + tab.pagename);
+        				}
+        				else {
+        					pagename = tab.pagename;
+        				}
+        				
+        				
+        				lines.add(pagename);
+        				this.drawHoveringText(lines, mousex, mousey, fontRendererObj);
+        			}
+        				
+        				
+        				
+        	}
+        	}
+    	}*/
+    
+    		for (CookbookTab cookbooktab : CookbookButtonLoader.bookButton.buttons){
+        		int cx = i1 + sx;
+        		int cy = j1 + sy;
+        		if (mousex >= cx && mousex <= cx + 26){
+        			if (mousey >= cy && mousey <= cy + 26){
+        				List lines = new ArrayList<String>();
+        				String pagename;
+        				if (StatCollector.canTranslate("cookbook.tabname." + cookbooktab.name)){
+        					pagename = StatCollector.translateToLocal("cookbook.tabname." + cookbooktab.name);
+        				}
+        				else {
+        					pagename = cookbooktab.name;
+        				}
+        				
+        				
+        				lines.add(pagename);
+        				this.drawHoveringText(lines, mousex, mousey, fontRendererObj);
+        			}
+        		}
+        		sy += 27;
+        	}
+    	
+	}
+
+
+
     
     protected void drawTitle()
     {
@@ -160,6 +219,13 @@ public class CookBookGUI extends GuiScreen {
         this.drawTexturedModalRect(i1, j1, 0, 0, this.achievementsPaneWidth, this.achievementsPaneHeight);
         GL11.glEnable(GL11.GL_LIGHTING);      
         GL11.glDisable(GL11.GL_BLEND);
+    }
+    public void handleMouseInput(){
+    	int x = Mouse.getEventX() * width / mc.displayWidth;
+    	int y = height - (Mouse.getEventY() * height) / mc.displayHeight - 1;
+    	this.mousex = x;
+    	this.mousey = y;
+    	super.handleMouseInput();
     }
     protected void genDasButtons(int par1, int par2, float par3){
         int i1 = (this.width - this.achievementsPaneWidth) / 2;

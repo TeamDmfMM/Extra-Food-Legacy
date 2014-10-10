@@ -91,7 +91,7 @@ public class CRPageCraftGet {
 		this.putRecipe("sandwichPB", new Object[] {" i ", " p ", " i " , 'i', new ItemStack(ItemLoader.slicedBread), 'p', new ItemStack(ItemLoader.peanutButter)}, new ItemStack(ItemLoader.sandwichPB));
 		this.putRecipe("sandwichPBJ", new Object[] {" i ", " pj", " i " , 'i', new ItemStack(ItemLoader.slicedBread), 'p', new ItemStack(ItemLoader.peanutButter), 'j', new ItemStack(ItemLoader.jelly)}, new ItemStack(ItemLoader.sandwichPBJ));
 		this.putRecipe("sandwichCheeseburger", new Object[] {"ch " , 'c', new ItemStack(ItemLoader.cheeseSlice), 'h', new ItemStack(ItemLoader.sandwhichHamburger)}, new ItemStack(ItemLoader.sandwichCheeseburger));
-		this.putRecipe("sandwichCheeseburger", new Object[] {" t ", "ch ", " t " , 't', new ItemStack(ItemLoader.slicedBread), 'c', new ItemStack(ItemLoader.cheeseSlice), 'h', new ItemStack(ItemLoader.cookedHamburger)}, new ItemStack(ItemLoader.sandwichCheeseburger));
+		this.putRecipe("sandwichCheeseburger1", new Object[] {" t ", "ch ", " t " , 't', new ItemStack(ItemLoader.slicedBread), 'c', new ItemStack(ItemLoader.cheeseSlice), 'h', new ItemStack(ItemLoader.cookedHamburger)}, new ItemStack(ItemLoader.sandwichCheeseburger));
 		this.putRecipe("sandwichSupremeBurger", new ItemStack(ItemLoader.sandwichSupremeBurger),  new ItemStack(ItemLoader.knife), new ItemStack(ItemLoader.lettuce), new ItemStack(ItemLoader.tomato), new ItemStack(ItemLoader.sandwichCheeseburger));
 		this.putRecipe("rawpasta", new ItemStack(ItemLoader.rawpasta),  new ItemStack(Items.bowl), new ItemStack(ItemLoader.knife), new ItemStack(Items.wheat));
 		this.putRecipe("cookedpasta", new ItemStack(ItemLoader.cookedpasta),  new ItemStack(ItemLoader.knife), new ItemStack(ItemLoader.rawpasta), new ItemStack(ItemLoader.tomato));
