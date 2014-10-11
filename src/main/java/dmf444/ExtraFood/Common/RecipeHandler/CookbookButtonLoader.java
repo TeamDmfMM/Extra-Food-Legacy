@@ -113,6 +113,7 @@ public class CookbookButtonLoader {
 		AddPage("burger", 3);
 		AddPage("sandwichBurger", 3);
 		AddPage("autocutter", 2);
+		AddPage("juiceblender", 2);
 		//this.truth.put("Bread", true);
 		//this.multiNum.put("Bread", 1);
 

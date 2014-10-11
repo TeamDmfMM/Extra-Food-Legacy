@@ -64,11 +64,11 @@ public class ItemLoader {
 
 		knife = new Knife().setUnlocalizedName(ItemLib.iK);	
 		cookBook = new Cookbook().setUnlocalizedName(ItemLib.iCB);
-		bucketstrawberry = new BucketStrawberry(6, 0.3F);
-		bucketbanana = new BucketBanana(2, 0.4F);
-		bucketcarrot = new BucketCarrot(2, 0.6F);
-		bucketseaWater = new BucketSeaWater(2, 0.1F);
-		bucketpurifiedwater = new BucketPurifiedWater(3, 0.3F);
+		bucketstrawberry = new BucketStrawberry(6, 0.8F);
+		bucketbanana = new BucketBanana(6, 0.6F);
+		bucketcarrot = new BucketCarrot(6, 0.9F);
+		bucketseaWater = new BucketSeaWater(2, 0.5F);
+		bucketpurifiedwater = new BucketPurifiedWater(4, 0.5F);
 		tomatoSeeds = (ItemSeeds) new ItemSeeds(BlockLoader.tomatoCrop, Blocks.farmland).setUnlocalizedName(ItemLib.iTS).setTextureName("extrafood:tomatoSeeds").setCreativeTab(EFTabs.INSTANCE);
 		rawlettuceSeeds = new Item().setUnlocalizedName(ItemLib.iULS).setTextureName("extrafood:uselessLettuceSeeds").setCreativeTab(EFTabs.INSTANCE);
 		uselettuceSeeds = (ItemSeeds) new ItemSeeds(BlockLoader.lettuceCrop, Blocks.farmland).setUnlocalizedName(ItemLib.iCLS).setTextureName("extrafood:coatedLettuceSeeds").setCreativeTab(EFTabs.INSTANCE);
