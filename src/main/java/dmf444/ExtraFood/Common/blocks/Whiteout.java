@@ -13,13 +13,14 @@ public class Whiteout extends Block {
 	public Whiteout() {
 		super(Material.clay);
 		this.setCreativeTab(CreativeTabs.tabDecorations);
+		this.setLightLevel(0.875F);
 	}
 
 	@Override
-	public void onEntityWalking(World p_149724_1_, int p_149724_2_, int p_149724_3_, int p_149724_4_, Entity entity)
+	 public void onEntityCollidedWithBlock(World p_149670_1_, int p_149670_2_, int p_149670_3_, int p_149670_4_, Entity entity)
 	{
 		if(entity instanceof EntityEnderman){
-			entity.attackEntityFrom(DamageSource.drown, 2.0F);
+			entity.attackEntityFrom(DamageSource.cactus, 2.0F);
 		}
 	}
 }
