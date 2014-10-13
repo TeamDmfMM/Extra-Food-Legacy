@@ -30,6 +30,7 @@ public class CookbookButtonLoader {
 		CookbookTab t = new CookbookTab("GettingStarted");
 		t.buttons.add(new ClickTab(6, 4, ItemLoader.cookBook, "basicKnowlege"));
 		t.buttons.add(new ClickTab(8, 6, new ItemStack(BlockLoader.strawberryBush), "worldGen"));
+		t.buttons.add(new ClickTab(8, 8, new ItemStack(ItemLoader.tomato), "plants"));
 		t.buttons.add(new ClickTab(10, 4, new ItemStack(BlockLoader.whiteout), "boneBlock"));
 		t.buttons.add(new ClickTab(2, 4, ItemLoader.knife, "knife"));
 		t.buttons.add(new ClickTab(4, 6, ItemLoader.grater, "grater"));
@@ -105,7 +106,7 @@ public class CookbookButtonLoader {
 		this.truth.put("cheesepress", true);
 		this.multiNum.put("cheesepress", 2);
 		AddPage("Bread", 2);
-		AddPage("sandwiches", 11);
+		AddPage("sandwiches", 17);
 		AddPage("spread", 6);
 		AddPage("worldGen", 2);
 		AddPage("butter", 2);
@@ -114,9 +115,9 @@ public class CookbookButtonLoader {
 		AddPage("sandwichBurger", 3);
 		AddPage("autocutter", 2);
 		AddPage("juiceblender", 2);
-		//this.truth.put("Bread", true);
-		//this.multiNum.put("Bread", 1);
-
+		AddPage("NeoIC", 2);
+		AddPage("pasta", 5);
+		AddPage("plants", 2);
 
 	}
 

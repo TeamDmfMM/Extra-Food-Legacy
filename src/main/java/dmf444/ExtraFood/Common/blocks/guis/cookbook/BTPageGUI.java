@@ -277,32 +277,32 @@ public int drawElementCrafting(ArrayList<Object> args, int x, int y, int flag){
 				
 			if (items[0] != null){				
 		    GL11.glDisable(GL11.GL_LIGHTING);					
-			this.irender.renderItemIntoGUI(this.fontRendererObj, this.mc.getTextureManager(), items[0], x1 - 3, y1);
+			this.irender.renderItemIntoGUI(this.fontRendererObj, this.mc.getTextureManager(), items[0], x1 - 3, y1 + 1);
 			GL11.glEnable(GL11.GL_LIGHTING);			
 			}	
 			if (items[1] != null){
 			    GL11.glDisable(GL11.GL_LIGHTING);	
-			this.irender.renderItemIntoGUI(this.fontRendererObj, this.mc.getTextureManager(), items[1], x1 + 18, y1);
+			this.irender.renderItemIntoGUI(this.fontRendererObj, this.mc.getTextureManager(), items[1], x1 + 18, y1 + 1);
 				GL11.glEnable(GL11.GL_LIGHTING);	
 			}
 			if (items[2] != null){
 			    GL11.glDisable(GL11.GL_LIGHTING);	
-			this.irender.renderItemIntoGUI(this.fontRendererObj, this.mc.getTextureManager(), items[2], x1 + 40, y1);
+			this.irender.renderItemIntoGUI(this.fontRendererObj, this.mc.getTextureManager(), items[2], x1 + 40, y1 + 1);
 			GL11.glEnable(GL11.GL_LIGHTING);	
 			}
 			if (items[3] != null){
 			    GL11.glDisable(GL11.GL_LIGHTING);	
-			this.irender.renderItemIntoGUI(this.fontRendererObj, this.mc.getTextureManager(), items[3], x1 - 3, y1 + 21);
+			this.irender.renderItemIntoGUI(this.fontRendererObj, this.mc.getTextureManager(), items[3], x1 - 3, y1 + 22);
 			GL11.glEnable(GL11.GL_LIGHTING);	
 			}
 			if (items[4] != null){
 			    GL11.glDisable(GL11.GL_LIGHTING);	
-			this.irender.renderItemIntoGUI(this.fontRendererObj, this.mc.getTextureManager(), items[4], x1 + 18, y1 + 21);
+			this.irender.renderItemIntoGUI(this.fontRendererObj, this.mc.getTextureManager(), items[4], x1 + 18, y1 + 22);
 			GL11.glEnable(GL11.GL_LIGHTING);	
 			}
 			if (items[5] != null){
 			    GL11.glDisable(GL11.GL_LIGHTING);	
-			this.irender.renderItemIntoGUI(this.fontRendererObj, this.mc.getTextureManager(), items[5], x1 + 40, y1 + 21);
+			this.irender.renderItemIntoGUI(this.fontRendererObj, this.mc.getTextureManager(), items[5], x1 + 40, y1 + 22);
 			GL11.glEnable(GL11.GL_LIGHTING);	
 			}
 			if (items[6] != null){
@@ -422,7 +422,7 @@ public int drawElementHungerStats(ArrayList<Object> args, int x, int y, int flag
 			 typetest = false;
 			 //System.out.println("t" + currword);
 			 if (this.types().contains(currword)){
-				 System.out.println(currword.trim());
+				 //System.out.println(currword.trim());
 				 type = currword;
 				 currword = "";
 			 }

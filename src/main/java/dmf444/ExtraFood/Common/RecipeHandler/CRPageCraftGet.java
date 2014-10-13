@@ -95,9 +95,9 @@ public class CRPageCraftGet {
 		this.putRecipe("sandwichSupremeBurger", new ItemStack(ItemLoader.sandwichSupremeBurger),  new ItemStack(ItemLoader.knife), new ItemStack(ItemLoader.lettuce), new ItemStack(ItemLoader.tomato), new ItemStack(ItemLoader.sandwichCheeseburger));
 		this.putRecipe("rawpasta", new ItemStack(ItemLoader.rawpasta),  new ItemStack(Items.bowl), new ItemStack(ItemLoader.knife), new ItemStack(Items.wheat));
 		this.putRecipe("cookedpasta", new ItemStack(ItemLoader.cookedpasta),  new ItemStack(ItemLoader.knife), new ItemStack(ItemLoader.rawpasta), new ItemStack(ItemLoader.tomato));
-		this.putRecipe("meatballpasta", new ItemStack(ItemLoader.meatballpasta),  new ItemStack(ItemLoader.meatballs), new ItemStack(ItemLoader.cookedpasta));
-		this.putRecipe("meatballpasta", new ItemStack(ItemLoader.meatballpasta),  new ItemStack(ItemLoader.meatballs), new ItemStack(ItemLoader.knife), new ItemStack(ItemLoader.rawpasta), new ItemStack(ItemLoader.tomato));
-		this.putRecipe("meatballpasta", new ItemStack(ItemLoader.meatballpasta),  new ItemStack(Items.bowl), new ItemStack(ItemLoader.meatballs), new ItemStack(ItemLoader.knife), new ItemStack(ItemLoader.knife), new ItemStack(Items.wheat), new ItemStack(ItemLoader.tomato));	
+		this.putRecipe("meatballpasta1", new ItemStack(ItemLoader.meatballpasta),  new ItemStack(ItemLoader.meatballs), new ItemStack(ItemLoader.cookedpasta));
+		this.putRecipe("meatballpasta2", new ItemStack(ItemLoader.meatballpasta),  new ItemStack(ItemLoader.meatballs), new ItemStack(ItemLoader.knife), new ItemStack(ItemLoader.rawpasta), new ItemStack(ItemLoader.tomato));
+		this.putRecipe("meatballpasta3", new ItemStack(ItemLoader.meatballpasta),  new ItemStack(Items.bowl), new ItemStack(ItemLoader.meatballs), new ItemStack(ItemLoader.knife), new ItemStack(ItemLoader.knife), new ItemStack(Items.wheat), new ItemStack(ItemLoader.tomato));	
 		this.putRecipe("tomatoSeeds", new ItemStack(ItemLoader.tomatoSeeds, 2),  new ItemStack(ItemLoader.tomato));
 		this.putRecipe("uselettuceSeeds", new Object[] {" c ", "csc", " c " , 'c', new ItemStack(Items.clay_ball, 1), 's', new ItemStack(ItemLoader.rawlettuceSeeds)}, new ItemStack(ItemLoader.uselettuceSeeds, 2));
 		
