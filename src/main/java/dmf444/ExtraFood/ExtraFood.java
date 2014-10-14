@@ -2,6 +2,7 @@ package dmf444.ExtraFood;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.common.ChestGenHooks;
 import net.minecraftforge.common.MinecraftForge;
@@ -38,7 +39,9 @@ import dmf444.ExtraFood.Core.AchieveLoad;
 import dmf444.ExtraFood.Core.CraftingRecipies;
 import dmf444.ExtraFood.Core.GuiHandler;
 import dmf444.ExtraFood.Core.PacketJBTank;
+import dmf444.ExtraFood.Core.Crossmod.CrossModModules;
 import dmf444.ExtraFood.Core.Crossmod.NEIAutoCutterHandler.AutoCutterRecipe;
+import dmf444.ExtraFood.Core.Crossmod.forestry.ForestryFarming;
 import dmf444.ExtraFood.Core.Crossmod.ThaumcraftAspects;
 import dmf444.ExtraFood.Core.Crossmod.WailaConfig;
 import dmf444.ExtraFood.Core.lib.ModInfo;
@@ -98,16 +101,18 @@ public class ExtraFood {
 
 	@EventHandler
 	public void load(FMLInitializationEvent event){
+		EFLog.info("Extra Food is in Init, loading stuff");
+			BlockLoader.initTileEntity();
 		
-		BlockLoader.initTileEntity();
+			proxy.registerRenderers();
+			this.registryCutter = new RegistryAutoCutter();
+			CraftingRecipies.craftering();
+			CraftingRecipies.furnacing();
 		
-		proxy.registerRenderers();
-		this.registryCutter = new RegistryAutoCutter();
-		CraftingRecipies.craftering();
-		CraftingRecipies.furnacing();
-		
-		proxy.registerKeybinds();
-		proxy.intermodComm();
+			proxy.registerKeybinds();
+			proxy.intermodComm();
+			CrossModModules.magic();
+		EFLog.info("Finished all INIT!");
 	}
 	
 	@EventHandler
