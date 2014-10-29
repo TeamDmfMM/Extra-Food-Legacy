@@ -85,7 +85,6 @@ public class ExtraFood {
 		}
 		
 		EventsLoader.loadEvents();
-
 		//Gui Handler Registration
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
 		//Init the packet Handler

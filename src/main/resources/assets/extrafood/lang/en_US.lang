@@ -90,6 +90,11 @@ fluid.strawberryjuice=Strawberry Juice
 fluid.carrotjuice=Carrot Juice
 fluid.bananajuice=Banana Juice
 
+#FORESTRY Intergration Names
+circuit.managedBush=Bush Farm
+managedBush=Managed Bush Farm
+for.circuit.managedBush=Bush Farm
+
 #--GUI's
 gui.JB=Juice Blender
 gui.AC=Auto Cutter

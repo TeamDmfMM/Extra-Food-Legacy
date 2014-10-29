@@ -9,7 +9,7 @@ import dmf444.ExtraFood.Core.Crossmod.forestry.ForestryFarming;
 import dmf444.ExtraFood.Core.lib.ModInfo;
 import dmf444.ExtraFood.util.EFLog;
 
-public class CrossModModules {
+public class CrossModModules{
 	
 	private static boolean thaumcraft = false;
 	private static boolean versionCheck = false;
@@ -35,7 +35,8 @@ public class CrossModModules {
 	}
 	if(Loader.isModLoaded("Forestry")){
 		forestry = true;
-		ForestryFarming.test();
+		ForestryFarming.addFarms();
+		ForestryFarming.registerCircut();
 	}
 	EFLog.info("Mods Loaded:");
 	EFLog.info("Thaumcraft=" + thaumcraft);
@@ -43,4 +44,5 @@ public class CrossModModules {
 	EFLog.info("Forestry=" + forestry);
 	
 	}
+
 }

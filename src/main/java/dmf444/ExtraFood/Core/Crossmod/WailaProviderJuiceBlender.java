@@ -33,7 +33,6 @@ public class WailaProviderJuiceBlender implements IWailaDataProvider{
 	public List<String> getWailaBody(ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
 		TileEntityJuiceBlender jb = (TileEntityJuiceBlender) accessor.getTileEntity();
 		ContainerJuiceBlender container = new ContainerJuiceBlender(accessor.getPlayer().inventory, jb);
-		
 		int fluidAmount = jb.tank.getFluidAmount();
 		int capacity = jb.tank.getCapacity();
 		//EFLog.error(fluid + ", " + fluidAmount + "/" + capacity);

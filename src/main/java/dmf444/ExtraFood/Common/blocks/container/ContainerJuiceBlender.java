@@ -59,7 +59,7 @@ public class ContainerJuiceBlender extends Container{
 	@Override
 	public void detectAndSendChanges(){
 		super.detectAndSendChanges();		
-		EFLog.fatal("MONONINOMA");
+		//EFLog.fatal("MONONINOMA");
 		for (int i = 0; i < this.crafters.size(); ++i){
 			if (crafters.get(i) instanceof EntityPlayerMP){
 				if (tileEntity.tank.getFluid() != null){
@@ -68,7 +68,6 @@ public class ContainerJuiceBlender extends Container{
 		}
 	}
 	}
-
 	
 	@Override
     public ItemStack transferStackInSlot(EntityPlayer player, int slotty){

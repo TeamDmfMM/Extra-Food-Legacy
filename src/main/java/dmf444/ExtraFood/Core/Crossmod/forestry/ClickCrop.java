@@ -11,20 +11,24 @@
  ******************************************************************************/
 package dmf444.ExtraFood.Core.Crossmod.forestry;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Vector;
 
+import dmf444.ExtraFood.Common.blocks.BlockLoader;
+import dmf444.ExtraFood.Common.items.ItemLoader;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.EffectRenderer;
 import net.minecraft.client.particle.EntityBreakingFX;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import forestry.api.farming.ICrop;
 
-public class CropBlock implements ICrop{
+public class ClickCrop implements ICrop{
 	Block block;
 	int meta;
 	World world;
@@ -32,7 +36,7 @@ public class CropBlock implements ICrop{
 	int posY;
 	int posZ;
 
- 	public CropBlock(World world, Block block, int meta,int x,int y, int z) {
+ 	public ClickCrop(World world, Block block, int meta,int x,int y, int z) {
  		this.world = world;
  		this.block = block;
  		this.meta = meta;
@@ -40,12 +44,20 @@ public class CropBlock implements ICrop{
  		this.posY = y;
  		this.posZ = z;
  	} 
- 	protected Collection<ItemStack> harvestBlock(int x, int y, int z) {
- 		Collection<ItemStack> harvested = block.getDrops(world, x, y, z, meta, 0);
- 		//Proxies.common.addBlockDestroyEffects(world, pos.x, pos.y, pos.z, block, 0);
- 		Minecraft.getMinecraft().effectRenderer.addBlockDestroyEffects(x, y, z, block, meta);
- 		world.setBlockToAir(x,y,z); 
-  		return harvested; 
+
+	protected Collection<ItemStack> harvestBlock(int x, int y, int z) {
+ 		Item item = null;
+ 		if(block == BlockLoader.strawberryBush){
+ 			item = ItemLoader.strawberry;
+ 		} else if (block == BlockLoader.peanutbush){
+ 			item = ItemLoader.peanut;
+ 		}
+ 		
+ 		ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
+ 				ret.add(new ItemStack(item, 4));
+ 		world.setBlockMetadataWithNotify(x, y, z, 0, 2);
+
+  		return ret; 
 
 	}
 	@Override
