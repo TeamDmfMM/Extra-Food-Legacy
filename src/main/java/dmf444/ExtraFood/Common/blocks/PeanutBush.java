@@ -127,17 +127,9 @@ public class PeanutBush extends Block implements IGrowable {
     	case -1:
     		return false;
     	
-    	case 4: case 5: case 6:
-    		if(!world.isRemote){
-    		ItemStack item = new ItemStack(ItemLoader.strawberry, 2);
-    		Entity Ientity = new EntityItem(world, x, y, z, item);
-			world.spawnEntityInWorld(Ientity);
-			world.setBlockMetadataWithNotify(x, y, z, 0, 2);
-			return true;
-    		}
     	case 7: case 8:
     		if(!world.isRemote){
-    		ItemStack item1 = new ItemStack(ItemLoader.strawberry, 4);
+    		ItemStack item1 = new ItemStack(ItemLoader.peanut, 4);
     		Entity Ientity1 = new EntityItem(world, x, y, z, item1);
 			world.spawnEntityInWorld(Ientity1);
 			world.setBlockMetadataWithNotify(x, y, z, 0, 2);
