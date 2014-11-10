@@ -67,6 +67,7 @@ item.FrenchToast.name=French Toast
 item.ButterMilk.name=Butter Milk
 item.CheeseburgerSandwhich.name=Cheeseburger
 item.SupremeHamburgerSandwhich.Deluxe Hamburger
+item.pizza.name=Pizza
 
 #Block Names
 tile.Banana_Bunch.name=Banana Bunch
@@ -99,7 +100,7 @@ for.circuit.managedBush=Bush Farm
 gui.JB=Juice Blender
 gui.AC=Auto Cutter
 gui.CP=Cheese Press
-
+gui.OV=Oven
 
 #--Cook Book Names
 cookbook.Title=Cookbook

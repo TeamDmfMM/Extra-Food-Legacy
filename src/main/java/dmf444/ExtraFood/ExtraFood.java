@@ -28,6 +28,7 @@ import dmf444.ExtraFood.Common.EventHandler.ExtraFood_EventBonemeal;
 import dmf444.ExtraFood.Common.EventHandler.ExtraFood_eventTextureHook;
 import dmf444.ExtraFood.Common.RecipeHandler.CRPageCraftGet;
 import dmf444.ExtraFood.Common.RecipeHandler.JuiceRegistry;
+import dmf444.ExtraFood.Common.RecipeHandler.OvenRegistry;
 import dmf444.ExtraFood.Common.RecipeHandler.RegistryAutoCutter;
 import dmf444.ExtraFood.Common.WorldGen.PeanutWorldGen;
 import dmf444.ExtraFood.Common.WorldGen.StrawberryWorldGen;
@@ -35,6 +36,7 @@ import dmf444.ExtraFood.Common.WorldGen.TreeManager;
 import dmf444.ExtraFood.Common.blocks.BlockLoader;
 import dmf444.ExtraFood.Common.fluids.FluidLoader;
 import dmf444.ExtraFood.Common.items.ItemLoader;
+import dmf444.ExtraFood.Common.items.nbt.NBTFoodLoader;
 import dmf444.ExtraFood.Core.AchieveLoad;
 import dmf444.ExtraFood.Core.CraftingRecipies;
 import dmf444.ExtraFood.Core.GuiHandler;
@@ -77,7 +79,8 @@ public class ExtraFood {
 		BlockLoader.initiateBlocks();
 		ItemLoader.initiateItems();
 		ItemLoader.initiateFoods();
-
+		NBTFoodLoader.initiateItems();
+		NBTFoodLoader.register();
 		
 		if (ConfigHandler.GenBananaTrees){
 		GameRegistry.registerWorldGenerator(treeManager, 0);
@@ -119,6 +122,7 @@ public class ExtraFood {
 		
 		crafterPage = new CRPageCraftGet();
 		JuiceRegistry.instance = new JuiceRegistry();
+		OvenRegistry.instance = new OvenRegistry();
 
 
 

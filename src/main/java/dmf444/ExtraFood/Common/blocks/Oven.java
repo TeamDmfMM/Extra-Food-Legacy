@@ -4,10 +4,12 @@ import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
+import dmf444.ExtraFood.ExtraFood;
 import dmf444.ExtraFood.Common.blocks.tileentity.TileEntityOven;
 import dmf444.ExtraFood.Core.EFTabs;
 
@@ -67,7 +69,16 @@ public class Oven extends BlockContainer {
 		world.setBlockMetadataWithNotify(x, y, z, 4, 2);
 		}
 	}
-
+    @Override
+    public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int metadata, float what, float these, float are) {
+            TileEntity tileEntity = world.getTileEntity(x, y, z);
+            if (tileEntity == null || player.isSneaking()) {
+                    return false;
+            }
+    //code to open gui explained later
+    player.openGui(ExtraFood.instance, 0, world, x, y, z);
+            return true;
+    }
 		
     public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack Itemstack) {
 		
