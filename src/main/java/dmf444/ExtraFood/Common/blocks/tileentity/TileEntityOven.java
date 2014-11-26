@@ -16,10 +16,10 @@ public class TileEntityOven extends TileEntity implements IInventory{
 	
 	public ItemStack[] items;
 	
-	int time = 0;
-	int maxtime = 12000;
+	int time = 0; //Current place
+	int maxtime = 12000; //Max recipe time
 	
-	boolean going = false;
+	boolean going = false; //if cooking
 
 	private OvenRegistryRecipe recipet;
 	
@@ -112,6 +112,15 @@ public class TileEntityOven extends TileEntity implements IInventory{
 		maxtime = recipe.getTime(OvenRegistry.instance.getArrayList(items));
 		going = true;
 		recipet = recipe;
+	}
+	
+	public int getTimeTicks(){
+		if (recipet != null){
+			return recipet.getTime(OvenRegistry.instance.getArrayList(items));
+		}
+		else {
+			return 0;
+		}
 	}
 
 	@Override

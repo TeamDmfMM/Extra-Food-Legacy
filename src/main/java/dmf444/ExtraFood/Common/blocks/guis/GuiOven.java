@@ -59,11 +59,15 @@ public class GuiOven extends GuiContainer {
 	}
 	
 	private void drawProgressBar(){
-		GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
-		GL11.glEnable(GL11.GL_BLEND);
-		this.mc.renderEngine.bindTexture(GuiLib.OVgui);
-		this.drawTexturedModalRect(76, 42, 202, 0, 26, 22);
-		GL11.glDisable(GL11.GL_BLEND);
+		EFLog.fatal(tileEntity.getTimeTicks());
+		if(tileEntity.getTimeTicks() != 0){
+			int i = 22;
+			GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
+			GL11.glEnable(GL11.GL_BLEND);
+			this.mc.renderEngine.bindTexture(GuiLib.OVgui);
+			this.drawTexturedModalRect(76, 42, 202, 0, 26, i); //22
+			GL11.glDisable(GL11.GL_BLEND);
+		}
 	}
 	
 	private void drawCookItem(){
@@ -76,10 +80,11 @@ public class GuiOven extends GuiContainer {
 		if(bob != null && bob[0] != null){
 		OvenRegistryRecipe output = OvenRegistry.instance.getRecipe(bob);
 		try{
-			EFLog.error("ATTEMPT TO PARSE IMAGE");
+			//EFLog.error("ATTEMPT TO PARSE IMAGE");
 			ItemStack output2 = output.getRecipeOutput(OvenRegistry.instance.getArrayList(bob));
 		if(output2 != null){
-		EFLog.error("IMAGE MADE");
+		//EFLog.error("IMAGE MADE");
+		
 		this.renders.renderItemIntoGUI(this.fontRendererObj, this.mc.getTextureManager(), new ItemStack(output2.getItem()), 80, 43);
 		}		
 		} catch(NullPointerException e){}

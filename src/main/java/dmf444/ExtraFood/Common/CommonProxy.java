@@ -12,9 +12,7 @@ import dmf444.ExtraFood.Core.lib.ModInfo;
 import dmf444.ExtraFood.util.EFLog;
 
 public class CommonProxy {
-	private boolean thaumcraft = false;
-	private boolean versionCheck = false;
-	private boolean forestry = false;
+
 	
 	public void registerRenderers(){//NOOOP
 		}

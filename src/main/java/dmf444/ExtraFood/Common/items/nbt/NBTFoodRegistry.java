@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.Dictionary;
 import java.util.Hashtable;
 
+import dmf444.ExtraFood.Common.items.ItemLoader;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -27,8 +28,19 @@ public class NBTFoodRegistry {
 	public NBTFoodRegistry(){
 		// TODO Place food registries in here
 		foods = new ArrayList<NBTFoodSpecs>();
-		addFood("pizza",
-				dict(
+		addFood("pizza", Pizza_ADD, 				
+				"extrafood:pizzaBase",
+				new float[] {10, 9},
+				lst(
+						 ar(
+								"pepperoni",
+								"fish"
+							)
+					)	
+								
+			);
+				//createInfo("pepperoni", 16, 13, "fish", 15, 12, "pepperoni", "olives", 18, 14, "pepperoni", "cheese", 10, 14, "fish","cheese", 15, 12,"olives", "pepperoni", "cheese", 10, 14),
+				/*dict(
 						"pepperoni",
 						"extrafood:fork",
 						null,
@@ -39,7 +51,7 @@ public class NBTFoodRegistry {
 						"extrafood:jelly",
 						null,
 						"cheese"
-					),
+					) 
 				createInfo(
 						"pepperoni",
 						
@@ -56,35 +68,27 @@ public class NBTFoodRegistry {
 						
 						18,
 						14
-					),
-				"extrafood:fork",
-				new float[] {10, 9},
-				lst(
-						ar(
-								"pepperoni",
-								"fish"
-							)
-					)	
-								
-			);
+					),*/
+
 				
 				
 						
 	}
+	private Dictionary<String, ArrayList<Object>> Pizza_ADD = dict("pepperoni", "extrafood:pizzaPepperoni", is(Items.apple), "fish", "extrafood:pizzaFish", is(Items.cooked_fished), "olives", "extrafood:pizzaOlive", is(Items.golden_apple), "cheese", "extrafood:pizzaCheese", is(ItemLoader.cheeseWheel));
 	
-	public void addFood(String name, Dictionary<String, ArrayList<Object>> adds, Dictionary<ArrayList<String>, ArrayList<Object>> info, String dIcon, float[] dHunger, ArrayList<ArrayList<String>> non){
+	public void addFood(String name, Dictionary<String, ArrayList<Object>> adds, String dIcon, float[] dHunger, ArrayList<ArrayList<String>> non){
 		NBTFoodSpecs spec = new NBTFoodSpecs();
 		spec.additives = convert(adds);
 		spec.addtypes = convert2(adds);
 		spec.name = name;
 		spec.defualtIcon = dIcon;
 		spec.defualtHunger = dHunger;
-		spec.info = info;
 		spec.non = non;
-		System.out.println(spec.info);
+		spec.setup();
 		foods.add(spec);
 		
 	}
+
 	
 	public Dictionary<String,String> convert(Dictionary<String,ArrayList<Object>> to){
 		Dictionary<String,String> d = new Hashtable<String,String>();
@@ -115,6 +119,7 @@ public class NBTFoodRegistry {
 		for (String i : strings){
 			rval.add(i);
 		}
+		Collections.sort(rval);
 		return rval;
 	}
 	public ArrayList<ArrayList<String>> lst(ArrayList<String>... strings){
@@ -150,11 +155,17 @@ public class NBTFoodRegistry {
 				d.put(key, thing);
 			}
 		}
-		System.out.println(d);
+		//System.out.println(d);
 		return d;
 		
 	}
-	
+	/**
+	 * Continous list of Info
+	 * 
+	 * @param String item
+	 * @param int Hunger
+	 * @param int Saturation
+	 */
 	public Dictionary<ArrayList<String>, ArrayList<Object>> createInfo(Object... info){
 		Dictionary<ArrayList<String>, ArrayList<Object>> rval = new Hashtable<ArrayList<String>, ArrayList<Object>>();
 		String defining = "";
@@ -195,13 +206,13 @@ public class NBTFoodRegistry {
 					
 					tttt.add(dmfmm[0]);
 					tttt.add(dmfmm[1]);
-					System.out.println("Strings: " + strings);
+					//System.out.println("Strings: " + strings);
 					rval.put((ArrayList<String>) strings.clone(), tttt);
 					strings.clear();
 				}
 			}
 		}
-		System.out.println(Collections.list(rval.keys()).size());
+		//System.out.println(Collections.list(rval.keys()).size());
 		return (Dictionary<ArrayList<String>, ArrayList<Object>>)rval;
 	}
 	

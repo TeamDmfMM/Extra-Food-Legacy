@@ -20,7 +20,8 @@ import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import dmf444.ExtraFood.Core.EFTabs;
+import dmf444.ExtraFood.Core.OvenFoodTab;
+import dmf444.ExtraFood.util.EFLog;
 
 public class NBTFood extends ItemFood {
 	public String name;
@@ -37,7 +38,7 @@ public class NBTFood extends ItemFood {
 		specs = NBTFoodRegistry.food.getSpecs(name);
 		
 		icons = new Hashtable<String, IIcon>();
-		this.setCreativeTab(EFTabs.INSTANCE);
+		this.setCreativeTab(OvenFoodTab.INSTANCE);
 		this.setHasSubtypes(true);
 		this.setUnlocalizedName(name);
 		this.name = name;
@@ -177,7 +178,7 @@ public class NBTFood extends ItemFood {
     		if (length == 0){
     			return base;
     		}
-    		System.out.println(icons.get(Collections.list(specs.additives.keys()).get(pass - 1)).getIconName());
+    		//System.out.println(icons.get(Collections.list(specs.additives.keys()).get(pass - 1)).getIconName());
     		return icons.get(things.get(pass - 1));
     		
     	}
@@ -185,7 +186,7 @@ public class NBTFood extends ItemFood {
     }
     
     public NBTTagCompound getNBT(String... strings){
-    	return getNBT((ArrayList)Arrays.asList(strings));
+    	return getNBT(ar(strings));
     }
     
     public NBTTagCompound getNBT(ArrayList<String> things){
@@ -206,5 +207,12 @@ public class NBTFood extends ItemFood {
     		things.add(toAdd);
     	}
     }
+	public ArrayList<String> ar(String... strings){
+		ArrayList<String> rval = new ArrayList<String>();
+		for (String i : strings){
+			rval.add(i);
+		}
+		return rval;
+	}
 }
 
