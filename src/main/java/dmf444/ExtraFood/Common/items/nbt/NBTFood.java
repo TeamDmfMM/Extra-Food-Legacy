@@ -198,8 +198,6 @@ public class NBTFood extends ItemFood {
     }
     
     public void getSubItems(Item item, CreativeTabs tab, List things){
-    	ItemStack t = new ItemStack(item);
-    	things.add(t);
     	for (ArrayList<String> i: Collections.list(specs.info.keys())){
     		System.out.println("Here's my value of i: " + i );
     		ItemStack toAdd = new ItemStack(item);

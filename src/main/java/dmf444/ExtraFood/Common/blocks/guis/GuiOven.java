@@ -84,7 +84,7 @@ public class GuiOven extends GuiContainer {
 			ItemStack output2 = output.getRecipeOutput(OvenRegistry.instance.getArrayList(bob));
 		if(output2 != null){
 		//EFLog.error("IMAGE MADE");
-		
+		this.renders.renderItemOverlayIntoGUI(this.fontRendererObj, this.mc.getTextureManager(), new ItemStack(output2.getItem()), 80, 43);
 		this.renders.renderItemIntoGUI(this.fontRendererObj, this.mc.getTextureManager(), new ItemStack(output2.getItem()), 80, 43);
 		}		
 		} catch(NullPointerException e){}

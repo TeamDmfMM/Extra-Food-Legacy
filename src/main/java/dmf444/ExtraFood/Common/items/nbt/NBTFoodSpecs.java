@@ -46,6 +46,7 @@ public class NBTFoodSpecs {
 		}
 		boolean bad = false;
 		for (ArrayList<String> comb : combinations){
+			bad = false;
 			EFLog.error("This is the omb-i-nation: " + comb);
 			for (ArrayList<String> t : non){
 				if (haveSameElements(comb, t)){
@@ -66,8 +67,10 @@ public class NBTFoodSpecs {
 			ArrayList<Object> t = new ArrayList<Object>();
 			t.add(hunger);
 			t.add(saturation);
-			info.put(comb, t);
+			
+			info.put((ArrayList<String>) comb.clone(), t);
 		}
+		EFLog.error("info: " + info);
 		
 		
 		
