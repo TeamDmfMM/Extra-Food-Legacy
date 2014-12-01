@@ -1,19 +1,19 @@
 package dmf444.ExtraFood.Common.blocks;
 
+import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
 import cpw.mods.fml.common.registry.GameRegistry;
 import dmf444.ExtraFood.Common.blocks.tileentity.AutoCutterTileEntity;
 import dmf444.ExtraFood.Common.blocks.tileentity.CheesePressTileEntity;
+import dmf444.ExtraFood.Common.blocks.tileentity.JuiceMixerTileEntity;
 import dmf444.ExtraFood.Common.blocks.tileentity.TileEntityJuiceBlender;
 import dmf444.ExtraFood.Common.blocks.tileentity.TileEntityOven;
 import dmf444.ExtraFood.Common.fluids.BananaJuice;
 import dmf444.ExtraFood.Common.fluids.CarrotJuice;
 import dmf444.ExtraFood.Common.fluids.FluidLoader;
 import dmf444.ExtraFood.Common.fluids.StrawberryJuice;
-import dmf444.ExtraFood.Common.items.ItemLoader;
 import dmf444.ExtraFood.Core.lib.BlockLib;
 import dmf444.ExtraFood.Core.lib.ModInfo;
-import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
 
 public class BlockLoader {
 
@@ -32,6 +32,7 @@ public class BlockLoader {
 	public static Block peanutbush;
 	public static Block tomatoCrop;
 	public static Block lettuceCrop;
+	public static Block juiceMixer;
 	
 	public static boolean Register=false;
 	
@@ -51,6 +52,7 @@ public class BlockLoader {
 		peanutbush = new PeanutBush(Material.plants).setBlockName(BlockLib.bPB);
 		tomatoCrop = new CropBlock("tomato").setBlockName(BlockLib.bCT);
 		lettuceCrop = new CropBlock("lettuce").setBlockName(BlockLib.bCL);
+		juiceMixer = new BlockJuiceMixer().setBlockName(BlockLib.bJM);
 		
 		
 		registerBlocks();
@@ -72,6 +74,7 @@ public class BlockLoader {
 			GameRegistry.registerBlock(peanutbush, BlockLib.bPB);
 			GameRegistry.registerBlock(tomatoCrop, BlockLib.bCT);
 			GameRegistry.registerBlock(lettuceCrop, BlockLib.bCL);
+			GameRegistry.registerBlock(juiceMixer, BlockLib.bJM);
 			
 		}
 		Register=true;
@@ -82,6 +85,7 @@ public class BlockLoader {
 		GameRegistry.registerTileEntity(AutoCutterTileEntity.class, BlockLib.bAC);
 		GameRegistry.registerTileEntity(TileEntityJuiceBlender.class, BlockLib.bJB);
 		GameRegistry.registerTileEntity(TileEntityOven.class, BlockLib.bO);
+		GameRegistry.registerTileEntity(JuiceMixerTileEntity.class, BlockLib.bJM);
 	}
 	
 }
