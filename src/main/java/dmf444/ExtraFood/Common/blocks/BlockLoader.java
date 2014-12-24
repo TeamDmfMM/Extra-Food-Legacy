@@ -10,6 +10,7 @@ import dmf444.ExtraFood.Common.blocks.tileentity.TileEntityJuiceBlender;
 import dmf444.ExtraFood.Common.blocks.tileentity.TileEntityOven;
 import dmf444.ExtraFood.Common.fluids.BananaJuice;
 import dmf444.ExtraFood.Common.fluids.CarrotJuice;
+import dmf444.ExtraFood.Common.fluids.Eggnog;
 import dmf444.ExtraFood.Common.fluids.FluidLoader;
 import dmf444.ExtraFood.Common.fluids.StrawberryJuice;
 import dmf444.ExtraFood.Core.lib.BlockLib;
@@ -26,6 +27,7 @@ public class BlockLoader {
 	public static Block whiteout;
 	public static Block Bbananajuice;
 	public static Block Bstrawberryjuice;
+	public static Block Beggnog;
 	public static Block strawberryBush;
 	public static Block Bcarrotjuice;
 	public static Block bananaLeaf;
@@ -45,6 +47,7 @@ public class BlockLoader {
 		oven = new Oven().setBlockName(BlockLib.bO);
 		whiteout = new Whiteout().setBlockName("TheWhiteBlock").setBlockTextureName("extrafood:The whiteout").setHardness(1.5F);
 		Bbananajuice = new BananaJuice(FluidLoader.Fbananajuice, Material.water).setBlockName("Fbananajuice");
+		Beggnog = new Eggnog(FluidLoader.FEggnog, Material.water).setBlockName("FEggnog");
 		Bstrawberryjuice = new StrawberryJuice(FluidLoader.Fstrawberryjuice, Material.water).setBlockName("StrawberryJuice");
 		strawberryBush = new StrawberryBush(Material.plants).setBlockName(BlockLib.bSB);
 		Bcarrotjuice = new CarrotJuice(FluidLoader.Fcarrotjuice, Material.water).setBlockName("Fcarrotjuice");
@@ -68,6 +71,7 @@ public class BlockLoader {
 			GameRegistry.registerBlock(whiteout, "TheWhiteBlock");
 			GameRegistry.registerBlock(Bbananajuice, ModInfo.MId + "_" + Bbananajuice.getUnlocalizedName().substring(5));
 			GameRegistry.registerBlock(Bstrawberryjuice, ModInfo.MId + "_" + Bstrawberryjuice.getUnlocalizedName().substring(5));
+			GameRegistry.registerBlock(Beggnog, ModInfo.MId + "_" + Beggnog.getUnlocalizedName().substring(5));
 			GameRegistry.registerBlock(strawberryBush, BlockLib.bSB);
 			GameRegistry.registerBlock(Bcarrotjuice, ModInfo.MId + "_" + Bcarrotjuice.getUnlocalizedName().substring(5));
 			GameRegistry.registerBlock(bananaLeaf, "BananaLeaf");

@@ -53,6 +53,8 @@ public class ItemLoader {
 	public static Item vanillaIceCream, chocolateIceCream, strawberryIceCream, icePop, neoIceCream;
 	public static Item butter, butterMilk;
 	public static Item yogurt, stawberryYogurt;
+	/*Christmas Items*/
+	public static Item shortbread, fruitcake, gingerbread, chestnuts, bucketeggnog;
 	
 	
 	private static boolean IRegister=false;
@@ -69,6 +71,7 @@ public class ItemLoader {
 		bucketcarrot = new BucketCarrot(6, 0.9F);
 		bucketseaWater = new BucketSeaWater(2, 0.5F);
 		bucketpurifiedwater = new BucketPurifiedWater(4, 0.5F);
+		bucketeggnog = new EdibleBucket(9, 5.0F, BlockLoader.Beggnog, "eggnog");
 		tomatoSeeds = (ItemSeeds) new ItemSeeds(BlockLoader.tomatoCrop, Blocks.farmland).setUnlocalizedName(ItemLib.iTS).setTextureName("extrafood:tomatoSeeds").setCreativeTab(EFTabs.INSTANCE);
 		rawlettuceSeeds = new Item().setUnlocalizedName(ItemLib.iULS).setTextureName("extrafood:uselessLettuceSeeds").setCreativeTab(EFTabs.INSTANCE);
 		uselettuceSeeds = (ItemSeeds) new ItemSeeds(BlockLoader.lettuceCrop, Blocks.farmland).setUnlocalizedName(ItemLib.iCLS).setTextureName("extrafood:coatedLettuceSeeds").setCreativeTab(EFTabs.INSTANCE);
@@ -134,6 +137,10 @@ public class ItemLoader {
 		frenchToast = new StanFood(7, 2.7F).setUnlocalizedName(ItemLib.iFrenchToast);
 		sandwichCheeseburger = new StanFood(10, 12.0F).setUnlocalizedName(ItemLib.iSandCheeseBurger);
 		sandwichSupremeBurger = new StanFood(15, 11.2F).setUnlocalizedName(ItemLib.iSandSupremeH);
+		shortbread = new StanFood(8, 5.0F).setUnlocalizedName(ItemLib.iShortB);
+		fruitcake = new StanFood(12, 5.0F).setUnlocalizedName(ItemLib.iFC);
+		gingerbread = new StanFood(9, 5.0F).setUnlocalizedName(ItemLib.iGB);
+		chestnuts = new StanFood(10, 5.0F).setUnlocalizedName(ItemLib.Chestnut);
 		
 		registerFood();
 	}
@@ -151,9 +158,11 @@ public class ItemLoader {
 			GameRegistry.registerItem(bucketcarrot, ItemLib.iBC);
 			GameRegistry.registerItem(bucketseaWater, ItemLib.iBSW);
 			GameRegistry.registerItem(bucketpurifiedwater, ItemLib.iBPW);
+			GameRegistry.registerItem(bucketeggnog, "eggnog");
 			FluidContainerRegistry.registerFluidContainer(FluidRegistry.getFluidStack("bananajuice", FluidContainerRegistry.BUCKET_VOLUME), new ItemStack(bucketbanana), new ItemStack(Items.bucket));
 			FluidContainerRegistry.registerFluidContainer(FluidRegistry.getFluidStack("strawberryjuice", FluidContainerRegistry.BUCKET_VOLUME), new ItemStack(bucketstrawberry), new ItemStack(Items.bucket));
 			FluidContainerRegistry.registerFluidContainer(FluidRegistry.getFluidStack("carrotjuice", FluidContainerRegistry.BUCKET_VOLUME), new ItemStack(bucketcarrot), new ItemStack(Items.bucket));
+			FluidContainerRegistry.registerFluidContainer(FluidRegistry.getFluidStack("eggnog", FluidContainerRegistry.BUCKET_VOLUME), new ItemStack(bucketeggnog), new ItemStack(Items.bucket));
 			FluidContainerRegistry.registerFluidContainer(FluidRegistry.getFluidStack("water", FluidContainerRegistry.BUCKET_VOLUME), new ItemStack(bucketseaWater), new ItemStack(Items.bucket));
 			FluidContainerRegistry.registerFluidContainer(FluidRegistry.getFluidStack("water", FluidContainerRegistry.BUCKET_VOLUME), new ItemStack(bucketpurifiedwater), new ItemStack(Items.bucket));
 			
@@ -217,6 +226,11 @@ public class ItemLoader {
 			GameRegistry.registerItem(frenchToast, ItemLib.iFrenchToast);
 			GameRegistry.registerItem(sandwichCheeseburger, ItemLib.iSandCheeseBurger);
 			GameRegistry.registerItem(sandwichSupremeBurger, ItemLib.iSandSupremeH);
+			//Noel
+			GameRegistry.registerItem(shortbread, ItemLib.iShortB);
+			GameRegistry.registerItem(fruitcake, ItemLib.iFC);
+			GameRegistry.registerItem(gingerbread, ItemLib.iGB);
+			GameRegistry.registerItem(chestnuts, ItemLib.Chestnut);
 			
 			//Register into Ore Dictionary
 			OreDictionary.registerOre("foodHamburger", ItemLoader.cookedHamburger);

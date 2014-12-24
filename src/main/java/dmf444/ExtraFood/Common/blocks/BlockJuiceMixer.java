@@ -25,7 +25,7 @@ public class BlockJuiceMixer extends BlockContainer{
 		return new JuiceMixerTileEntity();
 	}
 	public int getRenderType() {
-        return RenderingRegistry.getNextAvailableRenderId();
+        return -1;
 }
 
 //It's not an opaque cube, so you need this.

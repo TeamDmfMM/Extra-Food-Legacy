@@ -11,8 +11,13 @@ import net.minecraft.item.Item;
 public class NBTFoodLoader {
 	
 	public static Dictionary<String, Item> foods = new Hashtable<String, Item>();
-	
 	public static ArrayList<String> registered = new ArrayList<String>();
+	
+	public static void initiateItems(){
+		NBTFoodRegistry.food = new NBTFoodRegistry();
+		addItem("pizza");
+		addItem("muffin");
+	}
 	
 	public static void addItem(String foodname){
 		foods.put(foodname, new NBTFood(foodname));
@@ -32,12 +37,6 @@ public class NBTFoodLoader {
 	public static Item getItem(String name){
 		return foods.get(name);
 	}
-	
-	public static void initiateItems(){
-		NBTFoodRegistry.food = new NBTFoodRegistry();
-		addItem("pizza");
-	}
-	
-	
+
 }
 	

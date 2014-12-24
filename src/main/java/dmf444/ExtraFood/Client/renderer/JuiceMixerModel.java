@@ -12,7 +12,7 @@ public class JuiceMixerModel {
 
 	private IModelCustom modelJM;
 	
-	public void ModleJuiceMixer(){
+	public JuiceMixerModel(){
 		modelJM = AdvancedModelLoader.loadModel(GuiLib.ModelJM);
 	}
 	

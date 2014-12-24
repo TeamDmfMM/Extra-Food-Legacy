@@ -140,7 +140,7 @@ public class NBTFood extends ItemFood {
     @SideOnly(Side.CLIENT)
     public void registerIcons(IIconRegister iconRegister){
     	ArrayList<String> keys = Collections.list(specs.additives.keys());
-    	System.out.println(keys);
+    	//System.out.println(keys);
     	for (String key : keys){
     		String iconstring = specs.additives.get(key);
     		icons.put(key, iconRegister.registerIcon(iconstring));
@@ -199,7 +199,7 @@ public class NBTFood extends ItemFood {
     
     public void getSubItems(Item item, CreativeTabs tab, List things){
     	for (ArrayList<String> i: Collections.list(specs.info.keys())){
-    		System.out.println("Here's my value of i: " + i );
+    		//System.out.println("Here's my value of i: " + i );
     		ItemStack toAdd = new ItemStack(item);
     		toAdd.setTagCompound(getNBT(i));
     		things.add(toAdd);

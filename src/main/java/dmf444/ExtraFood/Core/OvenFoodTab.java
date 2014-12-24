@@ -17,14 +17,14 @@ public class OvenFoodTab extends CreativeTabs {
 		super(ModInfo.MId + ".OvenFood");
 	}
 
-
+/*
 	@Override
 	public ItemStack getIconItemStack() {
 		ItemStack bob = new ItemStack(NBTFoodLoader.getItem("pizza"));
 		bob.setTagCompound(((NBTFood) NBTFoodLoader.getItem("pizza")).getNBT("pepperoni", "cheese"));
 		return bob;
 	}
-
+*/
 
 	@Override
 	public Item getTabIconItem() {

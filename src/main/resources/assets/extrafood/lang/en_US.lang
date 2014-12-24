@@ -70,6 +70,23 @@ item.CheeseburgerSandwhich.name=Cheeseburger
 item.SupremeHamburgerSandwhich.Deluxe Hamburger
 item.pizza.name=Pizza
 
+## Additive names
+add.pizza.pepperoni=Pepperoni
+add.pizza.fish=Fish
+add.pizza.olives=Olives
+add.pizza.cheese=Cheese
+add.muffin.chocolate_chip=Chocolate Chip
+add.muffin.strawberry=Strawberry
+add.muffin.Doublechocolate=Double Chocolate
+add.muffin.apple=Apple
+add.muffin.banana=Banana
+
+#Seasonal
+item.shortbread.name=Shortbread Cookie
+item.FruitCake.name=Fruit Cake
+item.chestnuts.name=Chestnuts
+item.gingerbread.name=Gingerbread Cookie
+
 #Block Names
 tile.Banana_Bunch.name=Banana Bunch
 tile.CheesePress.name=Cheese Press

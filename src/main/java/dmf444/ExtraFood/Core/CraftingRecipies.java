@@ -14,6 +14,7 @@ import dmf444.ExtraFood.Common.RecipeHandler.RecipeAutoCutter;
 import dmf444.ExtraFood.Common.RecipeHandler.RegistryAutoCutter;
 import dmf444.ExtraFood.Common.blocks.BlockLoader;
 import dmf444.ExtraFood.Common.items.ItemLoader;
+import dmf444.ExtraFood.util.DateUtil;
 
 
 public class CraftingRecipies {
@@ -80,6 +81,15 @@ public class CraftingRecipies {
 	//Seed Recipes
 	GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(ItemLoader.tomatoSeeds, 2), "cropTomato"));
 	GameRegistry.addShapedRecipe(new ItemStack(ItemLoader.uselettuceSeeds, 2), new Object[] {"cs", 'c', new ItemStack(Items.clay_ball, 1), 's', new ItemStack(ItemLoader.rawlettuceSeeds)});
+	
+	//Seasonal
+	if(DateUtil.isChristmas()){
+		GameRegistry.addShapelessRecipe(new ItemStack(ItemLoader.fruitcake), Items.bread, ItemLoader.strawberry, Items.carrot, Items.apple);
+		GameRegistry.addShapelessRecipe(new ItemStack(ItemLoader.shortbread, 2), Items.sugar, Items.wheat, ItemLoader.butter);
+		GameRegistry.addShapelessRecipe(new ItemStack(ItemLoader.gingerbread, 2), Items.sugar, Items.wheat, ItemLoader.butter, Items.egg);
+		GameRegistry.addSmelting(ItemLoader.peanut, new ItemStack(ItemLoader.chestnuts), 1F);
+		GameRegistry.addShapelessRecipe(new ItemStack(ItemLoader.bucketeggnog), ItemLoader.egg, Items.milk_bucket, ItemLoader.egg);
+	}
 	
 	Cutting(new ItemStack(Items.fish, 1), new ItemStack(ItemLoader.fishpieces, 1));
 	Cutting(new ItemStack(ItemLoader.cookedHamburger, 1), new ItemStack(ItemLoader.meatballs, 3));

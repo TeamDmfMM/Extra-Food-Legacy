@@ -29,7 +29,7 @@ public class NBTFoodSpecs {
 			dohicker.add(i);
 		}
 		ArrayList<ArrayList<String>> combinations = PowerSetGen.combinationsOf(dohicker);
-		EFLog.error(combinations);
+		//EFLog.error(combinations);
 		Dictionary<String, float[]> addvals = new Hashtable<String, float[]>();
 		for (String i : dohicker){
 			ItemStack t = addtypes.get(i);
@@ -47,11 +47,11 @@ public class NBTFoodSpecs {
 		boolean bad = false;
 		for (ArrayList<String> comb : combinations){
 			bad = false;
-			EFLog.error("This is the omb-i-nation: " + comb);
+			//EFLog.error("This is the omb-i-nation: " + comb);
 			for (ArrayList<String> t : non){
-				if (haveSameElements(comb, t)){
+				if (comb.containsAll(t)){
 					bad = true;
-					EFLog.error("I failed");
+					//EFLog.error("I failed");
 					break;
 				}
 			}
@@ -70,7 +70,7 @@ public class NBTFoodSpecs {
 			
 			info.put((ArrayList<String>) comb.clone(), t);
 		}
-		EFLog.error("info: " + info);
+		//EFLog.error("info: " + info);
 		
 		
 		
@@ -99,7 +99,7 @@ public class NBTFoodSpecs {
 	    // Subtract the count of items in list2
 	    for (String item : list2) {
 	        // If the map doesn't contain the item here, then this item wasn't in list1
-	        if (!counts.containsKey(item)) return false;
+	    	if (!counts.containsKey(item)){ counts.put(item, new Count()); counts.get(item).count += 1;}
 	        counts.get(item).count -= 1;
 	    }
 
