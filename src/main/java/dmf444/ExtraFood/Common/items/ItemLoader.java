@@ -4,10 +4,12 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import dmf444.ExtraFood.Common.blocks.BlockLoader;
 import dmf444.ExtraFood.Core.EFTabs;
 import dmf444.ExtraFood.Core.lib.ItemLib;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
+import net.minecraft.item.ItemReed;
 import net.minecraft.item.ItemSeeds;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
@@ -55,7 +57,8 @@ public class ItemLoader {
 	public static Item yogurt, stawberryYogurt;
 	/*Christmas Items*/
 	public static Item shortbread, fruitcake, gingerbread, chestnuts, bucketeggnog;
-	
+	//Temp
+	public static Item ChocolateCake;
 	
 	private static boolean IRegister=false;
 	private static boolean FRegister=false;
@@ -141,6 +144,8 @@ public class ItemLoader {
 		fruitcake = new StanFood(12, 5.0F).setUnlocalizedName(ItemLib.iFC);
 		gingerbread = new StanFood(9, 5.0F).setUnlocalizedName(ItemLib.iGB);
 		chestnuts = new StanFood(10, 5.0F).setUnlocalizedName(ItemLib.Chestnut);
+		//Temp HDB
+		ChocolateCake = new ItemReed(BlockLoader.Chocake).setMaxStackSize(1).setUnlocalizedName(ItemLib.Cake).setCreativeTab(EFTabs.INSTANCE).setTextureName("extrafood:Chocake");
 		
 		registerFood();
 	}
@@ -231,6 +236,8 @@ public class ItemLoader {
 			GameRegistry.registerItem(fruitcake, ItemLib.iFC);
 			GameRegistry.registerItem(gingerbread, ItemLib.iGB);
 			GameRegistry.registerItem(chestnuts, ItemLib.Chestnut);
+			//Temp
+			GameRegistry.registerItem(ChocolateCake, ItemLib.Cake);
 			
 			//Register into Ore Dictionary
 			OreDictionary.registerOre("foodHamburger", ItemLoader.cookedHamburger);

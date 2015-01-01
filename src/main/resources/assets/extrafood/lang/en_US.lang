@@ -86,6 +86,7 @@ item.shortbread.name=Shortbread Cookie
 item.FruitCake.name=Fruit Cake
 item.chestnuts.name=Chestnuts
 item.gingerbread.name=Gingerbread Cookie
+item.ChocolateCake.name=Chocolate Cake
 
 #Block Names
 tile.Banana_Bunch.name=Banana Bunch

@@ -59,6 +59,11 @@ public class DateUtil {
 		return DateUtil.getCalender().get(Calendar.MONTH) == Calendar.JULY && DateUtil.getCalender().get(Calendar.DATE) == 1;
 	}
 
+	public static boolean isBirthDay() {
+		
+		return DateUtil.getCalender().get(Calendar.MONTH) == Calendar.DECEMBER && DateUtil.getCalender().get(Calendar.DATE) == 31;
+	}
+
 	//public static boolean isBirthday() {
 	//	return DateUtil.getCalender().get(Calendar.MONTH) == Calendar.JUNE && DateUtil.getCalender().get(Calendar.DATE) == 15;
 	//}

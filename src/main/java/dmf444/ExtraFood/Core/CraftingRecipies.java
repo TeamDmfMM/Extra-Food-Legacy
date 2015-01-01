@@ -90,6 +90,9 @@ public class CraftingRecipies {
 		GameRegistry.addSmelting(ItemLoader.peanut, new ItemStack(ItemLoader.chestnuts), 1F);
 		GameRegistry.addShapelessRecipe(new ItemStack(ItemLoader.bucketeggnog), ItemLoader.egg, Items.milk_bucket, ItemLoader.egg);
 	}
+	if(DateUtil.isBirthDay()){
+		GameRegistry.addShapelessRecipe(new ItemStack(ItemLoader.ChocolateCake), Items.cake, ItemLoader.chocolate);
+	}
 	
 	Cutting(new ItemStack(Items.fish, 1), new ItemStack(ItemLoader.fishpieces, 1));
 	Cutting(new ItemStack(ItemLoader.cookedHamburger, 1), new ItemStack(ItemLoader.meatballs, 3));

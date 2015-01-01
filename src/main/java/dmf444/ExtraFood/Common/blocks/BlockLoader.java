@@ -35,6 +35,7 @@ public class BlockLoader {
 	public static Block tomatoCrop;
 	public static Block lettuceCrop;
 	public static Block juiceMixer;
+	public static Block Chocake;
 	
 	public static boolean Register=false;
 	
@@ -56,6 +57,7 @@ public class BlockLoader {
 		tomatoCrop = new CropBlock("tomato").setBlockName(BlockLib.bCT);
 		lettuceCrop = new CropBlock("lettuce").setBlockName(BlockLib.bCL);
 		juiceMixer = new BlockJuiceMixer().setBlockName(BlockLib.bJM);
+		Chocake = new ChocolateCake().setBlockName("Cake");
 		
 		
 		registerBlocks();
@@ -79,6 +81,7 @@ public class BlockLoader {
 			GameRegistry.registerBlock(tomatoCrop, BlockLib.bCT);
 			GameRegistry.registerBlock(lettuceCrop, BlockLib.bCL);
 			GameRegistry.registerBlock(juiceMixer, BlockLib.bJM);
+			GameRegistry.registerBlock(Chocake, "Cake");
 			
 		}
 		Register=true;
