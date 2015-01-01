@@ -1,3 +1,17 @@
+#Minecraft Others
+/bin
+/build
+/.gradle
+/.settings
+/eclipse
+*.bat
+!gradlew.bat
+*.txt
+*.classpath
+*.project
+
+
+
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
@@ -8,14 +22,6 @@ Desktop.ini
 # Recycle Bin used on file shares
 $RECYCLE.BIN/
 
-# Windows Installer files
-*.cab
-*.msi
-*.msm
-*.msp
-
-# Windows shortcuts
-*.lnk
 
 # =========================
 # Operating System Files
@@ -28,16 +34,13 @@ $RECYCLE.BIN/
 .AppleDouble
 .LSOverride
 
+# Icon must ends with two \r.
+Icon
+
+
 # Thumbnails
 ._*
 
 # Files that might appear on external disk
 .Spotlight-V100
 .Trashes
-
-# Directories potentially created on remote AFP share
-.AppleDB
-.AppleDesktop
-Network Trash Folder
-Temporary Items
-.apdisk
