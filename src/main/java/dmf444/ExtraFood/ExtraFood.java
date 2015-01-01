@@ -94,7 +94,7 @@ public class ExtraFood {
 		JBTanknet = NetworkRegistry.INSTANCE.newSimpleChannel(ModInfo.MId);
 		JBTanknet.registerMessage(PacketJBTank.Handler.class, PacketJBTank.class, 1,Side.CLIENT);
 
-		
+		CrossModModules.preInit();
 		
 			EFLog.info("Cleared EF's Registry");
 		
@@ -113,7 +113,7 @@ public class ExtraFood {
 		
 			proxy.registerKeybinds();
 			proxy.intermodComm();
-			CrossModModules.magic();
+			CrossModModules.load();
 		EFLog.info("Finished all INIT!");
 	}
 	

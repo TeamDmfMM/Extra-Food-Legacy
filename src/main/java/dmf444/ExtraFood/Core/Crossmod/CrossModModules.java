@@ -8,15 +8,17 @@ import dmf444.ExtraFood.Common.blocks.BlockLoader;
 import dmf444.ExtraFood.Core.Crossmod.forestry.ForestryFarming;
 import dmf444.ExtraFood.Core.lib.ModInfo;
 import dmf444.ExtraFood.util.EFLog;
+import dmfmm.StarvationAhoy.api.StarvationAhoyRegistry;
 
 public class CrossModModules{
 	
 	private static boolean thaumcraft = false;
 	private static boolean versionCheck = false;
 	private static boolean forestry = false;
+	private static boolean SA = false;
 	
 	
-	public static void magic(){
+	public static void load(){
 	if (Loader.isModLoaded("Thaumcraft")){
 		thaumcraft = true;
 		ThaumcraftAspects.registerThaumAspect();
@@ -29,7 +31,7 @@ public class CrossModModules{
 		versionCheck = true;
 		NBTTagCompound info = new NBTTagCompound();
 		info.setString("curseProjectName", "222348-extra-food");
-		info.setString("curseFilenameParser", "ExtraFood-[].jar");
+		info.setString("curseFilenameParser", "ExtraFood[].jar");
 		info.setString("modDisplayName", "Extra Food");
 		FMLInterModComms.sendRuntimeMessage(ModInfo.MId, "VersionChecker", "addCurseCheck", info);
 	}
@@ -38,11 +40,21 @@ public class CrossModModules{
 		ForestryFarming.addFarms();
 		ForestryFarming.registerCircut();
 	}
+
 	EFLog.info("Mods Loaded:");
 	EFLog.info("Thaumcraft=" + thaumcraft);
 	EFLog.info("VersionChecker=" + versionCheck);
 	EFLog.info("Forestry=" + forestry);
 	
+	
+	}
+	
+	public static void preInit(){
+		if(Loader.isModLoaded("StarvationAhoy")){
+			SA = true;
+			StarvationAhoyRegistry.getInstance().registerModule(StarvationAhoy.class);
+		}
+		EFLog.info("Starvation Ahoy= " + SA);
 	}
 
 }
