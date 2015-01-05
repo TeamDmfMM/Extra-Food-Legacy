@@ -1,5 +1,5 @@
 {
-	"parent": "ExtraFood:block/PeanutBush",
+	"parent": "ExtraFood:block/peanut_stage0",
 	"display": {
 		"thirdperson": {
 			"rotation": [ 10, -45, 170 ],

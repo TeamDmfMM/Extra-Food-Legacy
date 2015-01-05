@@ -4,7 +4,13 @@ package dmf444.ExtraFood.Common.WorldGen;
 import java.util.Random;
 
 
+
+
+
+import net.minecraft.block.state.BlockState;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
+import net.minecraft.util.BlockPos;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;
@@ -49,18 +55,18 @@ public class PeanutWorldGen implements IWorldGenerator {
 			int ys = MathHelper.getRandomIntegerInRange(random, 1, 3);
 			int xx = x + random.nextInt(15);
 			int zz = z + random.nextInt(15);
-			int by = world.getHeightValue(xx, zz);
+			int by = world.getChunksLowestHorizon(xx, zz);//MM12 and I argued over this!
 			for (int xpos = 0; xpos < xs; xpos++){
 				for (int ypos = 0; ypos < ys; ypos++){
-					by = world.getHeightValue(xx + xpos, zz + ypos);
+					by = world.getChunksLowestHorizon(xx + xpos, zz + ypos);
 
 
-					if (world.getBlock(xx + xpos, by, zz + ypos) == Blocks.tallgrass && random.nextInt(3) == 0){
-						world.setBlock(xx + xpos, by, zz + ypos, BlockLoader.peanutbush);
+					if (world.getBlockState(new BlockPos(xx + xpos, by, zz + ypos)).getBlock() == Blocks.tallgrass && random.nextInt(3) == 0){
+						world.setBlockState(new BlockPos(xx + xpos, by, zz + ypos),(IBlockState) new BlockState(BlockLoader.peanutbush));
 						
 					}
-					else if (world.getBlock(xx + xpos, by - 1, zz + ypos) == Blocks.grass && random.nextInt(3) == 0){
-						world.setBlock(xx + xpos, by, zz + ypos, BlockLoader.peanutbush);
+					else if (world.getBlockState(new BlockPos(xx + xpos, by - 1, zz + ypos)).getBlock() == Blocks.grass && random.nextInt(3) == 0){
+						world.setBlockState(new BlockPos(xx + xpos, by, zz + ypos),(IBlockState) new BlockState(BlockLoader.peanutbush));
 						
 					}
 					

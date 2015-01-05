@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -41,35 +42,30 @@ public class BucketHandler {
     }
 
 
-    @SubscribeEvent
-    public void onBucketFill(FillBucketEvent event) {
+	@SubscribeEvent
+	public void onBucketFill(FillBucketEvent event) {
+		ItemStack result = fillCustomBucket(event.world, event.target);
+
+		if (result == null) {
+			return;
+		}
+
+		event.result = result;
+		event.setResult(Result.ALLOW);
+	}
 
 
-            ItemStack result = fillCustomBucket(event.world, event.target);
+	private ItemStack fillCustomBucket(World world, MovingObjectPosition pos) {
+		IBlockState state = world.getBlockState(pos.getBlockPos());
 
+		Item bucket = buckets.get(state.getBlock());
 
-            if (result == null)
-                    return;
-
-
-            event.result = result;
-            event.setResult(Result.ALLOW);
-    }
-
-
-    private ItemStack fillCustomBucket(World world, MovingObjectPosition pos) {
-
-
-            Block block = world.getBlock(pos.blockX, pos.blockY, pos.blockZ);
-
-
-            Item bucket = buckets.get(block);
-            if (bucket != null && world.getBlockMetadata(pos.blockX, pos.blockY, pos.blockZ) == 0) {
-                    world.setBlockToAir(pos.blockX, pos.blockY, pos.blockZ);
-                    return new ItemStack(bucket);
-            } else
-                    return null;
-
-
-    }
+		// TODO: Replace with BlockState check
+		if (bucket != null && state.getBlock().getMetaFromState(state) == 0) {
+			world.setBlockToAir(pos.getBlockPos());
+			return new ItemStack(bucket);
+		} else {
+			return null;
+		}
+	}
 }

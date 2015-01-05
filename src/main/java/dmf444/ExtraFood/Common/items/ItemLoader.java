@@ -146,13 +146,13 @@ public class ItemLoader {
 			GameRegistry.registerItem(uselettuceSeeds, ItemLib.iCLS);
 			GameRegistry.registerItem(rawlettuceSeeds, ItemLib.iULS);
 			GameRegistry.registerItem(grater, ItemLib.iGrater);
-			//GameRegistry.registerItem(bucketstrawberry, ItemLib.iBS);
+			GameRegistry.registerItem(bucketstrawberry, ItemLib.iBS);
 			//GameRegistry.registerItem(bucketbanana, ItemLib.iBB);
 			//GameRegistry.registerItem(bucketcarrot, ItemLib.iBC);
 			//GameRegistry.registerItem(bucketseaWater, ItemLib.iBSW);
 			//GameRegistry.registerItem(bucketpurifiedwater, ItemLib.iBPW);
 			//FluidContainerRegistry.registerFluidContainer(FluidRegistry.getFluidStack("bananajuice", FluidContainerRegistry.BUCKET_VOLUME), new ItemStack(bucketbanana), new ItemStack(Items.bucket));
-			//FluidContainerRegistry.registerFluidContainer(FluidRegistry.getFluidStack("strawberryjuice", FluidContainerRegistry.BUCKET_VOLUME), new ItemStack(bucketstrawberry), new ItemStack(Items.bucket));
+			FluidContainerRegistry.registerFluidContainer(FluidRegistry.getFluidStack("strawberryjuice", FluidContainerRegistry.BUCKET_VOLUME), new ItemStack(bucketstrawberry), new ItemStack(Items.bucket));
 			//FluidContainerRegistry.registerFluidContainer(FluidRegistry.getFluidStack("carrotjuice", FluidContainerRegistry.BUCKET_VOLUME), new ItemStack(bucketcarrot), new ItemStack(Items.bucket));
 			//FluidContainerRegistry.registerFluidContainer(FluidRegistry.getFluidStack("water", FluidContainerRegistry.BUCKET_VOLUME), new ItemStack(bucketseaWater), new ItemStack(Items.bucket));
 			//FluidContainerRegistry.registerFluidContainer(FluidRegistry.getFluidStack("water", FluidContainerRegistry.BUCKET_VOLUME), new ItemStack(bucketpurifiedwater), new ItemStack(Items.bucket));

@@ -30,7 +30,7 @@ public class CookbookTab {
 	public CookbookTab(String name){
 		this.name = name;
 		this.buttons = new ArrayList<ClickTab>();
-		this.rinder = new RenderItem();
+		this.rinder = Minecraft.getMinecraft().getRenderItem();
 	}
 	
 	public void addButton(ClickTab tabby){

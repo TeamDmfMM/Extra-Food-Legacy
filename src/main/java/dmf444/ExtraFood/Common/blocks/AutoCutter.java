@@ -154,7 +154,6 @@ public class AutoCutter extends BlockContainer  {
     }
 
     @SideOnly(Side.CLIENT)
-
     static final class SwitchEnumFacing
         {
             static final int[] FACING_LOOKUP = new int[EnumFacing.values().length];

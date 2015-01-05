@@ -1,6 +1,6 @@
 package dmf444.ExtraFood.Common.fluids;
 
-import cpw.mods.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import dmf444.ExtraFood.Core.lib.ModInfo;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;

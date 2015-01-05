@@ -49,10 +49,10 @@ public class OvenRegistryRecipe {
 			for (String tester : Collections.list(specs.addtypes.keys())){
 				if (ok(i,specs.addtypes.get(tester))){
 					//EFLog.error("Were good here cap'n");
-					if (istack.stackTagCompound == null){
-						istack.stackTagCompound = new NBTTagCompound();
+					if (istack.getTagCompound() == null){
+						istack.setTagCompound(new NBTTagCompound());
 					}
-					istack.stackTagCompound.setBoolean(tester, true);
+					istack.getTagCompound().setBoolean(tester, true);
 					things.add(tester);
 					fine = true;
 				}

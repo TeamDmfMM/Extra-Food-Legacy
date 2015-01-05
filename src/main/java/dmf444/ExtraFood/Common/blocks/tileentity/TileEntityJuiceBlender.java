@@ -3,13 +3,15 @@ package dmf444.ExtraFood.Common.blocks.tileentity;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
-import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
+import net.minecraft.server.gui.IUpdatePlayerListBox;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraftforge.common.util.ForgeDirection;
+import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.IChatComponent;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidContainerRegistry;
 import net.minecraftforge.fluids.FluidStack;
@@ -19,12 +21,11 @@ import net.minecraftforge.fluids.IFluidHandler;
 import dmf444.ExtraFood.Common.RecipeHandler.JuiceRegistry;
 import dmf444.ExtraFood.Common.fluids.FluidLoader;
 import dmf444.ExtraFood.Common.items.ItemLoader;
-import dmf444.ExtraFood.util.EFLog;
 
 
 
 
-public class TileEntityJuiceBlender extends TileEntity implements ISidedInventory, IFluidHandler {
+public class TileEntityJuiceBlender extends TileEntity implements ISidedInventory, IFluidHandler, IUpdatePlayerListBox{
 
 
 	public FluidTank tank = new FluidTank(FluidContainerRegistry.BUCKET_VOLUME * 5);
@@ -104,7 +105,7 @@ public class TileEntityJuiceBlender extends TileEntity implements ISidedInventor
 
 
 	@Override
-	public String getInventoryName() {
+	public String getName() {
 
 
 		return "Juice Blender";
@@ -114,7 +115,7 @@ public class TileEntityJuiceBlender extends TileEntity implements ISidedInventor
 
 
 	@Override
-	public boolean hasCustomInventoryName() {
+	public boolean hasCustomName() {
 
 
 		return false;
@@ -135,21 +136,21 @@ public class TileEntityJuiceBlender extends TileEntity implements ISidedInventor
 
 	@Override
 	public boolean isUseableByPlayer(EntityPlayer player) {
-		return worldObj.getTileEntity(xCoord, yCoord, zCoord) == this &&
-	            player.getDistanceSq(xCoord + 0.5, yCoord + 0.5, zCoord + 0.5) < 64;
+		return worldObj.getTileEntity(new BlockPos(pos.getX(), pos.getY(), pos.getZ())) == this &&
+	            player.getDistanceSq(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ()+ 0.5) < 64;
 	}
 
 
 
 
 	@Override
-	public void openInventory() {}
+	public void openInventory(EntityPlayer e) {}
 
 
 
 
 	@Override
-	public void closeInventory() {}
+	public void closeInventory(EntityPlayer d) {}
 
 
 
@@ -193,7 +194,7 @@ public class TileEntityJuiceBlender extends TileEntity implements ISidedInventor
 		  return false;
 	  }
 
-	  public void updateEntity(){
+	  public void update(){
 
 
 		 // EFLog.error(tank.getFluidAmount());
@@ -328,15 +329,14 @@ public class TileEntityJuiceBlender extends TileEntity implements ISidedInventor
 	
 
 	@Override
-	public int fill(ForgeDirection from, FluidStack resource, boolean doFill) {
-		// TODO Auto-generated method stub
+	public int fill(EnumFacing from, FluidStack resource, boolean doFill){
 		return 0;
 	}
 
 
 
 	@Override
-	public FluidStack drain(ForgeDirection from, FluidStack resource, boolean doDrain) {
+	public FluidStack drain(EnumFacing from, FluidStack resource, boolean doDrain){
         if (resource == null || !resource.isFluidEqual(tank.getFluid()))
         {
             return null;
@@ -347,44 +347,42 @@ public class TileEntityJuiceBlender extends TileEntity implements ISidedInventor
 
 
 	@Override
-	public FluidStack drain(ForgeDirection from, int maxDrain, boolean doDrain) {
+	public FluidStack drain(EnumFacing from, int maxDrain, boolean doDrain){
         return tank.drain(maxDrain, doDrain);
 	}
 
 
 
 	@Override
-	public boolean canFill(ForgeDirection from, Fluid fluid) {
-		// TODO Auto-generated method stub
+	public boolean canFill(EnumFacing from, Fluid fluid){
 		return false;
 	}
 
 
 
 	@Override
-	public boolean canDrain(ForgeDirection from, Fluid fluid) {
-		// TODO Auto-generated method stub
+	public boolean canDrain(EnumFacing from, Fluid fluid){
 		return true;
 	}
 
 
 
 	@Override
-	public FluidTankInfo[] getTankInfo(ForgeDirection from) {
+	public FluidTankInfo[] getTankInfo(EnumFacing from){
         return new FluidTankInfo[] { tank.getInfo() };
 	}
 
 
 
 	@Override
-	public int[] getAccessibleSlotsFromSide(int par1) {
-		return par1 == 0 ? slots_bottom : (par1 == 1 ? slots_top : slots_sides);
+	public int[] getSlotsForFace(EnumFacing side) {
+		return side == side.DOWN ? slots_bottom : (side == side.UP ? slots_top : slots_sides);
 	}
 
 
 
 	@Override
-	public boolean canInsertItem(int slot, ItemStack item, int side){
+	public boolean canInsertItem(int slot, ItemStack item, EnumFacing direction){
 		
 		return this.isItemValidForSlot(slot, item);
 	}
@@ -392,10 +390,43 @@ public class TileEntityJuiceBlender extends TileEntity implements ISidedInventor
 
 
 	@Override
-	public boolean canExtractItem(int slot, ItemStack item, int side)
+	public boolean canExtractItem(int slot, ItemStack item, EnumFacing side)
     {
-        return side != 0 || slot != 1 || item.getItem() == ItemLoader.bucketcarrot ||item.getItem() == ItemLoader.bucketbanana || item.getItem() == ItemLoader.bucketstrawberry;
+        return side != side.DOWN || slot != 1 || item.getItem() == ItemLoader.bucketcarrot ||item.getItem() == ItemLoader.bucketbanana || item.getItem() == ItemLoader.bucketstrawberry;
     }
+
+
+
+	@Override
+	public int getField(int id) {
+	return 0;
+	}
+
+
+
+	@Override
+	public void setField(int id, int value) {
+	
+	}
+
+
+
+	@Override
+	public int getFieldCount() {
+	return 0;
+	}
+
+
+
+	@Override
+	public void clear() {}
+
+
+
+	@Override
+	public IChatComponent getDisplayName() {
+		return null;
+	}
 
 
 }

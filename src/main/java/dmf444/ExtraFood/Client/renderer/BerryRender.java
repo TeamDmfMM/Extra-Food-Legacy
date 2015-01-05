@@ -1,4 +1,4 @@
-package dmf444.ExtraFood.Client.renderer;
+/*package dmf444.ExtraFood.Client.renderer;
 
 
 
@@ -101,7 +101,7 @@ public class BerryRender implements ISimpleBlockRenderingHandler {
 
 
 
-	    renderBlock(tessellator, x, y, z, block);*/
+	    renderBlock(tessellator, x, y, z, block);
 
 
 
@@ -214,4 +214,4 @@ public class BerryRender implements ISimpleBlockRenderingHandler {
 
 
 }
-
+*/

@@ -2,27 +2,24 @@ package dmf444.ExtraFood.Core.Crossmod;
 
 import java.awt.Rectangle;
 import java.util.ArrayList;
-import java.util.List;
 
-import org.lwjgl.opengl.GL11;
-
-import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
+
+import org.lwjgl.opengl.GL11;
+
 import codechicken.nei.NEIServerUtils;
 import codechicken.nei.PositionedStack;
 import codechicken.nei.recipe.TemplateRecipeHandler;
-import static codechicken.lib.gui.GuiDraw.*;
-import dmf444.ExtraFood.ExtraFood;
 import dmf444.ExtraFood.Common.RecipeHandler.JuiceRegistry;
 import dmf444.ExtraFood.Common.blocks.guis.GuiJuiceBlender;
 import dmf444.ExtraFood.Common.items.ItemLoader;
 import dmf444.ExtraFood.Core.lib.GuiLib;
-import dmf444.ExtraFood.util.RenderIcon;
+import static codechicken.lib.gui.GuiDraw.*;
 
 public class NEIJuiceBlenderHandler extends TemplateRecipeHandler{
 	public class JuiceBlenderRecipe extends CachedRecipe{

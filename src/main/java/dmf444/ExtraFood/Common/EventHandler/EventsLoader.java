@@ -23,7 +23,7 @@ public class EventsLoader {
 
 			//Generate Bushes
 			GameRegistry.registerWorldGenerator(new StrawberryWorldGen(), 0);
-			GameRegistry.registerWorldGenerator(PeanutWorldGen.peanutGen, 0);
+			//GameRegistry.registerWorldGenerator(PeanutWorldGen.peanutGen, 0);
 			//Bucket Pickup Handler
 			MinecraftForge.EVENT_BUS.register(BucketHandler.INSTANCE);
 			//Add Seeds to the grass list

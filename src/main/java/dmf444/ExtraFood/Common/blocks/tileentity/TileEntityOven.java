@@ -7,12 +7,14 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
+import net.minecraft.server.gui.IUpdatePlayerListBox;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.BlockPos;
+import net.minecraft.util.IChatComponent;
 import dmf444.ExtraFood.Common.RecipeHandler.OvenRegistry;
 import dmf444.ExtraFood.Common.RecipeHandler.OvenRegistryRecipe;
 
-public class TileEntityOven extends TileEntity implements IInventory{
-		//TODO Constructors
+public class TileEntityOven extends TileEntity implements IInventory,  IUpdatePlayerListBox {
 	
 	public ItemStack[] items;
 	
@@ -28,12 +30,11 @@ public class TileEntityOven extends TileEntity implements IInventory{
 	}
 	
 	public int getSizeInventory() {
-		// TODO Auto-generated method stub
 		return 6;
 	}
 	
 	@Override
-	public void updateEntity() {
+	public void update() {
 		if (OvenRegistry.instance.ok(items) && items[5] == null){
 			if (time == 0 && going == false){
 				startRecipe(OvenRegistry.instance.getRecipe(items));
@@ -125,13 +126,11 @@ public class TileEntityOven extends TileEntity implements IInventory{
 
 	@Override
 	public ItemStack getStackInSlot(int slot) {
-		// TODO Auto-generated method stub
 		return items[slot];
 	}
 	
 	@Override
 	public ItemStack decrStackSize(int slot, int amt) {
-		// TODO Auto-generated method stub
 		ItemStack stack = getStackInSlot(slot);
         if (stack != null) {
                 if (stack.stackSize <= amt) {
@@ -148,57 +147,44 @@ public class TileEntityOven extends TileEntity implements IInventory{
 
 	@Override
 	public ItemStack getStackInSlotOnClosing(int slot) {
-		// TODO Auto-generated method stub
 		return items[slot];
 	}
 
 	@Override
 	public void setInventorySlotContents(int slot, ItemStack stack) {
-		// TODO Auto-generated method stub
 		items[slot] = stack;
 		
 	}
 
 	@Override
-	public String getInventoryName() {
-		// TODO Auto-generated method stub
+	public String getName() {
 		return "Oven";
 	}
 
 	@Override
-	public boolean hasCustomInventoryName() {
-		// TODO Auto-generated method stub
+	public boolean hasCustomName() {
 		return false;
 	}
 
 	@Override
 	public int getInventoryStackLimit() {
-		// TODO Auto-generated method stub
 		return 64;
 	}
 
 	@Override
 	public boolean isUseableByPlayer(EntityPlayer player) {
-		// TODO Auto-generated method stub
-		return worldObj.getTileEntity(xCoord, yCoord, zCoord) == this &&
-	            player.getDistanceSq(xCoord + 0.5, yCoord + 0.5, zCoord + 0.5) < 64;
+		return worldObj.getTileEntity(new BlockPos(pos.getX(), pos.getY(), pos.getZ())) == this &&
+	            player.getDistanceSq(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ()+ 0.5) < 64;
 	}
 
 	@Override
-	public void openInventory() {
-		// TODO Auto-generated method stub
-		
-	}
+	public void openInventory(EntityPlayer p) {}
 
 	@Override
-	public void closeInventory() {
-		// TODO Auto-generated method stub
-		
-	}
+	public void closeInventory(EntityPlayer p) {}
 
 	@Override
 	public boolean isItemValidForSlot(int slot, ItemStack stack) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 	  @Override
@@ -231,5 +217,27 @@ public class TileEntityOven extends TileEntity implements IInventory{
 	            }
 	            tagCompound.setTag("Inventory", itemList);
 	    }
+
+		@Override
+		public IChatComponent getDisplayName() {
+			return null;
+		}
+
+		@Override
+		public int getField(int id) {
+			return 0;
+		}
+
+		@Override
+		public void setField(int id, int value) {
+		}
+
+		@Override
+		public int getFieldCount() {
+			return 0;
+		}
+
+		@Override
+		public void clear() {}
 }
 

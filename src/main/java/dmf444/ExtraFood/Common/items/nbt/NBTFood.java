@@ -64,10 +64,10 @@ public class NBTFood extends ItemFood {
 	    }
 	
 	public int getHunger(ItemStack stack){
-		NBTTagCompound comp = stack.stackTagCompound;
+		NBTTagCompound comp = stack.getTagCompound();
 		String key;
     	ArrayList<String> things = new ArrayList<String>();
-    	for (Object keyb : comp.func_150296_c().toArray()){
+    	for (Object keyb : comp.getKeySet().toArray()){
     		key = (String)keyb;
     		if (!Collections.list(specs.additives.keys()).contains(key)){
     			continue;
@@ -87,10 +87,10 @@ public class NBTFood extends ItemFood {
 	}
 	
 	public float getSaturation(ItemStack stack){
-		NBTTagCompound comp = stack.stackTagCompound;
+		NBTTagCompound comp = stack.getTagCompound();
 		String key;
     	ArrayList<String> things = new ArrayList<String>();
-    	for (Object keyb : comp.func_150296_c().toArray()){
+    	for (Object keyb : comp.getKeySet().toArray()){
     		key = (String)keyb;
     		if (!Collections.list(specs.additives.keys()).contains(key)){
     			continue;
@@ -110,13 +110,13 @@ public class NBTFood extends ItemFood {
 	}
 	
 	public void addInformation(ItemStack stack, EntityPlayer player, List text, boolean idk) {
-		NBTTagCompound comp = stack.stackTagCompound;
+		NBTTagCompound comp = stack.getTagCompound();
     	String key;
     	if (comp == null){
     		return;
     	}
     	ArrayList<String> things = new ArrayList<String>();
-    	for (Object keyb : comp.func_150296_c().toArray()){
+    	for (Object keyb : comp.getKeySet().toArray()){
     		key = (String)keyb;
     		if (!Collections.list(specs.additives.keys()).contains(key)){
     			continue;
@@ -150,13 +150,13 @@ public class NBTFood extends ItemFood {
     }
 	
     public IIcon getIcon(ItemStack stack, int pass){
-    	NBTTagCompound comp = stack.stackTagCompound;
+    	NBTTagCompound comp = stack.getTagCompound();
     	if (comp == null){
     		return base;
     	}
     	String key;
     	ArrayList<String> things = new ArrayList<String>();
-    	for (Object keyb : comp.func_150296_c().toArray()){
+    	for (Object keyb : comp.getKeySet().toArray()){
     		key = (String)keyb;
     		if (!Collections.list(specs.additives.keys()).contains(key)){
     			continue;

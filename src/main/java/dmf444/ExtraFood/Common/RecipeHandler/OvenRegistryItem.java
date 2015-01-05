@@ -39,11 +39,11 @@ public class OvenRegistryItem {
 	}
 	public ItemStack createItemStack(ArrayList<ItemStack> add){
 		ItemStack item = this.base.copy();
-		item.stackTagCompound = new NBTTagCompound();
+		item.setTagCompound(new NBTTagCompound());
 		for (ItemStack itemst : add){
 			Item s = itemst.getItem();
 			if (itemsAdditive.get(s) != null){
-				item.stackTagCompound.setBoolean(itemsAdditive.get(s), true);
+				item.getTagCompound().setBoolean(itemsAdditive.get(s), true);
 			}
 		}
 		return item;

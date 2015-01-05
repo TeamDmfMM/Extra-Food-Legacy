@@ -26,9 +26,9 @@ public class RenderOven extends TileEntitySpecialRenderer {
     
     private void adjustRotatePivotViaMeta(World world, int x, int y, int z) {
             //int meta = world.getBlockMetadata(x, y, z);
-            GL11.glPushMatrix();
-            GL11.glRotatef(1 * (-90), 0.0F, 0.0F, 1.0F);
-            GL11.glPopMatrix();
+            //GL11.glPushMatrix();
+            //GL11.glRotatef(1 * (-90), 0.0F, 0.0F, 1.0F);
+            //GL11.glPopMatrix();
     }
     
     @Override
@@ -77,15 +77,5 @@ public class RenderOven extends TileEntitySpecialRenderer {
             GL11.glPopMatrix();
             GL11.glPopMatrix();
     }
-    /*
-    //Set the lighting stuff, so it changes it's brightness properly.       
-    private void adjustLightFixture(World world, int i, int j, int k, Block block) {
-        Tessellator tess = Tessellator.instance;
-        float brightness = block.getMixedBrightnessForBlock(world, i, j, k);
-        int skyLight = world.getLightBrightnessForSkyBlocks(i, j, k, 0);
-        int modulousModifier = skyLight % 65536;
-        int divModifier = skyLight / 65536;
-        tess.setColorOpaque_F(brightness, brightness, brightness);
-        OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit,  (float) modulousModifier,  divModifier);
-}*/
+
 }

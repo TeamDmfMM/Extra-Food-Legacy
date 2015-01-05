@@ -10,7 +10,6 @@ import dmf444.ExtraFood.Core.PacketJBTank;
 import dmf444.ExtraFood.util.EFLog;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.AbstractClientPlayer;
-import net.minecraft.client.entity.EntityClientPlayerMP;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -21,8 +20,10 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
+import mcp.mobius.waila.api.ITaggedList.ITipList;
 import mcp.mobius.waila.api.IWailaConfigHandler;
 import mcp.mobius.waila.api.IWailaDataAccessor;
+import mcp.mobius.waila.api.IWailaDataAccessorServer;
 import mcp.mobius.waila.api.IWailaDataProvider;
 
 public class WailaProviderJuiceBlender implements IWailaDataProvider{
@@ -30,7 +31,7 @@ public class WailaProviderJuiceBlender implements IWailaDataProvider{
 	
 
 	@Override
-	public List<String> getWailaBody(ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
+	public ITipList getWailaBody(ItemStack itemStack, ITipList currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
 		TileEntityJuiceBlender jb = (TileEntityJuiceBlender) accessor.getTileEntity();
 		ContainerJuiceBlender container = new ContainerJuiceBlender(accessor.getPlayer().inventory, jb);
 		int fluidAmount = jb.tank.getFluidAmount();
@@ -48,18 +49,24 @@ public class WailaProviderJuiceBlender implements IWailaDataProvider{
 	}
 
 	@Override
-	public List<String> getWailaHead(ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
+	public ITipList getWailaHead(ItemStack itemStack, ITipList currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
 		return currenttip;
+	}
+
+
+	@Override
+	public ITipList getWailaTail(ItemStack itemStack, ITipList currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
+		return currenttip;
+	}
+
+	@Override
+	public NBTTagCompound getNBTData(TileEntity te, NBTTagCompound tag, IWailaDataAccessorServer accessor) {
+		return tag;
 	}
 
 	@Override
 	public ItemStack getWailaStack(IWailaDataAccessor accessor, IWailaConfigHandler config) {
 		return null;
-	}
-
-	@Override
-	public List<String> getWailaTail(ItemStack itemStack, List<String> currenttip, IWailaDataAccessor accessor, IWailaConfigHandler config) {
-		return currenttip;
 	}
 
 }
