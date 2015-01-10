@@ -33,7 +33,7 @@ public class ClientProxy extends CommonProxy{
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityOven.class, new RenderOven());
 		//ClientRegistry.bindTileEntitySpecialRenderer(JuiceMixerTileEntity.class, new JuiceMixerRenderer());
 		//bushrender = new BerryRender();
-		RenderingRegistry.registerBlockHandler(bushrender);
+		//RenderingRegistry.registerBlockHandler(bushrender);
 	     
 
 

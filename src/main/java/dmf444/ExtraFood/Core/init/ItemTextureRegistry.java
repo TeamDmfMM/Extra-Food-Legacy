@@ -75,7 +75,7 @@ public class ItemTextureRegistry {
 		register(ItemLib.iVanIceCream, 0);
 		register(ItemLib.iVKeb, 0);
 		register(ItemLib.iYogurt, 0);
-		register(ItemLib.iFF(), 0);
+		register(ItemLib.iFF, 0);
 	}
 	
 	

@@ -89,7 +89,7 @@ public class ItemLoader {
 		cookedBacon = new StanFood(2, 5.2F).setUnlocalizedName(ItemLib.iCBac);
 		toast = new StanFood(6, 0.8F).setUnlocalizedName(ItemLib.iToastS);
 		slicedBread = new StanFood(4, 3.0F).setUnlocalizedName(ItemLib.iBRS);
-		frenchFries = new ItemFood(8, 0.7F, false).setUnlocalizedName(ItemLib.iFF()).setCreativeTab(EFTabs.INSTANCE)/*.setTextureName("extrafood:" + ItemLib.iFF())*/;//" + ItemLib.iFF()
+		frenchFries = new ItemFood(8, 0.7F, false).setUnlocalizedName(ItemLib.iFF).setCreativeTab(EFTabs.INSTANCE);
 		tomato = new StanFood(4, 2.5F).setUnlocalizedName(ItemLib.iTom);
 		lettuce = new StanFood(4, 1.6F).setUnlocalizedName(ItemLib.iLet);	
 		egg = new StanFood(3, 0.8F).setUnlocalizedName(ItemLib.iEgg);

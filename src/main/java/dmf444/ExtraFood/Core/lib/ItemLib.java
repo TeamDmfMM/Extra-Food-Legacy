@@ -84,19 +84,7 @@ public class ItemLib {
 	public static String iButterMilk = "ButterMilk";
 	public static String iFrenchToast = "FrenchToast";
 	
-
-
-
-	
-	
-
-	
 	//Special ones
-	public static String iFF(){
-			if(ConfigHandler.FeelLikeAure){
-				return "PotatoLava";
-			}
-			return "FrenchFries";
-	}
+	public static String iFF = "FrenchFries";
 
 }
