@@ -1,8 +1,11 @@
 package dmf444.ExtraFood.Common.blocks.container;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
+import net.minecraft.inventory.ICrafting;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import dmf444.ExtraFood.Common.blocks.tileentity.TileEntityOven;
@@ -11,7 +14,7 @@ public class ContainerOven extends Container {
 
 	
 	TileEntityOven tileEntity;
-	
+	private int BarTimeLeft;
 	public static int INPUT_1 = 0, INPUT_2 = 1, INPUT_3 = 2, INPUT_4 = 3, INPUT_5 = 4, OUTPUT = 5; 
 	
 	
@@ -41,7 +44,7 @@ public class ContainerOven extends Container {
                  addSlotToContainer(new Slot(inventoryPlayer, i, 8 + i * 18, 142));
          }
  }
-	
+
 	@Override
 	public boolean canInteractWith(EntityPlayer p_75145_1_) {
 		// TODO Auto-generated method stub

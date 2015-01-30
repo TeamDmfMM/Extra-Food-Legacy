@@ -59,13 +59,17 @@ public class GuiOven extends GuiContainer {
 	}
 	
 	private void drawProgressBar(){
-		EFLog.fatal(tileEntity.getTimeTicks());
-		if(tileEntity.getTimeTicks() != 0){
-			int i = 22;
+		//EFLog.fatal(tileEntity.getTime());
+		if(tileEntity.getTime() != 0){
+			double i = 22 / tileEntity.getTimeTicks();
+			double l = i * tileEntity.getTime();
+			EFLog.fatal("TimeTick: " + tileEntity.getTimeTicks());
+			EFLog.error("Division: " + i);
+			EFLog.error("Display PX: " + l);
 			GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
 			GL11.glEnable(GL11.GL_BLEND);
 			this.mc.renderEngine.bindTexture(GuiLib.OVgui);
-			this.drawTexturedModalRect(76, 42, 202, 0, 26, i); //22
+			this.drawTexturedModalRect(76, 42, 202, 0, 26, (int) l); //22
 			GL11.glDisable(GL11.GL_BLEND);
 		}
 	}

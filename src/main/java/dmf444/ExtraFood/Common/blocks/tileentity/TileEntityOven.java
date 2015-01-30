@@ -16,7 +16,7 @@ public class TileEntityOven extends TileEntity implements IInventory{
 	
 	public ItemStack[] items;
 	
-	int time = 0; //Current place
+	private int time = 0; //Current place
 	int maxtime = 12000; //Max recipe time
 	
 	boolean going = false; //if cooking
@@ -35,20 +35,20 @@ public class TileEntityOven extends TileEntity implements IInventory{
 	@Override
 	public void updateEntity() {
 		if (OvenRegistry.instance.ok(items) && items[5] == null){
-			if (time == 0 && going == false){
+			if (getTime() == 0 && going == false){
 				startRecipe(OvenRegistry.instance.getRecipe(items));
 				return;
 			}
 			else {
-				time++;
-				if (time == maxtime){
+				setTime(getTime() + 1);
+				if (getTime() == maxtime){
 					endRecipe();
 				}
 			}
 		}
 		else {
 			going = false;
-			time = 0;
+			setTime(0);
 			maxtime = 12000;
 		}
 	}
@@ -101,14 +101,14 @@ public class TileEntityOven extends TileEntity implements IInventory{
 			}
 			
 		}
-		time = 0;
+		setTime(0);
 		going = false;
 		maxtime = 12000;
 	}
 
 	private void startRecipe(OvenRegistryRecipe recipe) {
 		
-		time = 0;
+		setTime(0);
 		maxtime = recipe.getTime(OvenRegistry.instance.getArrayList(items));
 		going = true;
 		recipet = recipe;
@@ -231,5 +231,13 @@ public class TileEntityOven extends TileEntity implements IInventory{
 	            }
 	            tagCompound.setTag("Inventory", itemList);
 	    }
+
+		public int getTime() {
+			return time;
+		}
+
+		public void setTime(int time) {
+			this.time = time;
+		}
 }
 

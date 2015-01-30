@@ -2,6 +2,7 @@ package dmf444.ExtraFood.Common.RecipeHandler;
 
 import java.util.ArrayList;
 
+import dmf444.ExtraFood.Common.items.ItemLoader;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -14,6 +15,7 @@ public class OvenRegistry {
 	
 	public OvenRegistry(){
 		addRecipet("pizza", 3, is(Items.bread, 1), is(Items.gold_ingot, 2));
+		addRecipe("muffin", 3, is(ItemLoader.muffinPan, 1), is(Items.bread, 1));
 	}
 	
 	public void addRecipet(String foodname, int time, ItemStack... st){

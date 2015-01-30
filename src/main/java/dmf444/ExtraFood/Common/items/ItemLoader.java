@@ -21,7 +21,7 @@ public class ItemLoader {
 
 	public static Item cheeseWheel;
 	public static Item banana;
-	public static Item knife;
+	public static Item knife, grater, muffinPan;
 	public static Item cheeseSlice;
 	public static Item cookBook;
 	public static Item sausage;
@@ -51,7 +51,6 @@ public class ItemLoader {
 	public static Item chocolate;
 	public static Item pancakes;
 	public static Item sushi, fishpieces, chineseFood;
-	public static Item grater;
 	public static Item vanillaIceCream, chocolateIceCream, strawberryIceCream, icePop, neoIceCream;
 	public static Item butter, butterMilk;
 	public static Item yogurt, stawberryYogurt;
@@ -76,9 +75,10 @@ public class ItemLoader {
 		bucketpurifiedwater = new BucketPurifiedWater(4, 0.5F);
 		bucketeggnog = new EdibleBucket(9, 5.0F, BlockLoader.Beggnog, "eggnog");
 		tomatoSeeds = (ItemSeeds) new ItemSeeds(BlockLoader.tomatoCrop, Blocks.farmland).setUnlocalizedName(ItemLib.iTS).setTextureName("extrafood:tomatoSeeds").setCreativeTab(EFTabs.INSTANCE);
-		rawlettuceSeeds = new Item().setUnlocalizedName(ItemLib.iULS).setTextureName("extrafood:uselessLettuceSeeds").setCreativeTab(EFTabs.INSTANCE);
+		rawlettuceSeeds = new StanItem().setUnlocalizedName(ItemLib.iULS).setTextureName("extrafood:uselessLettuceSeeds");
 		uselettuceSeeds = (ItemSeeds) new ItemSeeds(BlockLoader.lettuceCrop, Blocks.farmland).setUnlocalizedName(ItemLib.iCLS).setTextureName("extrafood:coatedLettuceSeeds").setCreativeTab(EFTabs.INSTANCE);
 		grater = new Grater().setUnlocalizedName(ItemLib.iGrater);
+		muffinPan = new StanItem().setUnlocalizedName(ItemLib.iMuffPan).setTextureName("extrafood:" + ItemLib.iMuffPan);
 		
 		
 		registerItems();
@@ -154,10 +154,11 @@ public class ItemLoader {
 			
 			GameRegistry.registerItem(knife, ItemLib.iK);
 			GameRegistry.registerItem(cookBook, ItemLib.iCB);
+			GameRegistry.registerItem(grater, ItemLib.iGrater);
+			GameRegistry.registerItem(muffinPan, ItemLib.iMuffPan);
 			GameRegistry.registerItem(tomatoSeeds, ItemLib.iTS);
 			GameRegistry.registerItem(uselettuceSeeds, ItemLib.iCLS);
 			GameRegistry.registerItem(rawlettuceSeeds, ItemLib.iULS);
-			GameRegistry.registerItem(grater, ItemLib.iGrater);
 			GameRegistry.registerItem(bucketstrawberry, ItemLib.iBS);
 			GameRegistry.registerItem(bucketbanana, ItemLib.iBB);
 			GameRegistry.registerItem(bucketcarrot, ItemLib.iBC);

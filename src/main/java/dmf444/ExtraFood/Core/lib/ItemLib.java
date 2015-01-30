@@ -90,7 +90,7 @@ public class ItemLib {
 	public static String iGB = "gingerbread";
 	public static String Chestnut = "chestnuts";
 	public static String Cake = "ChocolateCake";
-	
+	public static String iMuffPan = "MuffinPan";
 	
 
 

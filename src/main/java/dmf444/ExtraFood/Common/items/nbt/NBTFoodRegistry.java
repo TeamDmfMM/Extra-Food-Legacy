@@ -29,20 +29,32 @@ public class NBTFoodRegistry {
 		// TODO Place food registries in here
 		foods = new ArrayList<NBTFoodSpecs>();
 		addFoods("pizza", Pizza_ADD, 				
-				"extrafood:pizzaBase",
+				p +"pizzaBase",
 				new float[] {10, 9},
 				lst(ar("pepperoni","fish")));
-		addFood("muffin", Muffin_ADD, Muffin_Type, "extrafood:muffinBase", new float[]{6, 3}, lst(ar()));
+		addFood("muffin", Muffin_ADD, Muffin_Type, p +"muffinBase", new float[]{6, 3}, lst(ar()));
 				
 
 				
 				
 						
 	}
-	private Dictionary<String, ArrayList<Object>> Pizza_ADD = dict("pepperoni", "extrafood:pizzaPepperoni", is(Items.apple), "fish", "extrafood:pizzaFish", is(Items.cooked_fished), "olives", "extrafood:pizzaOlive", is(Items.golden_apple), "cheese", "extrafood:pizzaCheese", is(ItemLoader.cheeseWheel));
-	private Dictionary<String, ArrayList<Object>> Muffin_ADD = dict("chocolate_chip", "extrafood:fork", is(ItemLoader.chocolate), "strawberry", "extrafood:fork", is(ItemLoader.strawberry), "banana", "extrafood:fork", is(ItemLoader.banana), "apple", "extrafood:fork", is(Items.apple), "Doublechocolate", "extrafood:fork", new ItemStack(ItemLoader.chocolate, 2));
+	private String p = "extrafood:/oven/";
+	private Dictionary<String, ArrayList<Object>> Pizza_ADD = dict("pepperoni", p +"pizzaPepperoni", is(Items.apple), "fish", p +"pizzaFish", is(Items.cooked_fished), "olives", p +"pizzaOlive", is(Items.golden_apple), "cheese", p +"pizzaCheese", is(ItemLoader.cheeseWheel));
+	private Dictionary<String, ArrayList<Object>> Muffin_ADD = dict("chocolate_chip", p +"muffinChocolate", is(ItemLoader.chocolate), "strawberry", p +"muffinStrawberry", is(ItemLoader.strawberry), "banana", p +"muffinBanana", is(ItemLoader.banana), "apple", p +"muffinApple", is(Items.apple), "Doublechocolate", p +"muffinDoubleChocolate", new ItemStack(ItemLoader.chocolate, 2));
+	
+	
 	private Dictionary<ArrayList<String>, ArrayList<Object>> Muffin_Type = createInfo("chocolate_chip", 8, 4, "strawberry", 10, 4,"Doublechocolate", 12, 2, "apple", 10, 5, "banana", 10, 6);
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	//Added space.... fixes my visuals :)
 	public void addFood(String name, Dictionary<String, ArrayList<Object>> adds, Dictionary<ArrayList<String>, ArrayList<Object>> info, String dIcon, float[] dHunger, ArrayList<ArrayList<String>> non){
 		NBTFoodSpecs spec = new NBTFoodSpecs();
 		spec.additives = convert(adds);

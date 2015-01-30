@@ -67,8 +67,10 @@ item.yogurt.name=Plain Yogurt
 item.FrenchToast.name=French Toast
 item.ButterMilk.name=Butter Milk
 item.CheeseburgerSandwhich.name=Cheeseburger
-item.SupremeHamburgerSandwhich.Deluxe Hamburger
+item.SupremeHamburgerSandwhich.name=Deluxe Hamburger
 item.pizza.name=Pizza
+item.muffin.name=Muffin
+item.MuffinPan.name=Muffin Pan
 
 ## Additive names
 add.pizza.pepperoni=Pepperoni
@@ -86,6 +88,7 @@ item.shortbread.name=Shortbread Cookie
 item.FruitCake.name=Fruit Cake
 item.chestnuts.name=Chestnuts
 item.gingerbread.name=Gingerbread Cookie
+item.eggnog.name=Bucket of Eggnog
 item.ChocolateCake.name=Chocolate Cake
 
 #Block Names
@@ -104,6 +107,7 @@ tile.StrawberryJuice.name=Strawberry Juice
 tile.Fcarrotjuice.name=Carrot Juice
 tile.Fbananajuice.name=Banana Juice
 tile.Oven.name=Oven [WIP]
+tile.Cake.name=Chocolate Cake
 
 #Fluid Names ---This is for mod Compatibility
 fluid.strawberryjuice=Strawberry Juice
