@@ -106,7 +106,7 @@ tile.CropTomato.name=Tomato Crop
 tile.StrawberryJuice.name=Strawberry Juice
 tile.Fcarrotjuice.name=Carrot Juice
 tile.Fbananajuice.name=Banana Juice
-tile.Oven.name=Oven [WIP]
+tile.Oven.name=Oven [Test Me!]
 tile.Cake.name=Chocolate Cake
 
 #Fluid Names ---This is for mod Compatibility

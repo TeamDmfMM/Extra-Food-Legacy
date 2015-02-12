@@ -14,7 +14,7 @@ public class OvenRegistry {
 	public ArrayList<OvenRegistryRecipe> recipes = new ArrayList<OvenRegistryRecipe>();
 	
 	public OvenRegistry(){
-		addRecipet("pizza", 3, is(Items.bread, 1), is(Items.gold_ingot, 2));
+		addRecipet("pizza", 3, is(Items.bread, 1), is(ItemLoader.tomato, 2));
 		addRecipe("muffin", 3, is(ItemLoader.muffinPan, 1), is(Items.bread, 1));
 	}
 	

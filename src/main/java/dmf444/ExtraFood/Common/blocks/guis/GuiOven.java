@@ -61,11 +61,8 @@ public class GuiOven extends GuiContainer {
 	private void drawProgressBar(){
 		//EFLog.fatal(tileEntity.getTime());
 		if(tileEntity.getTime() != 0){
-			double i = 22 / tileEntity.getTimeTicks();
+			double i = 22 / (tileEntity.getTimeTicks() + 0.0);
 			double l = i * tileEntity.getTime();
-			EFLog.fatal("TimeTick: " + tileEntity.getTimeTicks());
-			EFLog.error("Division: " + i);
-			EFLog.error("Display PX: " + l);
 			GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
 			GL11.glEnable(GL11.GL_BLEND);
 			this.mc.renderEngine.bindTexture(GuiLib.OVgui);

@@ -6,6 +6,7 @@ import dmf444.ExtraFood.Common.blocks.tileentity.JuiceMixerTileEntity;
 import dmf444.ExtraFood.Core.EFTabs;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -59,9 +60,12 @@ private void setDefaultDirection(World world, int x, int y, int z, EntityLivingB
 }
 
 	
-public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack Itemstack) {
+	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase entity, ItemStack Itemstack) {
 	
-super.onBlockAdded(world, x, y, z);
-this.setDefaultDirection(world, x, y, z, entity);
-}
+		super.onBlockAdded(world, x, y, z);
+		this.setDefaultDirection(world, x, y, z, entity);
+	}
+	public void registerBlockIcons(IIconRegister icon) {
+		this.blockIcon = icon.registerIcon("extrafood:Zycrafted");
+	}
 }

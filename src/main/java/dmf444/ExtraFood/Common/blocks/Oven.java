@@ -48,7 +48,7 @@ public class Oven extends BlockContainer {
     
     //This is the icon to use for showing the block in your hand.
     public void registerBlockIcons(IIconRegister icon) {
-            this.blockIcon = icon.registerIcon("extrafood:Zycrafted");
+            this.blockIcon = icon.registerIcon("extrafood:ItemOven");
     }
     private void setDefaultDirection(World world, int x, int y, int z, EntityLivingBase entity) {
     	int rotation = MathHelper.floor_double((double)(entity.rotationYaw * 4F / 360F) + 0.5D) & 3;

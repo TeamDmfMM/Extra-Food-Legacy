@@ -27,6 +27,8 @@ public class CraftingRecipies {
 	GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(BlockLoader.autoCutter, 1), new Object[] {"pki", "psp", "p p", 'p', "plankWood", 'k', ItemLoader.knife, 'i', "ingotIron", 's', "slabWood"}));
 	GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(BlockLoader.juiceBlender, 1), new Object[] {"sss", " ws", "sss", 's', new ItemStack(Blocks.stone_slab, 1, 0), 'w', "plankWood"}));
 	GameRegistry.addShapedRecipe(new ItemStack(BlockLoader.whiteout), new Object[] {"bbb", "bbb", "bbb", 'b', new ItemStack(Items.dye, 1, 15)});
+	GameRegistry.addShapedRecipe(new ItemStack(BlockLoader.oven), new Object[] {"iii", "irg", "sss", 'i', new ItemStack(Blocks.iron_block), 'r', new ItemStack(Blocks.iron_bars), 'g', new ItemStack(Blocks.glass_pane), 's', new ItemStack(Blocks.stone_slab, 1, 0)});
+	
 	//CookBook Recipies
 	GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ItemLoader.cookBook, 1), new Object[] {" b ", " l ", " f ", 'b', Items.book, 'l', Items.leather, 'f', Items.apple}));
 	GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ItemLoader.cookBook, 1), new Object[] {" b ", " l ", " f ", 'b', Items.book, 'l', Items.leather, 'f', Items.porkchop}));
