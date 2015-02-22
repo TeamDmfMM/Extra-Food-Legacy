@@ -86,6 +86,7 @@ curse {
     changelog = """
     Added in Curse direct uploading
     Fixed textures not showing up (I hope)
+    This (knock on wood) should be final beta [again]
     """
     releaseType = "beta"
 
@@ -97,7 +98,7 @@ curse {
     // addGameversion "1.7.0", "1.7.4"
     
     // Allows you to specify additional files that should be uploaded with your main jar
-    additionalArtifact deobfJar
+    //additionalArtifact deobfJar
     // additionalArtifact "$project.buildDir/libs/A-Custom-File.txt"
     
 }
