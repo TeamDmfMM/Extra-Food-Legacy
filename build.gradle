@@ -16,6 +16,7 @@ buildscript {
 }
 
 apply plugin: 'forge'
+apply plugin: "curseforge"
 
 
 sourceCompatibility = 1.7 
@@ -77,6 +78,28 @@ dependencies {
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
 
+}
+
+curse {
+    apiKey = System.getenv("APIKEY") // saved in the build environment vars
+    projectId = "222348" // my project url is http://minecraft.curseforge.com/mc-mods/222348-extra-food
+    changelog = """
+    Added in Curse direct uploading
+    Fixed textures not showing up (I hope)
+    """
+    releaseType = "beta"
+
+    // the default obfuscated jar is uploaded by default
+    // artifact = project.file("some/jar/to/upload.jar")
+
+    // allows you to add extra compatible MC versions. The one specified in the minecraft{} block is used by default.
+    // addGameVersion "1.7.1"
+    // addGameversion "1.7.0", "1.7.4"
+    
+    // Allows you to specify additional files that should be uploaded with your main jar
+    additionalArtifact deobfJar
+    // additionalArtifact "$project.buildDir/libs/A-Custom-File.txt"
+    
 }
 
 processResources {

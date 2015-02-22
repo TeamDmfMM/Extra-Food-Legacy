@@ -39,7 +39,7 @@ public class NBTFoodRegistry {
 				
 						
 	}
-	private String p = "extrafood:/oven/";
+	private String p = "extrafood:oven/";
 	private Dictionary<String, ArrayList<Object>> Pizza_ADD = dict("pepperoni", p +"pizzaPepperoni", is(Items.apple), "fish", p +"pizzaFish", is(Items.cooked_fished), "olives", p +"pizzaOlive", is(Items.golden_apple), "cheese", p +"pizzaCheese", is(ItemLoader.cheeseWheel));
 	private Dictionary<String, ArrayList<Object>> Muffin_ADD = dict("chocolate_chip", p +"muffinChocolate", is(ItemLoader.chocolate), "strawberry", p +"muffinStrawberry", is(ItemLoader.strawberry), "banana", p +"muffinBanana", is(ItemLoader.banana), "apple", p +"muffinApple", is(Items.apple), "Doublechocolate", p +"muffinDoubleChocolate", new ItemStack(ItemLoader.chocolate, 2));
 	
