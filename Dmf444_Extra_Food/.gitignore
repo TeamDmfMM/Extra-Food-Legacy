@@ -1,0 +1,66 @@
+#################
+## Eclipse
+#################
+
+*.pydevproject
+.project
+.metadata
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.classpath
+.settings/
+.loadpath
+*.py
+*.pyc
+*.txt
+*.sh
+*.properties
+*.bat
+*.cmd
+
+client/
+common/
+fml/
+patches/
+mcp/bin
+mcp/conf
+mcp/docs
+mcp/eclipse
+mcp/jars
+mcp/lib
+mcp/logs
+mcp/reobf
+mcp/runtime
+mcp/temp
+mcp/src/minecraft/Start.java
+mcp/CHANGELOG
+mcp/src/minecraft/net
+mcp/src/minecraft/paulscode
+mcp/src/minecraft/ibxm
+mcp/src/minecraft/forge_logo.png
+mcp/src/minecraft/mcmod.info
+mcp/src/minecraft/mcpmod.info
+
+!/mcp/src/minecraft/dmf444
+!/mcp/src/minecraft/dmf444/ExtraFood/Client
+!/mcp/src/minecraft/dmf444/ExtraFood/Common
+*.lzma
+*.cfg
+
+# External tool builders
+.externalToolBuilders/
+
+# Locally stored "Eclipse launch configurations"
+*.launch
+
+# CDT-specific
+.cproject
+
+# PDT-specific
+.buildpath
+
